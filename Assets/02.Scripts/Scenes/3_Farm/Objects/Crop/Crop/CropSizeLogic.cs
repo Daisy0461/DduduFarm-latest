@@ -5,7 +5,7 @@ using System;
 
 //실시간이 된다면 Awake에 값을 받아와야할거 같음.
 
-public class CropLogic : MonoBehaviour
+public class CropSizeLogic : MonoBehaviour
 {
     public float maxGrowth = 100f;
     public float growthLevel = 0;
