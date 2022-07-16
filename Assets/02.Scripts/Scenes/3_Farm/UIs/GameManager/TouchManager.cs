@@ -18,7 +18,7 @@ public class TouchManager : MonoBehaviour
     Camera cam;
     private float slideSpeed = 0.5f;
 
-    private readonly float zoomSpeed = 2f;
+    private readonly float zoomSpeed = 2.0f;
     private readonly float zoomInMax = 5f;
     private readonly float zoomOutMax = 15f;
     public float factor = 0.65f;
@@ -35,9 +35,14 @@ public class TouchManager : MonoBehaviour
     void Update () {
         UIOnOff();
         MoveScreen();
+        ZoomInOut();
     }
 
     void UIOnOff() {  
+        // 1. 좌우로 빠지기
+        // 2. 아래로 사라지기
+            // off: 불투명도 내려가면서 y값 낮아지기
+            // on:  불투명도 올라가면서 y값 높아지기
         if (Input.GetMouseButtonDown(0)) {
             touchStartPosition = Input.mousePosition;   // 탭 초기위치
             touchCurPosition = Input.mousePosition;
@@ -53,7 +58,7 @@ public class TouchManager : MonoBehaviour
                 }
                 if (UIObj == null)
                     return;
-                // UIObjActiveManage();
+                UIObjActiveManage();
             }
         }
     }
@@ -89,10 +94,15 @@ public class TouchManager : MonoBehaviour
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
             if (Input.touchCount == 0) touchCurPosition = (Vector2)Input.mousePosition;
         }
-        else if (Input.touchCount == 2) { // 줌인 줌아웃
+    }
+
+    private void ZoomInOut()
+    {
+        if (Input.touchCount == 2) 
+        { // 줌인 줌아웃
             /* get zoomAmount */
-            var curTouchAPos = Input.GetTouch(0).position;  // 현재 터치 중인 터치 1번 손가락
-            var curTouchBPos = Input.GetTouch(1).position;  // 현재 터치 중인 터치 2번 손가락
+            var curTouchAPos = Input.GetTouch(0).position;                      // 현재 터치 중인 터치 1번 손가락
+            var curTouchBPos = Input.GetTouch(1).position;                      // 현재 터치 중인 터치 2번 손가락
             var prevTouchAPos = curTouchAPos - Input.GetTouch(0).deltaPosition; // 이전 프레임 1번 손가락
             var prevTouchBPos = curTouchBPos - Input.GetTouch(1).deltaPosition; // 이전 프레임 2번 손가락
             var deltaDistance =

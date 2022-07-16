@@ -4,7 +4,7 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8667452979921559061
-    second: "\uC81C\uBAA9_\uC5C6\uB294_\uC544\uD2B8\uC6CC\uD06C-2_0"
+    second: "\uBC2D"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,7 +106,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC81C\uBAA9_\uC5C6\uB294_\uC544\uD2B8\uC6CC\uD06C-2_0"
+      name: "\uBC2D"
       rect:
         serializedVersion: 2
         x: 0
