@@ -5,7 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/01.Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/01.Scenes/Title.unity
+    guid: a847848bf94daaf43a8becf62dbaa4a1
+  - enabled: 1
+    path: Assets/01.Scenes/Loading.unity
+    guid: 58dc38aaec567f644b28f6859705740a
+  - enabled: 1
+    path: Assets/01.Scenes/StartCutScene.unity
+    guid: 3c71fc231921fe841bc969c56e5e5118
+  - enabled: 1
+    path: Assets/01.Scenes/Farm.unity
+    guid: e73be753001097947a8e7e7ae2acbe68
+  - enabled: 1
+    path: Assets/01.Scenes/FishFarm.unity
+    guid: a10c4bf4175474944bb29d8ffeb4c4cc
+  - enabled: 1
+    path: Assets/01.Scenes/Shop.unity
+    guid: 9b61d001aac28d64da0ee1a5abd9ad4a
+  - enabled: 1
+    path: Assets/01.Scenes/Lab.unity
+    guid: 8c135fd0d3c3f4440a08bd0a9b80a35d
   m_configObjects: {}
