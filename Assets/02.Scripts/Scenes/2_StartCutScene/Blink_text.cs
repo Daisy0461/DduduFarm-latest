@@ -9,34 +9,40 @@ public class Blink_text : MonoBehaviour
     Color textColor;
     bool overCheck = true;
 
-    void Start(){
+    void Start()
+    {
         blink_text = gameObject.GetComponent<Text>();
         textColor = blink_text.color;
     }
 
-    void Update(){
-        if(textColor.a < 1.0f && overCheck == false){
+    void Update()
+    {
+        if (textColor.a < 1.0f && overCheck == false)
+        {
             Blink_a_Up();
-            if(textColor.a >= 1.0f){
+            if (textColor.a >= 1.0f)
+            {
                 overCheck = true;
             }
-        }else if (textColor.a >= 1.0f || overCheck == true){      //결국 1.0까지 도달하고 줄여야하는데 여기만 계속 시도하게 해야한다.
+        }
+        else if (textColor.a >= 1.0f || overCheck == true)
+        {      //결국 1.0까지 도달하고 줄여야하는데 여기만 계속 시도하게 해야한다.
             Blink_a_Down();
-            if(textColor.a < 0.2f){
+            if (textColor.a < 0.2f)
+            {
                 overCheck = false;
             }
         }
     }
 
-    void Blink_a_Up(){
+    void Blink_a_Up()
+    {
         textColor.a += 0.008f;
         blink_text.color = textColor;
-        //Debug.Log("UP a값: "+textColor.a);
     }
 
     void Blink_a_Down(){
         textColor.a -= 0.008f;
         blink_text.color = textColor;
-        //Debug.Log("Down a값: "+textColor.a);
     }
 }

@@ -28992,9 +28992,9 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418521050}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1dfc4483bee87544bc0e49507912ed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d810feff8f7ecd46b0be2d923aa63e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1418521051}

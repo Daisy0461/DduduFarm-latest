@@ -239,7 +239,6 @@ public class SoundManager : MonoBehaviour
 
     public void SFXSoundVolume(float val)
     {
-
         mixer.SetFloat("SFXSoundVolume", Mathf.Log10(val) * 20);
         EncryptedPlayerPrefs.SetFloat("SFXSoundVolume", val);
         if(SFXMute == true){
