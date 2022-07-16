@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26a08b68301e30d49aa075e6db8737a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64ebfd425981ad2458224e4cf1573238, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4405794343276581799}
   - component: {fileID: -1183617190183445102}
   m_Layer: 8
-  m_Name: Ddudu_star
+  m_Name: Ddudu_tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,17 +165,17 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1702957469
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1445111615518714571, guid: 7cd3c55b0ef9612409c71d3ba0548fbe, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0c10e18f326fd684b894d1fdc4c4e126, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 14.4028425, y: 16.25}
+  m_Size: {x: 1.49, y: 1.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4405794343276581795
@@ -188,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 4405794343276581798}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ae3f6be75b0c064f83a6ed9a9b292e3, type: 2}
+  m_Controller: {fileID: 9100000, guid: d185d33046b90ff4a8cdc9b62b662806, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -214,8 +214,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0066667, y: 1.0066667}
-    newSize: {x: 14.4028425, y: 16.25}
+    oldSize: {x: 1.49, y: 1.59}
+    newSize: {x: 1.49, y: 1.59}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 26a08b68301e30d49aa075e6db8737a4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 64ebfd425981ad2458224e4cf1573238, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

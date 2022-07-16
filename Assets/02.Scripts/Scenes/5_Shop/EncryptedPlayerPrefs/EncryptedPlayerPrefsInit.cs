@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneySaveSystem : MonoBehaviour
+public class EncryptedPlayerPrefsInit : MonoBehaviour
 {
     void Start () {
         EncryptedPlayerPrefs.keys=new string[5];
