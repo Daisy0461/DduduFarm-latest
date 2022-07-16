@@ -15,11 +15,6 @@ public class OpenCountUI : MonoBehaviour
         FarmPosition = fishFarm.transform.position;
     }
 
-    // 쓰이는 곳이 없는 것으로 보임
-    // public GameObject GetFishFarm(){
-    //     return fishFarm_Be_Spawn;
-    // }
-
     public void OpenCount(GameObject ui){ // ui: 물고기 알 개수 선택 팝업. 물고기 종류 선택하기
         EncryptedPlayerPrefs.SetInt("FishCount", 1);
         ui.SetActive(true);

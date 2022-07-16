@@ -9,7 +9,6 @@ public class FishCount : MonoBehaviour
     [SerializeField] private Text totalPriceText;   // 이름 변경 -> FishNameText 
     [SerializeField] private Text countText;
     [SerializeField] private GameObject[] fishKinds;
-    // public int fishPrice;
     [HideInInspector] public int fishEggId;
     
     private GameObject fishFarm_Be_Spawn;
@@ -20,12 +19,12 @@ public class FishCount : MonoBehaviour
         IM = ItemManager.Instance;
         // 이미지 
         EggImage.sprite = Resources.Load<Sprite>(IM.GetInfo(fishEggId).imgPath);
-        // totalPriceText.text = fishPrice.ToString();
         totalPriceText.text = IM.GetInfo(fishEggId).name;
         countText.text = "1";
         EncryptedPlayerPrefs.SetInt("FishCount", 1);
     }
 
+    //Fish Spawn하는 개수 Increase
     public void IncreaseCount(){
         if(EncryptedPlayerPrefs.GetInt("FishCount") <= 2 && IM.GetData(fishEggId).amount > 0){
             EncryptedPlayerPrefs.SetInt("FishCount", EncryptedPlayerPrefs.GetInt("FishCount") + 1);
@@ -35,6 +34,7 @@ public class FishCount : MonoBehaviour
         
     }
 
+    //Fish Spawn하는 개수 Decrease
     public void DecreaseCount(){
         if(EncryptedPlayerPrefs.GetInt("FishCount") > 1){
             EncryptedPlayerPrefs.SetInt("FishCount", EncryptedPlayerPrefs.GetInt("FishCount") - 1);
@@ -43,6 +43,7 @@ public class FishCount : MonoBehaviour
         }
     }
 
+    //위에서 Increase or Decrease한 만큼 fish Spawn
     public void SpawnFish(){
         int count = EncryptedPlayerPrefs.GetInt("FishCount");
         for(int i=0; i<count; i++)
