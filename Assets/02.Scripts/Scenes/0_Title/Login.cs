@@ -24,13 +24,12 @@ public class Login : MonoBehaviour
 
     public void GoogleLogin()
     {
-#if PLATFORM_ANDROID
+#if UNITY_ANDROID
         string ran = (new DateTime(1970, 1, 1).ToLocalTime()).ToString();
         UserInfo.SetUserName($"user{ran}", "google");
-        // 안드로이드로 플랫폼을 바꿀 때 주석처리 풀기
         GPGSBinder.Inst.Login((success, localUser) => UserInfo.userName = $"{localUser.userName}");
-        LoginPass();
 #endif
+        LoginPass();
     }
 
     public void GuestLogin()
@@ -58,7 +57,6 @@ public class Login : MonoBehaviour
         {
             // 유저 자산
             ItemManager.Instance.AddData((int)DataTable.Money, 100000);
-            // EncryptedPlayerPrefs.SetInt("Money", 10000);
 
             // 해금
             EncryptedPlayerPrefs.SetInt("FarmUnlock_1", 1); // 2번 농장바닥 해금
