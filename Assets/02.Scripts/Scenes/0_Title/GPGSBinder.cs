@@ -14,14 +14,12 @@ public class GPGSBinder
     public static GPGSBinder Inst => inst;
 
 
-#if PLATFORM_ANDROID
+#if UNITY_ANDROID
     ISavedGameClient SavedGame => 
         PlayGamesPlatform.Instance.SavedGame;
 
     IEventsClient Events =>
         PlayGamesPlatform.Instance.Events;
-
-
 
     void Init()
     {
@@ -30,7 +28,6 @@ public class GPGSBinder
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();
     }
-
 
     public void Login(Action<bool, UnityEngine.SocialPlatforms.ILocalUser> onLoginSuccess = null)
     {
@@ -45,7 +42,6 @@ public class GPGSBinder
     {
         PlayGamesPlatform.Instance.SignOut();
     }
-
 
     public void SaveCloud(string fileName, string saveData, Action<bool> onCloudSaved = null)
     {
@@ -100,7 +96,6 @@ public class GPGSBinder
             });
     }
 
-
     public void ShowAchievementUI() => 
         Social.ShowAchievementsUI();
 
@@ -109,7 +104,6 @@ public class GPGSBinder
 
     public void IncrementAchievement(string gpgsId, int steps, Action<bool> onUnlocked = null) =>
         PlayGamesPlatform.Instance.IncrementAchievement(gpgsId, steps, success => onUnlocked?.Invoke(success));
-
 
     public void ShowAllLeaderboardUI() =>
         Social.ShowLeaderboardUI();
@@ -131,7 +125,6 @@ public class GPGSBinder
             onloaded?.Invoke(data.Status == ResponseStatus.Success, data);
         });
     }
-
 
     public void IncrementEvent(string gpgsId, uint steps) 
     {
