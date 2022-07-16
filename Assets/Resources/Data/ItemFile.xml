@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Items>
+	<Field id="201" name="감자" note="뚜두 농장에서 수확한 감자다." imgPath="Crop/감자작물3" sellCost="150"/>
+	<Field id="202" name="포도" note="뚜두 농장에서 수확한 포도다." imgPath="Crop/포도작물3" sellCost="130"/>
+	<Field id="203" name="망고" note="뚜두 농장에서 수확한 망고다." imgPath="Crop/노랑작물3" sellCost="3300"/>
+	<Field id="204" name="방울" note="뚜두 농장에서 수확한 방울이다." imgPath="Crop/방울작물3" sellCost="1900"/>
+	<Field id="205" name="분홍" note="뚜두 농장에서 수확한 분홍이다." imgPath="Crop/분홍작물3" sellCost="1800"/>
+	<Field id="206" name="토마토" note="뚜두 농장에서 수확한 토마토다." imgPath="Crop/토마토작물3" sellCost="3300"/>
+	<Field id="207" name="스타" note="뚜두 농장에서 수확한 스타다." imgPath="Crop/스타작물3" sellCost="45000"/>
+	<Field id="208" name="호박" note="뚜두 농장에서 수확한 호박이다." imgPath="Crop/호박작물3" sellCost="10800"/>
+	<Field id="209" name="용과" note="뚜두 농장에서 수확한 용과다." imgPath="Crop/용과작물3" sellCost="62000"/>
+	<Field id="210" name="납복" note="뚜두 농장에서 수확한 납복이다." imgPath="Crop/납복작물3" sellCost="13000"/>
+	<Field id="251" name="감자 씨앗" note="농사를 통해 감자를 얻을 수 있는 씨앗이다." imgPath="Seed/potato" sellCost="1" buyCost="15"/>
+	<Field id="252" name="포도 씨앗" note="농사를 통해 포도를 얻을 수 있는 씨앗이다." imgPath="Seed/grape" sellCost="1" buyCost="13"/>
+	<Field id="253" name="망고 씨앗" note="농사를 통해 망고를 얻을 수 있는 씨앗이다." imgPath="Seed/yellow" sellCost="33" buyCost="330"/>
+	<Field id="254" name="방울 씨앗" note="농사를 통해 방울을 얻을 수 있는 씨앗이다." imgPath="Seed/blue" sellCost="19" buyCost="190"/>
+	<Field id="255" name="분홍 씨앗" note="농사를 통해 분홍을 얻을 수 있는 씨앗이다." imgPath="Seed/pink" sellCost="18" buyCost="180"/>
+	<Field id="256" name="토마토 씨앗" note="농사를 통해 토마토를 얻을 수 있는 씨앗이다." imgPath="Seed/tomato" sellCost="33" buyCost="330"/>
+	<Field id="257" name="스타 씨앗" note="농사를 통해 스타를 얻을 수 있는 씨앗이다." imgPath="Seed/star" sellCost="450" buyCost="4500"/>
+	<Field id="258" name="호박 씨앗" note="농사를 통해 호박을 얻을 수 있는 씨앗이다." imgPath="Seed/pumpkin" sellCost="108" buyCost="1080"/>
+	<Field id="259" name="용과 씨앗" note="농사를 통해 용과를 얻을 수 있는 씨앗이다." imgPath="Seed/dragon" sellCost="620" buyCost="6200"/>
+	<Field id="260" name="납복 씨앗" note="농사를 통해 납복을 얻을 수 있는 씨앗이다." imgPath="Seed/peach" sellCost="130" buyCost="1300"/>
+	<Field id="301" name="감자튀김" note="식물성 기름에 뚜두 농장에서 자란 유기농 감자를 튀겨 만든 감자튀김! 특유의 고소하고 부드러운 맛으로 뚜두 행성 주민들의 사랑을 받고 있다." imgPath="Items/감자튀김" sellCost="720"/>
+	<Field id="302" name="포도 주스" note="뚜두 농장에서 자란 포도로 만든 포도 주스! 포도 주스의 달콤한 맛에 이어지는 쌉쌀한 끝맛은 계속 포도 주스를 찾게 만들 것이다." imgPath="Items/포도주스" sellCost="4800"/>
+	<Field id="303" name="망고 빙수" note="동굴 호수 깊은 곳에서 찾은 얼음과 뚜두 농장에서 자란 망고를 이용하여 만든 망고 빙수! 시원한 얼음과 탱글탱글한 망고는 먹는 이에게 즐거움을 줄 것이다." imgPath="Items/망고빙수" sellCost="12600"/>
+	<Field id="304" name="방울티" note="상점 주인이 자주 마시는 우롱차에 우유와 뚜두 농장에서 자란 방울을 넣어 만든 방울티! 방울티에 들어간 방울의 쫄깃쫄깃한 식감은 마시는 이를 즐겁게 할 것이다." imgPath="Items/방울티" sellCost="24400"/>
+	<Field id="305" name="분홍분홍 스트롱분홍" note="뚜두 농장에서 자란 분홍과 우유를 이용하여 만든 아이스크림! 31가지 맛을 느낄 수 있어 많은 이들에게 사랑을 받고 있다." imgPath="Items/분홍분홍스트롱분홍" sellCost="46800"/>
+	<Field id="306" name="토마토파이" note="뚜두 농장에서 자란 토마토에 설탕과 버터로 만든 토마토 파이! 한입 베어 물었을 때 퍼지는 달콤한 향과 맛은 가히 환상적이다." imgPath="Items/토마토파이" sellCost="100800"/>
+	<Field id="307" name="별사탕" note="솥에서 열심히 섞은 설탕에 뚜두 농장에서 자란 스타를 즙을 내어 뿌려 만든 별사탕! 어두운 밤에도 반짝반짝 거리는 별사탕은 사탕이라기보다는 예술이다!" imgPath="Items/별사탕" sellCost="223200"/>
+	<Field id="308" name="호박죽" note="뚜두 농장에서 자란 호박을 끓여 만든 호박죽! 달콤하고 부드러운 그 맛은 호박을 싫어하는 이조차 끌리게 만들 것이다." imgPath="Items/호박죽" sellCost="388800"/>
+	<Field id="309" name="용과수" note="뚜두 농장에서 자란 용과에서 향유를 추출하여 만든 용과수! 먹지는 못하지만 뚜두들이 좋아하기에 주민들이 야생의 뚜두를 만나고 싶을 때마다 사용한다." imgPath="Items/용과수" sellCost="582400"/>
+	<Field id="310" name="뚜랑핫도그" note="뚜두 농장에서 자란 납복으로 만든 뚜랑 핫도그! 한 입 베어물때 바삭거리는 납복의 식감은.. 저 살찔 것 같아요!" imgPath="Items/뚜랑핫도그" sellCost="758000"/>
+	<Field id="701" name="흰색 보석" note="감자 뚜두가 뱉은 보석이다." imgPath="Gem/potato" sellCost="8000"/>
+	<Field id="702" name="보라색 보석" note="포도 뚜두가 뱉은 보석이다." imgPath="Gem/grape" sellCost="8000"/>
+	<Field id="703" name="노란색 보석" note="망고 뚜두가 뱉은 보석이다." imgPath="Gem/yellow" sellCost="32000"/>
+	<Field id="704" name="파란색 보석" note="방울 뚜두가 뱉은 보석이다." imgPath="Gem/blue" sellCost="16000"/>
+	<Field id="705" name="분홍색 보석" note="분홍 뚜두가 뱉은 보석이다." imgPath="Gem/pink" sellCost="16000"/>
+	<Field id="706" name="붉은색 보석" note="토마토 뚜두가 뱉은 보석이다." imgPath="Gem/tomato" sellCost="32000"/>
+	<Field id="707" name="별빛 보석" note="스타 뚜두가 뱉은 보석이다." imgPath="Gem/star" sellCost="128000"/>
+	<Field id="708" name="주황색 보석" note="호박 뚜두가 뱉은 보석이다." imgPath="Gem/pumpkin" sellCost="64000"/>
+	<Field id="709" name="자주색 보석" note="용과 뚜두가 뱉은 보석이다." imgPath="Gem/dragon" sellCost="128000"/>
+	<Field id="710" name="귤색 보석" note="납복 뚜두가 뱉은 보석이다." imgPath="Gem/peach" sellCost="32000"/>
+	<Field id="10001" name="골드" note="기본 재화" imgPath="Items/Gold"/>
+	<Field id="10002" name="애정" note="기본 재화" imgPath="Items/Love" buyCost="500"/>
+	<Field id="401" name="잉어" note="뚜두 행성의 붉은 호수에서 자라는 물고기이다. 성장하면서 지느러미의 붉은 무늬가 짙어진다." imgPath="Fish/CARP_1"/>
+	<Field id="402" name="블루" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 어두운 곳을 좋아해 사람들의 눈에 띄지 않는다." imgPath="Fish/BLUE_1"/>
+	<Field id="403" name="살구" note="뚜두 행성의 붉은 호수 밑바닥에서 자라는 물고기이다. 열수분출공 주변에서 자라서 그런지 몸에서 열을 내뿜는다." imgPath="Fish/APRICOT_1"/>
+	<Field id="404" name="보라" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 우아하고 긴 지느러미가 특징이다. 쉽게 보기는 힘들지만 그만큼 아름다워 발견하는 사람에게 행운을 가져다 준다고 한다." imgPath="Fish/PURPLE_1"/>
+	<Field id="405" name="네온" note="뚜두 행성의 바다에서 자라는 물고기이다. 바다 밑바닥에서 자라는 발광 해초가 주식이어서 그런지 밤이 되면 몸에 있는 줄무늬에서 빛이 난다." imgPath="Fish/NEON_1"/>
+	<Field id="451" name="잉어 알" note="잉어의 알이다!" imgPath="Fish/CARP_0" sellCost="4" buyCost="40"/>
+	<Field id="452" name="블루 알" note="블루의 알이다!" imgPath="Fish/BLUE_0" sellCost="7" buyCost="70"/>
+	<Field id="453" name="살구 알" note="살구의 알이다!" imgPath="Fish/APRICOT_0" sellCost="10" buyCost="100"/>
+	<Field id="454" name="보라 알" note="보라의 알이다!" imgPath="Fish/PURPLE_0" sellCost="20" buyCost="200"/>
+	<Field id="455" name="네온 알" note="네온의 알이다!" imgPath="Fish/NEON_0" sellCost="40" buyCost="400"/>
+</Items>
