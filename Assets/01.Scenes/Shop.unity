@@ -206,18 +206,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798113}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: ChangeExitButtonColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 577448014}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
         m_MethodName: ShopToBuild
@@ -1961,18 +1949,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798113}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: BackBuyButtonColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1936798111}
         m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
         m_MethodName: OnClickBuyNo
@@ -8640,18 +8616,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1661944766}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1936798113}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: ChangeBuyButtonColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
