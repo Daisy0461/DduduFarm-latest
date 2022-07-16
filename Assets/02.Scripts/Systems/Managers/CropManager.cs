@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CropManager : DataManager<CropManager, CropInfo, CropData>
+public class CropManager : DataManager<CropManager, CropInfo, CropInfo>
 {
 	public override void AddInfo(CropInfo info)
     {

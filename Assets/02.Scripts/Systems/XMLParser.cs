@@ -18,7 +18,7 @@ public class XMLParser : MonoBehaviour
         LoadXML<BuildingManager, BuildingInfo, BuildingData>(buildingFile);
         LoadXML<ResearchManager, ResearchInfo, ResearchData>(researchFile);
         LoadXML<DduduManager, DduduInfo, DduduData>(dduduFile);
-        LoadXML<CropManager, CropInfo, CropData>(cropFile);
+        LoadXML<CropManager, CropInfo, CropInfo>(cropFile);
         LoadXML<FishManager, FishInfo, ItemData>(fishFile);
     }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Items>
+	<Field id="101" name="감자" note="감자에서 부른 뚜두로 긍정적이고 해맑다. 보고 있으면 덩달아 미소짓게 되는 뚜두이다." imgPath="Ddudu/감자" maxFull="400" maxLike="800" gem1Id="701"/>
+	<Field id="102" name="포도" note="포도에서 부른 뚜두로 항상 별 생각 없이 웃고 다닌다. 뭐가 그렇게 재밌는걸까?" imgPath="Ddudu/포도" maxFull="400" maxLike="800" gem1Id="702"/>
+	<Field id="103" name="망고" note="망고에서 부른 뚜두로 매우 온순하다. 꽃을 좋아해서 자주 찾아다닌다." imgPath="Ddudu/망고" maxFull="1600" maxLike="3200" gem1Id="703"/>
+	<Field id="104" name="방울" note="방울에서 부른 뚜두로 소심하고 예민하다. 볼을 한 번 찔러주고 싶게 생겼다. 물을 좋아해서 항상 물기가 많은 곳에서 잠을 잔다." imgPath="Ddudu/방울" maxFull="800" maxLike="1600" gem1Id="704"/>
+	<Field id="105" name="분홍" note="분홍에서 부른 뚜두로 자주 덜렁거려 실수를 한다. 간식 거리를 좋아해서 똬리 사이에 비상용 간식을 숨겨둔다." imgPath="Ddudu/분홍" maxFull="800" maxLike="1600" gem1Id="705"/>
+	<Field id="106" name="토마토" note="토마토에서 부른 뚜두로 활기차고 화끈하다. 자유 분방하고 여유롭게 행동하지만 무슨 일이 생기면 항상 먼저 해결하려고 노력한다." imgPath="Ddudu/토마토" maxFull="1600" maxLike="3200" gem1Id="706"/>
+	<Field id="107" name="스타" note="스타에서 부른 뚜두도 지혜롭고 믿음직하다. 많은 뚜두들이 고민이 생기면 스타에게 찾아간다. 가끔 허당끼를 보인다." imgPath="Ddudu/스타" maxFull="6400" maxLike="12800" gem1Id="707"/>
+	<Field id="108" name="호박" note="호박에서 부른 뚜두로 겁이 많고 수줍음을 탄다. 야생에서는 항상 숨어있어 찾아보기가 힘들다. 가끔 좋아하는 사람에서 선물을 주고 사라진다." imgPath="Ddudu/호박" maxFull="3200" maxLike="6400" gem1Id="708"/>
+	<Field id="109" name="용과" note="용과에서 부른 뚜두로 다른 뚜두들에게 인기가 많다. 만일 야생에서 용과 뚜두들 찾았다면 그 주변에 다른 많은 뚜두들이 숨어있을 가능성이 높다." imgPath="Ddudu/용과" maxFull="6400" maxLike="12800" gem1Id="709"/>
+	<Field id="110" name="납복" note="납복에서 부른 뚜두로 먹을 것을 정말 좋아하는 뚜두이다. 양볼에는 항상 먹이를 넣어두고 다니며 먹이를 뱉으면 매우 작아진다." imgPath="Ddudu/납복" maxFull="1600" maxLike="3200" gem1Id="710"/>
+</Items>
