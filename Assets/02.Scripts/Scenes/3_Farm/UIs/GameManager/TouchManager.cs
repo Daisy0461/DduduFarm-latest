@@ -33,35 +33,35 @@ public class TouchManager : MonoBehaviour
     }
 
     void Update () {
-        UIOnOff();
+        // UIOnOff();
         MoveScreen();
         ZoomInOut();
     }
 
-    void UIOnOff() {  
-        // 1. 좌우로 빠지기
-        // 2. 아래로 사라지기
-            // off: 불투명도 내려가면서 y값 낮아지기
-            // on:  불투명도 올라가면서 y값 높아지기
-        if (Input.GetMouseButtonDown(0)) {
-            touchStartPosition = Input.mousePosition;   // 탭 초기위치
-            touchCurPosition = Input.mousePosition;
-        }  
-        else if (Input.GetMouseButtonUp(0)) {  
-            touchEndPosition = Input.mousePosition;     // 탭 나중 위치. 초기 위치와 나중위치가 같다면 탭으로 인정
+    // void UIOnOff() {  
+    //     // 1. 좌우로 빠지기
+    //     // 2. 아래로 사라지기
+    //         // off: 불투명도 내려가면서 y값 낮아지기
+    //         // on:  불투명도 올라가면서 y값 높아지기
+    //     if (Input.GetMouseButtonDown(0)) {
+    //         touchStartPosition = Input.mousePosition;   // 탭 초기위치
+    //         touchCurPosition = Input.mousePosition;
+    //     }  
+    //     else if (Input.GetMouseButtonUp(0)) {  
+    //         touchEndPosition = Input.mousePosition;     // 탭 나중 위치. 초기 위치와 나중위치가 같다면 탭으로 인정
             
-            float x = touchEndPosition.x - touchStartPosition.x;
-            float y = touchEndPosition.y - touchStartPosition.y;
-            if (Mathf.Abs((int)x) <= 1f && Mathf.Abs((int)y) <= 1f) {
-                if (EventSystem.current.IsPointerOverGameObject()) {
-                    return;
-                }
-                if (UIObj == null)
-                    return;
-                UIObjActiveManage();
-            }
-        }
-    }
+    //         float x = touchEndPosition.x - touchStartPosition.x;
+    //         float y = touchEndPosition.y - touchStartPosition.y;
+    //         if (Mathf.Abs((int)x) <= 1f && Mathf.Abs((int)y) <= 1f) {
+    //             if (EventSystem.current.IsPointerOverGameObject()) {
+    //                 return;
+    //             }
+    //             if (UIObj == null)
+    //                 return;
+    //             UIObjActiveManage();
+    //         }
+    //     }
+    // }
 
     public void UIObjActiveManage(bool isActive=true)
     {
@@ -71,29 +71,38 @@ public class TouchManager : MonoBehaviour
         isOn = !(isOn & isActive);
     }
 
-    public void MoveScreen() {
-        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved)
-            || (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
-        ) {   // 화면 이동
-            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-            eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            List<RaycastResult> results = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-            if (results.Count > 0 && results[0].gameObject.layer == 5) // 왜 그랫지.. 
-                return;
-            
-            var deltaPos = ((Input.touchCount == 1) ? Input.GetTouch(0).deltaPosition : (Vector2)Input.mousePosition-touchCurPosition);
+    public void MoveScreen() 
+    {
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        {
+            if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
 
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime;
+            var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.5f;
 
             // /* clamp */
-            var clampX = (zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
+            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
             var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
-            if (Input.touchCount == 0) touchCurPosition = (Vector2)Input.mousePosition;
+            touchCurPosition = (Vector2)Input.mousePosition;
         }
+#elif UNITY_ANDROID
+        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved))
+        {
+            var deltaPos = Input.GetTouch(0).deltaPosition;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.5f;
+
+            // /* clamp */
+            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
+            var clampY = zoomOutMax - cam.orthographicSize + factor;
+            var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
+            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
+            cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
+        } 
+#endif
     }
 
     private void ZoomInOut()
