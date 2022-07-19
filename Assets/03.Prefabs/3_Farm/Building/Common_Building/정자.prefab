@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1702957469
-  m_SortingLayer: 3
+  m_SortingLayerID: 1160128199
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 4651316805841837438, guid: ed800b41c2d3d7644bde6668ce8ec714, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -272,6 +272,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  buildingId: 0
   cycleOutput: 2
   remainTimeStr: 
   goldBtn: {fileID: 8978813503590985421}
@@ -443,7 +444,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 923128729
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -1180886028846375461, guid: 22d8dfab9233bfb428dd2a4eeb4c8d05, type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
@@ -588,7 +589,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1549605857
-  m_SortingLayer: 6
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2415501329056222877, guid: 1d3ce77ce9a32d14f8d11bbca1240d4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
