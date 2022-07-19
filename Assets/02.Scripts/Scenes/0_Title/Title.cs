@@ -34,11 +34,14 @@ public class Title : MonoBehaviour
 
     public void PressToStart()
     {
-        if (EncryptedPlayerPrefs.GetInt("ExIntro") == 0) {
+        if (EncryptedPlayerPrefs.GetInt("ExIntro") == 0) 
+        {
             EncryptedPlayerPrefs.SetInt("FarmTutorial", 0);
             EncryptedPlayerPrefs.SetInt("ExIntro", 1);
             SceneManager.LoadScene("StartCutScene");
-        } else {
+        } 
+        else 
+        {
             Loading.LoadSceneHandle("Farm");
         }
     }

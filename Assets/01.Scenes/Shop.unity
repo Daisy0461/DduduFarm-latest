@@ -206,33 +206,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-=======
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: ChangeExitButtonColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
->>>>>>> 7e2f00963f2edd9605471ec27cc92828e6c22d58
-      - m_Target: {fileID: 577448014}
-        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
-        m_MethodName: ShopToBuild
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 75035444}
         m_TargetAssemblyTypeName: ButtonSound, Assembly-CSharp
         m_MethodName: PlaySoundForEnd
@@ -240,6 +213,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: b401f49e6d4bb3547b62adf03b14071a, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3781692575045334135}
+        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
+        m_MethodName: ShopToBuild
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -510,21 +495,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798111}
+      - m_Target: {fileID: 7665036813478161743}
         m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
         m_MethodName: LastMoneyChek
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: BackBuyButtonColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1179,7 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4181708270774149339, guid: 48980bc017d7d57408783ee4c5bdea1b, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4181708270774149339, guid: 48980bc017d7d57408783ee4c5bdea1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1316,7 +1289,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798110}
+      - m_Target: {fileID: 3781692573686771111}
         m_TargetAssemblyTypeName: BuyCount, Assembly-CSharp
         m_MethodName: BuyCountIncrease
         m_Mode: 1
@@ -1964,22 +1937,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-<<<<<<< HEAD
-=======
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: BackBuyButtonColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
->>>>>>> 7e2f00963f2edd9605471ec27cc92828e6c22d58
-      - m_Target: {fileID: 1936798111}
+      - m_Target: {fileID: 7665036813478161743}
         m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
         m_MethodName: OnClickBuyNo
         m_Mode: 1
@@ -2385,7 +2343,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 577448014}
+      - m_Target: {fileID: 3781692575045334135}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
         m_MethodName: ShopToBuild
         m_Mode: 1
@@ -3576,7 +3534,7 @@ MonoBehaviour:
   parentContent: {fileID: 141112221}
   selectedShopItem: {fileID: 0}
   talkTextScript: {fileID: 1354215699}
-  onClickBuyButton: {fileID: 1936798111}
+  onClickBuyButton: {fileID: 7665036813478161743}
   audioSource: {fileID: 1661944766}
   coinSound: {fileID: 8300000, guid: a26c9bf3d20162c488656e15ab7c0ab8, type: 3}
   popupCycle: {fileID: 889381916}
@@ -4567,23 +4525,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568884505}
   m_CullTransparentMesh: 1
---- !u!114 &577448014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649842631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b97a89772360174a977a4bc1e54fdd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cropTime: {fileID: 0}
-  fishTime: {fileID: 0}
-  audioSource: {fileID: 0}
-  labData: {fileID: 0}
-  labLevel: {fileID: 0}
 --- !u!1 &608688417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,7 +5148,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 577448014}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
         m_MethodName: ShopToBuild
         m_Mode: 1
@@ -7640,19 +7581,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: BackBuyButtonColor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1936798111}
+      - m_Target: {fileID: 7665036813478161743}
         m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
         m_MethodName: OnClickBuyNo
         m_Mode: 1
@@ -8637,18 +8566,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798111}
-        m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
-        m_MethodName: FirstMoneyCheck
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1661944766}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
@@ -8661,11 +8578,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-<<<<<<< HEAD
-=======
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ButtonColorChange, Assembly-CSharp
-        m_MethodName: ChangeBuyButtonColor
+      - m_Target: {fileID: 7665036813478161743}
+        m_TargetAssemblyTypeName: OnClickBuyButton, Assembly-CSharp
+        m_MethodName: FirstMoneyCheck
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8675,7 +8590,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
->>>>>>> 7e2f00963f2edd9605471ec27cc92828e6c22d58
 --- !u!114 &1042852067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8840,7 +8754,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1081758647}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1dfc4483bee87544bc0e49507912ed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d810feff8f7ecd46b0be2d923aa63e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1081758650}
@@ -9725,7 +9639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1238903940799952756, guid: 75e2ef1598ab04341a833f9ebbc6aaa1, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1238903940799952756, guid: 75e2ef1598ab04341a833f9ebbc6aaa1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -10919,7 +10833,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: ce6dcb6ccdb18d34597431b8d3074752, type: 3}
     - target: {fileID: 3984423179361390689, guid: a81c0a09354d974458bee537915bedcb, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3984423179361390689, guid: a81c0a09354d974458bee537915bedcb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12802,39 +12716,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1649842631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1649842632}
-  - component: {fileID: 1936798111}
-  - component: {fileID: 1936798110}
-  - component: {fileID: 577448014}
-  m_Layer: 0
-  m_Name: ShopClickManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1649842632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649842631}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650918738
 GameObject:
   m_ObjectHideFlags: 0
@@ -13140,7 +13021,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1709206351
 AudioSource:
@@ -14334,7 +14215,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887026062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1dfc4483bee87544bc0e49507912ed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d810feff8f7ecd46b0be2d923aa63e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 1887026065}
@@ -14827,40 +14708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931407994}
   m_CullTransparentMesh: 1
---- !u!114 &1936798110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649842631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977ecdfae3f34744a8f663d5fcdebbfb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countText: {fileID: 1094054283}
-  totalPriceText: {fileID: 284751224}
---- !u!114 &1936798111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649842631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96652f95ed9ea044ba8404243166a110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyCountUI: {fileID: 1842151449}
-  buyCountText: {fileID: 1094054283}
-  totalBuyPrice: {fileID: 284751224}
-  nameText: {fileID: 1492044841}
-  moneyText: {fileID: 1081758650}
-  talkTextScript: {fileID: 1354215699}
-  refuseUI: {fileID: 391616381}
-  SIUI: {fileID: 359973601}
 --- !u!1 &1963503519
 GameObject:
   m_ObjectHideFlags: 0
@@ -14943,7 +14790,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1936798110}
+      - m_Target: {fileID: 3781692573686771111}
         m_TargetAssemblyTypeName: BuyCount, Assembly-CSharp
         m_MethodName: BuyCountDecrease
         m_Mode: 1
@@ -16239,7 +16086,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063141905}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1dfc4483bee87544bc0e49507912ed1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d810feff8f7ecd46b0be2d923aa63e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 2063141906}
@@ -16834,3 +16681,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133249153}
   m_CullTransparentMesh: 1
+--- !u!114 &3781692573686771111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705121889964507042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 977ecdfae3f34744a8f663d5fcdebbfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countText: {fileID: 1094054283}
+  totalPriceText: {fileID: 284751224}
+--- !u!114 &3781692575045334135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705121889964507042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b97a89772360174a977a4bc1e54fdd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cropTime: {fileID: 0}
+  fishTime: {fileID: 0}
+  audioSource: {fileID: 0}
+  labData: {fileID: 0}
+  labLevel: {fileID: 0}
+--- !u!4 &6574285591513984097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705121889964507042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 214.83571, y: 344.53055, z: -164.90102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6705121889964507042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6574285591513984097}
+  - component: {fileID: 7665036813478161743}
+  - component: {fileID: 3781692573686771111}
+  - component: {fileID: 3781692575045334135}
+  m_Layer: 0
+  m_Name: ShopClickManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &7665036813478161743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705121889964507042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96652f95ed9ea044ba8404243166a110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyCountUI: {fileID: 1842151449}
+  buyCountText: {fileID: 1094054283}
+  totalBuyPrice: {fileID: 284751224}
+  nameText: {fileID: 1492044841}
+  moneyText: {fileID: 1081758650}
+  talkTextScript: {fileID: 1354215699}
+  refuseUI: {fileID: 391616381}
+  SIUI: {fileID: 359973601}
