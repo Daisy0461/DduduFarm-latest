@@ -126,10 +126,14 @@ TextureImporter:
         width: 822
         height: 811
       alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+      pivot: {x: 0.5, y: 0.39807934}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -251, y: -211.5}
+        - {x: 2, y: -358.5}
+        - {x: 251, y: -208.5}
+        - {x: -6, y: -108.5}
       tessellationDetail: 0
       bones: []
       spriteID: 231c34de9117bc990800000000000000

@@ -11,23 +11,23 @@ public class EditModes : MonoBehaviour, IDragHandler
 
     [Header("EditUI")]
     public EditUI editUI;
-    public Button editQuit;             // í¸ì§‘ ëª¨ë“œ í™œì„±í™” ì‹œ í¸ì§‘ ì¸ë²¤í† ë¦¬ ë‹«ê¸°
-    public TouchManager TM;               // í¸ì§‘ ëª¨ë“œ í™œì„±í™” ì‹œ UI ì•„ì´ì½˜ ë¹„í™œì„±í™”ë¡œ í¸ì§‘ ëª¨ë“œì— ì£¼ëª©
+    public Button editQuit;             // ?¸ì§? ëª¨ë“œ ?™œ?„±?™” ?‹œ ?¸ì§? ?¸ë²¤í† ë¦? ?‹«ê¸?
+    public TouchManager TM;               // ?¸ì§? ëª¨ë“œ ?™œ?„±?™” ?‹œ UI ?•„?´ì½? ë¹„í™œ?„±?™”ë¡? ?¸ì§? ëª¨ë“œ?— ì£¼ëª©
 
     [Header("Edit Modes")]
-    public GameObject selectedBuilding; // í˜„ì¬ ì„ íƒëœ ê±´ë¬¼
+    public GameObject selectedBuilding; // ?˜„?¬ ?„ ?ƒ?œ ê±´ë¬¼
     public EditBuilding selectedEditBuilding;
     public SpriteRenderer selectedBuildingRenderer;
     public EditBuildingGrid selectedBuildingGrid;
-    public Button editModesQuit;        // ë‹¤ë¥¸ ë° í´ë¦­í•˜ë©´ í¸ì§‘ëª¨ë“œ ì¢…ë£Œ
+    public Button editModesQuit;        // ?‹¤ë¥? ?° ?´ë¦??•˜ë©? ?¸ì§‘ëª¨?“œ ì¢…ë£Œ
     public GameObject PopupBuildingWarning;
 
     [Header("Fixable")]
-    public GameObject btnBlock;         // ë°°ì¹˜í•  ìˆ˜ ì—†ëŠ” ê³³ì´ë©´ ì•ŒíŒŒê°’ ì¡°ì ˆ
-    public bool isAbleToFix = true;     // ë°°ì¹˜í•  ìˆ˜ ìˆëŠ”ê°€ ì—†ëŠ”ê°€?
+    public GameObject btnBlock;         // ë°°ì¹˜?•  ?ˆ˜ ?—†?Š” ê³³ì´ë©? ?•Œ?ŒŒê°? ì¡°ì ˆ
+    public bool isAbleToFix = true;     // ë°°ì¹˜?•  ?ˆ˜ ?ˆ?Š”ê°? ?—†?Š”ê°??
 
     [Header("Sell")]
-    public GameObject Pan_Sell;         // íŒë§¤ ë²„íŠ¼ í´ë¦­ ì‹œ í™œì„±í™” ë˜ëŠ” íŒ¨ë„
+    public GameObject Pan_Sell;         // ?Œë§? ë²„íŠ¼ ?´ë¦? ?‹œ ?™œ?„±?™” ?˜?Š” ?Œ¨?„
     public MoneyText moneyText;
 
     private void Start() 
@@ -37,19 +37,21 @@ public class EditModes : MonoBehaviour, IDragHandler
 
     private void OnEnable() 
     {
-        editQuit.onClick.Invoke();  // ì—ë””í„° ìƒì˜ ë²„íŠ¼ì„ ìŠ¤í¬ë¦½íŠ¸ë¡œ í´ë¦­í•˜ê¸°
+        editQuit.onClick.Invoke();  // ?—?””?„° ?ƒ?˜ ë²„íŠ¼?„ ?Š¤?¬ë¦½íŠ¸ë¡? ?´ë¦??•˜ê¸?
         editModesQuit.gameObject.SetActive(true);
         TM.UIObjActiveManage(false);
         TM.scrollable = false;
 
         selectedBuildingRenderer.sortingOrder = 0;
-        selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = true;
+        selectedBuilding.GetComponent<Collider2D>().isTrigger = true;
+        // selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = true;
         selectedBuildingGrid.spriteRenderer.enabled = true;
     }
 
     private void OnDisable() 
     {
-        selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = false;
+        selectedBuilding.GetComponent<Collider2D>().isTrigger = false;
+        // selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = false;
         selectedBuildingGrid.spriteRenderer.enabled = false;
         
         selectedEditBuilding.isPointerDown = false;
@@ -62,7 +64,7 @@ public class EditModes : MonoBehaviour, IDragHandler
     {
         if (!selectedEditBuilding.isPointerDown)
             return;
-        // ì´ë™ ëª¨ì…˜
+        // ?´?™ ëª¨ì…˜
         selectedBuilding.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         this.transform.position = Input.mousePosition;
         selectedBuilding.transform.position -= new Vector3(0,0,-10);
@@ -81,11 +83,11 @@ public class EditModes : MonoBehaviour, IDragHandler
             editModesQuit.gameObject.SetActive(false);
         }
         else
-            Debug.Log("ë°°ì¹˜í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+            Debug.Log("ë°°ì¹˜?•  ?ˆ˜ ?—†?Šµ?‹ˆ?‹¤.");
     }
 
     public void OnClickCancel()
-    {   // ì´ë™ ì „ ìœ„ì¹˜ë¡œ ë˜ëŒë¦¬ê¸°
+    {   // ?´?™ ? „ ?œ„ì¹˜ë¡œ ?˜?Œë¦¬ê¸°
         if (selectedEditBuilding.prePos == new Vector3(0,0,0))
         {
             OnClickInventory();
@@ -103,7 +105,7 @@ public class EditModes : MonoBehaviour, IDragHandler
     }
 
     public void OnClickInventory()
-    {   // ì‘ì—…ì¤‘ì¸ ê±´ë¬¼ì´ë©´ ì•ˆë‚´ì°½ ë„ìš°ê¸°(ì¼ë°˜ì´ë©´ ë¬´ì¡°ê±´, ê³µë°©ì´ë©´ ê·¸ëƒ¥ ë³´ê´€)
+    {   // ?‘?—…ì¤‘ì¸ ê±´ë¬¼?´ë©? ?•ˆ?‚´ì°? ?„?š°ê¸?(?¼ë°˜ì´ë©? ë¬´ì¡°ê±?, ê³µë°©?´ë©? ê·¸ëƒ¥ ë³´ê??)
         if (selectedEditBuilding.craft != null)
         {
             if (!selectedEditBuilding.craft.IsWorking())
@@ -120,10 +122,10 @@ public class EditModes : MonoBehaviour, IDragHandler
         /* -- working --  */
         if (selectedEditBuilding.craft != null && selectedEditBuilding.craft.IsWorking())
         {
-            // ëšœë‘ ì”¬ì— ì˜¬ë¦¬ê¸°
+            // ?šœ?‘ ?”¬?— ?˜¬ë¦¬ê¸°
             selectedEditBuilding.craft.data.worker.isWork = false;
             dduduSpawner.FindDduduObject(selectedEditBuilding.craft.data.worker.id).gameObject.SetActive(true);
-            // worker ì œê±°
+            // worker ? œê±?
             selectedEditBuilding.craft.data.worker = null;
         }
         selectedEditBuilding.data.isDone = false;
@@ -143,15 +145,15 @@ public class EditModes : MonoBehaviour, IDragHandler
     {
         BuildingData data = selectedEditBuilding.data;
     
-        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "ë¥¼ \níŒë§¤í•˜ì‹œê² ìŠµë‹ˆê¹Œ?";
+        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "ë¥? \n?Œë§¤í•˜?‹œê² ìŠµ?‹ˆê¹??";
         Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
     }
 
     public void OnClickSell()
-    {   // íŒë§¤
+    {   // ?Œë§?
         BuildingData data = BM.GetData(selectedEditBuilding.data.id);
         BM.RemoveData(data);
-        // íŒë§¤ë¡œ ì¸í•œ ìˆ˜ìµ
+        // ?Œë§¤ë¡œ ?¸?•œ ?ˆ˜?µ
         ConstructionUI.SpendMoney(-data.info.sellCost);
         moneyText.TextUpdate();
         
