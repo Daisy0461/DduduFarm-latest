@@ -79,7 +79,7 @@ public class TouchManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
 
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.5f;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.08f;
 
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
@@ -93,7 +93,7 @@ public class TouchManager : MonoBehaviour
         if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved))
         {
             var deltaPos = Input.GetTouch(0).deltaPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.5f;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.08f;
 
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
