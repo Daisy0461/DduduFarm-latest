@@ -17,8 +17,7 @@ public class Common : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus) 
     {
-        if (focusStatus == true)
-            data = BuildingManager.Instance.GetData(data.id);
+        data = BuildingManager.Instance.GetData(buildingId);
     }
     
     private void Start()    // data.isDone 하지 않고 remainCycleTime==0 인 것은 첫 사이클이란 의미이므로 사이클 시간을 채워놔야 함
@@ -62,7 +61,6 @@ public class Common : MonoBehaviour
 
     public void SetRechargeScheduler()
     {
-        data = BuildingManager.Instance.GetData(buildingId);
         if (m_CycleTimerCoroutine != null)
         {        
             StopCoroutine(m_CycleTimerCoroutine);

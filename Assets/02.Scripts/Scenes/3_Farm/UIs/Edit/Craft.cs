@@ -17,8 +17,7 @@ public class Craft : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus) 
     {
-        if (focusStatus == true)
-            data = BuildingManager.Instance.GetData(data.id);
+        data = BuildingManager.Instance.GetData(buildingId);
     }
     
     private void Start() 
