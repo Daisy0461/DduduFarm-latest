@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AtlasShop
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 887ebe1897506e04c9a2b189f0fed2f2, type: 3}
+    - {fileID: 2800000, guid: 4676d9f0bc8283d439599ea91f9a2516, type: 3}
+    - {fileID: 2800000, guid: 23214c2d9259aad49a041476c8974629, type: 3}
+    - {fileID: 2800000, guid: e1026cf0c37ef3847818eb75c457261b, type: 3}
+    - {fileID: 2800000, guid: 476bcaf989698da41ae786e30c20ae3a, type: 3}
+    - {fileID: 2800000, guid: 3b2dafefdc4bc3a48b8d071695abb736, type: 3}
+    - {fileID: 2800000, guid: a4c9b305186a50749b1efaae9b51287e, type: 3}
+    - {fileID: 2800000, guid: 380561f7cfad26640a10d7d461d0ca93, type: 3}
+    - {fileID: 2800000, guid: f41b60a6527883a4a876fd0f72f88d1d, type: 3}
+    - {fileID: 2800000, guid: de190be6512aa9544802aab710385681, type: 3}
+    - {fileID: 2800000, guid: e6894afddce87be44a929a9c379c1195, type: 3}
+    - {fileID: 2800000, guid: 07a91e7cc052e364c8c711e2611aaca4, type: 3}
+    - {fileID: 2800000, guid: b6d69c8d66ebfdf4cb2a717bac85e261, type: 3}
+    - {fileID: 2800000, guid: e0c9ec9510c55a54fa0191886e90dc42, type: 3}
+    - {fileID: 2800000, guid: d8754b76c141cf747ad2ba5aeffa8fea, type: 3}
+    - {fileID: 2800000, guid: 2dbd597b60f52b2409a456cc3096b7b9, type: 3}
+    - {fileID: 2800000, guid: aa06ea06b3339b9498a5fd118c72c5ee, type: 3}
+    - {fileID: 2800000, guid: b98a6ba6ed97145428efcf61ed004a3c, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4676d9f0bc8283d439599ea91f9a2516, type: 3}
+  - {fileID: -1082498657657755353, guid: e1026cf0c37ef3847818eb75c457261b, type: 3}
+  - {fileID: -3116610068271857401, guid: a4c9b305186a50749b1efaae9b51287e, type: 3}
+  - {fileID: -8555696904887292291, guid: e0c9ec9510c55a54fa0191886e90dc42, type: 3}
+  - {fileID: 4772809549464177847, guid: aa06ea06b3339b9498a5fd118c72c5ee, type: 3}
+  - {fileID: 21300000, guid: d8754b76c141cf747ad2ba5aeffa8fea, type: 3}
+  - {fileID: 3221320483494332237, guid: f41b60a6527883a4a876fd0f72f88d1d, type: 3}
+  - {fileID: -2832972572212824617, guid: b98a6ba6ed97145428efcf61ed004a3c, type: 3}
+  - {fileID: 21300000, guid: de190be6512aa9544802aab710385681, type: 3}
+  - {fileID: -2986897559531899993, guid: 380561f7cfad26640a10d7d461d0ca93, type: 3}
+  - {fileID: 3797197835402168599, guid: 887ebe1897506e04c9a2b189f0fed2f2, type: 3}
+  - {fileID: 7838405223504776429, guid: 476bcaf989698da41ae786e30c20ae3a, type: 3}
+  - {fileID: 8878865903248292504, guid: 2dbd597b60f52b2409a456cc3096b7b9, type: 3}
+  - {fileID: 5220147253873974279, guid: 07a91e7cc052e364c8c711e2611aaca4, type: 3}
+  - {fileID: 6968194880895749799, guid: 23214c2d9259aad49a041476c8974629, type: 3}
+  - {fileID: 5574298672431584862, guid: b6d69c8d66ebfdf4cb2a717bac85e261, type: 3}
+  - {fileID: 21300000, guid: e6894afddce87be44a929a9c379c1195, type: 3}
+  - {fileID: -1222514483444983191, guid: 3b2dafefdc4bc3a48b8d071695abb736, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\uAC74\uC124\uC0C1\uC810_\uBC30\uACBD"
+  - "\uAC74\uC124\uC0C1\uC810_\uC8FC\uC778_0"
+  - "\uC77C\uBC18\uC544\uC774\uCF58_0"
+  - "\uC0C1\uC810ui\uB3C8\uD45C\uC2DC_0"
+  - "\uB9D0\uD558\uB294 \uC0C1\uC810\uC8FC\uC778 (1)_0"
+  - "\uC0C1\uC810\uBC30\uACBD"
+  - CraftSlot_0
+  - "\uC0C1\uC810\uC8FC\uC778_0"
+  - "\uAC74\uC124\uC0C1\uC810_btn"
+  - "\uAC74\uC124\uC0C1\uC810_slot_0"
+  - "\uAC74\uC124\uC0C1\uC810_\uB3C8_0"
+  - "\uAC74\uC124\uC0C1\uC810_\uC8FC\uC7782_0"
+  - "\uC0C1\uC810\uBC30\uACBD2_0"
+  - STORE_slot_0
+  - "\uAC74\uC124\uC0C1\uC810_\uC2A4\uD06C\uB864\uBDF0\uBC30\uACBD_0"
+  - "\uB9D0\uD48D\uC120\uC911\uAC04_0"
+  - store ui_buttonvs1
+  - "\uACF5\uBC29\uC544\uC774\uCF58_0"
+  m_RenderDataMap: {}
+  m_Tag: AtlasShop
+  m_IsVariant: 0

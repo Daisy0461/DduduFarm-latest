@@ -84,7 +84,6 @@ public class Common : MonoBehaviour
 
     private IEnumerator DoRechargeTimer(int remainTime)
     {
-        data = BuildingManager.Instance.GetData(buildingId);
         var sec = new WaitForSeconds(1f);
 
         if (remainTime <= 0)
@@ -118,7 +117,6 @@ public class Common : MonoBehaviour
 
     public void OnClickGoldBtn()
     {
-        data = BuildingManager.Instance.GetData(buildingId);
         if (IM.AddData((int)DataTable.Money, cycleOutput) == false)
             return;
         data.isDone = false;

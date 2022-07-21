@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AtlasTutorials
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: ddb65566b1dfa3d43b735d55585b2c94, type: 3}
+    - {fileID: 2800000, guid: 619253a832438b64e8f1e1561f6a5598, type: 3}
+    - {fileID: 2800000, guid: dd70147a86082524186b82295330c933, type: 3}
+    - {fileID: 2800000, guid: ff15ed27607e16c488fb58bdd73b5c61, type: 3}
+    - {fileID: 2800000, guid: 5874c656c44c9414d87f92ef6c779237, type: 3}
+    - {fileID: 2800000, guid: fb5628d5205e4684593a7fdc9ce5073a, type: 3}
+    - {fileID: 2800000, guid: 28fa79f60636294428894db08fe18f4a, type: 3}
+    - {fileID: 2800000, guid: 5c43d1ded6ee38748b43940ccf88e058, type: 3}
+    - {fileID: 2800000, guid: 524bfd425f3acb141abf017a7e1d4f3f, type: 3}
+    - {fileID: 2800000, guid: 36cf9fb5b36cb2844a1e632891c7bc3b, type: 3}
+    - {fileID: 2800000, guid: 1009515ab71cb9f44ab283a1e4bdbb6c, type: 3}
+    - {fileID: 2800000, guid: 28a6cffa9a854a542ab00e63f37ccb38, type: 3}
+    - {fileID: 2800000, guid: e55e7f53429c0fb4d9ce4f04a5cace3b, type: 3}
+    - {fileID: 2800000, guid: c69da99678fff7f4f8139ed46c5a1fb9, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 8551332194456861886, guid: 524bfd425f3acb141abf017a7e1d4f3f, type: 3}
+  - {fileID: 2835441136667029580, guid: e55e7f53429c0fb4d9ce4f04a5cace3b, type: 3}
+  - {fileID: -8026589428244203149, guid: 36cf9fb5b36cb2844a1e632891c7bc3b, type: 3}
+  - {fileID: -7520128429346678419, guid: fb5628d5205e4684593a7fdc9ce5073a, type: 3}
+  - {fileID: 2341321774351664492, guid: 5874c656c44c9414d87f92ef6c779237, type: 3}
+  - {fileID: -4610915753076903723, guid: ddb65566b1dfa3d43b735d55585b2c94, type: 3}
+  - {fileID: 7622254631016805702, guid: c69da99678fff7f4f8139ed46c5a1fb9, type: 3}
+  - {fileID: -7208634808387911588, guid: 28fa79f60636294428894db08fe18f4a, type: 3}
+  - {fileID: 8729613732325535370, guid: ff15ed27607e16c488fb58bdd73b5c61, type: 3}
+  - {fileID: 3565611620666699650, guid: 619253a832438b64e8f1e1561f6a5598, type: 3}
+  - {fileID: 2019995583034118276, guid: 1009515ab71cb9f44ab283a1e4bdbb6c, type: 3}
+  - {fileID: 7647752140481272678, guid: dd70147a86082524186b82295330c933, type: 3}
+  - {fileID: -6060147120525172295, guid: 28a6cffa9a854a542ab00e63f37ccb38, type: 3}
+  - {fileID: 5992327207018408061, guid: 5c43d1ded6ee38748b43940ccf88e058, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uC790\uC2E0\uAC10_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uD654\uC0B4\uD45C_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uC911_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uC0DD\uAC01_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uB300\uD654\uCC3D_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uACBD\uC545_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uD765\uBBF8_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uC18C_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uB300_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uAE30\uC068_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uD30C\uC774\uD305_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uB180\uB78C_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uD30C\uC774\uD305_\uC548\uC6C3\uC74C_0"
+  - "\uD29C\uD1A0\uB9AC\uC5BC_\uC6B0\uC6B8_0"
+  m_RenderDataMap: {}
+  m_Tag: AtlasTutorials
+  m_IsVariant: 0

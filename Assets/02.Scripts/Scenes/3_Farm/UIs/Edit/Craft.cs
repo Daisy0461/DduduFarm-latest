@@ -55,7 +55,6 @@ public class Craft : MonoBehaviour
 
     public void SetRechargeScheduler(bool call=false)
     {
-        data = BuildingManager.Instance.GetData(buildingId);
 
         if (m_CycleTimerCoroutine != null) StopCoroutine(m_CycleTimerCoroutine);
 
@@ -83,7 +82,6 @@ public class Craft : MonoBehaviour
 
     private IEnumerator DoRechargeTimer(int remainTime)
     {
-        data = BuildingManager.Instance.GetData(buildingId);
         data.cycleRemainTime = remainTime;
         while (data.cycleRemainTime > 0)
         {
@@ -106,7 +104,6 @@ public class Craft : MonoBehaviour
 
     public void OnClickOutput()
     {
-        data = BuildingManager.Instance.GetData(buildingId);
         audioSource.Play();
         if (ItemManager.Instance.AddData(data.info.outputId, data.info.outputAmount) == false) return;
         BuildingManager.Instance.GetData(data.id).isDone = false;
@@ -116,8 +113,6 @@ public class Craft : MonoBehaviour
 
     public bool IsWorking()
     {
-        data = BuildingManager.Instance.GetData(buildingId);
-
         bool ret = false;
         if (((data.worker != null && data.worker.id != 0) && !data.isDone)      // 작업중 - data.worker 있고, isDone false
             || ((data.worker == null || data.worker?.id == 0) && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
@@ -127,8 +122,6 @@ public class Craft : MonoBehaviour
 
     public void DduduOut()
     {
-        data = BuildingManager.Instance.GetData(buildingId);
-
         if (data.worker == null) return;
         data.worker.isWork = false;
         var ddudu = DS.FindDduduObject(data.worker.id).gameObject;
