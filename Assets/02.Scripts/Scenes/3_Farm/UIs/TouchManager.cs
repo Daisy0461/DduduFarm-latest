@@ -34,7 +34,7 @@ public class TouchManager : MonoBehaviour
 
     void Update () {
         // UIOnOff();
-        MoveScreen();
+        ScreenPanning();
         ZoomInOut();
     }
 
@@ -71,15 +71,21 @@ public class TouchManager : MonoBehaviour
         isOn = !(isOn & isActive);
     }
 
-    public void MoveScreen() 
+    public void ScreenPanning() 
     {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        if (results.Count > 0 && results[0].gameObject.layer == 5) // UI 레이어 외 오브젝트 클릭 시에도 패닝 가능
+            return;
+        
 #if UNITY_EDITOR
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
+        else if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
-
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.08f;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.1f;
 
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
@@ -89,11 +95,13 @@ public class TouchManager : MonoBehaviour
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
             touchCurPosition = (Vector2)Input.mousePosition;
         }
+        else if (Input.GetMouseButtonUp(0)) touchCurPosition = Vector3.zero;
 #elif UNITY_ANDROID
-        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).phase == TouchPhase.Moved))
+        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began)) touchCurPosition = Input.GetTouch(0).position;
+        else if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Moved))
         {
-            var deltaPos = Input.GetTouch(0).deltaPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.08f;
+            var deltaPos = Input.GetTouch(0).position - touchCurPosition;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.1f;
 
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
@@ -101,7 +109,9 @@ public class TouchManager : MonoBehaviour
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
-        } 
+            touchCurPosition = Input.GetTouch(0).position;
+        }
+        else if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Ended)) touchCurPosition = Vector3.zero;
 #endif
     }
 
