@@ -1766,11 +1766,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &60568536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6947,11 +6943,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &268790022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15047,11 +15039,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &684807628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20703,11 +20691,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &930101249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22033,11 +22017,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &993350710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22364,11 +22344,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &1007176952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23974,13 +23950,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
-  - requireMaterialId: 704
-    requireMaterialCount: 3
+  requireMaterialList: []
 --- !u!114 &1108116445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34080,11 +34050,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &1558815764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35429,9 +35395,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 701
-    requireMaterialCount: 1
+  requireMaterialList: []
 --- !u!114 &1606710955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44714,11 +44678,7 @@ MonoBehaviour:
   dduduExplain: "\uAC10\uC790\uC5D0\uC11C \uBD80\uB978 \uB69C\uB450\uB85C \uAE0D\uC815\uC801\uC774\uACE0
     \uD574\uB9D1\uB2E4. \uBCF4\uACE0 \uC788\uC73C\uBA74 \uB369\uB2EC\uC544 \uBBF8\uC18C\uC9D3\uAC8C
     \uB418\uB294 \uB69C\uB450\uC774\uB2E4."
-  requireMaterialList:
-  - requireMaterialId: 702
-    requireMaterialCount: 1
-  - requireMaterialId: 703
-    requireMaterialCount: 2
+  requireMaterialList: []
 --- !u!114 &1978775871
 MonoBehaviour:
   m_ObjectHideFlags: 0
