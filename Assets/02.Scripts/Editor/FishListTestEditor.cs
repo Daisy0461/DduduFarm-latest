@@ -10,5 +10,10 @@ public class FishListTestEditor : Editor {
         {
             test.SetFish();
         }
+
+        if (GUILayout.Button("Set Crop"))
+        {
+            test.SetCrop();
+        }
     }
 }

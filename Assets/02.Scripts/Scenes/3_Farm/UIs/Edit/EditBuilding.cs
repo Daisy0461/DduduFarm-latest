@@ -47,6 +47,8 @@ public class EditBuilding : MonoBehaviour
 		{
 			if (common != null && common.goldBtn.activeSelf) // 일반 건물, 작업 완료 시 골드 획득
 				common.OnClickGoldBtn();
+			else if (craft != null && craft.outputBtn.activeSelf)
+				craft.OnClickOutput();
 			else
 			{
 				popupBuilding.common = common;

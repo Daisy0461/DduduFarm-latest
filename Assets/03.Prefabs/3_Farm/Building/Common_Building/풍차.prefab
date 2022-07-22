@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: -6433321819702040790}
   - component: {fileID: 4290054339114263572}
   - component: {fileID: 2161506959885476916}
+  - component: {fileID: 1767752811424134987}
   m_Layer: 7
   m_Name: "\uD48D\uCC28"
   m_TagString: Untagged
@@ -665,3 +666,29 @@ PolygonCollider2D:
       - {x: 0.46444446, y: -0.45444447}
       - {x: 0.41555557, y: -0.62333333}
       - {x: 0.20444445, y: -0.7722222}
+--- !u!61 &1767752811424134987
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747332633355301532}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.011936575, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8266667, y: 1.8022223}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1820903, y: 1.8022223}
+  m_EdgeRadius: 0

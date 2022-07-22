@@ -7,7 +7,7 @@ public class BuildingData
     public BuildingInfo info;
     public bool isBuilded;
     public int cycleRemainTime;
-    public DduduData worker;
+    public int workerId;
     public bool isDone;
     public float x, y, z;
 

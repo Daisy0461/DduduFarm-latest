@@ -121,9 +121,9 @@ public class EditModes : MonoBehaviour, IDragHandler
         /* -- working --  */
         if (selectedEditBuilding.craft != null && selectedEditBuilding.craft.IsWorking())
         {
-            selectedEditBuilding.craft.data.worker.isWork = false;
-            dduduSpawner.FindDduduObject(selectedEditBuilding.craft.data.worker.id).gameObject.SetActive(true);
-            selectedEditBuilding.craft.data.worker = null;
+            DduduManager.Instance.GetData(selectedEditBuilding.craft.data.workerId).isWork = false;
+            dduduSpawner.FindDduduObject(selectedEditBuilding.craft.data.workerId).gameObject.SetActive(true);
+            selectedEditBuilding.craft.data.workerId = 0;
         }
         selectedEditBuilding.data.isDone = false;
         selectedEditBuilding.data.cycleRemainTime = 0;
@@ -142,7 +142,7 @@ public class EditModes : MonoBehaviour, IDragHandler
     {
         BuildingData data = selectedEditBuilding.data;
     
-        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "Î•? \n?åêÎß§Ìïò?ãúÍ≤†Ïäµ?ãàÍπ??";
+        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "? \n?????????";
         Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
     }
 

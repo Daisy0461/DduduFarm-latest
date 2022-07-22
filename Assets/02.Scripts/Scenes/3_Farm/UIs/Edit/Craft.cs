@@ -17,7 +17,9 @@ public class Craft : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus) 
     {
-        data = BuildingManager.Instance.GetData(buildingId);
+        var tmpBuilding = BuildingManager.Instance.GetData(buildingId);
+        tmpBuilding = data;
+        if (focusStatus == true && IsWorking()) SetRechargeScheduler();
     }
     
     private void Start() 
@@ -56,8 +58,11 @@ public class Craft : MonoBehaviour
     public void SetRechargeScheduler(bool call=false)
     {
 
-        if (m_CycleTimerCoroutine != null) StopCoroutine(m_CycleTimerCoroutine);
-
+        if (m_CycleTimerCoroutine != null) 
+        {
+            StopCoroutine(m_CycleTimerCoroutine);
+            m_CycleTimerCoroutine = null;
+        }
         if (call == true) 
         {
             data.cycleRemainTime = data.info.cycleTime;
@@ -68,10 +73,8 @@ public class Craft : MonoBehaviour
         
         if (remainTime <= 0)
         {
-            data.worker.satiety -= data.cycleRemainTime * 2;
             data.cycleRemainTime = 0;
             data.isDone = true;
-            BuildingManager.Instance.GetData(data.id).isDone = true;
             if (outputBtn != null) outputBtn.gameObject.SetActive(true);
             DduduOut();
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
@@ -87,7 +90,6 @@ public class Craft : MonoBehaviour
         {
             yield return sec;
             data.cycleRemainTime -= 1;
-            data.worker.satiety -= 2;
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
         }
 
@@ -95,10 +97,11 @@ public class Craft : MonoBehaviour
         {   // 생산 버튼 UI 띄우기
             data.cycleRemainTime = 0;
             data.isDone = true;
+            BuildingManager.Instance.GetData(data.id).isDone = true;
             if (outputBtn != null) outputBtn.gameObject.SetActive(true);
             DduduOut();
-            m_CycleTimerCoroutine = null;
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            m_CycleTimerCoroutine = null;
         }
     }
 
@@ -114,19 +117,21 @@ public class Craft : MonoBehaviour
     public bool IsWorking()
     {
         bool ret = false;
-        if (((data.worker != null && data.worker.id != 0) && !data.isDone)      // 작업중 - data.worker 있고, isDone false
-            || ((data.worker == null || data.worker?.id == 0) && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
+        data.isDone = transform.GetChild(0).gameObject.activeSelf;
+        if ((data.workerId != 0 && !data.isDone)      // 작업중 - data.worker 있고, isDone false
+            || (data.workerId == 0 && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
             ret = true;
         return ret;
     }
 
     public void DduduOut()
     {
-        if (data.worker == null) return;
-        data.worker.isWork = false;
-        var ddudu = DS.FindDduduObject(data.worker.id).gameObject;
+        if (data.workerId == 0) return;
+        DduduManager.Instance.GetData(data.workerId).satiety -= data.info.cycleTime * 2;
+        DduduManager.Instance.GetData(data.workerId).isWork = false;
+        var ddudu = DS.FindDduduObject(data.workerId).gameObject;
         ddudu.transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z);
         ddudu.SetActive(true);
-        data.worker = null;
+        data.workerId = 0;
     }
 }

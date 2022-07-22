@@ -18,4 +18,12 @@ public class FishListTest : MonoBehaviour
             IM.AddData((int)DataTable.Fish + i, 10);
         }
     }
+
+    public void SetCrop()
+    {
+        for (int i=1; i<=5; i++)
+        {
+            IM.AddData((int)DataTable.Crop + i, 100);
+        }
+    }
 }

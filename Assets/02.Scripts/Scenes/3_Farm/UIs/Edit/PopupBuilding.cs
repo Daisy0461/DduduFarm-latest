@@ -231,7 +231,8 @@ public class PopupBuilding : MonoBehaviour
 			if (working)
 			{
 				panel_WorkingInfo.SetActive(true);
-				img_Ddudu.sprite = Resources.Load<Sprite>(craft.data.worker.info.imgPath);
+				if (craft.data.workerId != 0)
+					img_Ddudu.sprite = Resources.Load<Sprite>(DduduManager.Instance.GetData(craft.data.workerId).info.imgPath);
 				txt_WorkingTime.text = craft.remainTimeStr;
 				txt_Output.text = "예상 획득량 : " + IM.GetInfo(craft.data.info.outputId).name + " " + craft.data.info.outputAmount + "개";
 			}
@@ -300,23 +301,26 @@ public class PopupBuilding : MonoBehaviour
 		if (!working)
 		{
 			// 에러팝업 띄우기 - 기존의 색 변경 제거
+			var Err = GameObject.FindGameObjectWithTag("Error")?.transform;
+            if (Err != null)
+            {
+                Err.GetChild(0).gameObject.SetActive(true);
+                Err.GetChild(1).GetComponent<TextObject>().contentText.text = "작업을 할 수 없습니다.";
+                Err.GetChild(1).gameObject.SetActive(true);
+            }
 			return;
 		}
 		else if (!craft.IsWorking()) // 작업하기
 		{
-			IM.GetData(craft.data.info.matId).amount -= craft.data.info.matAmount;
-			craft.data.worker = workDdudu.ddudu.data;
-			craft.data.worker.isWork = true;
+			IM.RemoveData(craft.data.info.matId, craft.data.info.matAmount);
+			craft.data.workerId = workDdudu.ddudu.data.id;
+			DduduManager.Instance.GetData(craft.data.workerId).isWork = true;
 			workDdudu.ddudu.gameObject.SetActive(false);
 			craft.SetRechargeScheduler(true);
 		}
 		else // 작업 중 + 작업 완료 시
 		{
-			if (!craft.data.isDone) //작업 중 - 확인
-			{
-
-			}
-			else // 작업 완료 - 획득하기
+			if (craft.data.isDone)// 작업 완료 - 획득하기
 			{
 				craft.OnClickOutput();
 			}

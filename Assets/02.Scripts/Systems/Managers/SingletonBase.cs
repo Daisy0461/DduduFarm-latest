@@ -24,8 +24,6 @@ public class SingletonBase<T> : MonoBehaviour
                         var singletonObject = new GameObject();
                         m_Instance = singletonObject.AddComponent<T>();
                         singletonObject.name = typeof(T).ToString() + " (Singleton)";
-
-                        // DontDestroyOnLoad(singletonObject);
                     }
                     DontDestroyOnLoad(m_Instance.gameObject);
                 }
