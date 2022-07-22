@@ -11,7 +11,6 @@ public class DduduUnit : MonoBehaviour
         public int requireMaterialCount;
     }
 
-    // type은 그냥 dduduID 쓰면 되지 않나..?
     public int dduduID;
     public int requireResearchID;
     public string callDduduImagePath;

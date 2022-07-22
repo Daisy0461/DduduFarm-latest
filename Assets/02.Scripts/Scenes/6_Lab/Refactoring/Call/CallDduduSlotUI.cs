@@ -49,18 +49,17 @@ public class CallDduduSlotUI : MonoBehaviour
 
     private void Start() 
     {
-        userDataText = FindObjectOfType<UserDataText>(); 
-    }
-
-    // 재료 개수에 따른 위치 설정
-    private void OnEnable()
-    {
-        IM = ItemManager.Instance;
-        RM = ResearchManager.Instance;  
+        userDataText = FindObjectOfType<UserDataText>();
 
         dduduUnit = gameObject.GetComponent<DduduUnit>();
-
         SetCallDduduImage();
+    }
+    
+    private void OnEnable() 
+    {
+        if (IM == null) IM = ItemManager.Instance;
+        if (RM == null) RM = ResearchManager.Instance;  
+        if (dduduUnit.requireMaterialList.Count == 0) SetCallMaterialObjectInfo();
         SetCallMaterialObject();
     }
 
@@ -69,11 +68,22 @@ public class CallDduduSlotUI : MonoBehaviour
         DduduImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(dduduUnit.callDduduImagePath);
     }
 
-    public void SetCallMaterialObject() // 재료 위치 잡고 재료 개수 체크 후 색깔 변경
+    public void SetCallMaterialObjectInfo()
     {
+        foreach (var item in RM.GetInfo(dduduUnit.requireResearchID).requireMaterial)
+        {
+            var tmp = new DduduUnit.RequireMaterial();
+            tmp.requireMaterialId = item.Key;
+            tmp.requireMaterialCount = item.Value;
+            dduduUnit.requireMaterialList.Add(tmp);       
+        }
+    }
+
+    public void SetCallMaterialObject() // 재료 위치 잡고 재료 개수 체크 후 색깔 변경
+    {// 재료 개수에 따른 위치 설정
         // canCall = ResearchManager.Instance.GetDataList().Contains(ResearchManager.Instance.GetData(dduduUnit.requireResearchID));
 
-        int requireMaterialListCount = dduduUnit.requireMaterialList.Count - 1;
+        int requireMaterialListCount = dduduUnit.requireMaterialList.Count-1;
         int requireMaterialIndex = 0;
 
         foreach (Coordinate matCoordinate in researchMaterialCoordinateList[requireMaterialListCount])
@@ -119,16 +129,6 @@ public class CallDduduSlotUI : MonoBehaviour
 
     public void CallDduduEvent()
     {
-        // TestTempStatus();
-
-        // if(canCall)
-        // {
-        //     UpdateCallMaterialItem();
-        //     OrderAddDduduFromOtherScene();
-
-        //     SetCallMaterialObject();
-        // }
-
         // 뚜두를 부를 수 있는지 체크 후 부를 수 있다면 부르기
         // canCall:
         canCall = CheckMaterials();
@@ -170,10 +170,10 @@ public class CallDduduSlotUI : MonoBehaviour
 
     private void TestTempStatus()
     {
-        if (!RM.GetDataList().Contains(RM.GetData(dduduUnit.requireResearchID)))
-            Debug.Log("연구가 진행되지 않았습니다.");
+        // if (!RM.GetDataList().Contains(RM.GetData(dduduUnit.requireResearchID)))
+        //     Debug.Log("연구가 진행되지 않았습니다.");
 
-        // else if ()   // 재료 확인
-            Debug.Log("재료가 부족합니다.");
+        // // else if ()   // 재료 확인
+        //     Debug.Log("재료가 부족합니다.");
     }
 }
