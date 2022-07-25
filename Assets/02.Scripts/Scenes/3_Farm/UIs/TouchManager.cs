@@ -16,9 +16,9 @@ public class TouchManager : MonoBehaviour
 #region // 줌인/줌아웃
     [Header("Zoom")]
     Camera cam;
-    private float slideSpeed = 0.5f;
+    private float slideSpeed = 0.1f;
 
-    private readonly float zoomSpeed = 2.0f;
+    private readonly float zoomSpeed = 1.8f;
     private readonly float zoomInMax = 5f;
     private readonly float zoomOutMax = 15f;
     public float factor = 0.65f;
@@ -79,15 +79,30 @@ public class TouchManager : MonoBehaviour
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         if (results.Count > 0 && results[0].gameObject.layer == 5) // UI 레이어 외 오브젝트 클릭 시에도 패닝 가능
             return;
-        
-#if UNITY_EDITOR
+
+#if UNITY_ANDROID
+        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Moved))
+        {
+            var deltaPos = Input.GetTouch(0).deltaPosition;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
+
+            // /* clamp */
+            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
+            var clampY = zoomOutMax - cam.orthographicSize + factor;
+            var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
+            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
+            cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
+        }
+#endif
+#if !UNITY_ANDROID
         if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
         else if (Input.GetMouseButton(0))
         {
+            Debug.Log("here");
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.1f;
+            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
 
-            // /* clamp */
+            /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
             var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
@@ -96,22 +111,6 @@ public class TouchManager : MonoBehaviour
             touchCurPosition = (Vector2)Input.mousePosition;
         }
         else if (Input.GetMouseButtonUp(0)) touchCurPosition = Vector3.zero;
-#elif UNITY_ANDROID
-        if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Began)) touchCurPosition = Input.GetTouch(0).position;
-        else if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Moved))
-        {
-            var deltaPos = Input.GetTouch(0).position - touchCurPosition;
-            cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize * 0.1f;
-
-            // /* clamp */
-            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
-            var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
-            cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
-            touchCurPosition = Input.GetTouch(0).position;
-        }
-        else if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Ended)) touchCurPosition = Vector3.zero;
 #endif
     }
 
@@ -146,25 +145,30 @@ public class TouchManager : MonoBehaviour
             /* apply offset */
             // offset is a value against movement caused by scale up & down
             var pivotPos = cam.transform.position;
+            var midX = (curTouchAPos.x + curTouchBPos.x) / 2;
+            var midY = (curTouchAPos.y + curTouchBPos.y) / 2;
             var fromCenterToInputPos = new Vector3(                         // 터치 입력을 카메라 중심으로 보정
-                Input.mousePosition.x - Screen.width * 0.5f, 
-                Input.mousePosition.y - Screen.height * 0.5f, 0f);
+                midX - Screen.width * 0.5f, 
+                midY - Screen.height * 0.5f, 0f);
             var fromPivotToInputPos = fromCenterToInputPos - pivotPos;
             var offsetX = (fromPivotToInputPos.x / curSize) * zoomAmount * 0.01f;
             var offsetY = (fromPivotToInputPos.y / curSize) * zoomAmount * 0.01f;
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
-            // /* clamp */
+            /* clamp : prevent out of range */
             var clampX = (zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
+            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
+            Debug.Log("y : "+ cam.transform.position.y + " clampedPosY : " + clampedPosY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
-        else if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomSpeed) && scrollable)
+        if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomSpeed) && scrollable)
         {
             float curSize = cam.orthographicSize;
             var zoomAmount = scroll* 0.5f * curSize * zoomSpeed;
+
+            /* clamp & zoom */
             curSize -= zoomAmount;
             if (curSize < zoomInMax) {
                 curSize = zoomInMax;
@@ -187,13 +191,12 @@ public class TouchManager : MonoBehaviour
             var offsetY = (fromPivotToInputPos.y / curSize) * zoomAmount * 0.01f;
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
-            // /* clamp */
+            /* clamp */
             var clampX = (zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (clampY/zoomOutMax));
+            var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
-        
         }
     }
 
