@@ -142,7 +142,7 @@ public class EditModes : MonoBehaviour, IDragHandler
     {
         BuildingData data = selectedEditBuilding.data;
     
-        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "? \n?????????";
+        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
         Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
     }
 
