@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1160128199
+  m_SortingLayer: 1
   m_SortingOrder: -9
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.23529413, g: 0.12941177, b: 0.06666667, a: 0.12941177}
@@ -122,4 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69635d2453c8b342bdd08de12b0480f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  afterPushFunc: 0
+  isSelected: 0
   seedImage: {fileID: 4600842358809822345, guid: 7bb3f20f8437deb439e08e3e20942433, type: 3}
+  parentFarmSelect: {fileID: 0}
+  CropKind: {fileID: 0}
+  warningPopup: {fileID: 0}
+  cropSelectButton: {fileID: 0}
+  plantSound: {fileID: 0}

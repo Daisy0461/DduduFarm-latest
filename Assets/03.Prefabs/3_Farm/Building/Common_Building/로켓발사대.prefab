@@ -471,25 +471,7 @@ MonoBehaviour:
       cycleTime: 0
     isBuilded: 0
     cycleRemainTime: 0
-    worker:
-      id: 0
-      info:
-        code: 0
-        name: 
-        note: 
-        imgPath: 
-        maxFull: 0
-        maxLike: 0
-        gem1Id: 0
-        gem2Id: 0
-      satiety: 0
-      like: 0
-      interest: 0
-      x: 0
-      y: 0
-      z: 0
-      isGemIconActive: 0
-      isWork: 0
+    workerId: 0
     isDone: 0
     x: 0
     y: 0
@@ -531,25 +513,7 @@ MonoBehaviour:
       cycleTime: 0
     isBuilded: 0
     cycleRemainTime: 0
-    worker:
-      id: 0
-      info:
-        code: 0
-        name: 
-        note: 
-        imgPath: 
-        maxFull: 0
-        maxLike: 0
-        gem1Id: 0
-        gem2Id: 0
-      satiety: 0
-      like: 0
-      interest: 0
-      x: 0
-      y: 0
-      z: 0
-      isGemIconActive: 0
-      isWork: 0
+    workerId: 0
     isDone: 0
     x: 0
     y: 0
@@ -670,8 +634,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5018949, y: 0.44801578}
-    oldSize: {x: 1.8266667, y: 1.8022223}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.0023696, y: 2.0023696}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -698,16 +662,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.020373106, y: 0.09368712}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5018949, y: 0.44801578}
-    oldSize: {x: 1.8266667, y: 1.8022223}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.0023696, y: 2.0023696}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1952939, y: 1.8022223}
+  m_Size: {x: 2.0023696, y: 2.0023696}
   m_EdgeRadius: 0

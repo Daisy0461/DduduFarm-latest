@@ -218,12 +218,12 @@ SpriteRenderer:
   m_SortingLayerID: 1160128199
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1826812946777929807, guid: a73c668323550b942bff1547f33366ec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a73c668323550b942bff1547f33366ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -303,25 +303,7 @@ MonoBehaviour:
       cycleTime: 0
     isBuilded: 0
     cycleRemainTime: 0
-    worker:
-      id: 0
-      info:
-        code: 0
-        name: 
-        note: 
-        imgPath: 
-        maxFull: 0
-        maxLike: 0
-        gem1Id: 0
-        gem2Id: 0
-      satiety: 0
-      like: 0
-      interest: 0
-      x: 0
-      y: 0
-      z: 0
-      isGemIconActive: 0
-      isWork: 0
+    workerId: 0
     isDone: 0
     x: 0
     y: 0
@@ -363,25 +345,7 @@ MonoBehaviour:
       cycleTime: 0
     isBuilded: 0
     cycleRemainTime: 0
-    worker:
-      id: 0
-      info:
-        code: 0
-        name: 
-        note: 
-        imgPath: 
-        maxFull: 0
-        maxLike: 0
-        gem1Id: 0
-        gem2Id: 0
-      satiety: 0
-      like: 0
-      interest: 0
-      x: 0
-      y: 0
-      z: 0
-      isGemIconActive: 0
-      isWork: 0
+    workerId: 0
     isDone: 0
     x: 0
     y: 0
@@ -502,9 +466,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 1.8266667, y: 1.8022223}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -531,18 +495,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.18022227}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.4}
-    oldSize: {x: 1.8266667, y: 1.8022223}
-    newSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8266667, y: 1.8022223}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &7580432386137782974
 GameObject:
