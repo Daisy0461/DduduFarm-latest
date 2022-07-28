@@ -483,10 +483,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.5733333, y: -0.2942222}
-      - {x: -0.0022222223, y: -0.10533332}
-      - {x: 0.57555556, y: -0.292}
-      - {x: 0.008888889, y: -0.62755555}
+    - - {x: -0.6262136, y: -0.5182039}
+      - {x: -0.0024271845, y: -0.3118932}
+      - {x: 0.6286408, y: -0.5157767}
+      - {x: 0.009708738, y: -0.88228154}
 --- !u!61 &8275139481090268836
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -511,7 +511,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9951457, y: 1.9951457}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &7879022450887326771
 GameObject:

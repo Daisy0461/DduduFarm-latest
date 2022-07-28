@@ -54,42 +54,42 @@ SpriteAtlas:
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 6485091014430874129, guid: 4885a6401ee73c9418b3bac5b2974e9a, type: 3}
+  - {fileID: 21300000, guid: 4885a6401ee73c9418b3bac5b2974e9a, type: 3}
   - {fileID: -9109139369865709889, guid: 5c2a7570f72cbe64aafc0a5ce399d430, type: 3}
-  - {fileID: 4651316805841837438, guid: ed800b41c2d3d7644bde6668ce8ec714, type: 3}
+  - {fileID: 21300000, guid: ed800b41c2d3d7644bde6668ce8ec714, type: 3}
   - {fileID: -7364668409465552590, guid: 16f3e05198826854c9f78e9c344ad31c, type: 3}
   - {fileID: -1486745750367600909, guid: e79122f15afc9dd41b5682f2e19c20ff, type: 3}
   - {fileID: 9024396369921188109, guid: 1069ae9293918e84aa9752a9b297500c, type: 3}
   - {fileID: -7844986543649972058, guid: 18eef1532c80f4148b84006d1688a642, type: 3}
   - {fileID: 21300000, guid: a73c668323550b942bff1547f33366ec, type: 3}
-  - {fileID: 3030845735959678138, guid: 40b90fa3752771b419f65197bdb3a242, type: 3}
+  - {fileID: 21300000, guid: 40b90fa3752771b419f65197bdb3a242, type: 3}
   - {fileID: 6701333313814456185, guid: 23723c35559b7514db15854754eb25d6, type: 3}
-  - {fileID: 4115705259862029715, guid: 9be91d26e83049c4592b5d16042483a2, type: 3}
+  - {fileID: 21300000, guid: 9be91d26e83049c4592b5d16042483a2, type: 3}
   - {fileID: 8615424141375308507, guid: 40465c57582eedd42843b744797189f4, type: 3}
   - {fileID: 1959777701923225297, guid: 4e59d777f58af42489d05d0796b802f7, type: 3}
   - {fileID: -5377746085746641999, guid: 637c6587317e3684aaa91670ab532e30, type: 3}
   - {fileID: -7698475909422140808, guid: e84b6b582643be1469edf2a1d8136f6b, type: 3}
   - {fileID: 5885736799017540546, guid: 0ea702993888ab84eb5f7473bb3215b8, type: 3}
-  - {fileID: -5285376355021686084, guid: 9e18793bcd9f59d439f6e27b28afb4df, type: 3}
+  - {fileID: 21300000, guid: 9e18793bcd9f59d439f6e27b28afb4df, type: 3}
   - {fileID: 7797744094464694740, guid: b892587be20d42040bfaa779191a7923, type: 3}
   m_PackedSpriteNamesToIndex:
-  - "\uCC9C\uBB38\uB300_1"
+  - "\uCC9C\uBB38\uB300"
   - "\uB69C\uC8FD_0"
-  - "\uC815\uC790_0"
+  - "\uC815\uC790"
   - "\uB69C\uBAAC\uD2B8_0"
   - "\uD48D\uCC28_0"
   - "\uBCA0\uC2A4\uD0A8\uB69C\uBE48\uC2A4_0"
   - "\uB69C\uBE59_0"
   - "\uBB3C\uB808\uBC29\uC557\uAC04"
-  - "\uBD84\uC218\uB300_0"
+  - "\uBD84\uC218\uB300"
   - "\uB69C\uC2EC\uB2F9_0"
-  - "\uC628\uC2E4_0"
+  - "\uC628\uC2E4"
   - "\uB85C\uCF13\uBC1C\uC0AC\uB300_0"
   - "\uB69C\uB610\uB0A0\uB4DC_0"
   - "\uB69C\uB5BC\uC81C\uACFC_0"
   - "\uB69C\uCC28_0"
   - "\uB69C\uB12C_0"
-  - "\uC624\uB450\uB9C9_0"
+  - "\uC624\uB450\uB9C9"
   - "\uB69C\uB791\uD56B\uB3C4\uADF8_0"
   m_RenderDataMap: {}
   m_Tag: AtlasBuilding

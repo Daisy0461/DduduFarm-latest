@@ -42,7 +42,8 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
 
     protected override void Update() 
     {
-        this.GetComponent<SpriteRenderer>().sortingOrder = (int)(this.transform.position.y * -10);
+        this.GetComponent<SpriteRenderer>().sortingOrder = 
+                    (int)(this.transform.position.y * -10) + (int)(transform.position.x * -5);
         base.Update();
 
         if (IconGem.activeSelf == false && data.satiety > 0)  // 돌아다니고 있을 때
