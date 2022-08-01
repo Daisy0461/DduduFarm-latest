@@ -11,9 +11,6 @@ public class CropState : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private GameObject nextCrop;
 
-    [SerializeField]
-    private GameObject min, sec, divide;
-
     private Vector3 cropPos;
     private CropGrowTime cropGrowTime;
     void Start(){
@@ -32,17 +29,11 @@ public class CropState : MonoBehaviour, IPointerDownHandler
             //CropGrowSound cgs = nextCrop.GetComponent<CropGrowSound>(); 
             cgs.AudioAwakePlayFalse();
 
-            if(min != null && sec != null && divide != null) {  //차일드화 해제한 글자 삭제.
-                //Debug.Log("1번 작물");
-                Destroy(min); Destroy(sec); Destroy(divide);
-            }
             Destroy(gameObject); //된다. -> 그냥 삭제 잘됌.
         }
     }
 
     public void GrowDone(){
-        min.transform.parent = gameObject.transform; sec.transform.parent = gameObject.transform; divide.transform.parent = gameObject.transform;
-        //GameObject.Instantiate(growDoneImage, cropPos + new Vector3 (-0.05f, -0.55f, 0), Quaternion.identity).transform.parent = this.transform;
         growDoneImage.SetActive(true);
         canHarvest = true;
     }

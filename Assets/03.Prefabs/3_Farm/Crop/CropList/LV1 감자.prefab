@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 970326525551651564}
   - component: {fileID: 3964358295659720654}
   - component: {fileID: 7258399826519105788}
+  - component: {fileID: -5928813482541415381}
   - component: {fileID: -4330043932185008270}
   m_Layer: 0
   m_Name: "LV1 \uAC10\uC790"
@@ -120,9 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   growDoneImage: {fileID: 4513695167477956327}
   nextCrop: {fileID: 3004036975555342764, guid: 823e01702f5880c479a88dd30b808341, type: 3}
-  min: {fileID: 0}
-  sec: {fileID: 0}
-  divide: {fileID: 0}
 --- !u!61 &7258399826519105788
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,6 +147,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5928813482541415381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255483297825592422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5218181aef0a94d9caebe0ade863f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGrowth: 100
+  growthLevel: 0
 --- !u!50 &-4330043932185008270
 Rigidbody2D:
   serializedVersion: 4
