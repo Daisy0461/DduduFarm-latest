@@ -13,7 +13,7 @@ public class ConstructionUI : MonoBehaviour
     public GameObject parentContent;                    // 건설 스크롤뷰 content
 
     [Header("setup")]
-    public Building selectedBuilding;
+    public BuildingItem selectedBuilding;
     public GameObject buyCheckUI;
     public GameObject refuseUI;
     public Text moneyText;
@@ -69,8 +69,8 @@ public class ConstructionUI : MonoBehaviour
             var newObj = Instantiate(CSItemPanelPrefab[type], parentContent.transform);
 
             var newItem = BM.GetInfo(code);
-            newObj.GetComponent<Building>().CSUI = this;
-            newObj.GetComponent<Building>().info = newItem;
+            newObj.GetComponent<BuildingItem>().CSUI = this;
+            newObj.GetComponent<BuildingItem>().info = newItem;
 
             // 이미지 및 아이템 정보 값 세팅
             Image newImg = newObj.transform.GetChild(0).GetComponent<Image>();
@@ -89,7 +89,7 @@ public class ConstructionUI : MonoBehaviour
     int CheckPurchasable(GameObject newObj)    // 패널 선택 시 구매 가능한지 체크 후 구매 불가 안내 대화(상점 주인) 출력 
     {
         int res = 0;
-        BuildingInfo newItem = newObj.GetComponent<Building>().info;
+        BuildingInfo newItem = newObj.GetComponent<BuildingItem>().info;
         
         // if () 
         // {

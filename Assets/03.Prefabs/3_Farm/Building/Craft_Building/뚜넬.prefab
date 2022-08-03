@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8256077062665921821}
   - component: {fileID: 3896210915158984183}
   - component: {fileID: 2011004572109851306}
+  - component: {fileID: 4070177696170002881}
   m_Layer: 7
   m_Name: "\uB69C\uB12C"
   m_TagString: Untagged
@@ -109,7 +110,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6404868472653768688}
           m_TargetAssemblyTypeName: EditBuilding, Assembly-CSharp
-          m_MethodName: ButtonDown
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -125,7 +126,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6404868472653768688}
           m_TargetAssemblyTypeName: EditBuilding, Assembly-CSharp
-          m_MethodName: ButtonUp
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4747332633355301532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a760e3fa686833b469f36e1c747f6c56, type: 3}
   m_Name: 
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4747332633355301532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fec7f9b148732094ca1cd5247b47b467, type: 3}
   m_Name: 
@@ -367,6 +368,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &4070177696170002881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4747332633355301532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef98c5e3861a4846a32577256b85792, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area:
+    m_Position: {x: 0, y: 0, z: 0}
+    m_Size: {x: 3, y: 3, z: 1}
 --- !u!1 &7769152485982693260
 GameObject:
   m_ObjectHideFlags: 0

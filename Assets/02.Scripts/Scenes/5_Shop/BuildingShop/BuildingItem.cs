@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Building : MonoBehaviour
+public class BuildingItem : MonoBehaviour
 {
     // 건설 상점에 생성되는 건설 아이템 패널
     public ConstructionUI CSUI;

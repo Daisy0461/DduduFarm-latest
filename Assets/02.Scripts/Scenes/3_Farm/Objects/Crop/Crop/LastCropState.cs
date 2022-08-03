@@ -6,8 +6,8 @@ public class LastCropState : MonoBehaviour, IPointerDownHandler
     private ItemManager IM;
     private CropManager CM;
     private bool canHarvest = false;    //재배 가능
-    [SerializeField]
-    private GameObject dduduHeart;
+    // [SerializeField]
+    // private GameObject dduduHeart;
     private int cropKind;
 
     private Vector3 cropPos;
@@ -39,7 +39,7 @@ public class LastCropState : MonoBehaviour, IPointerDownHandler
 
     public void GrowDone(){
         //하트 소환
-        dduduHeart.SetActive(true);
+        // dduduHeart.SetActive(true);
         SpriteRenderer sp = gameObject.GetComponent<SpriteRenderer>();
         sp.sprite = growDoneCropIamge;   
         canHarvest = true;

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 59ea9b6d8c396ab43bb2c7fe33a3d561
+guid: abf72564731c9164d8785d76e4f654a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8667452979921559061
-    second: "\uBC2D"
+      213: -8289033896749678149
+    second: "\uC815\uC0AC\uAC01\uD615_0"
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +49,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 600
+  spritePixelsToUnits: 1075
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -91,7 +91,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -103,7 +103,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -118,26 +118,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uBC2D"
+      name: "\uC815\uC0AC\uAC01\uD615_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 534
-        width: 1440
-        height: 510
+        x: 75
+        y: 64
+        width: 750
+        height: 750
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape:
-      - - {x: -598.915, y: 229.2744}
-        - {x: -601.0672, y: -109.99603}
-        - {x: 593.7604, y: -118.51221}
-        - {x: 596.98865, y: 223.89374}
+      physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be1ef58df6507b780800000000000000
-      internalID: -8667452979921559061
+      spriteID: bb1401d869f67fc80800000000000000
+      internalID: -8289033896749678149
       vertices: []
       indices: 
       edges: []
