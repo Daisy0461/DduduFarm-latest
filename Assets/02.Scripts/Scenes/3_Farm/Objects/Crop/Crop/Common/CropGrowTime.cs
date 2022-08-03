@@ -23,10 +23,6 @@ public class CropGrowTime : MonoBehaviour
     public int cropKind;
     public int cropLevel;
 
-    [SerializeField]
-    private TextMesh timeMinText;
-    [SerializeField]
-    private TextMesh timeSecText;
     private LabData labData;
     private int labDecrease;
 
@@ -118,10 +114,10 @@ public class CropGrowTime : MonoBehaviour
         {
             //Debug.Log("CropGrowingTimer : " + remainGrowTime + "s");
             remainGrowTime -= 1;
-            int remainGrowTimeMinute = remainGrowTime/60;
-            int remainGrowTimeSec = remainGrowTime - remainGrowTimeMinute*60;
-            timeMinText.text = remainGrowTimeMinute.ToString();
-            timeSecText.text = remainGrowTime.ToString();
+            // int remainGrowTimeMinute = remainGrowTime/60;
+            // int remainGrowTimeSec = remainGrowTime - remainGrowTimeMinute*60;
+            // timeMinText.text = remainGrowTimeMinute.ToString();
+            // timeSecText.text = remainGrowTime.ToString();
             yield return new WaitForSeconds(1f);        //결국 마지막에는 remainGrowTime = 0이 된다.
         }
 

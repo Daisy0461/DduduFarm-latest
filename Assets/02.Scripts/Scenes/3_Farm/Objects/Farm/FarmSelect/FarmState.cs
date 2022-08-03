@@ -31,7 +31,7 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
     public CropSelectButton cropSelectButton;
     [SerializeField]
     private AudioSource plantSound;
-    
+    private SpriteRenderer SR;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         farmSpriteRanderer = gameObject.GetComponent<SpriteRenderer>();
         originColor = farmSpriteRanderer.color;
         seedPrefab = Instantiate(seedImage, farmPosition + new Vector3(0, -0.3f,0), Quaternion.identity);
-        seedPrefab.transform.parent = gameObject.transform;
+        seedPrefab.transform.parent = gameObject.transform;    
 
         if (isPlanted) seedPrefab.SetActive(false);     //이게 밭이 또 따로 있어서 가능할지 모르겠음.
         else seedPrefab.SetActive(true);
@@ -73,9 +73,9 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void ChangeFarmColor(){
+    public void ChangeFarmColor(){      //여기에 색 변화하게
         if(!isPlanted){     //작물이 심어져 있지 않은 상태라면 아래를 실행한다.
-            farmSpriteRanderer.color =  new Color(144/255f, 85/255f, 0);
+            farmSpriteRanderer.color =  new Color(255/255f, 230/255f, 128/255f, 255/255f);
             isSelected = true;
         }
     }
