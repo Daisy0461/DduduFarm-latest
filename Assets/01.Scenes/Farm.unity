@@ -29976,7 +29976,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6007106, y: 3.8075001}
+    oldSize: {x: 1.2320652, y: 1.302823}
     newSize: {x: 3.440679, y: 3.4275}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -44718,6 +44718,22 @@ PrefabInstance:
       propertyPath: parentFarmSelect
       value: 
       objectReference: {fileID: 1192276554}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
 --- !u!1 &7373667808962572014
