@@ -24,7 +24,6 @@ public class TouchManager : MonoBehaviour
     // public float factor = 0.65f;
 
     private float scroll;
-    public bool scrollable = true;
 #endregion
 
     private void Awake() 
@@ -168,7 +167,7 @@ public class TouchManager : MonoBehaviour
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
-        if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomSpeed) && scrollable)
+        if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomSpeed))
         {
             float curSize = cam.orthographicSize;
             var zoomAmount = scroll* 0.5f * curSize * zoomSpeed;

@@ -11,7 +11,7 @@ public class EditUI : MonoBehaviour
 	public GameObject[] EditCommonPrefab;              // 편집에서 씬에 생성되는 게임오브젝트
 	public GameObject[] EditCraftPrefab;
 	public GameObject parentBuildings;                  // 건물을 하이어라키에서 모아놓기 위한 부모 오브젝트
-	public GameObject editModes;                        // 편집 모드를 위한 원형 모드s
+	public EditModes editModes;                        // 편집 모드를 위한 원형 모드s
     
     [Header("Building Property")]
 	public PopupBuilding[] popupBuildings;              // 건물 정보 팝업 0-일반, 1-공방
@@ -20,6 +20,8 @@ public class EditUI : MonoBehaviour
     public GameObject EditItemPanelPrefab;              // 편집 상품 프리팹
     public GameObject EditContent;                      // 편집 스크롤뷰 content
 
+    public GameObject editScrollView;
+    public GameObject editQuit;
     public AudioSource audioSource;
     private Quaternion rotate = new Quaternion();
 
@@ -39,24 +41,27 @@ public class EditUI : MonoBehaviour
 
             int code = data.info.code;
             Building building;
-            GameObject buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
+            GameObject buildingObject;
             Vector3 pos = new Vector3(data.x, data.y, data.z);
             
             if (code <= 50)
             {
+                buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
                 Common common = buildingObject.GetComponent<Common>();
                 common.data = data;
                 common.popupBuilding = popupBuildings[0];
             }
             else
             {
+                buildingObject = Instantiate(EditCraftPrefab[code%(int)DataTable.Craft-1]);
                 Craft craft = buildingObject.GetComponent<Craft>();
                 craft.DS = DS;
                 craft.data = data;
                 craft.popupBuilding = popupBuildings[1];
             }
             building = buildingObject.GetComponent<Building>();
-            building.editModesObject = editModes;
+            building.editModesObject = editModes.gameObject;
+            building.editModes = editModes;
             building.transform.SetPositionAndRotation(pos, rotate);
             building.transform.parent = parentBuildings.transform;
         }
@@ -84,6 +89,12 @@ public class EditUI : MonoBehaviour
         if ((BM.GetBuildingAmount(code) - BM.GetBuildedAmount(code)) > 0)   // 배치 안 하고 남은 게 있을 때
             newObj.SetActive(true);
         else newObj.SetActive(false);
+    }
+
+    public void OnclickEditUIQuit()
+    {
+        editScrollView.SetActive(false);
+        editQuit.SetActive(false);
     }
 
     public void SoundPlay()

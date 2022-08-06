@@ -4,96 +4,92 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class EditModes : MonoBehaviour, IDragHandler
+public class EditModes : MonoBehaviour 
 {
+    [SerializeField] GridBuildingSystem tilemap;
     [SerializeField] DduduSpawner dduduSpawner;
     BuildingManager BM;
 
     [Header("EditUI")]
-    public EditUI editUI;
-    public Button editQuit;             
+    public EditUI editUI;          
     public TouchManager TM;               
 
     [Header("Edit Modes")]
-    public GameObject selectedBuildingObject; 
-    public Building selectedBuilding;
-    public SpriteRenderer selectedBuildingRenderer;
-    public Button editModesQuit;        
+    public Building selectedBuilding;     
     public GameObject PopupBuildingWarning;
-
-    [Header("Fixable")]     
-    public bool isAbleToFix = true;   
 
     [Header("Sell")]
     public GameObject Pan_Sell;     
     public MoneyText moneyText;
+    Camera cam;
 
     private void Start() 
     {
+        cam = Camera.main;
         BM = BuildingManager.Instance;
     }
 
     private void OnEnable() 
     {
-        editQuit.onClick.Invoke();  
-        editModesQuit.gameObject.SetActive(true);
-        TM.UIObjActiveManage(false);
-        TM.scrollable = false;
+        tilemap.gameObject.SetActive(true);
+        // TM.UIObjActiveManage(false);
+        // TM.enabled = false;
 
-        selectedBuildingRenderer.sortingOrder = 0;
-        selectedBuildingObject.GetComponent<Collider2D>().isTrigger = true;
+        selectedBuilding.isPointerDown = true;
+        selectedBuilding.render.sortingLayerName = "UI";
+        selectedBuilding.render.sortingOrder = 0;
+        selectedBuilding.GetComponentInChildren<PolygonCollider2D>().isTrigger = true;
     }
 
     private void OnDisable() 
     {
-        selectedBuildingObject.GetComponent<Collider2D>().isTrigger = false;
-        
+        selectedBuilding.GetComponentInChildren<PolygonCollider2D>().isTrigger = false;
+        selectedBuilding.render.sortingOrder = (int)(selectedBuilding.transform.position.y * -10);
+        selectedBuilding.render.sortingLayerName = "Object";
         selectedBuilding.isPointerDown = false;
-        selectedBuildingObject = null;
-        TM.UIObjActiveManage(true);
-        TM.scrollable = true;
+        
+        // TM.enabled = true;
+        // TM.UIObjActiveManage(true);
+        tilemap.gameObject.SetActive(false);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    private void Update() 
     {
-        if (!selectedBuilding.isPointerDown)
-            return;
-        
-        selectedBuildingObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = Input.mousePosition;
-        selectedBuildingObject.transform.position -= new Vector3(0,0,-10);
+        this.transform.position = cam.WorldToScreenPoint(selectedBuilding.render.transform.position);
     }
 
     public void OnClickFix()
     {
-        if (isAbleToFix)
+        if (selectedBuilding.CanBePlaced())
         {
             selectedBuilding.isPointerDown = false;
-            // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuildingObject.transform.position);
-            selectedBuildingRenderer.sortingOrder = (int)(selectedBuildingObject.transform.position.y * -10);
-            BM.Save();
+            // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
+            tilemap.SetBuilding();
             this.gameObject.SetActive(false);
-            editModesQuit.gameObject.SetActive(false);
         }
         else
-            Debug.Log("didn't installed");
+        {
+            PopupBuildingWarning.GetComponentInChildren<Text>().text = "설치할 수 없습니다.";
+            PopupBuildingWarning.SetActive(true);
+        }
     }
 
     public void OnClickCancel()
     {   
-        if (selectedBuilding.prePos == new Vector3(0,0,0))
+        if (selectedBuilding.prePos == Vector3.zero)
         {
-            OnClickInventory();
+            // OnClickInventory();
+            
+            tilemap.CancelBuilding();
+            this.gameObject.SetActive(false);
             return;
         }
-        selectedBuildingObject.transform.position = selectedBuilding.prePos;
-        this.transform.position = Camera.main.WorldToScreenPoint(selectedBuildingObject.transform.position);
+        selectedBuilding.transform.position = selectedBuilding.prePos;
+        this.transform.position = cam.WorldToScreenPoint(selectedBuilding.transform.position);
         selectedBuilding.isPointerDown = false;
-        // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuildingObject.transform.position);
-        selectedBuildingRenderer.sortingOrder = (int)(selectedBuildingObject.transform.position.y * -10);
+        // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
         BM.Save();
 
-        editModesQuit.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 
@@ -107,6 +103,7 @@ public class EditModes : MonoBehaviour, IDragHandler
                 return;
             }
         }
+        PopupBuildingWarning.GetComponentInChildren<Text>().text = "보관 시 생산 중인 아이템이 모두 사라집니다.\n정말 보관하시겠습니까?";
         PopupBuildingWarning.SetActive(true);
     }
 
@@ -125,14 +122,13 @@ public class EditModes : MonoBehaviour, IDragHandler
         /* -- building eliminate --  */
         // BM.GetData(selectedBuilding.data.id).isBuilded = false;
         // editUI.CreateEditBtnUI(BM.GetData(selectedBuilding.data.id));
-        Destroy(selectedBuildingObject);
+        Destroy(selectedBuilding.gameObject);
         BM.Save();
         
-        editModesQuit.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }
 
-    public void InitPanSell()
+    public void InitPanSell()   // Btn_Sell 에 할당되어 있는 기능
     {
         // BuildingData data = selectedBuilding.data;
     
@@ -146,9 +142,8 @@ public class EditModes : MonoBehaviour, IDragHandler
         // BM.RemoveData(data);
         // ConstructionUI.SpendMoney(-data.info.sellCost);
         moneyText.TextUpdate();
-        
-        Destroy(selectedBuildingObject);
-        editModesQuit.gameObject.SetActive(false);
+        Destroy(selectedBuilding.gameObject);
+
         this.gameObject.SetActive(false);
     }
 }

@@ -1,26 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public bool Placed { get; private set; }
     public BoundsInt area;
+    public bool Placed { get; private set; }
     
-	public GameObject editModesObject;
-	public EditModes editModes;
-    public Vector3 prePos;
-
-    public bool isPointerDown = false;  // EditMode인가?
+	[HideInInspector] public GameObject editModesObject;
+	[HideInInspector] public EditModes editModes;
+    [HideInInspector] public Vector3 prePos;
+    [HideInInspector] public bool isPointerDown = false;  // EditMode인가?
+	public SpriteRenderer render;
 	private float minClickTime = 1f;
 	private bool isClick;
 	private float clickTime;
+
+	#region Unity Methods
+	
+	private void Start() 
+	{
+		render.sortingOrder = (int)(this.transform.position.y * -10);
+	}
+
+	#endregion
 
     #region Build Methods
     
     public bool CanBePlaced()
     {
-        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.WorldToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         
@@ -33,7 +43,7 @@ public class Building : MonoBehaviour
 
     public void Place()
     {
-        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
+        Vector3Int positionInt = GridBuildingSystem.current.gridLayout.WorldToCell(transform.position);
         BoundsInt areaTemp = area;
         areaTemp.position = positionInt;
         Placed = true;
@@ -44,13 +54,13 @@ public class Building : MonoBehaviour
 
     #region Touch Methods & Edit Mode Set up
 
-    public void ButtonDown()
+    public void OnPointerDown(PointerEventData e)
 	{
 		isClick = true;
 		StartCoroutine(PointerLongDown());
 	}
 
-	public void ButtonUp()
+	public void OnPointerUp(PointerEventData e)
 	{
 		isClick = false;
 	}
@@ -76,11 +86,9 @@ public class Building : MonoBehaviour
 
     public void EditModeActive()
 	{	
-		editModes.selectedBuildingObject = this.gameObject;
 		editModes.selectedBuilding = this;
-		editModes.selectedBuildingRenderer = this.GetComponent<SpriteRenderer>();
-		this.editModesObject.transform.position = Camera.main.WorldToScreenPoint(this.transform.position);
-		this.editModesObject.SetActive(true);
+		editModesObject.transform.position = Camera.main.WorldToScreenPoint(render.transform.position);
+		editModesObject.SetActive(true);
 	}
 
     #endregion

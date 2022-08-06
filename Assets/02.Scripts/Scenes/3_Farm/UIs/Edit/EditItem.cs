@@ -17,34 +17,38 @@ public class EditItem : MonoBehaviour
     {
         int code = data.info.code;
         Building building;
-        GameObject buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
+        GameObject buildingObject;
         Vector3 pos = Camera.main.transform.position;
         // var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
         
         if (code <= 50)    // Common
         {
+            buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
             Common common = buildingObject.GetComponent<Common>();
             common.data = data;
             common.popupBuilding = editUI.popupBuildings[0];
         } else // Craft
         {
+            buildingObject = Instantiate(EditCraftPrefab[code%(int)DataTable.Craft-1]);
             Craft craft = buildingObject.GetComponent<Craft>();
             craft.DS = editUI.DS;
             craft.data = data;
             craft.popupBuilding = editUI.popupBuildings[1];
         }
         building = buildingObject.GetComponent<Building>();
-        building.editModesObject = editUI.editModes;
         building.transform.SetPositionAndRotation(pos, rotate);
         building.transform.parent = editUI.parentBuildings.transform;
         
         building.isPointerDown = true;
-        building.editModes = editUI.editModes.GetComponent<EditModes>();
+        building.editModesObject = editUI.editModes.gameObject;
+        building.editModes = editUI.editModes;
         building.EditModeActive();
         data.isBuilded = true;
         
         if (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code) > 0)
             infoText.text = (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code)) + " 개";
         else Destroy(gameObject);
+
+        editUI.OnclickEditUIQuit();  // 편집 인벤토리 닫기
     }
 }

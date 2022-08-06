@@ -36,6 +36,7 @@ public class GridBuildingSystem : MonoBehaviour
             tileBases.Add(TileType.Yellow, Resources.Load<TileBase>(path:tilePath + "yellow"));    
             tileBases.Add(TileType.Red, Resources.Load<TileBase>(path:tilePath + "red"));
         }
+        gameObject.SetActive(false);
     }
 
     private void Update() 
@@ -47,8 +48,8 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject(0))
-            {
+            if (EventSystem.current.currentSelectedGameObject?.name[0] == 'B')
+            {// 편집 모드 버튼만 감지
                 return;
             }
 
@@ -62,16 +63,6 @@ public class GridBuildingSystem : MonoBehaviour
                     temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos);
                     prevPos = cellPos;
                     FollowBuilding();
-                }
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (temp.CanBePlaced())
-            {
-                if (temp.CanBePlaced())
-                {
-                    temp.Place();
                 }
             }
         }
@@ -109,6 +100,11 @@ public class GridBuildingSystem : MonoBehaviour
         tilemap.SetTilesBlock(area, tileArray);
     }
 
+    private static void FillTile(TileBase tile, TileType type)
+    {
+        tile = tileBases[type];
+    }
+
     private static void FillTiles(TileBase[] arr, TileType type)
     {
         for (int i = 0; i < arr.Length; i++)
@@ -120,10 +116,12 @@ public class GridBuildingSystem : MonoBehaviour
 
     #region Building Placement
     
-    public void InitializeWithBuilding(GameObject building)
+    public GameObject InitializeWithBuilding(GameObject building)
     {
         temp = Instantiate(building, Camera.main.transform.position + new Vector3(0,0,10), Quaternion.identity).GetComponentInChildren<Building>();
         FollowBuilding();
+        
+        return temp.gameObject;
     }
 
     private void ClearArea()
@@ -147,14 +145,14 @@ public class GridBuildingSystem : MonoBehaviour
 
         for (int i = 0; i < baseArray.Length; i++)
         {
-            if (baseArray[i] == tileBases[TileType.White])
+            if (baseArray[i] == tileBases[TileType.White] || 
+                baseArray[i] == tileBases[TileType.Yellow])
             {
                 tileArray[i] = tileBases[TileType.Green];
             }
             else
             {
-                FillTiles(tileArray, TileType.Red);
-                break;
+                FillTile(tileArray[i], TileType.Red);
             }
         }
 
@@ -162,12 +160,27 @@ public class GridBuildingSystem : MonoBehaviour
         prevArea = buildingArea;
     }
 
+    public void SetBuilding()
+    {
+        if (temp.CanBePlaced())
+        {
+            temp.Place();
+        }
+    }
+
+    public void CancelBuilding()
+    {
+        ClearArea();
+        Destroy(temp.gameObject);
+    }
+
     public bool CanTakeArea(BoundsInt area)
     {
         TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
         foreach (var b in baseArray)
         {
-            if (b != tileBases[TileType.White])
+            if (b != tileBases[TileType.White] &&
+                b != tileBases[TileType.Yellow])
             {
                 Debug.Log("Cannot place here");
                 return false;
@@ -180,7 +193,7 @@ public class GridBuildingSystem : MonoBehaviour
     public void TakeArea(BoundsInt area)
     {
         SetTilesBlock(area, TileType.Empty, TempTilemap);
-        SetTilesBlock(area, TileType.Green, MainTilemap);
+        SetTilesBlock(area, TileType.Red, MainTilemap);
     }
 
     #endregion
