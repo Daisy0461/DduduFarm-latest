@@ -36,22 +36,29 @@ public class EditUI : MonoBehaviour
         foreach (var data in BM.GetDataList())
         {
             if (data.isBuilded == false) continue;
-            int type = (0 <= data.info.code && data.info.code <= 50) ? (int)DataTable.Common : (int)DataTable.Craft;
-			EditBuilding newItem;
-            if (type == (int)DataTable.Common)
-                newItem = Instantiate(EditCommonPrefab[data.info.code-type-1]).GetComponent<EditBuilding>();
+
+            int code = data.info.code;
+            Building building;
+            GameObject buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
+            Vector3 pos = new Vector3(data.x, data.y, data.z);
+            
+            if (code <= 50)
+            {
+                Common common = buildingObject.GetComponent<Common>();
+                common.data = data;
+                common.popupBuilding = popupBuildings[0];
+            }
             else
             {
-                newItem = Instantiate(EditCraftPrefab[data.info.code-type-1]).GetComponent<EditBuilding>();
-                newItem.GetComponent<Craft>().DS = DS;
+                Craft craft = buildingObject.GetComponent<Craft>();
+                craft.DS = DS;
+                craft.data = data;
+                craft.popupBuilding = popupBuildings[1];
             }
-            newItem.data = data;
-            newItem.editModesObject = editModes;
-            newItem.popupBuilding = popupBuildings[type == (int)DataTable.Common ? 0 : 1];    // 0: 일반, 1: 공방
-            
-            Vector3 pos = new Vector3(data.x, data.y, data.z);
-            newItem.transform.SetPositionAndRotation(pos, rotate);
-            newItem.transform.parent = parentBuildings.transform;
+            building = buildingObject.GetComponent<Building>();
+            building.editModesObject = editModes;
+            building.transform.SetPositionAndRotation(pos, rotate);
+            building.transform.parent = parentBuildings.transform;
         }
 	}
 
@@ -59,11 +66,12 @@ public class EditUI : MonoBehaviour
     {
         if (data.isBuilded == true) return;
 
+        int code = data.info.code;
         var newObj = Instantiate(EditItemPanelPrefab, EditContent.transform);
         var editItem = newObj.GetComponent<EditItem>();
         editItem.data = data;
         editItem.editUI = this;
-        editItem.infoText.text = (BM.GetBuildingAmount(data.info.code) - BM.GetBuildedAmount(data.info.code)) + " 개";
+        editItem.infoText.text = (BM.GetBuildingAmount(code) - BM.GetBuildedAmount(code)) + " 개";
             
         Image newImg = newObj.transform.GetChild(1).GetComponent<Image>();
         newImg.sprite = Resources.Load<Sprite>((string)data.info.imgPath);
@@ -73,7 +81,7 @@ public class EditUI : MonoBehaviour
 
         newObj.GetComponent<Button>().onClick.AddListener( () => SoundPlay() );
 
-        if ((BM.GetBuildingAmount(data.info.code) - BM.GetBuildedAmount(data.info.code)) > 0)   // 배치 안 하고 남은 게 있을 때
+        if ((BM.GetBuildingAmount(code) - BM.GetBuildedAmount(code)) > 0)   // 배치 안 하고 남은 게 있을 때
             newObj.SetActive(true);
         else newObj.SetActive(false);
     }

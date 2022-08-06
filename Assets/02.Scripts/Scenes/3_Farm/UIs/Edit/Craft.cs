@@ -2,14 +2,14 @@ using System.Collections;
 using UnityEngine;
 using System;
 
-public class Craft : MonoBehaviour
+public class Craft : BuildingAttrib
 {
     public DduduSpawner DS;
     public BuildingData data;
-    // public DduduData worker;
     public int buildingId;
     public GameObject outputBtn;
     public string remainTimeStr;
+    public PopupBuilding popupBuilding;
     private DateTime m_AppQuitTime;    // 유저 게임 이탈 시간 변수
     private Coroutine m_CycleTimerCoroutine = null;
     WaitForSeconds sec = new WaitForSeconds(1f);
@@ -24,7 +24,7 @@ public class Craft : MonoBehaviour
     
     private void Start() 
     {
-        buildingId = GetComponent<EditBuilding>().data.id;
+        buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
 
         if (outputBtn == null) outputBtn = transform.GetChild(0).gameObject;
@@ -133,5 +133,14 @@ public class Craft : MonoBehaviour
         ddudu.transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z);
         ddudu.SetActive(true);
         data.workerId = 0;
+    }
+
+    public void ButtonUp()
+    {
+        // if (!isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
+		{
+            if (outputBtn.activeSelf)
+			    OnClickOutput();
+        }
     }
 }

@@ -2,16 +2,17 @@ using System.Collections;
 using UnityEngine;
 using System;
 
-public class Common : MonoBehaviour
+public class Common : BuildingAttrib
 {
     public BuildingData data;
-    public int buildingId;
-    public int cycleOutput;                       // 단위시간별 골드 생산량
+    public string remainTimeStr;
+    public GameObject goldBtn;
+    public PopupBuilding popupBuilding;
+
+    private int buildingId;
     private DateTime m_AppQuitTime;    // 유저 게임 이탈 시간 변수
     private Coroutine m_CycleTimerCoroutine = null;
 
-    public string remainTimeStr;
-    public GameObject goldBtn;
     AudioSource audioSource;
     ItemManager IM;
 
@@ -24,7 +25,7 @@ public class Common : MonoBehaviour
     {
         IM = ItemManager.Instance;
         audioSource = GetComponent<AudioSource>();
-        buildingId = GetComponent<EditBuilding>().data.id;
+        buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
 
         if (goldBtn == null) goldBtn = transform.GetChild(0).gameObject;
@@ -117,7 +118,7 @@ public class Common : MonoBehaviour
 
     public void OnClickGoldBtn()
     {
-        if (IM.AddData((int)DataTable.Money, cycleOutput) == false)
+        if (IM.AddData((int)DataTable.Money, data.info.outputAmount) == false)
             return;
         data.isDone = false;
         goldBtn.gameObject.SetActive(false);
@@ -129,5 +130,20 @@ public class Common : MonoBehaviour
             StopCoroutine(m_CycleTimerCoroutine);
         }
         m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(data.cycleRemainTime));
+    }
+
+    public void ButtonUp()
+    {
+        // if (!isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
+		{
+			if (goldBtn.activeSelf) // 일반 건물, 작업 완료 시 골드 획득
+				OnClickGoldBtn();
+			else
+			{
+				popupBuilding.common = this;
+				popupBuilding.gameObject.SetActive(true);
+				popupBuilding.RenewPanel(popupBuilding.index);	
+			}
+		}
     }
 }

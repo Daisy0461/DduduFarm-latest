@@ -27,11 +27,15 @@ public class GridBuildingSystem : MonoBehaviour
 
     private void Start() 
     {
-        string tilePath = @"Tiles\";
-        tileBases.Add(TileType.Empty, null);
-        tileBases.Add(TileType.White, Resources.Load<TileBase>(path:tilePath + "white"));
-        tileBases.Add(TileType.Green, Resources.Load<TileBase>(path:tilePath + "green"));
-        tileBases.Add(TileType.Red, Resources.Load<TileBase>(path:tilePath + "red"));
+        if (tileBases.Count <= 0)
+        {
+            string tilePath = @"Tiles\";
+            tileBases.Add(TileType.Empty, null);
+            tileBases.Add(TileType.White, Resources.Load<TileBase>(path:tilePath + "white"));
+            tileBases.Add(TileType.Green, Resources.Load<TileBase>(path:tilePath + "green"));
+            tileBases.Add(TileType.Yellow, Resources.Load<TileBase>(path:tilePath + "yellow"));    
+            tileBases.Add(TileType.Red, Resources.Load<TileBase>(path:tilePath + "red"));
+        }
     }
 
     private void Update() 
@@ -118,7 +122,7 @@ public class GridBuildingSystem : MonoBehaviour
     
     public void InitializeWithBuilding(GameObject building)
     {
-        temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
+        temp = Instantiate(building, Camera.main.transform.position + new Vector3(0,0,10), Quaternion.identity).GetComponentInChildren<Building>();
         FollowBuilding();
     }
 
@@ -186,6 +190,7 @@ public class GridBuildingSystem : MonoBehaviour
         Empty,
         White,
         Green,
+        Yellow,
         Red,
     }
 }

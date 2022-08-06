@@ -88,7 +88,7 @@ public class PopupBuilding : MonoBehaviour
 			goldStateTxt.text = common.remainTimeStr;
 			if (common.data.cycleRemainTime <= 0f)
 			{
-				goldStateTxt.text = "생산된 골드 : " + common.cycleOutput;
+				goldStateTxt.text = "생산된 골드 : " + common.data.info.outputAmount;
 				goldBtnTxt.text = "획득하기";
 			}
 		}
@@ -213,7 +213,7 @@ public class PopupBuilding : MonoBehaviour
 			explainText.text = common.data.info.note;
 			if (common.data.cycleRemainTime <= 0f)
 			{
-				goldStateTxt.text = "생산된 골드 : " + common.cycleOutput;
+				goldStateTxt.text = "생산된 골드 : " + common.data.info.outputAmount;
 				goldBtnTxt.text = "획득하기";
 			}
 			else

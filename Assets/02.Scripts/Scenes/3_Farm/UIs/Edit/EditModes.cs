@@ -15,15 +15,13 @@ public class EditModes : MonoBehaviour, IDragHandler
     public TouchManager TM;               
 
     [Header("Edit Modes")]
-    public GameObject selectedBuilding; 
-    public EditBuilding selectedEditBuilding;
+    public GameObject selectedBuildingObject; 
+    public Building selectedBuilding;
     public SpriteRenderer selectedBuildingRenderer;
-    public EditBuildingGrid selectedBuildingGrid;
     public Button editModesQuit;        
     public GameObject PopupBuildingWarning;
 
-    [Header("Fixable")]
-    public GameObject btnBlock;         
+    [Header("Fixable")]     
     public bool isAbleToFix = true;   
 
     [Header("Sell")]
@@ -43,40 +41,36 @@ public class EditModes : MonoBehaviour, IDragHandler
         TM.scrollable = false;
 
         selectedBuildingRenderer.sortingOrder = 0;
-        selectedBuilding.GetComponent<Collider2D>().isTrigger = true;
-        // selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = true;
-        selectedBuildingGrid.spriteRenderer.enabled = true;
+        selectedBuildingObject.GetComponent<Collider2D>().isTrigger = true;
     }
 
     private void OnDisable() 
     {
-        selectedBuilding.GetComponent<Collider2D>().isTrigger = false;
-        // selectedBuildingGrid.GetComponent<Collider2D>().isTrigger = false;
-        selectedBuildingGrid.spriteRenderer.enabled = false;
+        selectedBuildingObject.GetComponent<Collider2D>().isTrigger = false;
         
-        selectedEditBuilding.isPointerDown = false;
-        selectedBuilding = null;
+        selectedBuilding.isPointerDown = false;
+        selectedBuildingObject = null;
         TM.UIObjActiveManage(true);
         TM.scrollable = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (!selectedEditBuilding.isPointerDown)
+        if (!selectedBuilding.isPointerDown)
             return;
         
-        selectedBuilding.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        selectedBuildingObject.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         this.transform.position = Input.mousePosition;
-        selectedBuilding.transform.position -= new Vector3(0,0,-10);
+        selectedBuildingObject.transform.position -= new Vector3(0,0,-10);
     }
 
     public void OnClickFix()
     {
         if (isAbleToFix)
         {
-            selectedEditBuilding.isPointerDown = false;
-            BM.GetData(selectedEditBuilding.data.id).SetPos(selectedBuilding.transform.position);
-            selectedBuildingRenderer.sortingOrder = (int)(selectedBuilding.transform.position.y * -10);
+            selectedBuilding.isPointerDown = false;
+            // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuildingObject.transform.position);
+            selectedBuildingRenderer.sortingOrder = (int)(selectedBuildingObject.transform.position.y * -10);
             BM.Save();
             this.gameObject.SetActive(false);
             editModesQuit.gameObject.SetActive(false);
@@ -87,16 +81,16 @@ public class EditModes : MonoBehaviour, IDragHandler
 
     public void OnClickCancel()
     {   
-        if (selectedEditBuilding.prePos == new Vector3(0,0,0))
+        if (selectedBuilding.prePos == new Vector3(0,0,0))
         {
             OnClickInventory();
             return;
         }
-        selectedBuilding.transform.position = selectedEditBuilding.prePos;
-        this.transform.position = Camera.main.WorldToScreenPoint(selectedBuilding.transform.position);
-        selectedEditBuilding.isPointerDown = false;
-        BM.GetData(selectedEditBuilding.data.id).SetPos(selectedBuilding.transform.position);
-        selectedBuildingRenderer.sortingOrder = (int)(selectedBuilding.transform.position.y * -10);
+        selectedBuildingObject.transform.position = selectedBuilding.prePos;
+        this.transform.position = Camera.main.WorldToScreenPoint(selectedBuildingObject.transform.position);
+        selectedBuilding.isPointerDown = false;
+        // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuildingObject.transform.position);
+        selectedBuildingRenderer.sortingOrder = (int)(selectedBuildingObject.transform.position.y * -10);
         BM.Save();
 
         editModesQuit.gameObject.SetActive(false);
@@ -105,9 +99,9 @@ public class EditModes : MonoBehaviour, IDragHandler
 
     public void OnClickInventory()
     {
-        if (selectedEditBuilding.craft != null)
+        if (selectedBuilding.GetComponent<Craft>() != null)
         {
-            if (!selectedEditBuilding.craft.IsWorking())
+            if (!selectedBuilding.GetComponent<Craft>().IsWorking())
             {
                 OnclickInventoryYes();
                 return;
@@ -119,19 +113,19 @@ public class EditModes : MonoBehaviour, IDragHandler
     public void OnclickInventoryYes()
     {
         /* -- working --  */
-        if (selectedEditBuilding.craft != null && selectedEditBuilding.craft.IsWorking())
+        if (selectedBuilding.GetComponent<Craft>() != null && selectedBuilding.GetComponent<Craft>().IsWorking())
         {
-            DduduManager.Instance.GetData(selectedEditBuilding.craft.data.workerId).isWork = false;
-            dduduSpawner.FindDduduObject(selectedEditBuilding.craft.data.workerId).gameObject.SetActive(true);
-            selectedEditBuilding.craft.data.workerId = 0;
+            DduduManager.Instance.GetData(selectedBuilding.GetComponent<Craft>().data.workerId).isWork = false;
+            dduduSpawner.FindDduduObject(selectedBuilding.GetComponent<Craft>().data.workerId).gameObject.SetActive(true);
+            selectedBuilding.GetComponent<Craft>().data.workerId = 0;
         }
-        selectedEditBuilding.data.isDone = false;
-        selectedEditBuilding.data.cycleRemainTime = 0;
+        // selectedBuilding.data.isDone = false;
+        // selectedBuilding.data.cycleRemainTime = 0;
         
         /* -- building eliminate --  */
-        BM.GetData(selectedEditBuilding.data.id).isBuilded = false;
-        editUI.CreateEditBtnUI(BM.GetData(selectedEditBuilding.data.id));
-        Destroy(selectedBuilding);
+        // BM.GetData(selectedBuilding.data.id).isBuilded = false;
+        // editUI.CreateEditBtnUI(BM.GetData(selectedBuilding.data.id));
+        Destroy(selectedBuildingObject);
         BM.Save();
         
         editModesQuit.gameObject.SetActive(false);
@@ -140,20 +134,20 @@ public class EditModes : MonoBehaviour, IDragHandler
 
     public void InitPanSell()
     {
-        BuildingData data = selectedEditBuilding.data;
+        // BuildingData data = selectedBuilding.data;
     
-        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
-        Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
+        // Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
+        // Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
     }
 
     public void OnClickSell()
     {
-        BuildingData data = BM.GetData(selectedEditBuilding.data.id);
-        BM.RemoveData(data);
-        ConstructionUI.SpendMoney(-data.info.sellCost);
+        // BuildingData data = BM.GetData(selectedBuilding.data.id);
+        // BM.RemoveData(data);
+        // ConstructionUI.SpendMoney(-data.info.sellCost);
         moneyText.TextUpdate();
         
-        Destroy(selectedBuilding);
+        Destroy(selectedBuildingObject);
         editModesQuit.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
     }

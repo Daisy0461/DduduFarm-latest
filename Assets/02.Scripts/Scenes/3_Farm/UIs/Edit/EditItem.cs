@@ -11,31 +11,40 @@ public class EditItem : MonoBehaviour
     public GameObject[] EditCraftPrefab;
     public EditUI editUI;
     public BuildingData data;
+    private Quaternion rotate = new Quaternion();
 
     public void OnClickEditItem()
     {
-        var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
-        int type = (0 <= data.info.code && data.info.code <= 50) ? (int)DataTable.Common : (int)DataTable.Craft;
-        EditBuilding newItem;
-        if (type == (int)DataTable.Common)    // Common
-            newItem = Instantiate(EditCommonPrefab[data.info.code-type-1], new Vector3(pos.x, pos.y, 0f), Quaternion.Euler(0f, 0f, 0f)).GetComponent<EditBuilding>();
-        else
-        {
-            newItem = Instantiate(EditCraftPrefab[data.info.code-type-1], new Vector3(pos.x, pos.y, 0f), Quaternion.Euler(0f, 0f, 0f)).GetComponent<EditBuilding>();
-            newItem.GetComponent<Craft>().DS = editUI.DS;
-        }
-        newItem.data = BuildingManager.Instance.GetUnBuildedData(data.info.code);
-        newItem.editModesObject = editUI.editModes;
-        newItem.popupBuilding = editUI.popupBuildings[type== (int)DataTable.Common ? 0 : 1];
-        newItem.transform.parent = editUI.parentBuildings.transform;
-
-        newItem.isPointerDown = true;
-        newItem.editModes = editUI.editModes.GetComponent<EditModes>();
-        newItem.EditModeActive();
-        newItem.data.isBuilded = true;
+        int code = data.info.code;
+        Building building;
+        GameObject buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
+        Vector3 pos = Camera.main.transform.position;
+        // var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
         
-        if (editUI.BM.GetBuildingAmount(data.info.code) - editUI.BM.GetBuildedAmount(data.info.code) > 0)
-            infoText.text = (editUI.BM.GetBuildingAmount(data.info.code) - editUI.BM.GetBuildedAmount(data.info.code)) + " 개";
-        else Destroy(this.gameObject);
+        if (code <= 50)    // Common
+        {
+            Common common = buildingObject.GetComponent<Common>();
+            common.data = data;
+            common.popupBuilding = editUI.popupBuildings[0];
+        } else // Craft
+        {
+            Craft craft = buildingObject.GetComponent<Craft>();
+            craft.DS = editUI.DS;
+            craft.data = data;
+            craft.popupBuilding = editUI.popupBuildings[1];
+        }
+        building = buildingObject.GetComponent<Building>();
+        building.editModesObject = editUI.editModes;
+        building.transform.SetPositionAndRotation(pos, rotate);
+        building.transform.parent = editUI.parentBuildings.transform;
+        
+        building.isPointerDown = true;
+        building.editModes = editUI.editModes.GetComponent<EditModes>();
+        building.EditModeActive();
+        data.isBuilded = true;
+        
+        if (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code) > 0)
+            infoText.text = (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code)) + " 개";
+        else Destroy(gameObject);
     }
 }
