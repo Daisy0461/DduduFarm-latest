@@ -30,7 +30,7 @@ public class LastCropState : MonoBehaviour, IPointerDownHandler
             int ran = Random.Range(info.havestMin, info.havestMax+1);
             if (IM.AddData(cropKind, ran) == false)
                 return;
-            Destroy(gameObject);
+            DestroyObject();
 
             // buttonSound.PlaySound(1);
             FindObjectOfType<ButtonSound>()?.PlaySound(1);
@@ -43,5 +43,13 @@ public class LastCropState : MonoBehaviour, IPointerDownHandler
         SpriteRenderer sp = gameObject.GetComponent<SpriteRenderer>();
         sp.sprite = growDoneCropIamge;   
         canHarvest = true;
+    }
+
+    public int GetCropKind(){
+        return cropKind;
+    }
+
+    public void DestroyObject(){
+        Destroy(gameObject);
     }
 }

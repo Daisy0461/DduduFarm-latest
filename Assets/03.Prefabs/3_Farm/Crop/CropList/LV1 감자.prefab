@@ -105,8 +105,6 @@ MonoBehaviour:
   originPos: {x: 0, y: 0, z: 0}
   cropKind: 201
   cropLevel: 0
-  timeMinText: {fileID: 0}
-  timeSecText: {fileID: 0}
 --- !u!114 &3964358295659720654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +187,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1255483297825592420}
     m_Modifications:
+    - target: {fileID: 6174697251833887886, guid: 7c8ebd84137ad9349945028588eee6ee, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174697251833887886, guid: 7c8ebd84137ad9349945028588eee6ee, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8070101278235372227, guid: 7c8ebd84137ad9349945028588eee6ee, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -265,3 +271,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8070101278235372227, guid: 7c8ebd84137ad9349945028588eee6ee, type: 3}
   m_PrefabInstance: {fileID: 5089640985554553753}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2691506257166949019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513695167477956327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8221a4c9c536ffa459bc72a071a5019f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentCropState: {fileID: 3964358295659720654}

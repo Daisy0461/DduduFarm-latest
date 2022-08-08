@@ -14,10 +14,6 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
     private bool isSelected = false;
     private SpriteRenderer farmSpriteRanderer;
 
-    [SerializeField] [Space(10.0f)] [Tooltip ("씨앗 이미지 넣는 칸")]
-    private GameObject seedImage;
-    private GameObject seedPrefab;
-
     [SerializeField] [Tooltip ("자기 부모의 FarmSelect를 넣으면 됌.")]
     private FarmSelect parentFarmSelect;
     ItemManager IM;
@@ -39,21 +35,10 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         farmPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         farmSpriteRanderer = gameObject.GetComponent<SpriteRenderer>();
         originColor = farmSpriteRanderer.color;
-        seedPrefab = Instantiate(seedImage, farmPosition + new Vector3(0, -0.3f,0), Quaternion.identity);
-        seedPrefab.transform.parent = gameObject.transform;    
-
-        if (isPlanted) seedPrefab.SetActive(false);     //이게 밭이 또 따로 있어서 가능할지 모르겠음.
-        else seedPrefab.SetActive(true);
     }
 
     void Update()
     {
-        if(isPlanted == false){
-            seedPrefab.SetActive(true);
-        }else{
-            seedPrefab.SetActive(false);
-        }
-
         if(isSelected){
             afterPushFunc = true;
         }
