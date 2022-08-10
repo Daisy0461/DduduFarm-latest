@@ -36726,7 +36726,6 @@ MonoBehaviour:
   TM: {fileID: 118302670}
   selectedBuilding: {fileID: 0}
   PopupBuildingWarning: {fileID: 1784062391}
-  isAbleToFix: 1
   Pan_Sell: {fileID: 1129390426}
   moneyText: {fileID: 1418521052}
 --- !u!114 &981695626
@@ -41397,6 +41396,18 @@ PrefabInstance:
     - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7267649062119533727, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd9ac2dae94f15941b5daf0f40462475, type: 3}
