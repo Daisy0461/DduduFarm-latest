@@ -6,7 +6,8 @@ public class EditUI : MonoBehaviour
 {
     [HideInInspector] public BuildingManager BM;
     public DduduSpawner DS;
-
+    public GridBuildingSystem tilemap;
+    
     [Header("Edit")]
 	public GameObject[] EditCommonPrefab;              // 편집에서 씬에 생성되는 게임오브젝트
 	public GameObject[] EditCraftPrefab;

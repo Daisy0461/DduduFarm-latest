@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class EditModes : MonoBehaviour 
 {
-    [SerializeField] GridBuildingSystem tilemap;
+    public GridBuildingSystem tilemap;
     [SerializeField] DduduSpawner dduduSpawner;
     BuildingManager BM;
 
@@ -81,8 +81,7 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.prePos == Vector3.zero)
         {
             // OnClickInventory();
-            
-            tilemap.CancelBuilding();
+
             this.gameObject.SetActive(false);
             return;
         }
@@ -90,8 +89,8 @@ public class EditModes : MonoBehaviour
         this.transform.position = cam.WorldToScreenPoint(selectedBuilding.transform.position);
         selectedBuilding.isPointerDown = false;
         // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
-        BM.Save();
-
+        // BM.Save();
+        tilemap.CancelBuilding();
         this.gameObject.SetActive(false);
     }
 

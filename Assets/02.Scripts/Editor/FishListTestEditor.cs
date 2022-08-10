@@ -15,5 +15,11 @@ public class FishListTestEditor : Editor {
         {
             test.SetCrop();
         }
+        
+        test.val = EditorGUILayout.IntField("money", test.val);
+        if (GUILayout.Button("Set Money"))
+        {
+            test.SetMoney();
+        }
     }
 }

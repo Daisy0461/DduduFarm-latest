@@ -17,25 +17,23 @@ public class EditItem : MonoBehaviour
     {
         int code = data.info.code;
         Building building;
-        GameObject buildingObject;
         Vector3 pos = Camera.main.transform.position;
         // var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
         
         if (code <= 50)    // Common
         {
-            buildingObject = Instantiate(EditCommonPrefab[code%(int)DataTable.Craft-1]);
-            Common common = buildingObject.GetComponent<Common>();
+            building = editUI.tilemap.InitializeWithBuilding(EditCommonPrefab[code%(int)DataTable.Craft-1]);
+            Common common = building.GetComponent<Common>();
             common.data = data;
             common.popupBuilding = editUI.popupBuildings[0];
         } else // Craft
         {
-            buildingObject = Instantiate(EditCraftPrefab[code%(int)DataTable.Craft-1]);
-            Craft craft = buildingObject.GetComponent<Craft>();
+            building = editUI.tilemap.InitializeWithBuilding(EditCraftPrefab[code%(int)DataTable.Craft-1]);
+            Craft craft = building.GetComponent<Craft>();
             craft.DS = editUI.DS;
             craft.data = data;
             craft.popupBuilding = editUI.popupBuildings[1];
         }
-        building = buildingObject.GetComponent<Building>();
         building.transform.SetPositionAndRotation(pos, rotate);
         building.transform.parent = editUI.parentBuildings.transform;
         

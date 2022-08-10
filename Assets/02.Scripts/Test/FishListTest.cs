@@ -5,7 +5,7 @@ using UnityEngine;
 public class FishListTest : MonoBehaviour
 {
     ItemManager IM;
-
+    [HideInInspector] public int val;
     private void Start() 
     {
         IM = ItemManager.Instance;
@@ -25,5 +25,10 @@ public class FishListTest : MonoBehaviour
         {
             IM.AddData((int)DataTable.Crop + i, 100);
         }
+    }
+
+    public void SetMoney()
+    {
+        IM.AddData((int)DataTable.Money, val);
     }
 }
