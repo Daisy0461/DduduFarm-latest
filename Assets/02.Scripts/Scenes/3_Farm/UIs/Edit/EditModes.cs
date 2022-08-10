@@ -17,6 +17,7 @@ public class EditModes : MonoBehaviour
     [Header("Edit Modes")]
     public Building selectedBuilding;     
     public GameObject PopupBuildingWarning;
+    public GameObject PopupError;
 
     [Header("Sell")]
     public GameObject Pan_Sell;     
@@ -69,8 +70,9 @@ public class EditModes : MonoBehaviour
         }
         else
         {
-            PopupBuildingWarning.GetComponentInChildren<Text>().text = "설치할 수 없습니다.";
-            PopupBuildingWarning.SetActive(true);
+            PopupError.transform.GetChild(0).gameObject.SetActive(true); 
+            PopupError.transform.GetChild(1).GetComponent<TextObject>().contentText.text = "설치할 수 없습니다.";
+            PopupError.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 

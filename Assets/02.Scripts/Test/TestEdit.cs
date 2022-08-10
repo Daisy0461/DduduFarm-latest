@@ -23,7 +23,7 @@ public class TestEdit : MonoBehaviour
 		building.EditModeActive();
 	}
 
-	// 편집 모드 / 확인
+	// 편집 모드 / 확인 EditModes - OnClickFix
 
 
 	// 다른 건물 생성

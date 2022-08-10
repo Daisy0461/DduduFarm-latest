@@ -100,11 +100,6 @@ public class GridBuildingSystem : MonoBehaviour
         tilemap.SetTilesBlock(area, tileArray);
     }
 
-    private static void FillTile(TileBase tile, TileType type)
-    {
-        tile = tileBases[type];
-    }
-
     private static void FillTiles(TileBase[] arr, TileType type)
     {
         for (int i = 0; i < arr.Length; i++)
@@ -152,7 +147,8 @@ public class GridBuildingSystem : MonoBehaviour
             }
             else
             {
-                FillTile(tileArray[i], TileType.Red);
+                FillTiles(tileArray, TileType.Red);
+                break;
             }
         }
 
