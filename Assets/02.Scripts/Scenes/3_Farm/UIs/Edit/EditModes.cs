@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class EditModes : MonoBehaviour 
 {
-    [SerializeField] GridBuildingSystem tilemap;
+    public GridBuildingSystem tilemap;
     [SerializeField] DduduSpawner dduduSpawner;
     BuildingManager BM;
 
@@ -17,6 +17,7 @@ public class EditModes : MonoBehaviour
     [Header("Edit Modes")]
     public Building selectedBuilding;     
     public GameObject PopupBuildingWarning;
+    public GameObject PopupError;
 
     [Header("Sell")]
     public GameObject Pan_Sell;     
@@ -69,8 +70,9 @@ public class EditModes : MonoBehaviour
         }
         else
         {
-            PopupBuildingWarning.GetComponentInChildren<Text>().text = "설치할 수 없습니다.";
-            PopupBuildingWarning.SetActive(true);
+            PopupError.transform.GetChild(0).gameObject.SetActive(true); 
+            PopupError.transform.GetChild(1).GetComponent<TextObject>().contentText.text = "설치할 수 없습니다.";
+            PopupError.transform.GetChild(1).gameObject.SetActive(true);
         }
     }
 
@@ -79,8 +81,7 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.prePos == Vector3.zero)
         {
             // OnClickInventory();
-            
-            tilemap.CancelBuilding();
+
             this.gameObject.SetActive(false);
             return;
         }
@@ -88,8 +89,8 @@ public class EditModes : MonoBehaviour
         this.transform.position = cam.WorldToScreenPoint(selectedBuilding.transform.position);
         selectedBuilding.isPointerDown = false;
         // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
-        BM.Save();
-
+        // BM.Save();
+        tilemap.CancelBuilding();
         this.gameObject.SetActive(false);
     }
 

@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BoundsInt area;
     public bool Placed { get; private set; }
-    
-	[HideInInspector] public GameObject editModesObject;
-	[HideInInspector] public EditModes editModes;
+	public event Action gridActivate = null;
+	
+	//[HideInInspector]
+	 public GameObject editModesObject;
+	//[HideInInspector]
+	 public EditModes editModes;
     [HideInInspector] public Vector3 prePos;
     [HideInInspector] public bool isPointerDown = false;  // EditMode인가?
 	public SpriteRenderer render;
@@ -22,12 +26,18 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private void Start() 
 	{
 		render.sortingOrder = (int)(this.transform.position.y * -10);
+		editModes.tilemap.gridActivate += ActiveGrid;
 	}
 
 	#endregion
 
     #region Build Methods
     
+	public void ActiveGrid()
+	{
+		editModes.tilemap.SetBuildingTiles(this);
+	}
+
     public bool CanBePlaced()
     {
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.WorldToCell(transform.position);
@@ -81,7 +91,11 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	{
 		isPointerDown = true;
 		prePos = transform.position;
-		EditModeActive();
+
+		Placed = false;
+		editModes.tilemap.temp = this;
+		EditModeActive(); // active grid, before longclick
+		editModes.tilemap.LongClickBuilding();
 	}
 
     public void EditModeActive()

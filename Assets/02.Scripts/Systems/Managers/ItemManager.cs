@@ -78,9 +78,9 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
                 var Err = GameObject.FindGameObjectWithTag("Error")?.transform;
                 if (Err != null)
                 {
-                    Err.GetChild(0).gameObject.SetActive(true);
+                    Err.GetChild(0).gameObject.SetActive(true); // quit
                     Err.GetChild(1).GetComponent<TextObject>().contentText.text = errMessage;
-                    Err.GetChild(1).gameObject.SetActive(true);
+                    Err.GetChild(1).gameObject.SetActive(true); // popup
                 }
             }  
         }
