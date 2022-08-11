@@ -49,9 +49,9 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         }
     }
  
-    void OnCollisionEnter2D(Collision2D coll)   //작물이 들어올 때 작동 - 바꿔야하나?
+    void OnCollisionEnter2D(Collision2D coll)   //작물이 들어올 때 작동
     {   // 밭의 네모난 것과 작물이 충돌
-        if(coll.gameObject.tag == "Crop"){      //이거 떄문에 점선이 사라진다.
+        if(coll.gameObject.tag == "Crop"){     
             isPlanted = true;
             if(plantMode == false){             //작물이 들어왔는데 지금은 작물을 심고있는 중이 아니다.
                 farmSpriteRanderer.color =  originColor;
@@ -63,8 +63,7 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    void OnCollisionExit2D(Collision2D coll){   //작물이 채집될 때 작동 진화할때도 작동하네?
-    //instaiate를 하고 작물이 채집이 되니까 한번 더 실행을 한다.
+    void OnCollisionExit2D(Collision2D coll){
         if(coll.gameObject.tag == "Crop"){
             isPlanted = false;
             farmSpriteRanderer.color =  new Color(255/255f, 230/255f, 128/255f, 255/255f);
@@ -75,7 +74,11 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         childSpriteRanderer.color = originColor;
         gameObject.SetActive(false);
         gameObject.SetActive(true);     //완결까지 채집을 하니 충돌이 없어서 색이 변하지 않는다.
-        ChangeFarmColor();
+        if(plantMode){
+            ChangeFarmColor();
+        }else{
+            HavastColorChange();
+        }
     }
 
     public void ChangeFarmColor(){      //여기에 색 변화하게
@@ -89,6 +92,11 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    public void HavastColorChange(){
+        farmSpriteRanderer.color = originColor;
+        childSpriteRanderer.color = originColor;
+    }
+
     public void ReturnColor(){      //원래 색으로 변경
         farmSpriteRanderer.color = originColor;
         childSpriteRanderer.color = originColor;
@@ -97,7 +105,7 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
     }
 
     public void OnPointerDown(PointerEventData eventData){      //밭 터치 액션
-        if(!afterPushFunc){     //꾹 누르기 전
+        if(!afterPushFunc){     //꾹 누르기 전 & 작물이 안심어져있다면
             parentFarmSelect.OnPointerDown(eventData);
             afterPushFunc = true;       //이후 취소해줘야함.
         }else if(afterPushFunc && isSelected && !isPlanted){        //꾹 누른 후 원래작물은 심어져있지 않아있는 상태
