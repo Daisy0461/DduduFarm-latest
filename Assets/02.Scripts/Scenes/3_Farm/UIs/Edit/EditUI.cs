@@ -85,21 +85,16 @@ public class EditUI : MonoBehaviour
         Text newText = newObj.GetComponentInChildren<Text>();
         newText.text = data.info.name;
 
-        newObj.GetComponent<Button>().onClick.AddListener( () => SoundPlay() );
+        newObj.GetComponent<Button>().onClick.AddListener( () => Quit() );
 
         if ((BM.GetBuildingAmount(code) - BM.GetBuildedAmount(code)) > 0)   // 배치 안 하고 남은 게 있을 때
             newObj.SetActive(true);
         else newObj.SetActive(false);
     }
 
-    public void OnclickEditUIQuit()
-    {
-        editScrollView.SetActive(false);
-        editQuit.SetActive(false);
-    }
-
-    public void SoundPlay()
+    public void Quit()
     {
         audioSource.Play();
+        gameObject.SetActive(false);
     }
 }

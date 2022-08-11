@@ -46,7 +46,5 @@ public class EditItem : MonoBehaviour
         if (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code) > 0)
             infoText.text = (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code)) + " 개";
         else Destroy(gameObject);
-
-        editUI.OnclickEditUIQuit();  // 편집 인벤토리 닫기
     }
 }
