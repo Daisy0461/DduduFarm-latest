@@ -28,9 +28,6 @@ public class GridBuildingSystem : MonoBehaviour
     
     private void OnEnable() 
     {
-        // enabled 시 모든 building 컴포넌트에 콜백,
-    // 만약 temp?.type에 따라 밭/건물로 나뉘는데, 
-    // 콜백하면 건물은 가장자리를 yellow로 만들고 그 외 자리 차지하는 건 red
         if (gridActivate != null) gridActivate();
     }
 
@@ -126,6 +123,9 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void SetBuildingTiles(Building building)
     {
+        // enabled 시 모든 building 컴포넌트에 콜백,
+        // 만약 temp?.type에 따라 밭/건물로 나뉘는데, 
+        // 콜백하면 건물은 가장자리를 yellow, 가운데는 red로 만듦 
         building.area.position = gridLayout.WorldToCell(building.gameObject.transform.position);
         BoundsInt buildingArea = building.area;
 
@@ -133,13 +133,17 @@ public class GridBuildingSystem : MonoBehaviour
 
         int size = baseArray.Length;
         TileBase[] tileArray = new TileBase[size];
+        int root = (int)Mathf.Sqrt(size);
 
         for (int i = 0; i < baseArray.Length; i++)
         {
-            if (baseArray[i] == tileBases[TileType.White] || 
-                baseArray[i] == tileBases[TileType.Yellow])
+            if (i/root == 0 || i/root == root-1 || i%root == 0 || i%root == root-1) // 가장자리는 yellow
             {
-                tileArray[i] = tileBases[TileType.Green];
+                tileArray[i] = tileBases[TileType.Yellow];
+            }
+            else  // 가운데는 red
+            {
+                tileArray[i] = tileBases[TileType.Red];
             }
         }
 
