@@ -16,9 +16,9 @@ public class TestEdit : MonoBehaviour
 	{
 		building = gridBuildingSystem.InitializeWithBuilding(buildingPrefab);
 
+		building.isPointerDown = true;
 		building.editModesObject = editModesObject;
 		building.editModes = editModes;
-		building.isPointerDown = true;
 		building.EditModeActive();
 	}
 
@@ -28,7 +28,7 @@ public class TestEdit : MonoBehaviour
 		{
 			gridBuildingSystem.gameObject.SetActive(true);
 			gridBuildingSystem.temp = building;
-			gridBuildingSystem.LongClickBuilding();
+			// gridBuildingSystem.LongClickBuilding();
 		}
 	}
 }

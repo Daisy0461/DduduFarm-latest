@@ -26,16 +26,17 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private void Start() 
 	{
 		render.sortingOrder = (int)(this.transform.position.y * -10);
-		editModes.tilemap.gridActivate += ActiveGrid;
+		editModes.tilemap.gridActivate += CallBackActiveGrid;
 	}
 
 	#endregion
 
     #region Build Methods
     
-	public void ActiveGrid()
+	public void CallBackActiveGrid()
 	{
-		editModes.tilemap.SetBuildingTiles(this);
+		if (editModes.tilemap.temp != this)
+			editModes.tilemap.CallbackSetBuildingTiles(this);
 	}
 
     public bool CanBePlaced()
@@ -94,8 +95,9 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 		Placed = false;
 		editModes.tilemap.temp = this;
-		EditModeActive(); // active grid, before longclick
 		editModes.tilemap.LongClickBuilding();
+		EditModeActive(); // active grid, before longclick
+		// editModes.tilemap.LongClickBuilding();
 	}
 
     public void EditModeActive()

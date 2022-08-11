@@ -121,11 +121,10 @@ public class GridBuildingSystem : MonoBehaviour
         return temp;
     }
 
-    public void SetBuildingTiles(Building building)
+    public void CallbackSetBuildingTiles(Building building)
     {
-        // enabled 시 모든 building 컴포넌트에 콜백,
-        // 만약 temp?.type에 따라 밭/건물로 나뉘는데, 
-        // 콜백하면 건물은 가장자리를 yellow, 가운데는 red로 만듦 
+        // enabled -> callback to all building component,
+        // make side yellow, center red 
         building.area.position = gridLayout.WorldToCell(building.gameObject.transform.position);
         BoundsInt buildingArea = building.area;
 
@@ -137,11 +136,15 @@ public class GridBuildingSystem : MonoBehaviour
 
         for (int i = 0; i < baseArray.Length; i++)
         {
-            if (i/root == 0 || i/root == root-1 || i%root == 0 || i%root == root-1) // 가장자리는 yellow
+            if (baseArray[i] == tileBases[TileType.Yellow])
+            {
+                tileArray[i] = tileBases[TileType.Yellow_Red];
+            }
+            else if (i/root == 0 || i/root == root-1 || i%root == 0 || i%root == root-1) // side yellow
             {
                 tileArray[i] = tileBases[TileType.Yellow];
             }
-            else  // 가운데는 red
+            else  // center red
             {
                 tileArray[i] = tileBases[TileType.Red];
             }
@@ -150,9 +153,10 @@ public class GridBuildingSystem : MonoBehaviour
         MainTilemap.SetTilesBlock(buildingArea, tileArray);
     }
 
-    public void LongClickBuilding()
+    public void LongClickBuilding() // reset tile color to move building
     {
-        // mainTileMap 빨강 -> 노랑 / 흰색
+        // mainTileMap yellow / red -> white
+        // building yellow(yellow_red) -> yellow
         temp.area.position = gridLayout.WorldToCell(temp.gameObject.transform.position);
         BoundsInt buildingArea = temp.area;
 
@@ -163,7 +167,9 @@ public class GridBuildingSystem : MonoBehaviour
 
         for (int i = 0; i < baseArray.Length; i++)
         {
-            if (baseArray[i] == tileBases[TileType.Red])
+            if (baseArray[i] == tileBases[TileType.White] ||
+                baseArray[i] == tileBases[TileType.Yellow] ||
+                baseArray[i] == tileBases[TileType.Red])
             {
                 tileArray[i] = tileBases[TileType.White];
             }
@@ -199,7 +205,8 @@ public class GridBuildingSystem : MonoBehaviour
         for (int i = 0; i < baseArray.Length; i++)
         {
             if (baseArray[i] == tileBases[TileType.White] || 
-                baseArray[i] == tileBases[TileType.Yellow])
+                baseArray[i] == tileBases[TileType.Yellow] ||
+                baseArray[i] == tileBases[TileType.Yellow_Red])
             {
                 tileArray[i] = tileBases[TileType.Green];
             }
@@ -233,7 +240,8 @@ public class GridBuildingSystem : MonoBehaviour
         foreach (var b in baseArray)
         {
             if (b != tileBases[TileType.White] &&
-                b != tileBases[TileType.Yellow])
+                b != tileBases[TileType.Yellow] &&
+                b != tileBases[TileType.Yellow_Red])
             {
                 Debug.Log("Cannot place here");
                 return false;
