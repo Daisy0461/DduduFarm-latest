@@ -68,7 +68,8 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerDown(PointerEventData e)
 	{
 		isClick = true;
-		StartCoroutine(PointerLongDown());
+		if (!editModes.tilemap.isActiveAndEnabled)
+			StartCoroutine(PointerLongDown());
 	}
 
 	public void OnPointerUp(PointerEventData e)
