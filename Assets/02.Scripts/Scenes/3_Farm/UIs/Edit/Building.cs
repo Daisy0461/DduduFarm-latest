@@ -97,8 +97,7 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		Placed = false;
 		editModes.tilemap.temp = this;
 		editModes.tilemap.LongClickBuilding();
-		EditModeActive(); // active grid, before longclick
-		// editModes.tilemap.LongClickBuilding();
+		EditModeActive(); // longclick then callback
 	}
 
     public void EditModeActive()

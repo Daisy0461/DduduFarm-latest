@@ -9,6 +9,7 @@ public class EditModes : MonoBehaviour
     public GridBuildingSystem tilemap;
     [SerializeField] DduduSpawner dduduSpawner;
     BuildingManager BM;
+    BuildingAttrib buildingAttrib;
 
     [Header("EditUI")]
     public EditUI editUI;          
@@ -36,6 +37,7 @@ public class EditModes : MonoBehaviour
         TM.UIObjActiveManage(false);
         TM.enabled = false;
 
+        buildingAttrib = selectedBuilding.GetComponent<BuildingAttrib>();
         selectedBuilding.isPointerDown = true;
         selectedBuilding.render.sortingLayerName = "UI";
         selectedBuilding.render.sortingOrder = 0;
@@ -64,7 +66,7 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.CanBePlaced())
         {
             selectedBuilding.isPointerDown = false;
-            // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
+            BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
             tilemap.SetBuilding();
             this.gameObject.SetActive(false);
         }
@@ -80,7 +82,7 @@ public class EditModes : MonoBehaviour
     {   
         if (selectedBuilding.prePos == Vector3.zero)
         {
-            // OnClickInventory();
+            OnClickInventory();
 
             this.gameObject.SetActive(false);
             return;

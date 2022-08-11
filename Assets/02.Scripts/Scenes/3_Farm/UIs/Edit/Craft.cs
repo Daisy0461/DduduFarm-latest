@@ -5,7 +5,6 @@ using System;
 public class Craft : BuildingAttrib
 {
     public DduduSpawner DS;
-    public BuildingData data;
     public int buildingId;
     public GameObject outputBtn;
     public string remainTimeStr;
