@@ -33,8 +33,8 @@ public class EditModes : MonoBehaviour
     private void OnEnable() 
     {
         tilemap.gameObject.SetActive(true);
-        // TM.UIObjActiveManage(false);
-        // TM.enabled = false;
+        TM.UIObjActiveManage(false);
+        TM.enabled = false;
 
         selectedBuilding.isPointerDown = true;
         selectedBuilding.render.sortingLayerName = "UI";
@@ -49,8 +49,8 @@ public class EditModes : MonoBehaviour
         selectedBuilding.render.sortingLayerName = "Object";
         selectedBuilding.isPointerDown = false;
         
-        // TM.enabled = true;
-        // TM.UIObjActiveManage(true);
+        TM.enabled = true;
+        TM.UIObjActiveManage(true);
         tilemap.gameObject.SetActive(false);
     }
 
