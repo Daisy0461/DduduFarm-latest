@@ -27,8 +27,8 @@ public class Craft : BuildingAttrib
         data = BuildingManager.Instance.GetData(buildingId);
 
         if (outputBtn == null) outputBtn = transform.GetChild(0).gameObject;
-        if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
-        if (!data.isDone) outputBtn.SetActive(false);
+        // if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
+        // if (!data.isDone) outputBtn.SetActive(false);
         LoadAppQuitTime();
         if (IsWorking()) SetRechargeScheduler();
     }
@@ -116,10 +116,10 @@ public class Craft : BuildingAttrib
     public bool IsWorking()
     {
         bool ret = false;
-        data.isDone = transform.GetChild(0).gameObject.activeSelf;
-        if ((data.workerId != 0 && !data.isDone)      // 작업중 - data.worker 있고, isDone false
-            || (data.workerId == 0 && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
-            ret = true;
+        // data.isDone = transform.GetChild(0).gameObject.activeSelf;
+        // if ((data.workerId != 0 && !data.isDone)      // 작업중 - data.worker 있고, isDone false
+            // || (data.workerId == 0 && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
+            // ret = true;
         return ret;
     }
 

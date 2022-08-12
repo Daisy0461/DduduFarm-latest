@@ -47,7 +47,7 @@ public class EditModes : MonoBehaviour
     private void OnDisable() 
     {
         selectedBuilding.GetComponentInChildren<PolygonCollider2D>().isTrigger = false;
-        selectedBuilding.render.sortingOrder = (int)(selectedBuilding.transform.position.y * -10);
+        selectedBuilding.render.sortingOrder = (int)(selectedBuilding.transform.position.y * -10 + selectedBuilding.transform.position.x * -10);
         selectedBuilding.render.sortingLayerName = "Object";
         selectedBuilding.isPointerDown = false;
         
@@ -66,7 +66,7 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.CanBePlaced())
         {
             selectedBuilding.isPointerDown = false;
-            BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
+            // BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
             tilemap.SetBuilding();
             this.gameObject.SetActive(false);
         }
@@ -82,9 +82,8 @@ public class EditModes : MonoBehaviour
     {   
         if (selectedBuilding.prePos == Vector3.zero)
         {
-            OnClickInventory();
-
-            this.gameObject.SetActive(false);
+            // OnclickInventoryYes();
+            tilemap.CancelBuilding();
             return;
         }
         selectedBuilding.transform.position = selectedBuilding.prePos;
@@ -111,7 +110,7 @@ public class EditModes : MonoBehaviour
     }
 
     public void OnclickInventoryYes()
-    {
+    {// PopupBuildingWarning - yes funciotn
         /* -- working --  */
         if (selectedBuilding.GetComponent<Craft>() != null && selectedBuilding.GetComponent<Craft>().IsWorking())
         {

@@ -18,7 +18,6 @@ public class EditItem : MonoBehaviour
         int code = data.info.code;
         Building building;
         Vector3 pos = Camera.main.transform.position;
-        // var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
         
         if (code <= 50)    // Common
         {

@@ -225,25 +225,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoText: {fileID: 3340436072174423412}
   EditCommonPrefab:
-  - {fileID: 4747332633355301532, guid: c8fe9dc01a2d2e44fb24fdb4aaabf93b, type: 3}
-  - {fileID: 4747332633355301532, guid: 0b645360e2e2ae14895d111c71879d07, type: 3}
-  - {fileID: 4747332633355301532, guid: 093805aa6468b144488fd83cbb9fa4fe, type: 3}
-  - {fileID: 4747332633355301532, guid: 2a50954b22b846a478c91faea8ea984b, type: 3}
-  - {fileID: 4747332633355301532, guid: a1cc6af69169a3a4fa9f36d5c27524eb, type: 3}
-  - {fileID: 4747332633355301532, guid: 6dd2eb3989660f44b8e3ffa1230c5786, type: 3}
-  - {fileID: 4747332633355301532, guid: 21cbda1d3f3f9994d9934d2188469984, type: 3}
-  - {fileID: 4747332633355301532, guid: 0f4079b28ed0d994eb6700173d2ef356, type: 3}
+  - {fileID: 8995782698455196947, guid: 2125ac099ee77f743a01a5d6d6f080ca, type: 3}
+  - {fileID: 3799278573694594930, guid: e48a49ed2b64b4044a4d3b49d668fb0c, type: 3}
+  - {fileID: 1759274334456094854, guid: c08639ae7dd33544da16b67ef5c36ea0, type: 3}
+  - {fileID: 1112239849467744277, guid: 78aefeea7b72a4a45bce6d87fbdee5e9, type: 3}
+  - {fileID: 2087131804487318666, guid: 5e95a82fd50ee5c4481b6a047809f240, type: 3}
+  - {fileID: 3971641029073355587, guid: f503ff0e0c919c944935213281fed47d, type: 3}
+  - {fileID: 6188746152581050514, guid: f519aa60352190d4d9adff7679c45952, type: 3}
+  - {fileID: 6172286358888345780, guid: 9ef933125bb1e564d94e87069cd86680, type: 3}
   EditCraftPrefab:
-  - {fileID: 4747332633355301532, guid: aac59526eae6ff549909c8815030b709, type: 3}
-  - {fileID: 4747332633355301532, guid: be9c531f44ce7d84ca157f467751bb0a, type: 3}
-  - {fileID: 4747332633355301532, guid: 3a248601bd939ea46ab20ae2f164055d, type: 3}
-  - {fileID: 4747332633355301532, guid: 5a8e5761912af6240abdb12f09b46bd9, type: 3}
-  - {fileID: 4747332633355301532, guid: 8e0ba4b02106f1b408a228809bc8ade2, type: 3}
-  - {fileID: 4747332633355301532, guid: e7b7ecd0d8b0b1242bb28c130638f61e, type: 3}
-  - {fileID: 4747332633355301532, guid: b31ff57715f0bbf4da42e9d530195584, type: 3}
-  - {fileID: 4747332633355301532, guid: fcd2589b87394a242b26d3637c7e2524, type: 3}
-  - {fileID: 4747332633355301532, guid: 211e388fcf91ae44b9956e5cd6cc45aa, type: 3}
-  - {fileID: 4747332633355301532, guid: 9d79775128de57640bbb58d47510d875, type: 3}
+  - {fileID: 8646043332092763042, guid: c1a2797e88de2b3408200aac5aa4e252, type: 3}
+  - {fileID: 1385847446995562409, guid: 55ec962639306544481d7ee875a0cd33, type: 3}
+  - {fileID: 7811013331367083484, guid: 2a97cc3b902cc0640897c982357969ee, type: 3}
+  - {fileID: 3515525076407658565, guid: fad658af8afcd354a8c55009b83549a1, type: 3}
+  - {fileID: 6520641999249068274, guid: 1d79c76a5df17a44780b1c8371eb8bdc, type: 3}
+  - {fileID: 9085294872064640909, guid: 3af8022e8e7e5c7458b89073666137e7, type: 3}
+  - {fileID: 927388074666833557, guid: 87515bb34ab32b644ab2bee9e096780f, type: 3}
+  - {fileID: 7684146516069219861, guid: 239c31f7eb3cc0c4f920ffe7af9daa9b, type: 3}
+  - {fileID: 6048717030747286170, guid: 7f7a9203bc14d58408e9f93cd61af89a, type: 3}
+  - {fileID: 8174928654922935476, guid: 0f60bcc3405e6a64ca2e048d3e890615, type: 3}
   editUI: {fileID: 0}
   data:
     id: 0
@@ -262,7 +262,8 @@ MonoBehaviour:
       cycleTime: 0
     isBuilded: 0
     cycleRemainTime: 0
-    isCycleDone: 0
+    workerId: 0
+    isDone: 0
     x: 0
     y: 0
     z: 0

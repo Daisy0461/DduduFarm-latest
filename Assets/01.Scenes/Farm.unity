@@ -18633,16 +18633,6 @@ MonoBehaviour:
   BM: {fileID: 0}
   DS: {fileID: 572323171}
   tilemap: {fileID: 1779533750}
-  EditCommonPrefab:
-  - {fileID: 8995782698455196947, guid: 2125ac099ee77f743a01a5d6d6f080ca, type: 3}
-  - {fileID: 3799278573694594930, guid: e48a49ed2b64b4044a4d3b49d668fb0c, type: 3}
-  - {fileID: 1759274334456094854, guid: c08639ae7dd33544da16b67ef5c36ea0, type: 3}
-  - {fileID: 1112239849467744277, guid: 78aefeea7b72a4a45bce6d87fbdee5e9, type: 3}
-  - {fileID: 2087131804487318666, guid: 5e95a82fd50ee5c4481b6a047809f240, type: 3}
-  - {fileID: 3971641029073355587, guid: f503ff0e0c919c944935213281fed47d, type: 3}
-  - {fileID: 6188746152581050514, guid: f519aa60352190d4d9adff7679c45952, type: 3}
-  - {fileID: 6172286358888345780, guid: 9ef933125bb1e564d94e87069cd86680, type: 3}
-  EditCraftPrefab: []
   parentBuildings: {fileID: 1069812923}
   editModes: {fileID: 981695625}
   popupBuildings:
@@ -18650,8 +18640,6 @@ MonoBehaviour:
   - {fileID: 85240124}
   EditItemPanelPrefab: {fileID: 6138819121035742157, guid: 4b359de80f3929f41a772e922c120f7b, type: 3}
   EditContent: {fileID: 106444}
-  editScrollView: {fileID: 283280545}
-  editQuit: {fileID: 579936833}
   audioSource: {fileID: 572323173}
 --- !u!1 &916973716
 GameObject:
@@ -36882,7 +36870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc59b129373ae6498a8b17bbce13f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: 0
+  val: 100000
 --- !u!114 &1000593990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38031,6 +38019,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1069812924}
+  - component: {fileID: 1069812925}
   m_Layer: 0
   m_Name: BuildingParent
   m_TagString: Untagged
@@ -38052,6 +38041,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1069812925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069812923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c527f5358a5fe2b45914ac8811da90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DS: {fileID: 572323171}
+  editModes: {fileID: 981695625}
+  EditCommonPrefab:
+  - {fileID: 8995782698455196947, guid: 2125ac099ee77f743a01a5d6d6f080ca, type: 3}
+  - {fileID: 3799278573694594930, guid: e48a49ed2b64b4044a4d3b49d668fb0c, type: 3}
+  - {fileID: 1759274334456094854, guid: c08639ae7dd33544da16b67ef5c36ea0, type: 3}
+  - {fileID: 1112239849467744277, guid: 78aefeea7b72a4a45bce6d87fbdee5e9, type: 3}
+  - {fileID: 2087131804487318666, guid: 5e95a82fd50ee5c4481b6a047809f240, type: 3}
+  - {fileID: 3971641029073355587, guid: f503ff0e0c919c944935213281fed47d, type: 3}
+  - {fileID: 6188746152581050514, guid: f519aa60352190d4d9adff7679c45952, type: 3}
+  - {fileID: 6172286358888345780, guid: 9ef933125bb1e564d94e87069cd86680, type: 3}
+  EditCraftPrefab:
+  - {fileID: 8646043332092763042, guid: c1a2797e88de2b3408200aac5aa4e252, type: 3}
+  - {fileID: 1385847446995562409, guid: 55ec962639306544481d7ee875a0cd33, type: 3}
+  - {fileID: 7811013331367083484, guid: 2a97cc3b902cc0640897c982357969ee, type: 3}
+  - {fileID: 3515525076407658565, guid: fad658af8afcd354a8c55009b83549a1, type: 3}
+  - {fileID: 6520641999249068274, guid: 1d79c76a5df17a44780b1c8371eb8bdc, type: 3}
+  - {fileID: 9085294872064640909, guid: 3af8022e8e7e5c7458b89073666137e7, type: 3}
+  - {fileID: 927388074666833557, guid: 87515bb34ab32b644ab2bee9e096780f, type: 3}
+  - {fileID: 7684146516069219861, guid: 239c31f7eb3cc0c4f920ffe7af9daa9b, type: 3}
+  - {fileID: 6048717030747286170, guid: 7f7a9203bc14d58408e9f93cd61af89a, type: 3}
+  - {fileID: 8174928654922935476, guid: 0f60bcc3405e6a64ca2e048d3e890615, type: 3}
+  popupBuildings:
+  - {fileID: 518247635}
+  - {fileID: 85240124}
 --- !u!1 &1075798683
 GameObject:
   m_ObjectHideFlags: 0
