@@ -83,7 +83,10 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.prePos == Vector3.zero)
         {
             // OnclickInventoryYes();
+            // test
             tilemap.CancelBuilding();
+            this.gameObject.SetActive(false);
+            // test
             return;
         }
         selectedBuilding.transform.position = selectedBuilding.prePos;
@@ -125,6 +128,7 @@ public class EditModes : MonoBehaviour
         // BM.GetData(selectedBuilding.data.id).isBuilded = false;
         // editUI.CreateEditBtnUI(BM.GetData(selectedBuilding.data.id));
         Destroy(selectedBuilding.gameObject);
+        tilemap.CancelBuilding();
         BM.Save();
         
         this.gameObject.SetActive(false);

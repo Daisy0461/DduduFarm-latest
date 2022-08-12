@@ -212,6 +212,7 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void CancelBuilding()
     {
+        Destroy(temp);
         ClearArea();
     }
 

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LoadBuildings : MonoBehaviour
 {
-    [SerializeField]  DduduSpawner DS;
-    [SerializeField]  EditModes editModes;
-
-    [SerializeField]  GameObject[] EditCommonPrefab;
-    [SerializeField]  GameObject[] EditCraftPrefab;
-    [SerializeField]  PopupBuilding[] popupBuildings;
+    [SerializeField] DduduSpawner DS;
+    [SerializeField] EditModes editModes;
+    
+    [SerializeField] GameObject[] EditCommonPrefab;
+    [SerializeField] GameObject[] EditCraftPrefab;
+    [SerializeField] PopupBuilding[] popupBuildings;
 
     private Quaternion rotate = new Quaternion();
     
