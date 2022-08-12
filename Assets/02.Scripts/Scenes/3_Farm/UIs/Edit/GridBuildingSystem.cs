@@ -15,7 +15,8 @@ public class GridBuildingSystem : MonoBehaviour
 
     private static Dictionary<TileType, TileBase> tileBases = new Dictionary<TileType, TileBase>();
     
-    [HideInInspector] public Building temp;
+    // [HideInInspector] 
+    public Building temp;
     private Vector3 prevPos;
     private BoundsInt prevArea;
 
@@ -54,7 +55,7 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current.currentSelectedGameObject?.name[0] == 'B')
+            if (EventSystem.current?.currentSelectedGameObject?.name[0] == 'B')
             {// only btn, start with B
                 return;
             }
@@ -212,7 +213,6 @@ public class GridBuildingSystem : MonoBehaviour
 
     public void CancelBuilding()
     {
-        Destroy(temp);
         ClearArea();
     }
 

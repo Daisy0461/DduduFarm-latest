@@ -9,21 +9,15 @@ public class Common : BuildingAttrib
     public PopupBuilding popupBuilding;
 
     private int buildingId;
-    private DateTime m_AppQuitTime;    // 유저 게임 이탈 시간 변수
     private Coroutine m_CycleTimerCoroutine = null;
 
-    AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     ItemManager IM;
-
-    private void OnApplicationFocus(bool focusStatus) 
-    {
-        // data = BuildingManager.Instance.GetData(buildingId);
-    }
     
     private void Start()    // data.isDone 하지 않고 remainCycleTime==0 인 것은 첫 사이클이란 의미이므로 사이클 시간을 채워놔야 함
     {
         IM = ItemManager.Instance;
-        audioSource = GetComponent<AudioSource>();
+
         // buildingId = data.id;
         // data = BuildingManager.Instance.GetData(buildingId);
 
@@ -35,38 +29,15 @@ public class Common : BuildingAttrib
         SetRechargeScheduler();    
     }
 
-    public bool LoadAppQuitTime() 
-    { 
-        bool result = false; 
-        try 
-        { 
-            if (PlayerPrefs.HasKey("AppQuitTime")) 
-            { 
-                var appQuitTime = string.Empty; 
-                appQuitTime = PlayerPrefs.GetString("AppQuitTime"); 
-                m_AppQuitTime = DateTime.FromBinary(Convert.ToInt64(appQuitTime));
-            }
-            else
-            { 
-                m_AppQuitTime = DateTime.FromBinary(Convert.ToInt64(DateTime.Now.ToLocalTime().ToBinary().ToString())); 
-            }
-            result = true; 
-        } 
-        catch (System.Exception e) 
-        { 
-            Debug.LogError("LoadAppQuitTime Failed (" + e.Message + ")"); 
-        } 
-        return result; 
-    }
-
     public void SetRechargeScheduler()
     {
         if (m_CycleTimerCoroutine != null)
         {        
             StopCoroutine(m_CycleTimerCoroutine);
+            m_CycleTimerCoroutine = null;
         }
 
-        var timeDifferenceInSec = (int)((DateTime.Now.ToLocalTime() - m_AppQuitTime).TotalSeconds); // 방치한 동안 흐른 시간(초) 계산
+        // var timeDifferenceInSec = (int)((DateTime.Now.ToLocalTime() - m_AppQuitTime).TotalSeconds); // 방치한 동안 흐른 시간(초) 계산
         // var remainTime = data.cycleRemainTime - timeDifferenceInSec;
         
         // if (remainTime <= 0)
@@ -84,7 +55,7 @@ public class Common : BuildingAttrib
 
     private IEnumerator DoRechargeTimer(int remainTime)
     {
-        var sec = new WaitForSeconds(1f);
+        WaitForSeconds sec = new WaitForSeconds(1f);
 
         if (remainTime <= 0)
         {

@@ -85,6 +85,7 @@ public class EditModes : MonoBehaviour
             // OnclickInventoryYes();
             // test
             tilemap.CancelBuilding();
+            Destroy(selectedBuilding.gameObject);
             this.gameObject.SetActive(false);
             // test
             return;
