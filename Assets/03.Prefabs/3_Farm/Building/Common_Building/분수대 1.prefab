@@ -256,8 +256,10 @@ MonoBehaviour:
     y: 0
     z: 0
   remainTimeStr: 
-  goldBtn: {fileID: 1321657339027530369}
   popupBuilding: {fileID: 0}
+  building: {fileID: 2087131804487318664}
+  goldBtn: {fileID: 1321657339027530369}
+  audioSource: {fileID: 2087131804487318662}
 --- !u!82 &2087131804487318662
 AudioSource:
   m_ObjectHideFlags: 0
@@ -268,7 +270,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4443350995445623349, guid: 6b7eda1f28b2d7b479a8721b16259657, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 61be4e8d617a8ab408f1b290b5cfad8e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a26c9bf3d20162c488656e15ab7c0ab8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -390,10 +390,10 @@ MonoBehaviour:
     y: 0
     z: 0
   DS: {fileID: 0}
-  buildingId: 0
-  outputBtn: {fileID: 4566569756449072189}
   remainTimeStr: 
   popupBuilding: {fileID: 0}
+  outputBtn: {fileID: 4566569756449072189}
+  building: {fileID: 7684146516069219857}
   audioSource: {fileID: 7684146516069219860}
 --- !u!82 &7684146516069219860
 AudioSource:

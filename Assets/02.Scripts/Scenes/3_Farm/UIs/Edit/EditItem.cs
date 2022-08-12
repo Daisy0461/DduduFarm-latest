@@ -11,13 +11,11 @@ public class EditItem : MonoBehaviour
     public GameObject[] EditCraftPrefab;
     public EditUI editUI;
     public BuildingData data;
-    private Quaternion rotate = new Quaternion();
 
     public void OnClickEditItem()
     {
         int code = data.info.code;
         Building building;
-        Vector3 pos = Camera.main.transform.position;
         
         if (code <= 50)    // Common
         {
@@ -33,7 +31,6 @@ public class EditItem : MonoBehaviour
             craft.data = data;
             craft.popupBuilding = editUI.popupBuildings[1];
         }
-        // building.transform.SetPositionAndRotation(pos, rotate);
         building.transform.parent = editUI.parentBuildings.transform;
         
         building.isPointerDown = true;

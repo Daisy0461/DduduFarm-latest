@@ -8,14 +8,12 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BoundsInt area;
     public bool Placed { get; private set; }
-	public event Action gridActivate = null;
 	
-	//[HideInInspector]
-	 public GameObject editModesObject;
-	//[HideInInspector]
-	 public EditModes editModes;
+	[HideInInspector] public GameObject editModesObject;
+	[HideInInspector] public EditModes editModes;
     [HideInInspector] public Vector3 prePos;
-    [HideInInspector] public bool isPointerDown = false;  // EditMode인가?
+    [HideInInspector] public bool isPointerDown = false;
+
 	public SpriteRenderer render;
 	private float minClickTime = 1f;
 	private bool isClick;
@@ -25,8 +23,8 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	
 	private void Start() 
 	{
-		if (prePos != Vector3.zero)
-			render.sortingOrder = (int)(this.transform.position.y * -10 + this.transform.position.x * -10);
+		render.sortingOrder = 
+			(int)((this.transform.position.y + render.transform.localPosition.y) * -9 + (this.transform.position.x + render.transform.localPosition.x) * -9);
 		editModes.tilemap.gridActivate += CallBackActiveGrid;
 	}
 

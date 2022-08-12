@@ -11971,7 +11971,7 @@ GameObject:
   - component: {fileID: 572323171}
   - component: {fileID: 572323173}
   m_Layer: 0
-  m_Name: DduduSpawner
+  m_Name: Ddudus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12669,7 +12669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 582149075}
   m_Layer: 5
-  m_Name: 2_DownUI
+  m_Name: 2_Menu
   m_TagString: ToggleUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14814,7 +14814,7 @@ GameObject:
   - component: {fileID: 709754010}
   - component: {fileID: 709754011}
   m_Layer: 5
-  m_Name: UserData
+  m_Name: 0_UserData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15286,7 +15286,7 @@ RectTransform:
   - {fileID: 1570846570}
   - {fileID: 2064660917}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17802,7 +17802,7 @@ RectTransform:
   - {fileID: 1096826370}
   - {fileID: 437448846}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -18606,7 +18606,7 @@ RectTransform:
   - {fileID: 579936834}
   - {fileID: 283280546}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -38016,7 +38016,7 @@ GameObject:
   - component: {fileID: 1069812924}
   - component: {fileID: 1069812925}
   m_Layer: 0
-  m_Name: BuildingParent
+  m_Name: Buildings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39407,7 +39407,7 @@ RectTransform:
   - {fileID: 981695628}
   - {fileID: 1129390427}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -40229,7 +40229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169740613}
   m_Layer: 5
-  m_Name: 1_UpUI
+  m_Name: 1_Map
   m_TagString: ToggleUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44290,7 +44290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364014693}
   m_Layer: 5
-  m_Name: UIs
+  m_Name: 3_UIs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44307,13 +44307,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1455939202}
   - {fileID: 871524621}
   - {fileID: 1667338628}
   - {fileID: 908306318}
   - {fileID: 1113451570}
   - {fileID: 734769032}
   - {fileID: 1533150255}
-  - {fileID: 1455939202}
   - {fileID: 1635401241}
   - {fileID: 518247634}
   - {fileID: 85240123}
@@ -46192,7 +46192,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -47859,7 +47859,7 @@ RectTransform:
   - {fileID: 641756838}
   - {fileID: 598466972}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -50781,7 +50781,7 @@ RectTransform:
   - {fileID: 1305544414}
   - {fileID: 290217854}
   m_Father: {fileID: 1364014693}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

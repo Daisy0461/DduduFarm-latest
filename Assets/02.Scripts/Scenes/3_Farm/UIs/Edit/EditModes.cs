@@ -40,14 +40,14 @@ public class EditModes : MonoBehaviour
         buildingAttrib = selectedBuilding.GetComponent<BuildingAttrib>();
         selectedBuilding.isPointerDown = true;
         selectedBuilding.render.sortingLayerName = "UI";
-        selectedBuilding.render.sortingOrder = 0;
         selectedBuilding.GetComponentInChildren<PolygonCollider2D>().isTrigger = true;
     }
 
     private void OnDisable() 
     {
         selectedBuilding.GetComponentInChildren<PolygonCollider2D>().isTrigger = false;
-        selectedBuilding.render.sortingOrder = (int)(selectedBuilding.transform.position.y * -10 + selectedBuilding.transform.position.x * -10);
+        selectedBuilding.render.sortingOrder = (int)((selectedBuilding.transform.position.y + selectedBuilding.render.transform.localPosition.y) * -9 
+                    + (selectedBuilding.transform.position.x + selectedBuilding.render.transform.localPosition.x) * -9);
         selectedBuilding.render.sortingLayerName = "Object";
         selectedBuilding.isPointerDown = false;
         
@@ -66,7 +66,7 @@ public class EditModes : MonoBehaviour
         if (selectedBuilding.CanBePlaced())
         {
             selectedBuilding.isPointerDown = false;
-            // BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
+            BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
             tilemap.SetBuilding();
             this.gameObject.SetActive(false);
         }
@@ -82,7 +82,7 @@ public class EditModes : MonoBehaviour
     {   
         if (selectedBuilding.prePos == Vector3.zero)
         {
-            // OnclickInventoryYes();
+            OnclickInventoryYes();
             // test
             tilemap.CancelBuilding();
             Destroy(selectedBuilding.gameObject);
@@ -93,8 +93,8 @@ public class EditModes : MonoBehaviour
         selectedBuilding.transform.position = selectedBuilding.prePos;
         this.transform.position = cam.WorldToScreenPoint(selectedBuilding.transform.position);
         selectedBuilding.isPointerDown = false;
-        // BM.GetData(selectedBuilding.data.id).SetPos(selectedBuilding.transform.position);
-        // BM.Save();
+        BM.GetData(buildingAttrib.data.id).SetPos(selectedBuilding.transform.position);
+        BM.Save();
         tilemap.CancelBuilding();
         this.gameObject.SetActive(false);
     }
@@ -122,12 +122,12 @@ public class EditModes : MonoBehaviour
             dduduSpawner.FindDduduObject(selectedBuilding.GetComponent<Craft>().data.workerId).gameObject.SetActive(true);
             selectedBuilding.GetComponent<Craft>().data.workerId = 0;
         }
-        // selectedBuilding.data.isDone = false;
-        // selectedBuilding.data.cycleRemainTime = 0;
+        buildingAttrib.data.isDone = false;
+        buildingAttrib.data.cycleRemainTime = 0;
         
         /* -- building eliminate --  */
-        // BM.GetData(selectedBuilding.data.id).isBuilded = false;
-        // editUI.CreateEditBtnUI(BM.GetData(selectedBuilding.data.id));
+        BM.GetData(buildingAttrib.data.id).isBuilded = false;
+        editUI.CreateEditBtnUI(BM.GetData(buildingAttrib.data.id));
         Destroy(selectedBuilding.gameObject);
         tilemap.CancelBuilding();
         BM.Save();
@@ -137,17 +137,17 @@ public class EditModes : MonoBehaviour
 
     public void InitPanSell()   // Btn_Sell 에 할당되어 있는 기능
     {
-        // BuildingData data = selectedBuilding.data;
+        BuildingData data = buildingAttrib.data;
     
-        // Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
-        // Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
+        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
+        Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
     }
 
     public void OnClickSell()
     {
-        // BuildingData data = BM.GetData(selectedBuilding.data.id);
-        // BM.RemoveData(data);
-        // ConstructionUI.SpendMoney(-data.info.sellCost);
+        BuildingData data = BM.GetData(buildingAttrib.data.id);
+        BM.RemoveData(data);
+        ConstructionUI.SpendMoney(-data.info.sellCost);
         moneyText.TextUpdate();
         Destroy(selectedBuilding.gameObject);
 

@@ -55,7 +55,7 @@ public class GridBuildingSystem : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            if (EventSystem.current?.currentSelectedGameObject?.name[0] == 'B')
+            if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject?.name[0] == 'B')
             {// only btn, start with B
                 return;
             }
@@ -69,6 +69,8 @@ public class GridBuildingSystem : MonoBehaviour
                 {
                     temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos);
                     prevPos = cellPos;
+                    // if (touchPos가 카메라 사이드로 갔을 때)
+                        // 화면을 천천히 이동한다
                     FollowBuilding();
                 }
             }
