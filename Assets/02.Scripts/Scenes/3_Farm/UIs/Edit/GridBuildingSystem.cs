@@ -115,7 +115,9 @@ public class GridBuildingSystem : MonoBehaviour
     
     public Building InitializeWithBuilding(GameObject building)
     {
-        temp = Instantiate(building, Camera.main.transform.position + new Vector3(0,0,10), Quaternion.identity).GetComponentInChildren<Building>();
+        Vector3 camPos = Camera.main.transform.position + new Vector3(-.5f,-.5f,10);
+        Vector3Int cellPos = gridLayout.LocalToCell(camPos);
+        temp = Instantiate(building, gridLayout.CellToLocalInterpolated(cellPos), Quaternion.identity).GetComponentInChildren<Building>();
         FollowBuilding();
         
         return temp;

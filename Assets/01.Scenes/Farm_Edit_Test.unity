@@ -38050,7 +38050,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DS: {fileID: 572323171}
   editModes: {fileID: 981695625}
-  tilemap: {fileID: 1779533750}
   EditCommonPrefab:
   - {fileID: 8995782698455196947, guid: 2125ac099ee77f743a01a5d6d6f080ca, type: 3}
   - {fileID: 3799278573694594930, guid: e48a49ed2b64b4044a4d3b49d668fb0c, type: 3}

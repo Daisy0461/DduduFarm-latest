@@ -25,7 +25,8 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	
 	private void Start() 
 	{
-		render.sortingOrder = (int)(this.transform.position.y * -10 + this.transform.position.x * -10);
+		if (prePos != Vector3.zero)
+			render.sortingOrder = (int)(this.transform.position.y * -10 + this.transform.position.x * -10);
 		editModes.tilemap.gridActivate += CallBackActiveGrid;
 	}
 

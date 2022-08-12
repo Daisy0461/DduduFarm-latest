@@ -33,7 +33,7 @@ public class EditItem : MonoBehaviour
             craft.data = data;
             craft.popupBuilding = editUI.popupBuildings[1];
         }
-        building.transform.SetPositionAndRotation(pos, rotate);
+        // building.transform.SetPositionAndRotation(pos, rotate);
         building.transform.parent = editUI.parentBuildings.transform;
         
         building.isPointerDown = true;
