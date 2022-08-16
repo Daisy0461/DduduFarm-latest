@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1160128199
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1959777701923225297, guid: 4e59d777f58af42489d05d0796b802f7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -392,8 +392,8 @@ MonoBehaviour:
   DS: {fileID: 0}
   remainTimeStr: 
   popupBuilding: {fileID: 0}
-  outputBtn: {fileID: 4097714272178078518}
   building: {fileID: 8646043332092763054}
+  outputBtn: {fileID: 4097714272178078518}
   audioSource: {fileID: 8646043332092763043}
 --- !u!82 &8646043332092763043
 AudioSource:

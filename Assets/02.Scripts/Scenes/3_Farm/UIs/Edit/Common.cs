@@ -1,16 +1,16 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
-public class Common : BuildingAttrib
+public class Common : BuildingAttrib, IPointerUpHandler
 {
     public string remainTimeStr;
     public PopupBuilding popupBuilding;
     [SerializeField] Building building;
     [SerializeField] GameObject goldBtn;
     [SerializeField] AudioSource audioSource;
-    
-    int buildingId;
+
     Coroutine m_CycleTimerCoroutine = null;
     ItemManager IM;
     
@@ -102,7 +102,7 @@ public class Common : BuildingAttrib
         m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(data.cycleRemainTime));
     }
 
-    public void ButtonUp()
+    public void OnPointerUp(PointerEventData e)
     {
         if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
 		{

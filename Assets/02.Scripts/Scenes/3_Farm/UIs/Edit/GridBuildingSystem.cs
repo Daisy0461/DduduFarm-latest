@@ -170,7 +170,7 @@ public class GridBuildingSystem : MonoBehaviour
         prevArea = buildingArea;
     }
 
-    private void ClearArea()
+    public void ClearArea()
     {
         TileBase[] toClear = new TileBase[prevArea.size.x * prevArea.size.y * prevArea.size.z];
         FillTiles(toClear, TileType.Empty);

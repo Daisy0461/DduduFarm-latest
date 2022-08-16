@@ -6,11 +6,12 @@ using System;
 public class BuildingAttrib : MonoBehaviour
 {
     public BuildingData data;
+    protected int buildingId;
     protected DateTime m_AppQuitTime;
 
     private void OnApplicationFocus(bool focusStatus) 
     {
-        // data = BuildingManager.Instance.GetData(buildingId);
+        data = BuildingManager.Instance.GetData(buildingId);
     }
 
     public bool LoadAppQuitTime() 

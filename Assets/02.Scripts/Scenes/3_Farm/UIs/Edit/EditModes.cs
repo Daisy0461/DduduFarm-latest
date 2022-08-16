@@ -25,6 +25,8 @@ public class EditModes : MonoBehaviour
     public MoneyText moneyText;
     Camera cam;
 
+#region  Unity Method
+
     private void Start() 
     {
         cam = Camera.main;
@@ -53,7 +55,9 @@ public class EditModes : MonoBehaviour
         
         TM.enabled = true;
         TM.UIObjActiveManage(true);
+        tilemap.ClearArea();
         tilemap.gameObject.SetActive(false);
+        BM.Save();
     }
 
     private void Update() 
@@ -61,11 +65,12 @@ public class EditModes : MonoBehaviour
         this.transform.position = cam.WorldToScreenPoint(selectedBuilding.render.transform.position);
     }
 
+#endregion
+
     public void OnClickFix()
     {
         if (selectedBuilding.CanBePlaced())
         {
-            selectedBuilding.isPointerDown = false;
             BM.GetData(buildingAttrib.data.id).SetPos(buildingAttrib.transform.position);
             tilemap.SetBuilding();
             this.gameObject.SetActive(false);
@@ -80,77 +85,71 @@ public class EditModes : MonoBehaviour
 
     public void OnClickCancel()
     {   
-        if (selectedBuilding.prePos == Vector3.zero)
+        if (selectedBuilding.prePos == Vector3.zero)    // instantiate cancel
         {
             OnclickInventoryYes();
-            // test
-            tilemap.CancelBuilding();
-            Destroy(selectedBuilding.gameObject);
-            this.gameObject.SetActive(false);
-            // test
-            return;
         }
-        selectedBuilding.transform.position = selectedBuilding.prePos;
-        this.transform.position = cam.WorldToScreenPoint(selectedBuilding.transform.position);
-        selectedBuilding.isPointerDown = false;
-        BM.GetData(buildingAttrib.data.id).SetPos(selectedBuilding.transform.position);
-        BM.Save();
-        tilemap.CancelBuilding();
-        this.gameObject.SetActive(false);
+        else                                            // edit cancel
+        {
+            selectedBuilding.transform.position = selectedBuilding.prePos;
+            BM.GetData(buildingAttrib.data.id).SetPos(selectedBuilding.transform.position);
+            tilemap.SetBuilding();
+            this.gameObject.SetActive(false);
+        }
     }
 
     public void OnClickInventory()
     {
-        if (selectedBuilding.GetComponent<Craft>() != null)
+        if (buildingAttrib.data.info.code >= (int)DataTable.Craft 
+            && !selectedBuilding.GetComponent<Craft>().IsWorking())
         {
-            if (!selectedBuilding.GetComponent<Craft>().IsWorking())
-            {
-                OnclickInventoryYes();
-                return;
-            }
+            OnclickInventoryYes();
         }
-        PopupBuildingWarning.GetComponentInChildren<Text>().text = "보관 시 생산 중인 아이템이 모두 사라집니다.\n정말 보관하시겠습니까?";
-        PopupBuildingWarning.SetActive(true);
+        else
+        {
+            PopupBuildingWarning.GetComponentInChildren<Text>().text = "보관 시 생산 중인 아이템이 모두 사라집니다.\n정말 보관하시겠습니까?";
+            PopupBuildingWarning.SetActive(true);
+        }
     }
 
     public void OnclickInventoryYes()
     {// PopupBuildingWarning - yes funciotn
         /* -- working --  */
-        if (selectedBuilding.GetComponent<Craft>() != null && selectedBuilding.GetComponent<Craft>().IsWorking())
+        if (buildingAttrib.data.info.code >= (int)DataTable.Craft 
+            && selectedBuilding.GetComponent<Craft>().IsWorking())
         {
-            DduduManager.Instance.GetData(selectedBuilding.GetComponent<Craft>().data.workerId).isWork = false;
-            dduduSpawner.FindDduduObject(selectedBuilding.GetComponent<Craft>().data.workerId).gameObject.SetActive(true);
-            selectedBuilding.GetComponent<Craft>().data.workerId = 0;
+            DduduManager.Instance.GetData(buildingAttrib.data.workerId).isWork = false;
+            dduduSpawner.FindDduduObject(buildingAttrib.data.workerId).gameObject.SetActive(true);
+            buildingAttrib.data.workerId = 0;
         }
         buildingAttrib.data.isDone = false;
         buildingAttrib.data.cycleRemainTime = 0;
         
         /* -- building eliminate --  */
-        BM.GetData(buildingAttrib.data.id).isBuilded = false;
-        editUI.CreateEditBtnUI(BM.GetData(buildingAttrib.data.id));
+        buildingAttrib.data.isBuilded = false;
+        editUI.CreateEditBtnUI(buildingAttrib.data);
         Destroy(selectedBuilding.gameObject);
-        tilemap.CancelBuilding();
-        BM.Save();
-        
         this.gameObject.SetActive(false);
     }
 
-    public void InitPanSell()   // Btn_Sell 에 할당되어 있는 기능
+    public void InitPanSell()   // assign -> Btn_Sell
     {
-        BuildingData data = buildingAttrib.data;
-    
-        Pan_Sell.GetComponentInChildren<Text>().text = data.info.name + "을 \n판매하시겠습니까?";
-        Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (data.info.sellCost).ToString();
+        Pan_Sell.GetComponentInChildren<Text>().text = buildingAttrib.data.info.name + "을 \n판매하시겠습니까?";
+        Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (buildingAttrib.data.info.sellCost).ToString();
     }
 
     public void OnClickSell()
     {
-        BuildingData data = BM.GetData(buildingAttrib.data.id);
-        BM.RemoveData(data);
-        ConstructionUI.SpendMoney(-data.info.sellCost);
+        BM.RemoveData(buildingAttrib.data);
+        ConstructionUI.SpendMoney(-buildingAttrib.data.info.sellCost);
         moneyText.TextUpdate();
         Destroy(selectedBuilding.gameObject);
 
         this.gameObject.SetActive(false);
+    }
+
+    private void OnApplicationFocus(bool focusStatus) 
+    {
+        buildingAttrib.data = BuildingManager.Instance.GetData(buildingAttrib.data.id);
     }
 }

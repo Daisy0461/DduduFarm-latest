@@ -15,6 +15,8 @@ public class BuildingData
     {
         var ran = new System.Random();
         this.id = ran.Next();
+        while (BuildingManager.Instance.IsDataExist(id))
+            id++;
         this.info = info;
         this.isBuilded = false;
         this.isDone = false;

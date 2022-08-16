@@ -11,8 +11,14 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	
 	[HideInInspector] public GameObject editModesObject;
 	[HideInInspector] public EditModes editModes;
-    [HideInInspector] public Vector3 prePos;
-    [HideInInspector] public bool isPointerDown = false;
+	
+	#region for settings so have to address
+	
+	[HideInInspector] public Vector3 prePos;
+    // [HideInInspector]
+	 public bool isPointerDown = false;
+	
+	#endregion
 
 	public SpriteRenderer render;
 	private float minClickTime = 1f;
@@ -20,12 +26,17 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private float clickTime;
 
 	#region Unity Methods
-	
+
 	private void Start() 
 	{
 		render.sortingOrder = 
 			(int)((this.transform.position.y + render.transform.localPosition.y) * -9 + (this.transform.position.x + render.transform.localPosition.x) * -9);
 		editModes.tilemap.gridActivate += CallBackActiveGrid;
+	}
+
+	private void OnDestroy() 
+	{
+		editModes.tilemap.gridActivate -= this.CallBackActiveGrid;
 	}
 
 	#endregion

@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
-public class Craft : BuildingAttrib
+public class Craft : BuildingAttrib, IPointerUpHandler
 {
     public DduduSpawner DS;
     public string remainTimeStr;
@@ -11,7 +12,6 @@ public class Craft : BuildingAttrib
     [SerializeField] GameObject outputBtn;
     [SerializeField] AudioSource audioSource;
     
-    int buildingId;
     Coroutine m_CycleTimerCoroutine = null;
     
     private void Start() 
@@ -110,12 +110,18 @@ public class Craft : BuildingAttrib
         data.workerId = 0;
     }
 
-    public void ButtonUp()
+    public void OnPointerUp(PointerEventData e)
     {
         if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
 		{
             if (outputBtn.activeSelf)
 			    OnClickOutput();
+            else
+			{
+				popupBuilding.craft = this;
+				popupBuilding.gameObject.SetActive(true);
+				popupBuilding.RenewPanel(popupBuilding.index);	
+			}
         }
     }
 }
