@@ -8,25 +8,35 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     public BoundsInt area;
     public bool Placed { get; private set; }
-	public event Action gridActivate = null;
 	
-	//[HideInInspector]
-	 public GameObject editModesObject;
-	//[HideInInspector]
-	 public EditModes editModes;
-    [HideInInspector] public Vector3 prePos;
-    [HideInInspector] public bool isPointerDown = false;  // EditMode인가?
+	[HideInInspector] public GameObject editModesObject;
+	[HideInInspector] public EditModes editModes;
+	
+	#region for settings so have to address
+	
+	[HideInInspector] public Vector3 prePos;
+    // [HideInInspector]
+	 public bool isPointerDown = false;
+	
+	#endregion
+
 	public SpriteRenderer render;
 	private float minClickTime = 1f;
 	private bool isClick;
 	private float clickTime;
 
 	#region Unity Methods
-	
+
 	private void Start() 
 	{
-		render.sortingOrder = (int)(this.transform.position.y * -10);
+		render.sortingOrder = 
+			(int)((this.transform.position.y + render.transform.localPosition.y) * -9 + (this.transform.position.x + render.transform.localPosition.x) * -9);
 		editModes.tilemap.gridActivate += CallBackActiveGrid;
+	}
+
+	private void OnDestroy() 
+	{
+		editModes.tilemap.gridActivate -= this.CallBackActiveGrid;
 	}
 
 	#endregion
@@ -97,8 +107,7 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		Placed = false;
 		editModes.tilemap.temp = this;
 		editModes.tilemap.LongClickBuilding();
-		EditModeActive(); // active grid, before longclick
-		// editModes.tilemap.LongClickBuilding();
+		EditModeActive(); // longclick then callback
 	}
 
     public void EditModeActive()

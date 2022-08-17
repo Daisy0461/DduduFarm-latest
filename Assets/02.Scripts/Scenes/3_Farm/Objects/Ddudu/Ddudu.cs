@@ -17,6 +17,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     Vector2 pos;
     BoxCollider2D boxCollider2D;
     GameObject touchProtectPanel;
+    SpriteRenderer render;
 
     [Header("Attribute")]
     public Craft interest; // 관심 건물             // 관심 건물에 해당하면 능률 증가
@@ -36,14 +37,15 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         if (transform.GetChild(0).childCount >= 2) touchProtectPanel = transform.GetChild(0).GetChild(1).gameObject;
         audioSource = GetComponent<AudioSource>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        render = GetComponent<SpriteRenderer>();
         base.Start();
         InvokeRepeating("ChoseDir", 0f, 3f); 
     }
 
     protected override void Update() 
     {
-        this.GetComponent<SpriteRenderer>().sortingOrder = 
-                    (int)(this.transform.position.y * -10) + (int)(transform.position.x * -5);
+        render.sortingOrder = 
+                    (int)(this.transform.position.y * -10) + (int)(transform.position.x * -10);
         base.Update();
 
         if (IconGem.activeSelf == false && data.satiety > 0)  // 돌아다니고 있을 때

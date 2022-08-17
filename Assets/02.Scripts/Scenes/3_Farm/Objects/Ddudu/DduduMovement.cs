@@ -27,11 +27,11 @@ public class DduduMovement : MonoBehaviour
 
     public void HandleAnimation()
     {
-        if (animator == null) return;
-        if (dir.x != 0 || dir.y != 0)
-            AnimateMovement();
-        else
-            animator.SetLayerWeight(1, 0);
+        // if (animator == null) return;
+        // if (dir.x != 0 || dir.y != 0)
+            // AnimateMovement();
+        // else
+            // animator.SetLayerWeight(1, 0);
     }
 
     public void Move()

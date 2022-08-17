@@ -1,26 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using UnityEngine.EventSystems;
 
-public class Craft : BuildingAttrib
+public class Craft : BuildingAttrib, IPointerUpHandler
 {
     public DduduSpawner DS;
-    public BuildingData data;
-    public int buildingId;
-    public GameObject outputBtn;
     public string remainTimeStr;
     public PopupBuilding popupBuilding;
-    private DateTime m_AppQuitTime;    // 유저 게임 이탈 시간 변수
-    private Coroutine m_CycleTimerCoroutine = null;
-    WaitForSeconds sec = new WaitForSeconds(1f);
-    [SerializeField] private AudioSource audioSource;
-
-    private void OnApplicationFocus(bool focusStatus) 
-    {
-        var tmpBuilding = BuildingManager.Instance.GetData(buildingId);
-        tmpBuilding = data;
-        if (focusStatus == true && IsWorking()) SetRechargeScheduler();
-    }
+    [SerializeField] Building building;
+    [SerializeField] GameObject outputBtn;
+    [SerializeField] AudioSource audioSource;
+    
+    Coroutine m_CycleTimerCoroutine = null;
     
     private void Start() 
     {
@@ -30,32 +22,12 @@ public class Craft : BuildingAttrib
         if (outputBtn == null) outputBtn = transform.GetChild(0).gameObject;
         if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
         if (!data.isDone) outputBtn.SetActive(false);
+        
         LoadAppQuitTime();
         if (IsWorking()) SetRechargeScheduler();
     }
 
-    public bool LoadAppQuitTime() 
-    { 
-        bool result = false; 
-        try 
-        { 
-            if (PlayerPrefs.HasKey("AppQuitTime")) 
-            { 
-                var appQuitTime = PlayerPrefs.GetString("AppQuitTime"); 
-                m_AppQuitTime = DateTime.FromBinary(Convert.ToInt64(appQuitTime)); 
-            }
-            else 
-                m_AppQuitTime = DateTime.FromBinary(Convert.ToInt64(DateTime.Now.ToLocalTime().ToBinary().ToString())); 
-            result = true; 
-        } 
-        catch (System.Exception e) 
-        {
-            Debug.LogError("LoadAppQuitTime Failed (" + e.Message + ")"); 
-        } 
-        return result; 
-    }
-
-    public void SetRechargeScheduler(bool call=false)
+    public void SetRechargeScheduler(bool callback=false)
     {
 
         if (m_CycleTimerCoroutine != null) 
@@ -63,7 +35,8 @@ public class Craft : BuildingAttrib
             StopCoroutine(m_CycleTimerCoroutine);
             m_CycleTimerCoroutine = null;
         }
-        if (call == true) 
+
+        if (callback == true) 
         {
             data.cycleRemainTime = data.info.cycleTime;
             m_AppQuitTime = DateTime.Now.ToLocalTime();
@@ -85,6 +58,8 @@ public class Craft : BuildingAttrib
 
     private IEnumerator DoRechargeTimer(int remainTime)
     {
+        WaitForSeconds sec = new WaitForSeconds(1f);
+
         data.cycleRemainTime = remainTime;
         while (data.cycleRemainTime > 0)
         {
@@ -135,12 +110,18 @@ public class Craft : BuildingAttrib
         data.workerId = 0;
     }
 
-    public void ButtonUp()
+    public void OnPointerUp(PointerEventData e)
     {
-        // if (!isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
+        if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
 		{
             if (outputBtn.activeSelf)
 			    OnClickOutput();
+            else
+			{
+				popupBuilding.craft = this;
+				popupBuilding.gameObject.SetActive(true);
+				popupBuilding.RenewPanel(popupBuilding.index);	
+			}
         }
     }
 }

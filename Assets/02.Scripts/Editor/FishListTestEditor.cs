@@ -21,5 +21,10 @@ public class FishListTestEditor : Editor {
         {
             test.SetMoney();
         }
+
+        if (GUILayout.Button("Set Buildings"))
+        {
+            test.SetBuildings();
+        }
     }
 }

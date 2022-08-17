@@ -28,7 +28,6 @@ public class TestEdit : MonoBehaviour
 		{
 			gridBuildingSystem.gameObject.SetActive(true);
 			gridBuildingSystem.temp = building;
-			// gridBuildingSystem.LongClickBuilding();
 		}
 	}
 }

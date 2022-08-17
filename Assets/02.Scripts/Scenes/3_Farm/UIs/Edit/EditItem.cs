@@ -11,14 +11,11 @@ public class EditItem : MonoBehaviour
     public GameObject[] EditCraftPrefab;
     public EditUI editUI;
     public BuildingData data;
-    private Quaternion rotate = new Quaternion();
 
     public void OnClickEditItem()
     {
         int code = data.info.code;
         Building building;
-        Vector3 pos = Camera.main.transform.position;
-        // var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
         
         if (code <= 50)    // Common
         {
@@ -34,7 +31,6 @@ public class EditItem : MonoBehaviour
             craft.data = data;
             craft.popupBuilding = editUI.popupBuildings[1];
         }
-        building.transform.SetPositionAndRotation(pos, rotate);
         building.transform.parent = editUI.parentBuildings.transform;
         
         building.isPointerDown = true;
@@ -46,7 +42,5 @@ public class EditItem : MonoBehaviour
         if (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code) > 0)
             infoText.text = (editUI.BM.GetBuildingAmount(code) - editUI.BM.GetBuildedAmount(code)) + " 개";
         else Destroy(gameObject);
-
-        editUI.OnclickEditUIQuit();  // 편집 인벤토리 닫기
     }
 }
