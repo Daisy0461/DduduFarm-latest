@@ -128,14 +128,10 @@ public class TouchManager : MonoBehaviour
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
-        } else if (Input.GetTouch(0).phase == TouchPhase.End)
-        {
-            
         }
 #endif
 #if !UNITY_ANDROID
-        if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
-        else if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
             cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
@@ -151,7 +147,6 @@ public class TouchManager : MonoBehaviour
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
             touchCurPosition = (Vector2)Input.mousePosition;
         }
-        else if (Input.GetMouseButtonUp(0)) touchCurPosition = Vector3.zero;
 #endif
     }
 
