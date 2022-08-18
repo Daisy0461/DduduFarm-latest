@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {    
-    [HideInInspector] public DduduManager DM;
     public DduduData data;
     public float satietyTime = 0f;
 
@@ -15,8 +14,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
 
     [Header("Pointing")]
     Vector2 pos;
-    BoxCollider2D boxCollider2D;
-    GameObject touchProtectPanel;
+    CircleCollider2D circleCollider2D;
     SpriteRenderer render;
 
     [Header("Attribute")]
@@ -28,25 +26,22 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     public AudioClip eatingSound;
 
     private bool isEnter = false;
-    private WaitForSeconds sec1_5 = new WaitForSeconds(1.5f);
     
+#region Unity Method
 
 	protected override void Start() 
     {
-        DM = DduduManager.Instance;
-        if (transform.GetChild(0).childCount >= 2) touchProtectPanel = transform.GetChild(0).GetChild(1).gameObject;
-        audioSource = GetComponent<AudioSource>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
-        render = GetComponent<SpriteRenderer>();
         base.Start();
+        audioSource = GetComponent<AudioSource>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        render = GetComponent<SpriteRenderer>();
         InvokeRepeating("ChoseDir", 0f, 3f); 
     }
 
     protected override void Update() 
     {
-        render.sortingOrder = 
-                    (int)(this.transform.position.y * -10) + (int)(transform.position.x * -10);
         base.Update();
+        render.sortingOrder = (int)(this.transform.position.y * -10) + (int)(transform.position.x * -10);
 
         if (IconGem.activeSelf == false && data.satiety > 0)  // 돌아다니고 있을 때
         {
@@ -64,48 +59,9 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         }
     }
 
-    public void OnDrag(PointerEventData eventData)
-    {  
-        boxCollider2D.enabled = false;
-        this.transform.position = Camera.main.ScreenToWorldPoint(eventData.position);
-        this.transform.position -= new Vector3(0,0,-10);
-    }
-
-    public void OnPointerDown(PointerEventData eventData) 
-    {    
-        pos = dir;  // 잡으면 일단 뚜두 가만히 있기
-        dir = Vector2.zero;
-        CancelInvoke("ChoseDir");
-
-        if (touchProtectPanel != null) touchProtectPanel.SetActive(true);
-        int ran = Random.Range(0,3);
-        audioSource.clip = normalSounds[ran];
-        audioSource.Play();
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (SceneManager.GetActiveScene().name == "Farm")
-        {
-            if (touchProtectPanel != null) touchProtectPanel.SetActive(false);
-            boxCollider2D.enabled = true;
-            dir = pos;
-            InvokeRepeating("ChoseDir", 0f, 3f);
-        }
-    }
-
-    public void ActiveIconFeed() // -> ActiveIconFeed
-    {
-        if (!IconFeed.activeSelf & !IconGem.activeSelf)
-        {
-            IconFeed.SetActive(true);
-        }
-    }
-
-    
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        if (isEnter == false)
+        if (isEnter == false)   // for 1
         {
             isEnter = true;
             dir = Vector2.zero;
@@ -116,12 +72,46 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         }
     }
 
-    public void ChoseDir() 
-    { // 랜덤한 방향으로 움직인다.
-        float h = Random.Range(-1f, 1f);
-        float v = Random.Range(-1f, 1f);
-        Vector2 moveDir = new Vector2(h, v).normalized;
+#endregion
 
-        dir = moveDir;
+#region  Touch Method
+
+    public void OnDrag(PointerEventData eventData)
+    {  
+        this.transform.position = Camera.main.ScreenToWorldPoint(eventData.position);
+        this.transform.position -= new Vector3(0,0,-10);
     }
+
+
+    public void OnPointerDown(PointerEventData eventData) 
+    {    
+        pos = dir;  // 잡으면 일단 뚜두 가만히 있기
+        dir = Vector2.zero;
+        CancelInvoke("ChoseDir");
+
+        circleCollider2D.enabled = false;
+        int ran = Random.Range(0,3);
+        audioSource.clip = normalSounds[ran];
+        audioSource.Play();
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (SceneManager.GetActiveScene().name == "Farm")
+        {
+            circleCollider2D.enabled = true;
+            dir = pos;
+            InvokeRepeating("ChoseDir", 0f, 3f);
+        }
+    }
+
+#endregion
+
+    public void ActiveIconFeed() // -> ActiveIconFeed
+    {
+        if (!IconFeed.activeSelf & !IconGem.activeSelf)
+        {
+            IconFeed.SetActive(true);
+        }
+    }    
 }

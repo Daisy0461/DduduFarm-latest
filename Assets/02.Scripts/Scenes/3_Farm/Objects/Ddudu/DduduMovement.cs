@@ -46,4 +46,13 @@ public class DduduMovement : MonoBehaviour
         animator.SetFloat("x", dir.x);
         animator.SetFloat("y", dir.y);
     }
+
+    public void ChoseDir() 
+    {
+        float h = Random.Range(-1f, 1f);
+        float v = Random.Range(-1f, 1f);
+        Vector2 moveDir = new Vector2(h, v).normalized;
+
+        dir = moveDir;
+    }
 }
