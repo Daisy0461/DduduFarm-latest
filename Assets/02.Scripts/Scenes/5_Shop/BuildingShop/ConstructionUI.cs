@@ -215,7 +215,6 @@ public class ConstructionUI : MonoBehaviour
             return false;
         } else {
             IM.RemoveData((int)DataTable.Money, use);
-            // EncryptedPlayerPrefs.SetInt("Money", (getMoney - use));
             return true;
         }
     }

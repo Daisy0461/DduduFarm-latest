@@ -2698,6 +2698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc59b129373ae6498a8b17bbce13f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  val: 0
 --- !u!114 &371629360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2836,7 +2837,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 369930087
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &408107693
@@ -4966,7 +4967,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 369930087
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &824713568
@@ -7313,7 +7314,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 369930087
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1275606268
@@ -7803,7 +7804,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 369930087
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1404510281
