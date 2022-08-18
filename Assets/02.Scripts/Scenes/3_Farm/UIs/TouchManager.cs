@@ -123,7 +123,7 @@ public class TouchManager : MonoBehaviour
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
             // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize + factor;
+            var clampY = zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
