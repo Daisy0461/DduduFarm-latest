@@ -1,28 +1,29 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Gem : MonoBehaviour
+public class Gem : MonoBehaviour, IPointerClickHandler
 {
     public GameObject anim;
-    DduduGemFeedManage DFM;
-    int gemID;
-    int gemAmount;
+    [SerializeField] AudioClip gemSound;
 
     ItemManager IM;
     Ddudu parent;
+    
+    int gemID;
+    int gemAmount;
 
     private void Start() 
     {
         IM = ItemManager.Instance;
-        DFM = GetComponentInParent<DduduGemFeedManage>();
         parent = GetComponentInParent<Ddudu>();
         gemID = parent.data.info.code + (int)DataTable.Gem - (int)DataTable.Ddudu;
         gemAmount = (parent.data.info.code > (int)DataTable.CombineDdudu) ? 2 : 1;
     }
 
-    public void OnClickGem() 
+    public void OnPointerClick(PointerEventData e)
     {
-        DFM.PlayGemSound();
+        parent.audioSource.PlayOneShot(gemSound);
 
         // 인벤토리
         if (IM.AddData(gemID, gemAmount) == false)

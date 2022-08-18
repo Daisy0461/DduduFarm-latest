@@ -36,7 +36,7 @@ public class BuildingItem : MonoBehaviour
             // 설명 - 건물이름
             CSUI.common_explainTxt.text = info.note;
             // 골드 생산 주기
-            CSUI.goldCycleTxt.text = "골드 생산 주기 : " + info.cycleTime / 60 + " 분";
+            CSUI.goldCycleTxt.text = "골드 생산 주기 : " + (info.cycleTime).Sec2Time();
             // 골드 생산량
             CSUI.outputTxt.text = info.outputAmount.ToString();
 
@@ -51,7 +51,7 @@ public class BuildingItem : MonoBehaviour
             // 설명 - 건물 이름
             CSUI.craft_explainTxt.text = info.note;
             // 작업 시간
-            CSUI.craftCycleTxt.text = "작업 시간 : " + info.cycleTime / 60 + " 분";
+            CSUI.craftCycleTxt.text = "작업 시간 : " + (info.cycleTime).Sec2Time();
             // 포만도 소모량
             CSUI.satietyTxt.text = "포만도 소모량 : " + info.requireFull;
             // 재료 이미지

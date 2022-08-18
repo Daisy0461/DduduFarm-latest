@@ -48,7 +48,7 @@ public class ShopItemInform : MonoBehaviour
         {
             int time = SIUI.CM.GetInfo(info.code-50).grow1Time + SIUI.CM.GetInfo(info.code-50).grow2Time;
             SIUI.cycle_cycletimeTxt.text = "성장시간 : "
-                    +time/60+"분 "+time%60+"초";
+                    +(time).Sec2Time();
             SIUI.cycle_outputTxt.text = SIUI.IM.GetInfo(info.code-50).name+
                                     " "+SIUI.CM.GetInfo(info.code-50).havestMin+" ~ "+SIUI.CM.GetInfo(info.code-50).havestMax+"개";
         }
@@ -56,7 +56,7 @@ public class ShopItemInform : MonoBehaviour
         {
             int time = SIUI.FM.GetInfo(info.code-50).grow1Time + SIUI.FM.GetInfo(info.code-50).grow2Time;
             SIUI.cycle_cycletimeTxt.text = "성장시간 : "
-                    + time/60+"분 "+time%60+"초";
+                    +(time).Sec2Time();
             SIUI.cycle_outputTxt.text = SIUI.IM.GetInfo(info.code-50).name+" 1개";
         }
         SIUI.cycle_inputImg.sprite = Resources.Load<Sprite>(info.imgPath);

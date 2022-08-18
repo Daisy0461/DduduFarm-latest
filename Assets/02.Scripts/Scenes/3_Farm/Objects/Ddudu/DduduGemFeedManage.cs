@@ -3,14 +3,11 @@ using UnityEngine;
 
 public class DduduGemFeedManage : MonoBehaviour
 {
-    // 뚜두 하위의 _ 오브젝트에 붙어있으며, Gem과 Feed와 FeedUI에 기능을 준다.
+    // 뚜두 하위의 Canvas 오브젝트에 붙어있으며, Gem과 Feed와 FeedUI에 기능을 준다.
     public FishSelectListGenerator FishSelectList;
     public Ddudu ddudu;
     public GameObject IconGem;
     public GameObject IconFeed;
-
-    [Header("Audio")]
-    public AudioSource audioSource;
 
     public void OnClickFeed()
     {
@@ -34,10 +31,5 @@ public class DduduGemFeedManage : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         IconGem.SetActive(true);
-    }
-
-    public void PlayGemSound()
-    {
-        audioSource.Play();
     }
 }

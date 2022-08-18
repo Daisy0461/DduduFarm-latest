@@ -29,7 +29,8 @@ public class SellSlot : MonoBehaviour
         SI.audioSource.Play();
         if (bCode > 0)
             PopupBuilding();
-        else if (iData.info.code < (int)DataTable.Seed) // 200: 작물 250: 씨앗
+        else if (iData.info.code < (int)DataTable.Seed || 
+                ((int)DataTable.Output <= iData.info.code && iData.info.code < (int)DataTable.Fish)) // 200: 작물 250: 씨앗
             PopupOutput();
         else if (iData.info.code < (int)DataTable.Output) // 250: 씨앗 300: 가공물
             PopupCycle((int)DataTable.Seed);    
@@ -42,7 +43,7 @@ public class SellSlot : MonoBehaviour
     }
 
     public void PopupOutput()
-    {// 작물, 보석
+    {// 작물, 보석, 가공물
         SI.output_nameTxt.text = iData.info.name;
         SI.output_iconImg.sprite = Resources.Load<Sprite>(iData.info.imgPath);
         SI.output_noteTxt.text = iData.info.note;
@@ -59,7 +60,7 @@ public class SellSlot : MonoBehaviour
         {
             int time = SI.CM.GetInfo(iData.info.code-50).grow1Time + SI.CM.GetInfo(iData.info.code-50).grow2Time;
             SI.cycle_cycletimeTxt.text = "성장시간 : "
-                    +time/60+"분 "+time%60+"초";
+                    +(time).Sec2Time();
             SI.cycle_outputTxt.text = SI.IM.GetInfo(iData.info.code-50).name+
                                     " "+SI.CM.GetInfo(iData.info.code-50).havestMin+" ~ "+SI.CM.GetInfo(iData.info.code-50).havestMax+"개";
         }
@@ -67,7 +68,7 @@ public class SellSlot : MonoBehaviour
         {
             int time = SI.FM.GetInfo(iData.info.code-50).grow1Time + SI.FM.GetInfo(iData.info.code-50).grow2Time;
             SI.cycle_cycletimeTxt.text = "성장시간 : "
-                    + time/60+"분 "+time%60+"초";
+                    +(time).Sec2Time();
             SI.cycle_outputTxt.text = SI.IM.GetInfo(iData.info.code-50).name+" 1개";
         }
         SI.cycle_inputImg.sprite = Resources.Load<Sprite>(iData.info.imgPath);
@@ -98,7 +99,7 @@ public class SellSlot : MonoBehaviour
             // 설명 - 건물이름
             SI.common_explainTxt.text = info.note;
             // 골드 생산 주기
-            SI.common_goldCycleTxt.text = "골드 생산 주기 : " + info.cycleTime / 60 + " 분";
+            SI.common_goldCycleTxt.text = "골드 생산 주기 : " + (info.cycleTime).Sec2Time();
             // 골드 생산량
             SI.common_goldOutputTxt.text = info.outputAmount.ToString();
 
@@ -113,7 +114,7 @@ public class SellSlot : MonoBehaviour
             // 설명 - 건물 이름
             SI.craft_explainTxt.text = info.note;
             // 작업 시간
-            SI.craft_CycleTxt.text = "작업 시간 : " + info.cycleTime / 60 + " 분";
+            SI.craft_CycleTxt.text = "작업 시간 : " + (info.cycleTime).Sec2Time();
             // 포만도 소모량
             SI.craft_satietyTxt.text = "포만도 소모량 : " + info.requireFull;
             // 재료 이미지

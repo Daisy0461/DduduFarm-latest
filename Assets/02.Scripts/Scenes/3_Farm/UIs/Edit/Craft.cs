@@ -19,16 +19,18 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
 
-        if (outputBtn == null) outputBtn = transform.GetChild(0).gameObject;
-        if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
-        if (!data.isDone) outputBtn.SetActive(false);
+        if (!data.isDone && data.cycleRemainTime == 0) // first cycle
+            data.cycleRemainTime = data.info.cycleTime;
+        if (!data.isDone) 
+            outputBtn.SetActive(false);
         
         LoadAppQuitTime();
-        if (IsWorking()) SetRechargeScheduler();
+        SetRechargeScheduler();
     }
 
-    public void SetRechargeScheduler(bool callback=false)
+    override public void SetRechargeScheduler(bool newCycle=false)
     {
+        if (!IsWorking()) return;
 
         if (m_CycleTimerCoroutine != null) 
         {
@@ -36,8 +38,8 @@ public class Craft : BuildingAttrib, IPointerUpHandler
             m_CycleTimerCoroutine = null;
         }
 
-        if (callback == true) 
-        {
+        if (newCycle == true)
+        {   
             data.cycleRemainTime = data.info.cycleTime;
             m_AppQuitTime = DateTime.Now.ToLocalTime();
         }
@@ -48,9 +50,9 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         {
             data.cycleRemainTime = 0;
             data.isDone = true;
-            if (outputBtn != null) outputBtn.gameObject.SetActive(true);
+            outputBtn.gameObject.SetActive(true);
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
             DduduOut();
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
         } 
         else
             m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime));
@@ -60,39 +62,64 @@ public class Craft : BuildingAttrib, IPointerUpHandler
     {
         WaitForSeconds sec = new WaitForSeconds(1f);
 
-        data.cycleRemainTime = remainTime;
+        if (remainTime <= 0)
+        {
+            data.cycleRemainTime = 0;
+            data.isDone = true;
+            outputBtn.gameObject.SetActive(true);
+        }
+        else // remainTime > 0
+        {
+            data.cycleRemainTime = remainTime;
+        }
+
         while (data.cycleRemainTime > 0)
         {
-            yield return sec;
             data.cycleRemainTime -= 1;
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
+            yield return sec;
         }
 
         if(data.cycleRemainTime <= 0)
-        {   // 생산 버튼 UI 띄우기
+        {   
+            // 생산 버튼 UI 띄우기
             data.cycleRemainTime = 0;
             data.isDone = true;
-            BuildingManager.Instance.GetData(data.id).isDone = true;
-            if (outputBtn != null) outputBtn.gameObject.SetActive(true);
-            DduduOut();
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            outputBtn.gameObject.SetActive(true);
             m_CycleTimerCoroutine = null;
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
+            DduduOut();
         }
     }
 
     public void OnClickOutput()
     {
         audioSource.Play();
-        if (ItemManager.Instance.AddData(data.info.outputId, data.info.outputAmount) == false) return;
-        BuildingManager.Instance.GetData(data.id).isDone = false;
+        if (ItemManager.Instance.AddData(data.info.outputId, data.info.outputAmount) == false) 
+            return;
         data.isDone = false;
         outputBtn.SetActive(false);
+    }
+
+    public void OnPointerUp(PointerEventData e)
+    {
+        if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
+		{
+            if (outputBtn.activeSelf)   // 공방 건물, 작업 완료 시 보상 획득
+			    OnClickOutput();
+            else
+			{
+				popupBuilding.craft = this;
+				popupBuilding.gameObject.SetActive(true);
+				popupBuilding.RenewPanel(popupBuilding.index);	
+			}
+        }
     }
 
     public bool IsWorking()
     {
         bool ret = false;
-        data.isDone = transform.GetChild(0).gameObject.activeSelf;
+        // data.isDone = transform.GetChild(0).gameObject.activeSelf;
         if ((data.workerId != 0 && !data.isDone)      // 작업중 - data.worker 있고, isDone false
             || (data.workerId == 0 && data.isDone))  // 작업완료 - data.worker 없고, isDone true  
             ret = true;
@@ -108,20 +135,5 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         ddudu.transform.position = new Vector3(transform.position.x, transform.position.y-1, transform.position.z);
         ddudu.SetActive(true);
         data.workerId = 0;
-    }
-
-    public void OnPointerUp(PointerEventData e)
-    {
-        if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
-		{
-            if (outputBtn.activeSelf)
-			    OnClickOutput();
-            else
-			{
-				popupBuilding.craft = this;
-				popupBuilding.gameObject.SetActive(true);
-				popupBuilding.RenewPanel(popupBuilding.index);	
-			}
-        }
     }
 }

@@ -12,6 +12,8 @@ public class TouchManager : MonoBehaviour
     private Vector2 touchCurPosition;
 #endregion
 
+    bool canPanning;
+
     [Space(10f)]    
 #region // 줌인/줌아웃
     [Header("Zoom")]
@@ -31,9 +33,38 @@ public class TouchManager : MonoBehaviour
         cam = FindObjectOfType<Camera>();
     }
 
-    void Update () {
+    void Update () 
+    {
         // UIOnOff();
-        ScreenPanning();
+        
+#if UNITY_ANDROID
+
+        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
+            CanPanning();
+        else if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Moved && canPanning)
+            ScreenPanning();
+        else if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
+            canPanning = false;
+
+#endif
+
+#if !UNITY_ANDROID
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            CanPanning();
+            touchCurPosition = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton(0) && canPanning)
+            ScreenPanning();
+        else if (Input.GetMouseButtonUp(0))
+        {
+            touchCurPosition = Vector3.zero;
+            canPanning = false;
+        }
+
+#endif
+
         ZoomInOut();
     }
 
@@ -70,15 +101,19 @@ public class TouchManager : MonoBehaviour
         isOn = !(isOn & isActive);
     }
 
-    public void ScreenPanning() 
+    void CanPanning()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        if (results.Count > 0 && results[0].gameObject.layer == 5) // UI 레이어 외 오브젝트 클릭 시에도 패닝 가능
-            return;
+        if ((results.Count > 0 && results[0].gameObject.layer == 5)  || EventSystem.current.IsPointerOverGameObject()) // UI 레이어 클릭 시 패닝 불가
+            canPanning = false;
+        else canPanning = true;
+    }
 
+    public void ScreenPanning() 
+    {
 #if UNITY_ANDROID
         if (Input.touchCount == 1 && (Input.GetTouch(0).phase == TouchPhase.Moved))
         {
@@ -88,7 +123,7 @@ public class TouchManager : MonoBehaviour
             // /* clamp */
             var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
             // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize + factor;
+            var clampY = zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
@@ -96,8 +131,7 @@ public class TouchManager : MonoBehaviour
         }
 #endif
 #if !UNITY_ANDROID
-        if (Input.GetMouseButtonDown(0)) touchCurPosition = Input.mousePosition;
-        else if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;
             cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
@@ -113,7 +147,6 @@ public class TouchManager : MonoBehaviour
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
             touchCurPosition = (Vector2)Input.mousePosition;
         }
-        else if (Input.GetMouseButtonUp(0)) touchCurPosition = Vector3.zero;
 #endif
     }
 

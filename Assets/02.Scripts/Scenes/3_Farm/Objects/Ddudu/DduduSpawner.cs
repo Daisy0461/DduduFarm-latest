@@ -28,7 +28,7 @@ public class DduduSpawner : MonoBehaviour
         AddWaitingCreatedDduduList(); 
 
         //Test
-        if (this.transform.childCount <5)
+        if (this.transform.childCount < 5)
         for(int i=1; i<=5; i++)
         {
             var id = DM.AddData((int)DataTable.Ddudu+i);
