@@ -11,8 +11,15 @@ public class BuildingAttrib : MonoBehaviour
 
     private void OnApplicationFocus(bool focusStatus) 
     {
-        data = BuildingManager.Instance.GetData(buildingId);
+        if (focusStatus == true)
+        {
+            data = BuildingManager.Instance.GetData(buildingId);
+            LoadAppQuitTime();
+            SetRechargeScheduler();
+        }
     }
+
+    virtual public void SetRechargeScheduler(bool newCycle=false) {}
 
     public bool LoadAppQuitTime() 
     { 

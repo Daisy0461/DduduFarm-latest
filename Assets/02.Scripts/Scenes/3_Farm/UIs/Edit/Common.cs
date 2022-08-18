@@ -12,24 +12,22 @@ public class Common : BuildingAttrib, IPointerUpHandler
     [SerializeField] AudioSource audioSource;
 
     Coroutine m_CycleTimerCoroutine = null;
-    ItemManager IM;
     
-    private void Start()    // data.isDone 하지 않고 remainCycleTime==0 인 것은 첫 사이클이란 의미이므로 사이클 시간을 채워놔야 함
+    private void Start()
     {
-        IM = ItemManager.Instance;
-
         buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
 
-        if (goldBtn == null) goldBtn = transform.GetChild(0).gameObject;
-        if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
-        if (!data.isDone) goldBtn.SetActive(false);
+        if (!data.isDone && data.cycleRemainTime == 0) // first cycle
+            data.cycleRemainTime = data.info.cycleTime;
+        if (!data.isDone) 
+            goldBtn.SetActive(false);
         
         LoadAppQuitTime();
         SetRechargeScheduler();    
     }
 
-    public void SetRechargeScheduler()
+    override public void SetRechargeScheduler(bool newCycle=false)
     {
         if (m_CycleTimerCoroutine != null)
         {        
@@ -37,6 +35,12 @@ public class Common : BuildingAttrib, IPointerUpHandler
             m_CycleTimerCoroutine = null;
         }
 
+        if (newCycle == true)
+        {   
+            Debug.Log("==== newCycle ====");
+            data.cycleRemainTime = data.info.cycleTime;
+            m_AppQuitTime = DateTime.Now.ToLocalTime();
+        }
         var timeDifferenceInSec = (int)((DateTime.Now.ToLocalTime() - m_AppQuitTime).TotalSeconds); // 방치한 동안 흐른 시간(초) 계산
         var remainTime = data.cycleRemainTime - timeDifferenceInSec;
         
@@ -44,13 +48,11 @@ public class Common : BuildingAttrib, IPointerUpHandler
         {
             data.cycleRemainTime = 0;
             data.isDone = true;
-            if (goldBtn != null) goldBtn.gameObject.SetActive(true);
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            goldBtn.gameObject.SetActive(true);
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         } 
         else
-        {
             m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime));
-        }
     }
 
     private IEnumerator DoRechargeTimer(int remainTime)
@@ -61,7 +63,7 @@ public class Common : BuildingAttrib, IPointerUpHandler
         {
             data.cycleRemainTime = 0;
             data.isDone = true;
-            if (goldBtn != null) goldBtn.gameObject.SetActive(true);
+            goldBtn.gameObject.SetActive(true);
         }
         else // remainTime > 0
         {
@@ -71,7 +73,7 @@ public class Common : BuildingAttrib, IPointerUpHandler
         while (data.cycleRemainTime > 0)
         {
             data.cycleRemainTime -= 1;
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
             yield return sec;
         }
 
@@ -82,24 +84,19 @@ public class Common : BuildingAttrib, IPointerUpHandler
             data.isDone = true;
             if (goldBtn != null) goldBtn.gameObject.SetActive(true);
             m_CycleTimerCoroutine = null;
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         }
     }
 
     public void OnClickGoldBtn()
     {
-        if (IM.AddData((int)DataTable.Money, data.info.outputAmount) == false)
+        audioSource.Play();
+        if (ItemManager.Instance.AddData((int)DataTable.Money, data.info.outputAmount) == false)
             return;
         data.isDone = false;
         goldBtn.gameObject.SetActive(false);
-        audioSource.Play();
-
-        data.cycleRemainTime = data.info.cycleTime;
-        if (m_CycleTimerCoroutine != null)
-        {        
-            StopCoroutine(m_CycleTimerCoroutine);
-        }
-        m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(data.cycleRemainTime));
+        
+        SetRechargeScheduler(true);
     }
 
     public void OnPointerUp(PointerEventData e)

@@ -218,8 +218,7 @@ public class PopupBuilding : MonoBehaviour
 			}
 			else
 			{
-				goldCycleTxt.text = "골드 생산 시간 : " + (common.data.info.cycleTime / 60 > 0 ? common.data.info.cycleTime / 60 + " 분 " : "") 
-														+ (common.data.info.cycleTime % 60 > 0 ?  + common.data.info.cycleTime % 60 +" 초" : "");
+				goldCycleTxt.text = "골드 생산 시간 : " + (common.data.info.cycleTime).Sec2Time();
 				goldBtnTxt.text = "확인";
 			}
 		}
@@ -248,8 +247,7 @@ public class PopupBuilding : MonoBehaviour
 				matText.text = IM.GetData(craft.data.info.matId).amount +" / "+ craft.data.info.matAmount;
 			outputImg.sprite = Resources.Load<Sprite>(IM.GetInfo(craft.data.info.outputId).imgPath);
 			outputText.text = IM.GetInfo(craft.data.info.outputId).name + " " + craft.data.info.outputAmount;
-			craftCycleTxt.text = "작업 시간 : " + (craft.data.info.cycleTime / 60 > 0 ? craft.data.info.cycleTime / 60+ " 분" : "") 
-												+ (craft.data.info.cycleTime % 60 > 0 ? craft.data.info.cycleTime % 60 + " 초" : "");
+			craftCycleTxt.text = "작업 시간 : " + (craft.data.info.cycleTime).Sec2Time();
 			satietyTxt.text = "포만도 소모량 : " + craft.data.info.requireFull;
 		}
 	}
@@ -276,13 +274,9 @@ public class PopupBuilding : MonoBehaviour
 			btnImg.color = Color.white;
 			working = true;
 			if (!craft.data.isDone)
-			{
 				btnTxt.text = "확인";
-			}
 			else
-			{
 				btnTxt.text = "획득하기";
-			}
 		}
 	}
 

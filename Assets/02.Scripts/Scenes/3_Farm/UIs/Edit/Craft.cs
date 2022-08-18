@@ -19,16 +19,18 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
 
-        if (outputBtn == null) outputBtn = transform.GetChild(0).gameObject;
-        if (!data.isDone && data.cycleRemainTime == 0) data.cycleRemainTime = data.info.cycleTime;
-        if (!data.isDone) outputBtn.SetActive(false);
+        if (!data.isDone && data.cycleRemainTime == 0) // first cycle
+            data.cycleRemainTime = data.info.cycleTime;
+        if (!data.isDone) 
+            outputBtn.SetActive(false);
         
         LoadAppQuitTime();
-        if (IsWorking()) SetRechargeScheduler();
+        SetRechargeScheduler();
     }
 
-    public void SetRechargeScheduler(bool callback=false)
+    override public void SetRechargeScheduler(bool newCycle=false)
     {
+        if (!IsWorking()) return;
 
         if (m_CycleTimerCoroutine != null) 
         {
@@ -36,8 +38,9 @@ public class Craft : BuildingAttrib, IPointerUpHandler
             m_CycleTimerCoroutine = null;
         }
 
-        if (callback == true) 
-        {
+        if (newCycle == true)
+        {   
+            Debug.Log("==== newCycle ====");
             data.cycleRemainTime = data.info.cycleTime;
             m_AppQuitTime = DateTime.Now.ToLocalTime();
         }
@@ -48,9 +51,9 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         {
             data.cycleRemainTime = 0;
             data.isDone = true;
-            if (outputBtn != null) outputBtn.gameObject.SetActive(true);
+            outputBtn.gameObject.SetActive(true);
             DduduOut();
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         } 
         else
             m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime));
@@ -65,7 +68,7 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         {
             yield return sec;
             data.cycleRemainTime -= 1;
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         }
 
         if(data.cycleRemainTime <= 0)
@@ -73,9 +76,9 @@ public class Craft : BuildingAttrib, IPointerUpHandler
             data.cycleRemainTime = 0;
             data.isDone = true;
             BuildingManager.Instance.GetData(data.id).isDone = true;
-            if (outputBtn != null) outputBtn.gameObject.SetActive(true);
+            outputBtn.gameObject.SetActive(true);
             DduduOut();
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime / 60) + " 분 " + (data.cycleRemainTime % 60) + " 초";
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
             m_CycleTimerCoroutine = null;
         }
     }
@@ -83,8 +86,8 @@ public class Craft : BuildingAttrib, IPointerUpHandler
     public void OnClickOutput()
     {
         audioSource.Play();
-        if (ItemManager.Instance.AddData(data.info.outputId, data.info.outputAmount) == false) return;
-        BuildingManager.Instance.GetData(data.id).isDone = false;
+        if (ItemManager.Instance.AddData(data.info.outputId, data.info.outputAmount) == false) 
+            return;
         data.isDone = false;
         outputBtn.SetActive(false);
     }
