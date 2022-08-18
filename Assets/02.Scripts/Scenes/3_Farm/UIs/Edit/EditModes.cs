@@ -134,8 +134,9 @@ public class EditModes : MonoBehaviour
 
     public void InitPanSell()   // assign -> Btn_Sell
     {
-        Pan_Sell.GetComponentInChildren<Text>().text = buildingAttrib.data.info.name + "을 \n판매하시겠습니까?";
-        Pan_Sell.transform.GetChild(2).GetComponent<Text>().text = (buildingAttrib.data.info.sellCost).ToString();
+        Pan_Sell.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text = "{0}.을 \n판매하시겠습니까?".FormatK(buildingAttrib.data.info.name);
+        Pan_Sell.transform.GetChild(1).transform.GetChild(2).GetComponent<Text>().text = (buildingAttrib.data.info.sellCost).ToString();
+        Pan_Sell.SetActive(true);
     }
 
     public void OnClickSell()
