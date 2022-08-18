@@ -37,7 +37,6 @@ public class Common : BuildingAttrib, IPointerUpHandler
 
         if (newCycle == true)
         {   
-            Debug.Log("==== newCycle ====");
             data.cycleRemainTime = data.info.cycleTime;
             m_AppQuitTime = DateTime.Now.ToLocalTime();
         }
@@ -82,7 +81,7 @@ public class Common : BuildingAttrib, IPointerUpHandler
             // 골드 생산 버튼 UI 띄우기
             data.cycleRemainTime = 0;
             data.isDone = true;
-            if (goldBtn != null) goldBtn.gameObject.SetActive(true);
+            goldBtn.gameObject.SetActive(true);
             m_CycleTimerCoroutine = null;
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         }
