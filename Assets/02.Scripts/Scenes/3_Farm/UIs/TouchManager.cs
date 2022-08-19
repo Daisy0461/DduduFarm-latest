@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+public static class zoomVal {
+    public readonly static float zoomSpeed = 1.8f;
+    public readonly static float zoomInMax = 5f;
+    public readonly static float zoomOutMax = 16f;
+}
+
 public class TouchManager : MonoBehaviour
 {
 #region // 터치 시 UI 객체 on/off
@@ -20,9 +26,9 @@ public class TouchManager : MonoBehaviour
     Camera cam;
     private float slideSpeed = 0.1f;
 
-    private readonly float zoomSpeed = 1.8f;
-    private readonly float zoomInMax = 5f;
-    private readonly float zoomOutMax = 16f;
+    // private readonly float zoomSpeed = 1.8f;
+    // private readonly float zoomInMax = 5f;
+    // private readonly float zoomOutMax = 16f;
     // public float factor = 0.65f;
 
     private float scroll;
@@ -137,9 +143,9 @@ public class TouchManager : MonoBehaviour
             cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
 
             /* clamp */
-            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
+            var clampX = (zoomVal.zoomOutMax - cam.orthographicSize) * cam.aspect;
             // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
@@ -164,16 +170,16 @@ public class TouchManager : MonoBehaviour
             - Vector2.Distance(Normalize(prevTouchAPos), Normalize(prevTouchBPos));
 
             float curSize = cam.orthographicSize;   // 클수록 줌아웃
-            var zoomAmount = deltaDistance * curSize * zoomSpeed;
+            var zoomAmount = deltaDistance * curSize * zoomVal.zoomSpeed;
 
             /* clamp & zoom */
             curSize -= zoomAmount;
-            if (curSize < zoomInMax) {
-                curSize = zoomInMax;
+            if (curSize < zoomVal.zoomInMax) {
+                curSize = zoomVal.zoomInMax;
                 zoomAmount = 0f;
             }
-            if (zoomOutMax < curSize) {
-                curSize = zoomOutMax;
+            if (zoomVal.zoomOutMax < curSize) {
+                curSize = zoomVal.zoomOutMax;
                 zoomAmount = 0f;
             }
             cam.orthographicSize = curSize;
@@ -192,27 +198,27 @@ public class TouchManager : MonoBehaviour
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
             /* clamp : prevent out of range */
-            var clampX = (zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
+            var clampX = (zoomVal.zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
             // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
-        if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomSpeed))
+        if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomVal.zoomSpeed))
         {
             float curSize = cam.orthographicSize;
-            var zoomAmount = scroll* 0.5f * curSize * zoomSpeed;
+            var zoomAmount = scroll* 0.5f * curSize * zoomVal.zoomSpeed;
 
             /* clamp & zoom */
             curSize -= zoomAmount;
-            if (curSize < zoomInMax) {
-                curSize = zoomInMax;
+            if (curSize < zoomVal.zoomInMax) {
+                curSize = zoomVal.zoomInMax;
                 zoomAmount = 0f;
             }
-            if (zoomOutMax < curSize) {
-                curSize = zoomOutMax;
+            if (zoomVal.zoomOutMax < curSize) {
+                curSize = zoomVal.zoomOutMax;
                 zoomAmount = 0f;
             }
             cam.orthographicSize = curSize;
@@ -229,9 +235,9 @@ public class TouchManager : MonoBehaviour
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
             /* clamp */
-            var clampX = (zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
+            var clampX = (zoomVal.zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
             // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
             // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);

@@ -20,11 +20,16 @@ public class GridBuildingSystem : MonoBehaviour
     private Vector3 prevPos;
     private BoundsInt prevArea;
 
+    Camera cam;
+    Vector2 clickPoint = new Vector2(Screen.width / 2, Screen.height / 2);
+    float dragSpeed = 20.0f;
+
     #region Unity Methods
 
     private void Awake() 
     {
         current = this;
+        cam = Camera.main;
     }
     
     private void OnEnable() 
@@ -52,6 +57,10 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     clickPoint = new Vector2(Screen.width / 2, Screen.height / 2);
+        // }
 
         if (Input.GetMouseButton(0))
         {
@@ -62,15 +71,31 @@ public class GridBuildingSystem : MonoBehaviour
 
             if (!temp.Placed)
             {
-                Vector2 touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePos = Input.mousePosition;
+                Vector2 touchPos = cam.ScreenToWorldPoint(Input.mousePosition);
                 Vector3Int cellPos = gridLayout.LocalToCell(touchPos);
+
+                // if (touchPos가 카메라 사이드로 갔을 때)
+                if (mousePos.x < Screen.width / 9 || Screen.width / 9 * 8 < mousePos.x
+                 || mousePos.y < Screen.height / 16 || Screen.height / 16 * 15 < mousePos.y)
+                {
+                    // 화면을 천천히 이동한다
+                    Vector3 position = cam.ScreenToViewportPoint(mousePos - clickPoint);
+                    Vector3 move = position * (Time.deltaTime * dragSpeed);
+                    cam.transform.Translate(move);
+
+                    var clampX = (zoomVal.zoomOutMax - cam.orthographicSize) * cam.aspect;
+                    var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
+                    var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
+                    var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
+                    cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
+                }
 
                 if (prevPos != cellPos)
                 {
                     temp.transform.localPosition = gridLayout.CellToLocalInterpolated(cellPos);
                     prevPos = cellPos;
-                    // if (touchPos가 카메라 사이드로 갔을 때)
-                        // 화면을 천천히 이동한다
+                    
                     FollowBuilding();
                 }
             }
@@ -117,7 +142,7 @@ public class GridBuildingSystem : MonoBehaviour
     
     public Building InitializeWithBuilding(GameObject building)
     {
-        Vector3 camPos = Camera.main.transform.position + new Vector3(-.5f,-.5f,10);
+        Vector3 camPos = cam.transform.position + new Vector3(-.5f,-.5f,10);
         Vector3Int cellPos = gridLayout.LocalToCell(camPos);
         temp = Instantiate(building, gridLayout.CellToLocalInterpolated(cellPos), Quaternion.identity).GetComponentInChildren<Building>();
         FollowBuilding();
