@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using UnityEngine.EventSystems;
 
 public class ShopUpdateTest : MonoBehaviour
 {
@@ -11,12 +10,13 @@ public class ShopUpdateTest : MonoBehaviour
     [HideInInspector] public int second;
     [HideInInspector] public int millisecond;
     
-    [HideInInspector] public string savedTime;
-    public event Action priceChangeCallback = null;
+    [HideInInspector] public string tempTime;
+
+    static public event Action priceChangeCallback = null;
     
-    void Start()
+    private void OnEnable() 
     {
-        savedTime = DateTime.Now.ToString();
+        UpdateTime();
     }
 
     public void UpdateTime()
@@ -30,20 +30,28 @@ public class ShopUpdateTest : MonoBehaviour
 
         if (0 <= hour && hour < 6)
         {
-            savedTime = new DateTime(today.Year, today.Month, today.Day, 0, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
+            tempTime = new DateTime(today.Year, today.Month, today.Day, 0, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
         }
         else if (6 <= hour && hour < 12)
         {
-            savedTime = new DateTime(today.Year, today.Month, today.Day, 6, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
+            tempTime = new DateTime(today.Year, today.Month, today.Day, 6, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
         }
         else if (12 <= hour && hour < 18)
         {
-            savedTime = new DateTime(today.Year, today.Month, today.Day, 12, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");    
+            tempTime = new DateTime(today.Year, today.Month, today.Day, 12, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");    
         }
         else
         {
-            savedTime = new DateTime(today.Year, today.Month, today.Day, 18, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
+            tempTime = new DateTime(today.Year, today.Month, today.Day, 18, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
         }
+
+        if (tempTime != EncryptedPlayerPrefs.GetString("ShopUpdateTime"))
+        {
+            EncryptedPlayerPrefs.SetString("ShopUpdateTime", tempTime);
+            priceChangeCallback();
+        }
+        hour++;
+        hour %= 24;
     }
 
 }

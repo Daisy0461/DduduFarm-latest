@@ -20,6 +20,6 @@ public class ShopUpdateTestEditor : Editor {
             t.UpdateTime();
         }
 
-        GUILayout.Label(t.savedTime);
+        GUILayout.Label("tempTime : \t" + t.tempTime);
     }
 }
