@@ -12,11 +12,11 @@ public class EarnAnim : MonoBehaviour
     IEnumerator Anim()
     {
         float time = 0f;
-        while (time < 1f)
+        while (time < 0.8f)
         {
-            this.transform.position += new Vector3(0, 0.1f, 0);
-            yield return new WaitForSeconds(0.1f);
-            time += 0.1f;
+            this.transform.position += new Vector3(0, 0.05f, 0);
+            yield return new WaitForSeconds(0.05f);
+            time += 0.05f;
         }
         this.transform.position -= new Vector3(0, time, 0); 
         this.gameObject.SetActive(false);

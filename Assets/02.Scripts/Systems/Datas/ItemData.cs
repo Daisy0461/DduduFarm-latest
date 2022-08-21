@@ -9,11 +9,13 @@ public class ItemData
     public ItemInfo info;
     public int amount;
     public string obtainDate;
+    public int prevPrice;
 
     public ItemData(ItemInfo info)
     {
         this.id = info.code;
         this.info = info;
         this.amount = 0;
+        this.prevPrice = info.sellCost;
     }
 }

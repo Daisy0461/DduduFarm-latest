@@ -56,7 +56,7 @@ public class FishSelectListGenerator : MonoBehaviour
             }
         }
         selectedDdudu.audioSource.PlayOneShot(selectedDdudu.eatingSound);
-        selectedDdudu.transform.GetChild(0).transform.GetChild(0).GetComponent<DduduGemFeedManage>().GemGaCha();
+        selectedDdudu.GetComponentInChildren<DduduGemFeedManage>().GemGaCha();
         selectedDdudu.IconFeed.SetActive(false);
         // 물고기 amount 차감
         IM.RemoveData(id);

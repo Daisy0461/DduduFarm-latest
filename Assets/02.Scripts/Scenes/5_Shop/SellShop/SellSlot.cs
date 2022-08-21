@@ -9,6 +9,16 @@ public class SellSlot : MonoBehaviour
     public ItemData iData = null;
     public int bCode;
 
+    private void Start() 
+    {
+        ShopUpdateTest.priceChangeCallback += this.PriceChange; 
+    }
+
+    public void PriceChange()
+    {
+        
+    }
+
     public void OnClickItem() {
         SI.audioSource.Play();
         if (SI.selectedSlot != null)
