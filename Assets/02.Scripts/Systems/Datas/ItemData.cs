@@ -10,6 +10,7 @@ public class ItemData
     public int amount;
     public string obtainDate;
     public int prevPrice;
+    public PriceStatus priceStatus = PriceStatus.keep;
 
     public ItemData(ItemInfo info)
     {
@@ -18,4 +19,11 @@ public class ItemData
         this.amount = 0;
         this.prevPrice = info.sellCost;
     }
+}
+
+public enum PriceStatus
+{
+    raise,
+    fall,
+    keep
 }

@@ -53,7 +53,7 @@ public partial class Inventory : MonoBehaviour
         output_nameTxt.text = IM.GetInfo(selectCode).name;
         output_iconImg.sprite = Resources.Load<Sprite>(IM.GetInfo(selectCode).imgPath);
         output_noteTxt.text = IM.GetInfo(selectCode).note;
-        output_goldTxt.text = IM.GetInfo(selectCode).sellCost.ToString();
+        output_goldTxt.text = IM.GetData(selectCode).prevPrice.ToString();
         popupOutput.SetActive(true);
     }
 

@@ -122,10 +122,12 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
         string name = RtrnNodeToStr(attrib.GetNamedItem("name"));
         string note = RtrnNodeToStr(attrib.GetNamedItem("note"));
         string imgPath = RtrnNodeToStr(attrib.GetNamedItem("imgPath"));
-        int buyCost = RtrnNodeToInt(attrib.GetNamedItem("buyCost"));
         int sellCost = RtrnNodeToInt(attrib.GetNamedItem("sellCost"));
+        int buyCost = RtrnNodeToInt(attrib.GetNamedItem("buyCost"));
+        int marketLimit = RtrnNodeToInt(attrib.GetNamedItem("marketLimit"));
+        int marketVolume = RtrnNodeToInt(attrib.GetNamedItem("marketVolume"));
         
-        ItemInfo info = new ItemInfo(id, name, note, imgPath, buyCost, sellCost);
+        ItemInfo info = new ItemInfo(id, name, note, imgPath, buyCost, sellCost, marketLimit, marketVolume);
         return info;
     }
 
