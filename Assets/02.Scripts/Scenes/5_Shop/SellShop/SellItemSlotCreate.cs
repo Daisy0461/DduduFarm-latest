@@ -142,7 +142,8 @@ public class SellItemSlotCreate : MonoBehaviour
             if (iData.info.sellCost == 0)
                 newText[1].text = string.Format("{0:#,##0}", iData.info.buyCost/5);
             else
-                newText[1].text = string.Format("{0:#,##0}", (iData.info.sellCost));
+                newObj.UpdateView();
+                // newText[1].text = string.Format("{0:#,##0}", (iData.prevPrice));
         } else {
             newImg.sprite = Resources.Load<Sprite>(bData.info.imgPath);
             amtText.text = BM.GetBuildingAmount(bData.info.code).ToString();

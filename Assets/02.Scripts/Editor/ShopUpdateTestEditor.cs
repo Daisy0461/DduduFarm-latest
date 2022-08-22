@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEditor;
 
 [ExecuteInEditMode]
-[CustomEditor(typeof(ShopUpdateTest))]
+[CustomEditor(typeof(SellPriceUpdate))]
 public class ShopUpdateTestEditor : Editor {
     public override void OnInspectorGUI() {
         base.OnInspectorGUI();
     
-        ShopUpdateTest t = (ShopUpdateTest)target;
+        SellPriceUpdate t = (SellPriceUpdate)target;
         
         GUILayout.Label("update time");
         t.hour = EditorGUILayout.IntField("hour", t.hour);

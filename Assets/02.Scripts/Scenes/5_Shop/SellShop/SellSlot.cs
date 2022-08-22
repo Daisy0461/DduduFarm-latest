@@ -8,15 +8,96 @@ public class SellSlot : MonoBehaviour
     public SellItemSlotCreate SI;
     public ItemData iData = null;
     public int bCode;
+    
+    [SerializeField] Text sellCostText;
+    [SerializeField] Image sellStatusImage;
+    [SerializeField] Sprite[] sellStatusSprites;
+
+    float marketPower = 1f;
+    int curPrice = 0;
+    float currentPosition = 0f;
+
+#region Unity Method
 
     private void Start() 
     {
-        ShopUpdateTest.priceChangeCallback += this.PriceChange; 
+        SellPriceUpdate.priceChangeCallback += this.PriceChange; 
     }
+
+    private void OnDestroy() 
+    {
+        SellPriceUpdate.priceChangeCallback -= this.PriceChange;
+    }
+
+#endregion
 
     public void PriceChange()
     {
-        
+        // 현재 가격 계산
+        curPrice = UpdateItemPrice(
+                            UpdateMarketPower() // 1 - 1 / (max(수요 한계 값 / 현재 시장 규모, 1) * 2)
+                            );                  // 기본 가격 * 연구 배율 * 시장 배율 * 랜덤 배율
+        if (iData.prevPrice < curPrice)
+        {
+            iData.priceStatus = PriceStatus.raise;
+        }
+        else if (iData.prevPrice == curPrice)
+        {
+            iData.priceStatus = PriceStatus.keep;
+        }
+        else if (iData.prevPrice > curPrice)
+        {
+            iData.priceStatus = PriceStatus.fall;
+        } 
+        UpdateView();
+    }
+
+    public void UpdateView()
+    {
+        if (curPrice == 0) curPrice = iData.prevPrice;
+    
+        // if 상점 미판매 품목 이면
+        if (((iData.id >= (int)DataTable.Crop && iData.id < (int)DataTable.Seed) ||
+            (iData.id >= (int)DataTable.Output && iData.id < (int)DataTable.FishEgg) ||
+            (iData.id >= (int)DataTable.Gem && iData.id < (int)DataTable.Money))
+        )
+        {   
+            if (iData.priceStatus == PriceStatus.raise)
+            {
+                sellStatusImage.sprite = sellStatusSprites[0];
+            }
+            else if (iData.priceStatus == PriceStatus.keep)
+            {
+                sellStatusImage.sprite = sellStatusSprites[1];
+            }
+            else if (iData.priceStatus == PriceStatus.fall)
+            {
+                sellStatusImage.sprite = sellStatusSprites[2];
+            } 
+        }
+
+        iData.prevPrice = curPrice;
+        sellCostText.text = string.Format("{0:#,##0}", (iData.prevPrice));
+    }
+
+    private float UpdateMarketPower()    // 시장 배율
+    {
+        float powerValue = Mathf.Max(iData.info.marketLimit/iData.info.marketVolume, 1) * 2;
+        float afterMarketPower = 1 - 1 / powerValue;
+
+        return afterMarketPower;
+    }
+
+    public int UpdateItemPrice(float marketPower)   // 판매 가격 가격
+    {
+        float variance = Random.Range(0.01f, 0.2f);
+        currentPosition += variance;
+
+        float perlinNoise = Mathf.PerlinNoise(currentPosition, 0);
+        float perlinNoiseLerp = Mathf.Lerp(0.7f, 1.3f, perlinNoise);
+        int afterPrice = Mathf.RoundToInt(iData.info.sellCost * marketPower * perlinNoiseLerp);   // * 연구배율
+
+        return afterPrice;
     }
 
     public void OnClickItem() {
@@ -39,16 +120,16 @@ public class SellSlot : MonoBehaviour
         SI.audioSource.Play();
         if (bCode > 0)
             PopupBuilding();
-        else if (iData.info.code < (int)DataTable.Seed || 
-                ((int)DataTable.Output <= iData.info.code && iData.info.code < (int)DataTable.Fish)) // 200: 작물 250: 씨앗
+        else if (iData.id < (int)DataTable.Seed || 
+                ((int)DataTable.Output <= iData.id && iData.id < (int)DataTable.Fish)) // 200: 작물 250: 씨앗
             PopupOutput();
-        else if (iData.info.code < (int)DataTable.Output) // 250: 씨앗 300: 가공물
+        else if (iData.id < (int)DataTable.Output) // 250: 씨앗 300: 가공물
             PopupCycle((int)DataTable.Seed);    
-        else if (iData.info.code < (int)DataTable.FishEgg) // 400: 물고기 450: 물고기 알
+        else if (iData.id < (int)DataTable.FishEgg) // 400: 물고기 450: 물고기 알
             PopupFish();
-        else if (iData.info.code < (int)DataTable.Gem) // 450: 물고기 알 700: 보석
+        else if (iData.id < (int)DataTable.Gem) // 450: 물고기 알 700: 보석
             PopupCycle((int)DataTable.FishEgg);
-        else if (iData.info.code < (int)DataTable.Money) // 700: 보석 10001:골드
+        else if (iData.id < (int)DataTable.Money) // 700: 보석 10001:골드
             PopupOutput();
     }
 
@@ -57,7 +138,7 @@ public class SellSlot : MonoBehaviour
         SI.output_nameTxt.text = iData.info.name;
         SI.output_iconImg.sprite = Resources.Load<Sprite>(iData.info.imgPath);
         SI.output_noteTxt.text = iData.info.note;
-        SI.output_goldTxt.text = iData.info.sellCost.ToString();
+        SI.output_goldTxt.text = iData.prevPrice.ToString();
         SI.popupOutput.SetActive(true);
     }
 

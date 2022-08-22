@@ -37,8 +37,8 @@ public class SellCount : MonoBehaviour
             }
             else
             {
-                MoneyText.ChangeMoneyText(totalPriceText, slot.iData.info.sellCost);
-                EncryptedPlayerPrefs.SetInt("ItemPrice", slot.iData.info.sellCost);
+                MoneyText.ChangeMoneyText(totalPriceText, slot.iData.prevPrice);
+                EncryptedPlayerPrefs.SetInt("ItemPrice", slot.iData.prevPrice);
             } 
         } else {                    // 건설
             // itemNameText.text = slot.bCode.info.name;
