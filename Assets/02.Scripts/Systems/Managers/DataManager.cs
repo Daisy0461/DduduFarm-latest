@@ -52,7 +52,6 @@ public abstract class DataManager<T, Info, Data> : SingletonBase<T>
     {
         string str = RtrnNodeToStr(node);
         if (str == null || str == "") return 0;
-        Debug.Log(str);
         return int.Parse(str);
     }
     
