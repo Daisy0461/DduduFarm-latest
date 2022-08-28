@@ -13,7 +13,6 @@ public class SellSlot : MonoBehaviour
     [SerializeField] Image sellStatusImage;
     [SerializeField] Sprite[] sellStatusSprites;
 
-    float marketPower = 1f;
     int curPrice = 0;
     float currentPosition = 0f;
 

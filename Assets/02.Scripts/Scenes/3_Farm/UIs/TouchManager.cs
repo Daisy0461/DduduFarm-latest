@@ -10,8 +10,8 @@ public static class zoomVal {
 
 public class TouchManager : MonoBehaviour
 {
-#region // 터치 시 UI 객체 on/off
-    [Header("UI On Off")]
+#region UI On / Off
+    [Header("UI On / Off")]
     public GameObject[] UIObj;
     private bool isOn = false;
     private Vector2 touchStartPosition, touchEndPosition;
@@ -20,18 +20,12 @@ public class TouchManager : MonoBehaviour
 
     bool canPanning;
 
-    [Space(10f)]    
-#region // 줌인/줌아웃
-    [Header("Zoom")]
+#region Zoom
+
     Camera cam;
     private float slideSpeed = 0.1f;
-
-    // private readonly float zoomSpeed = 1.8f;
-    // private readonly float zoomInMax = 5f;
-    // private readonly float zoomOutMax = 16f;
-    // public float factor = 0.65f;
-
     private float scroll;
+
 #endregion
 
     private void Awake() 
@@ -127,11 +121,9 @@ public class TouchManager : MonoBehaviour
             cam.transform.position -= (Vector3)(deltaPos) * slideSpeed * Time.deltaTime * cam.orthographicSize;
 
             // /* clamp */
-            var clampX = (zoomOutMax - cam.orthographicSize) * cam.aspect;
-            // var clampY = zoomOutMax - cam.orthographicSize + factor;
-            var clampY = zoomOutMax - cam.orthographicSize;
+            var clampX = (zoomVal.zoomOutMax - cam.orthographicSize) * cam.aspect;
+            var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
@@ -144,10 +136,8 @@ public class TouchManager : MonoBehaviour
 
             /* clamp */
             var clampX = (zoomVal.zoomOutMax - cam.orthographicSize) * cam.aspect;
-            // var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
@@ -199,10 +189,8 @@ public class TouchManager : MonoBehaviour
 
             /* clamp : prevent out of range */
             var clampX = (zoomVal.zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
-            // var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
@@ -236,10 +224,8 @@ public class TouchManager : MonoBehaviour
 
             /* clamp */
             var clampX = (zoomVal.zoomOutMax * 2  * cam.aspect) / 2 - (cam.orthographicSize * 2 * cam.aspect) / 2;
-            // var clampY = zoomOutMax - cam.orthographicSize + factor;
             var clampY = zoomVal.zoomOutMax - cam.orthographicSize;
             var clampedPosX = Mathf.Clamp(cam.transform.position.x, -clampX, clampX);
-            // var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY + (2-(clampY-factor)/10));
             var clampedPosY = Mathf.Clamp(cam.transform.position.y, -clampY, clampY);
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
