@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,12 +11,14 @@ public static class zoomVal {
 
 public class TouchManager : MonoBehaviour
 {
-#region UI On / Off
+#region UI on/off
+
     [Header("UI On / Off")]
     public GameObject[] UIObj;
     private bool isOn = false;
     private Vector2 touchStartPosition, touchEndPosition;
     private Vector2 touchCurPosition;
+
 #endregion
 
     bool canPanning;
@@ -25,6 +28,17 @@ public class TouchManager : MonoBehaviour
     Camera cam;
     private float slideSpeed = 0.1f;
     private float scroll;
+    public static event Action<float> ZoomAmountChange = null;
+    private float zoomAmount;
+    public float ZoomAmount { 
+        get {
+            return zoomAmount;
+        } 
+        set {
+            zoomAmount = value;
+            if (ZoomAmountChange != null) ZoomAmountChange(zoomAmount);
+        } 
+    }
 
 #endregion
 
@@ -45,6 +59,7 @@ public class TouchManager : MonoBehaviour
             ScreenPanning();
         else if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
             canPanning = false;
+
 
 #endif
 
@@ -159,20 +174,20 @@ public class TouchManager : MonoBehaviour
             Vector2.Distance(Normalize(curTouchAPos), Normalize(curTouchBPos))
             - Vector2.Distance(Normalize(prevTouchAPos), Normalize(prevTouchBPos));
 
-            float curSize = cam.orthographicSize;   // 클수록 줌아웃
-            var zoomAmount = deltaDistance * curSize * zoomVal.zoomSpeed;
+            ZoomAmount = cam.orthographicSize;   // 클수록 줌아웃
+            float zoomVariable = deltaDistance * ZoomAmount * zoomVal.zoomSpeed;
 
             /* clamp & zoom */
-            curSize -= zoomAmount;
-            if (curSize < zoomVal.zoomInMax) {
-                curSize = zoomVal.zoomInMax;
-                zoomAmount = 0f;
+            ZoomAmount -= zoomVariable;
+            if (ZoomAmount < zoomVal.zoomInMax) {
+                ZoomAmount = zoomVal.zoomInMax;
+                zoomVariable = 0f;
             }
-            if (zoomVal.zoomOutMax < curSize) {
-                curSize = zoomVal.zoomOutMax;
-                zoomAmount = 0f;
+            if (zoomVal.zoomOutMax < ZoomAmount) {
+                ZoomAmount = zoomVal.zoomOutMax;
+                zoomVariable = 0f;
             }
-            cam.orthographicSize = curSize;
+            cam.orthographicSize = ZoomAmount;
 
             /* apply offset */
             // offset is a value against movement caused by scale up & down
@@ -183,8 +198,8 @@ public class TouchManager : MonoBehaviour
                 midX - Screen.width * 0.5f, 
                 midY - Screen.height * 0.5f, 0f);
             var fromPivotToInputPos = fromCenterToInputPos - pivotPos;
-            var offsetX = (fromPivotToInputPos.x / curSize) * zoomAmount * 0.01f;
-            var offsetY = (fromPivotToInputPos.y / curSize) * zoomAmount * 0.01f;
+            var offsetX = (fromPivotToInputPos.x / ZoomAmount) * zoomVariable * 0.01f;
+            var offsetY = (fromPivotToInputPos.y / ZoomAmount) * zoomVariable * 0.01f;
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
             /* clamp : prevent out of range */
@@ -196,20 +211,20 @@ public class TouchManager : MonoBehaviour
         }
         if (0 !=(scroll = Input.GetAxis("Mouse ScrollWheel")*zoomVal.zoomSpeed))
         {
-            float curSize = cam.orthographicSize;
-            var zoomAmount = scroll* 0.5f * curSize * zoomVal.zoomSpeed;
+            ZoomAmount = cam.orthographicSize;
+            float zoomVariable = scroll* 0.5f * ZoomAmount * zoomVal.zoomSpeed;
 
             /* clamp & zoom */
-            curSize -= zoomAmount;
-            if (curSize < zoomVal.zoomInMax) {
-                curSize = zoomVal.zoomInMax;
-                zoomAmount = 0f;
+            ZoomAmount -= zoomVariable;
+            if (ZoomAmount < zoomVal.zoomInMax) {
+                ZoomAmount = zoomVal.zoomInMax;
+                zoomVariable = 0f;
             }
-            if (zoomVal.zoomOutMax < curSize) {
-                curSize = zoomVal.zoomOutMax;
-                zoomAmount = 0f;
+            if (zoomVal.zoomOutMax < ZoomAmount) {
+                ZoomAmount = zoomVal.zoomOutMax;
+                zoomVariable = 0f;
             }
-            cam.orthographicSize = curSize;
+            cam.orthographicSize = ZoomAmount;
 
             /* apply offset */
             // offset is a value against movement caused by scale up & down
@@ -218,8 +233,8 @@ public class TouchManager : MonoBehaviour
                 Input.mousePosition.x - Screen.width * 0.5f, 
                 Input.mousePosition.y - Screen.height * 0.5f, 0f);
             var fromPivotToInputPos = fromCenterToInputPos - pivotPos;
-            var offsetX = (fromPivotToInputPos.x / curSize) * zoomAmount * 0.01f;
-            var offsetY = (fromPivotToInputPos.y / curSize) * zoomAmount * 0.01f;
+            var offsetX = (fromPivotToInputPos.x / ZoomAmount) * zoomVariable * 0.01f;
+            var offsetY = (fromPivotToInputPos.y / ZoomAmount) * zoomVariable * 0.01f;
             cam.transform.position += new Vector3(offsetX, offsetY, 0f);
 
             /* clamp */
