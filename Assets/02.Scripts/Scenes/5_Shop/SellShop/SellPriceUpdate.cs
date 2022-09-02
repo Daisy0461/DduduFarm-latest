@@ -24,11 +24,11 @@ public class SellPriceUpdate : MonoBehaviour
         var today = DateTime.Now;
         
         // hour -> today.Hour
-        if (0 <= hour && hour < 6)
+        if (0 <= today.Hour && today.Hour < 6)
             tempTime = new DateTime(today.Year, today.Month, today.Day, 0, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
-        else if (6 <= hour && hour < 12)
+        else if (6 <= today.Hour && today.Hour < 12)
             tempTime = new DateTime(today.Year, today.Month, today.Day, 6, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
-        else if (12 <= hour && hour < 18)
+        else if (12 <= today.Hour && today.Hour < 18)
             tempTime = new DateTime(today.Year, today.Month, today.Day, 12, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");    
         else
             tempTime = new DateTime(today.Year, today.Month, today.Day, 18, 0, 0, 0).ToString("yyyy-MM-dd-HH:mm:ss fff");
@@ -39,10 +39,5 @@ public class SellPriceUpdate : MonoBehaviour
             if (priceChangeCallback != null) priceChangeCallback();
         }
         ItemManager.Instance.Save();
-
-        /* test */
-        hour += 1;
-        hour %= 24;
-        /* test */
     }
 }
