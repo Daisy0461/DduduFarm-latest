@@ -17,6 +17,7 @@ public class Common : BuildingAttrib, IPointerUpHandler
     {
         buildingId = data.id;
         data = BuildingManager.Instance.GetData(buildingId);
+        TouchManager.ZoomAmountChange += this.IconSizeChange;
 
         if (!data.isDone && data.cycleRemainTime == 0) // first cycle
             data.cycleRemainTime = data.info.cycleTime;
@@ -25,6 +26,16 @@ public class Common : BuildingAttrib, IPointerUpHandler
         
         LoadAppQuitTime();
         SetRechargeScheduler();    
+    }
+
+    public void IconSizeChange(float zoomAmount)
+    {
+        goldBtn.transform.localScale = Vector3.one * zoomAmount * 0.2f;
+    }
+
+    private void OnDestroy() 
+    {
+        TouchManager.ZoomAmountChange -= this.IconSizeChange;
     }
 
     override public void SetRechargeScheduler(bool newCycle=false)

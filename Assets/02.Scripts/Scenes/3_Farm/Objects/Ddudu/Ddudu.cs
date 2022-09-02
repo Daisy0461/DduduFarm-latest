@@ -36,17 +36,6 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         circleCollider2D = GetComponent<CircleCollider2D>();
         render = GetComponent<SpriteRenderer>();
         InvokeRepeating("ChoseDir", 0f, 3f); 
-        TouchManager.ZoomAmountChange += this.IconSizeChange;
-    }
-
-    public void IconSizeChange(float zoomAmount)
-    {
-        IconGem.transform.localScale = Vector3.one * zoomAmount * 0.094f;
-    }
-
-    private void OnDestroy() 
-    {
-        TouchManager.ZoomAmountChange -= this.IconSizeChange;
     }
 
     protected override void Update() 
@@ -108,12 +97,9 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (SceneManager.GetActiveScene().name == "Farm")
-        {
-            circleCollider2D.enabled = true;
-            dir = pos;
-            InvokeRepeating("ChoseDir", 0f, 3f);
-        }
+        circleCollider2D.enabled = true;
+        dir = pos;
+        InvokeRepeating("ChoseDir", 0f, 3f);
     }
 
 #endregion

@@ -18,6 +18,7 @@ public class CropState : MonoBehaviour, IPointerDownHandler
         cropPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         //min.transform.parent = gameObject.transform; sec.transform.parent = gameObject.transform; divide.transform.parent = gameObject.transform;
         cropGrowTime = gameObject.GetComponent<CropGrowTime>();
+        TouchManager.ZoomAmountChange += this.IconSizeChange;
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -49,6 +50,16 @@ public class CropState : MonoBehaviour, IPointerDownHandler
 
     public GameObject GetNextCrop(){
         return nextCrop;
+    }
+
+    public void IconSizeChange(float zoomAmount)
+    {
+        growDoneImage.transform.localScale = Vector3.one * zoomAmount * 0.1f;
+    }
+
+    private void OnDestroy() 
+    {
+        TouchManager.ZoomAmountChange -= this.IconSizeChange;
     }
 
 }
