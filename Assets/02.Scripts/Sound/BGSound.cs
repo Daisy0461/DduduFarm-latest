@@ -8,7 +8,7 @@ public class BGSound : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] bgmClips;
     public bool singleton;
-    enum BGM { title, intro, farm, shop, fishfarm, lab };
+    enum BGM { title, intro, farm, shop, fishfarm, lab, forest };
     BGSound[] other;
     BGM oldBgm = BGM.title;
 
@@ -75,6 +75,8 @@ public class BGSound : MonoBehaviour
             case "Shop" : bgm = BGM.shop;
                 break;
             case "Lab" : bgm = BGM.farm;
+                break;
+            case "Forest" : bgm = BGM.farm;
                 break;
             default : bgm = oldBgm;
                 break;              
