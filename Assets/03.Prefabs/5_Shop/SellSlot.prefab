@@ -456,16 +456,19 @@ MonoBehaviour:
       imgPath: 
       buyCost: 0
       sellCost: 0
+      marketLimit: 0
+      marketVolume: 0
     amount: 0
     obtainDate: 
     prevPrice: 0
+    priceStatus: 0
   bCode: 0
   sellCostText: {fileID: 9101168845158059022}
   sellStatusImage: {fileID: 4834637257385640971}
   sellStatusSprites:
-  - {fileID: -8539663901728327472, guid: 79b25bee621fddc43a903a4af70ea0d6, type: 3}
+  - {fileID: 21300000, guid: e9758645477c0f7429ad55cec41c6108, type: 3}
   - {fileID: -6665242386147438775, guid: 70a83880e36192d40a4c5f42c7e3c08c, type: 3}
-  - {fileID: 21300000, guid: 92c8380c2a60bda4a8725bc45de6cf01, type: 3}
+  - {fileID: 21300000, guid: a21327c9f218d3940a2e38d7dbd044d0, type: 3}
 --- !u!1 &2703008993267430082
 GameObject:
   m_ObjectHideFlags: 0
