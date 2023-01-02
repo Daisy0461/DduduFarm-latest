@@ -89,13 +89,14 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
 
     public void OnDrag(PointerEventData eventData)
     {  
+        TouchManager.canPanning = false;
         this.transform.position = Camera.main.ScreenToWorldPoint(eventData.position);
         this.transform.position -= new Vector3(0,0,-10);
     }
 
 
     public void OnPointerDown(PointerEventData eventData) 
-    {    
+    {   
         pos = dir;  // 잡으면 일단 뚜두 가만히 있기
         dir = Vector2.zero;
         CancelInvoke("ChoseDir");

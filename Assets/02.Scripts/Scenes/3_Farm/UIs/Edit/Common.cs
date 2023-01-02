@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 
-public class Common : BuildingAttrib, IPointerUpHandler
+public class Common : BuildingAttrib, IPointerClickHandler
 {
     public string remainTimeStr;
     public PopupBuilding popupBuilding;
@@ -98,7 +98,7 @@ public class Common : BuildingAttrib, IPointerUpHandler
         SetRechargeScheduler(true);
     }
 
-    public void OnPointerUp(PointerEventData e)
+    public void OnPointerClick(PointerEventData e)
     {
         if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
 		{

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public static class zoomVal {
     public readonly static float zoomSpeed = 1.8f;
-    public readonly static float zoomInMax = 5f;
+    public readonly static float zoomInMax = 1f;
     public readonly static float zoomOutMax = 16f;
 }
 
@@ -21,7 +21,7 @@ public class TouchManager : MonoBehaviour
 
 #endregion
 
-    bool canPanning;
+    public static bool canPanning;
 
 #region Zoom
 
