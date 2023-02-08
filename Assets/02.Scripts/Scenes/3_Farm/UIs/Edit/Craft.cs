@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
 
-public class Craft : BuildingAttrib, IPointerUpHandler
+public class Craft : BuildingAttrib, IPointerClickHandler
 {
     public DduduSpawner DS;
     public string remainTimeStr;
@@ -113,7 +113,7 @@ public class Craft : BuildingAttrib, IPointerUpHandler
         outputBtn.SetActive(false);
     }
 
-    public void OnPointerUp(PointerEventData e)
+    public void OnPointerClick(PointerEventData e)
     {
         if (!building.isPointerDown)  // 이동이 아니라 골드 획득 혹은 팝업 노출
 		{

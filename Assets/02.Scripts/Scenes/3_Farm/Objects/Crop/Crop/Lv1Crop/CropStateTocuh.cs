@@ -13,6 +13,17 @@ public class CropStateTocuh : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         cgs = parentCropState.GetNextCrop().GetComponent<CropGrowSound>();
+        TouchManager.ZoomAmountChange += this.ChangeSize;
+    }
+
+    public void ChangeSize(float zoomVal)
+    {
+        this.transform.localScale = Vector3.one * zoomVal * 0.094f;
+    }
+
+    private void OnDestroy() 
+    {
+        TouchManager.ZoomAmountChange -= this.ChangeSize;
     }
 
     public void OnPointerDown(PointerEventData eventData) {    

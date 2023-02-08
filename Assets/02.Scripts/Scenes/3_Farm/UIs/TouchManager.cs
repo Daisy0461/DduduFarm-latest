@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public static class zoomVal {
     public readonly static float zoomSpeed = 1.8f;
-    public readonly static float zoomInMax = 5f;
+    public readonly static float zoomInMax = 1f;
     public readonly static float zoomOutMax = 16f;
 }
 
@@ -21,7 +21,8 @@ public class TouchManager : MonoBehaviour
 
 #endregion
 
-    bool canPanning;
+    public static bool canPanning;
+    private readonly int _uiLayer = 5;
 
 #region Zoom
 
@@ -63,7 +64,7 @@ public class TouchManager : MonoBehaviour
 
 #endif
 
-#if !UNITY_ANDROID
+#if UNITY_EDITOR
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -122,8 +123,15 @@ public class TouchManager : MonoBehaviour
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
-        if ((results.Count > 0 && results[0].gameObject.layer == 5)  || EventSystem.current.IsPointerOverGameObject()) // UI 레이어 클릭 시 패닝 불가
+        if ((results.Count > 0 && results[0].gameObject.layer == _uiLayer)  || EventSystem.current.IsPointerOverGameObject())
+        {
             canPanning = false;
+            if (results.Count > 0 && results[0].gameObject.layer == 0)
+            {
+                canPanning = true;
+            }
+        }
+            
         else canPanning = true;
     }
 
@@ -143,7 +151,7 @@ public class TouchManager : MonoBehaviour
             cam.transform.position = new Vector3(clampedPosX, clampedPosY, cam.transform.position.z);
         }
 #endif
-#if !UNITY_ANDROID
+#if UNITY_EDITOR
         if (Input.GetMouseButton(0))
         {
             var deltaPos = (Vector2)Input.mousePosition-touchCurPosition;

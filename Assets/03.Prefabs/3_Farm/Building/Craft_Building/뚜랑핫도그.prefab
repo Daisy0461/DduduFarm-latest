@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8174928654922935371}
   - component: {fileID: 8174928654922935368}
-  - component: {fileID: 8174928654922935369}
+  - component: {fileID: 7578358980630784666}
   - component: {fileID: 8174928654922935478}
   - component: {fileID: 8174928654922935479}
   m_Layer: 0
@@ -329,8 +329,8 @@ MonoBehaviour:
   prePos: {x: 0, y: 0, z: 0}
   isPointerDown: 0
   render: {fileID: 4736499587834410565}
---- !u!61 &8174928654922935369
-BoxCollider2D:
+--- !u!58 &7578358980630784666
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -342,19 +342,9 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.7, y: 1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.67, y: 0.9}
   serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Radius: 0.7
 --- !u!114 &8174928654922935478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,8 +382,8 @@ MonoBehaviour:
   DS: {fileID: 0}
   remainTimeStr: 
   popupBuilding: {fileID: 0}
-  outputBtn: {fileID: 7959299612696518611}
   building: {fileID: 8174928654922935368}
+  outputBtn: {fileID: 7959299612696518611}
   audioSource: {fileID: 8174928654922935479}
 --- !u!82 &8174928654922935479
 AudioSource:
