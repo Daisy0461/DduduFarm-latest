@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ForestCallDduduPanel : DefaultPanel
 {
-    [SerializeField] private Vector2 _spawnPos;
+    [SerializeField] private Vector3 _spawnPos;
     [SerializeField] private Transform _spawnParent;
 
 	public override void OnButtonClick(int index)

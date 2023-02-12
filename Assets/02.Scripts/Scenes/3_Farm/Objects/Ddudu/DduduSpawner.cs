@@ -7,7 +7,7 @@ public class DduduSpawner : MonoBehaviour
     [SerializeField] private UserDataText userDataText;
     public FishSelectListGenerator FishSelectList;
     [HideInInspector] public List<Ddudu> ddudus;    
-    
+
     private void OnApplicationFocus(bool focusStatus) 
     {  
         if (focusStatus == false) 
@@ -59,7 +59,9 @@ public class DduduSpawner : MonoBehaviour
 
     public Ddudu SpawnDdudu(int id)
     {
-        Ddudu newDdudu = SpawnDdudu(id, Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2)));
+        var tmpPos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2, 0));
+        var pos = new Vector3(tmpPos.x, tmpPos.y, 0);
+        var newDdudu = SpawnDdudu(id, pos);
         newDdudu.transform.SetParent(this.transform);
 
         var dduduGemFeedManage = newDdudu.GetComponentInChildren<DduduGemFeedManage>();
@@ -77,7 +79,7 @@ public class DduduSpawner : MonoBehaviour
         var index = data.info.code;
         // TODO: 뚜두 생성을 리소스 주소 생성으로 바꾸기
         var newObj = Instantiate(Resources.Load<GameObject>($"{PathAlias.ddudu_prefab_path}{index}"));
-        newObj.transform.SetPositionAndRotation(new Vector3(pos.x, pos.y, 0f), Quaternion.Euler(0f, 0f, 0f));
+        newObj.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
         var newDdudu = newObj.GetComponent<Ddudu>();
         
         newDdudu.data = data;
