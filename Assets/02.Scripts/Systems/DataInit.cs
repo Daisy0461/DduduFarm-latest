@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+
+using UnityEditor;
+[CustomEditor(typeof(DataInit))]
+
+#endif // UNITY_EDITOR
+
 public class DataInit : MonoBehaviour
 {
     ItemManager IM;
@@ -24,5 +31,11 @@ public class DataInit : MonoBehaviour
         }
         
     }
+
+#if UNITY_EDITOR
+
+    
+
+#endif // UNITY_EDITOR
 
 }

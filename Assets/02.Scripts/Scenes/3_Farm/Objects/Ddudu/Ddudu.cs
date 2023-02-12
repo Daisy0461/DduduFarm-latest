@@ -17,9 +17,6 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     CircleCollider2D circleCollider2D;
     SpriteRenderer render;
 
-    [Header("Attribute")]
-    public Craft interest; // 관심 건물             // 관심 건물에 해당하면 능률 증가
-
     [Header("Audio")]
     public AudioSource audioSource;
     public AudioClip[] normalSounds;

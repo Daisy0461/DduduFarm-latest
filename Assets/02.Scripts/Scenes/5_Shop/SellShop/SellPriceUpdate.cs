@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+#if UNITY_EDITOR
+
+using UnityEditor;
+
+#endif // UNITY_EDITOR
 
 public class SellPriceUpdate : MonoBehaviour
 {
@@ -40,4 +45,33 @@ public class SellPriceUpdate : MonoBehaviour
         }
         ItemManager.Instance.Save();
     }
+
+#if UNITY_EDITOR
+
+    public void OnPriceUpdateButtonClick()
+    {
+        Debug.Log("Price Update");
+        EncryptedPlayerPrefs.SetString("ShopUpdateTime", tempTime);
+        if (priceChangeCallback != null) priceChangeCallback();
+        ItemManager.Instance.Save();
+    }
+
+#endif // UNITY_EDITOR
 }
+
+#if UNITY_EDITOR
+
+[CustomEditor(typeof(SellPriceUpdate))]
+public class SellPriceUpdateEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        SellPriceUpdate tg = target as SellPriceUpdate;
+        if (GUILayout.Button("Price Update"))
+        {
+            tg.OnPriceUpdateButtonClick();
+        }
+    }    
+}
+
+#endif // UNITY_EDITOR

@@ -5,12 +5,8 @@ public class DduduSpawner : MonoBehaviour
 {   // 뚜두 Spawn , 저장, 로드 관리
     DduduManager DM;
     [SerializeField] private UserDataText userDataText;
-
-    [Header("Spawn Ddudu")] // 뚜두 관리
-    [SerializeField] private GameObject[] DduduPrefab;
-    [SerializeField] private Craft[] Crafts;
-    [HideInInspector] public List<Ddudu> ddudus;
     public FishSelectListGenerator FishSelectList;
+    [HideInInspector] public List<Ddudu> ddudus;    
     
     private void OnApplicationFocus(bool focusStatus) 
     {  
@@ -61,34 +57,38 @@ public class DduduSpawner : MonoBehaviour
         // }
     }
 
-    public Ddudu SpawnDdudu(int id) 
+    public Ddudu SpawnDdudu(int id)
     {
-        var data = DM.GetData(id);
-        var index = data.info.code - (int)DataTable.Ddudu - 1;
-        var pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2));
-        var newObj = Instantiate(DduduPrefab[index], new Vector3(pos.x, pos.y, 0f), Quaternion.Euler(0f, 0f, 0f));
-        var newDdudu = newObj.GetComponent<Ddudu>();
+        Ddudu newDdudu = SpawnDdudu(id, Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2)));
+        newDdudu.transform.SetParent(this.transform);
+
         var dduduGemFeedManage = newDdudu.GetComponentInChildren<DduduGemFeedManage>();
+        dduduGemFeedManage.FishSelectList = FishSelectList;
+
+        if (newDdudu.data.isWork) newDdudu.gameObject.SetActive(false);
+        userDataText.RenewText(userDataText.dduduText, DM.GetDataListCount());
+        ddudus.Add(newDdudu);
+        return newDdudu;
+    }
+
+    public static Ddudu SpawnDdudu(int id, Vector3 pos) 
+    {
+        var data = DduduManager.Instance.GetData(id);
+        var index = data.info.code;
+        // TODO: 뚜두 생성을 리소스 주소 생성으로 바꾸기
+        var newObj = Instantiate(Resources.Load<GameObject>($"{PathAlias.ddudu_prefab_path}{index}"));
+        newObj.transform.SetPositionAndRotation(new Vector3(pos.x, pos.y, 0f), Quaternion.Euler(0f, 0f, 0f));
+        var newDdudu = newObj.GetComponent<Ddudu>();
         
         newDdudu.data = data;
-        if (data.interest == -1 && Crafts.Length > 0) 
+        if (data.interest == -1) 
         {
-            int ran = Random.Range(0, Crafts.Length);
-            newDdudu.interest = Crafts[ran];
+            int ran = Random.Range((int)DataTable.Craft, (int)DataTable.Craft + 10);
             newDdudu.data.interest = ran;
         }
-        else 
-        {
-            newDdudu.interest = Crafts[data.interest];
-        }
-        dduduGemFeedManage.FishSelectList = FishSelectList;
-        newDdudu.transform.parent = this.gameObject.transform;
 
         /* TODO: dduduList -> 배열로 바꾸기 */
         Profile.dduduList.Add(index);
-        userDataText.RenewText(userDataText.dduduText, DM.GetDataListCount());
-        if (data.isWork) newDdudu.gameObject.SetActive(false);
-        ddudus.Add(newDdudu);
         return newDdudu;
     }
 

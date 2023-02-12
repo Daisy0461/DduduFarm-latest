@@ -87,7 +87,7 @@ public class SellSlot : MonoBehaviour
         return afterMarketPower;
     }
 
-    public int UpdateItemPrice(float marketPower)   // 판매 가격 가격
+    public int UpdateItemPrice(float marketPower)   // 판매 가격
     {
         float variance = Random.Range(0.01f, 0.2f);
         currentPosition += variance;

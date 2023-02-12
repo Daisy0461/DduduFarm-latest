@@ -20,7 +20,7 @@ public class MoveScene : MonoBehaviour
         Loading.LoadSceneHandle(sceneName);
     }
 
-    public void ShopToBuild()
+    public void GoToBuild()
     {
         SceneManager.LoadScene("Farm");
     }
