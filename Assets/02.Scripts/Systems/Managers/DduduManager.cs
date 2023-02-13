@@ -5,6 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
 {
+    private int _maxDduduCount = 10;
+    public int MaxDduduCount => _maxDduduCount;
+
+    public void SetMaxDduduCount(int value)
+    {
+        _maxDduduCount = value;
+    }
+
+    public int GetWorkDduduCount()
+    {
+        int count = 0;
+        foreach (var ddudu in dataList)
+        {
+            if (ddudu.isWork)
+            {
+                count++;
+            }
+
+        }
+        return count;
+    }
+
 	public override void AddInfo(DduduInfo info)
     {
         if (infoDict.ContainsKey(info.code)) return;

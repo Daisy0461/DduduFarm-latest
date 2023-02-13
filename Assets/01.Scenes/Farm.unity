@@ -12211,31 +12211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686228d36ceeecb478c0a4451606c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userDataText: {fileID: 709754011}
-  DduduPrefab:
-  - {fileID: 4405794343276581798, guid: 064fbecf71b57974c81461762a16f578, type: 3}
-  - {fileID: 4405794343276581798, guid: c5d971dcacbc75b429ece4fb576658d6, type: 3}
-  - {fileID: 4405794343276581798, guid: ec30a8868c7381b46bad5e6f7eb0efd8, type: 3}
-  - {fileID: 4405794343276581798, guid: 8164d99d804bf9b4b8b19e1fb13e5b06, type: 3}
-  - {fileID: 4405794343276581798, guid: 59e03c5400caa00428db6ba421d728e5, type: 3}
-  - {fileID: 4405794343276581798, guid: 9b32f9eb854fa3a4aa42beda30f5a5ab, type: 3}
-  - {fileID: 4405794343276581798, guid: 118766f3606e240498b1b6504096418f, type: 3}
-  - {fileID: 4405794343276581798, guid: 99eb3e56799372c47aea43f44894dbdd, type: 3}
-  - {fileID: 4405794343276581798, guid: 31c1a561b46651645ae5c2812e2f6c6d, type: 3}
-  - {fileID: 4405794343276581798, guid: 75236dfa424b05d4089cb70d045002c6, type: 3}
-  Crafts:
-  - {fileID: 4530076468445156190, guid: aac59526eae6ff549909c8815030b709, type: 3}
-  - {fileID: 4530076468445156190, guid: be9c531f44ce7d84ca157f467751bb0a, type: 3}
-  - {fileID: 4530076468445156190, guid: 3a248601bd939ea46ab20ae2f164055d, type: 3}
-  - {fileID: 4530076468445156190, guid: 5a8e5761912af6240abdb12f09b46bd9, type: 3}
-  - {fileID: 4530076468445156190, guid: 8e0ba4b02106f1b408a228809bc8ade2, type: 3}
-  - {fileID: 4530076468445156190, guid: e7b7ecd0d8b0b1242bb28c130638f61e, type: 3}
-  - {fileID: 4530076468445156190, guid: b31ff57715f0bbf4da42e9d530195584, type: 3}
-  - {fileID: 4530076468445156190, guid: fcd2589b87394a242b26d3637c7e2524, type: 3}
-  - {fileID: 4530076468445156190, guid: 211e388fcf91ae44b9956e5cd6cc45aa, type: 3}
-  - {fileID: 4530076468445156190, guid: 9d79775128de57640bbb58d47510d875, type: 3}
-  ddudus: []
+  _userDataText: {fileID: 0}
+  _dduduText: {fileID: 316671319}
+  spot: 0
   FishSelectList: {fileID: 1533150256}
+  ddudus: []
 --- !u!4 &572323172
 Transform:
   m_ObjectHideFlags: 0

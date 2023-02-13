@@ -1,12 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum SceneSpot {
+    Farm,
+    Forest
+}
 
 public class DduduSpawner : MonoBehaviour
 {   // 뚜두 Spawn , 저장, 로드 관리
-    DduduManager DM;
-    [SerializeField] private UserDataText userDataText;
+    [SerializeField] private Text _dduduText;
+    [SerializeField] private SceneSpot spot;
     public FishSelectListGenerator FishSelectList;
-    [HideInInspector] public List<Ddudu> ddudus;    
+    [HideInInspector] public List<Ddudu> ddudus;
+    DduduManager DM;
 
     private void OnApplicationFocus(bool focusStatus) 
     {  
@@ -23,13 +30,16 @@ public class DduduSpawner : MonoBehaviour
         // 연구소에서 뚜두 추가하기 위해 만든 메서드.
         AddWaitingCreatedDduduList(); 
 
-        //Test
+        // { Test
         if (this.transform.childCount < 5)
-        for(int i=1; i<=5; i++)
         {
-            var id = DM.AddData((int)DataTable.Ddudu+i);
-            var newDdudu = SpawnDdudu(id);
+            for(int i=1; i<=5; i++)
+            {
+                var id = DM.AddData((int)DataTable.Ddudu+i);
+                var newDdudu = SpawnDdudu(id);
+            }
         } 
+        // } Test
     }
 
     public void LoadDdudu() 
@@ -42,12 +52,14 @@ public class DduduSpawner : MonoBehaviour
         }
     }
     
+#if UNITY_EDITOR
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
             int ran = Random.Range(101, 111);
             var newDdudu = SpawnDdudu(DM.AddData(ran));
         }
     }
+#endif // UNITY_EDITOR
 
     public void AddWaitingCreatedDduduList()
     {
@@ -64,12 +76,16 @@ public class DduduSpawner : MonoBehaviour
         var newDdudu = SpawnDdudu(id, pos);
         newDdudu.transform.SetParent(this.transform);
 
-        var dduduGemFeedManage = newDdudu.GetComponentInChildren<DduduGemFeedManage>();
-        dduduGemFeedManage.FishSelectList = FishSelectList;
+        if (FishSelectList != null)
+        {
+            var dduduGemFeedManage = newDdudu.GetComponentInChildren<DduduGemFeedManage>();
+            dduduGemFeedManage.FishSelectList = FishSelectList;
+        }
 
         if (newDdudu.data.isWork) newDdudu.gameObject.SetActive(false);
-        userDataText.RenewText(userDataText.dduduText, DM.GetDataListCount());
         ddudus.Add(newDdudu);
+
+        UpdateDduduText();
         return newDdudu;
     }
 
@@ -92,6 +108,26 @@ public class DduduSpawner : MonoBehaviour
         /* TODO: dduduList -> 배열로 바꾸기 */
         Profile.dduduList.Add(index);
         return newDdudu;
+    }
+
+    private void UpdateDduduText()
+    {
+        if (_dduduText != null)
+        {
+            switch (spot)
+            {
+            case SceneSpot.Farm: 
+                _dduduText.text = DM.GetDataListCount().IntToPrice();
+                break;
+            case SceneSpot.Forest:
+                _dduduText.text = TextFormat.IntToFraction(DM.GetDataListCount(), DM.MaxDduduCount);
+                if (DM.GetWorkDduduCount() > 0)
+                {
+                    _dduduText.text += $"\n<size=25>{DM.GetWorkDduduCount()} 뚜두 다른 일 하는 중</size>";
+                }
+                break;
+            }
+        }
     }
 
     public Ddudu FindDduduObject(int dataId)

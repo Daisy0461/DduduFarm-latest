@@ -755,6 +755,7 @@ Transform:
   m_LocalScale: {x: 1.8, y: 2.5, z: 1}
   m_Children:
   - {fileID: 18009610}
+  - {fileID: 1567157462}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2794,7 +2795,7 @@ MonoBehaviour:
   - {fileID: 1398333226}
   - {fileID: 802808500}
   _spawnPos: {x: 0, y: 0, z: 0}
-  _spawnParent: {fileID: 204473637}
+  _spawnParent: {fileID: 1567157462}
 --- !u!82 &1246542331 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 4181708270774149336, guid: 48980bc017d7d57408783ee4c5bdea1b, type: 3}
@@ -2938,7 +2939,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 45
+    m_MaxSize: 64
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -3631,6 +3632,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1067001758397362825, guid: 9e6f22e3510fba6488e19247b4fcbc0b, type: 3}
   m_PrefabInstance: {fileID: 1067001759521392664}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1567157461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567157462}
+  - component: {fileID: 1567157463}
+  m_Layer: 0
+  m_Name: Ddudus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567157462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567157461}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 204473637}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567157463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567157461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 686228d36ceeecb478c0a4451606c879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _userDataText: {fileID: 0}
+  _dduduText: {fileID: 1262475640}
+  spot: 1
+  FishSelectList: {fileID: 0}
+  ddudus: []
 --- !u!1 &1588349460
 GameObject:
   m_ObjectHideFlags: 0
