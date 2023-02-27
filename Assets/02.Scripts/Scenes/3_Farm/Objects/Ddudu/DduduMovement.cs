@@ -7,12 +7,12 @@ public class DduduMovement : MonoBehaviour
     [Header("DduduMovement")]
     public float speed;
     protected Vector2 dir;
-    private Animator animator;
+    private Animator anim;
 
     protected virtual void Start()
     {
         dir = Vector2.zero;
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     protected virtual void FixedUpdate()
@@ -27,11 +27,11 @@ public class DduduMovement : MonoBehaviour
 
     public void HandleAnimation()
     {
-        // if (animator == null) return;
-        // if (dir.x != 0 || dir.y != 0)
-            // AnimateMovement();
-        // else
-            // animator.SetLayerWeight(1, 0);
+        if (anim == null) return;
+        if (dir.x != 0 || dir.y != 0)
+            AnimateMovement();
+        else
+            anim.SetLayerWeight(1, 0);
     }
 
     public void Move()
@@ -41,10 +41,10 @@ public class DduduMovement : MonoBehaviour
 
     public void AnimateMovement()
     {
-        animator.SetLayerWeight(1, 1);
-        
-        animator.SetFloat("x", dir.x);
-        animator.SetFloat("y", dir.y);
+        anim.SetLayerWeight(1, 1);
+        anim.SetFloat("x", dir.x);
+        anim.SetFloat("y", dir.y);
+        Debug.Log($"{dir.x} : {anim.GetFloat("x")} : {anim.GetLayerWeight(0)}");
     }
 
     public void ChoseDir() 
