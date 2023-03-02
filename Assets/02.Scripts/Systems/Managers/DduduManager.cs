@@ -68,6 +68,16 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
         return data.id;
     }
 
+    public void RemoveData(int id, int amount=1)
+    {
+        if (IsDataExist(id))
+        {   
+            DduduData data = GetData(id);
+            dataList.Remove(data);
+            Save();
+        }
+    }
+
 	public override DduduInfo ConvertXmlToInfo(System.Xml.XmlNode node)
     {
         var attrib = node.Attributes;

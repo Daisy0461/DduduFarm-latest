@@ -32,7 +32,6 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         audioSource = GetComponent<AudioSource>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         render = GetComponent<SpriteRenderer>();
-        InvokeRepeating("ChoseDir", 0f, 3f); 
     }
 
     protected override void Update() 

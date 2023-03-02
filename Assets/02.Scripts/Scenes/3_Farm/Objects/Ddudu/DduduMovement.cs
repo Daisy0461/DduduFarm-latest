@@ -13,6 +13,8 @@ public class DduduMovement : MonoBehaviour
     {
         dir = Vector2.zero;
         anim = GetComponent<Animator>();
+        
+        InvokeRepeating("ChoseDir", 0f, 3f); 
     }
 
     protected virtual void FixedUpdate()
@@ -44,7 +46,6 @@ public class DduduMovement : MonoBehaviour
         anim.SetLayerWeight(1, 1);
         anim.SetFloat("x", dir.x);
         anim.SetFloat("y", dir.y);
-        Debug.Log($"{dir.x} : {anim.GetFloat("x")} : {anim.GetLayerWeight(0)}");
     }
 
     public void ChoseDir() 
@@ -54,5 +55,12 @@ public class DduduMovement : MonoBehaviour
         Vector2 moveDir = new Vector2(h, v).normalized;
 
         dir = moveDir;
+    }
+
+    public void StopMove()
+    {
+        speed = 0;
+        dir = Vector2.zero;
+        CancelInvoke("ChoseDir");
     }
 }

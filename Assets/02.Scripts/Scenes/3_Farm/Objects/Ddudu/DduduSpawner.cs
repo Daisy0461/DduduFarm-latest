@@ -89,11 +89,14 @@ public class DduduSpawner : MonoBehaviour
         return newDdudu;
     }
 
-    public static Ddudu SpawnDdudu(int id, Vector3 pos) 
+    public static Ddudu SpawnDdudu(int id, Vector3 pos, bool isNew = false) 
     {
+        if (isNew)
+        {
+            id = DduduManager.Instance.AddData(id);
+        }
         var data = DduduManager.Instance.GetData(id);
         var index = data.info.code;
-        // TODO: 뚜두 생성을 리소스 주소 생성으로 바꾸기
         var newObj = Instantiate(Resources.Load<GameObject>($"{PathAlias.ddudu_prefab_path}{index}"));
         newObj.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
         var newDdudu = newObj.GetComponent<Ddudu>();

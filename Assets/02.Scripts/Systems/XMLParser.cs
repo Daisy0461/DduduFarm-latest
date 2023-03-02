@@ -14,15 +14,15 @@ public class XMLParser : MonoBehaviour
     
     void Awake()
     {
-        LoadXML<ItemManager, ItemInfo, ItemData>(itemFile);
-        LoadXML<BuildingManager, BuildingInfo, BuildingData>(buildingFile);
-        LoadXML<ResearchManager, ResearchInfo, ResearchData>(researchFile);
-        LoadXML<DduduManager, DduduInfo, DduduData>(dduduFile);
-        LoadXML<CropManager, CropInfo, CropInfo>(cropFile);
-        LoadXML<FishManager, FishInfo, ItemData>(fishFile);
+        LoadParseXML<ItemManager, ItemInfo, ItemData>(itemFile);
+        LoadParseXML<BuildingManager, BuildingInfo, BuildingData>(buildingFile);
+        LoadParseXML<ResearchManager, ResearchInfo, ResearchData>(researchFile);
+        LoadParseXML<DduduManager, DduduInfo, DduduData>(dduduFile);
+        LoadParseXML<CropManager, CropInfo, CropInfo>(cropFile);
+        LoadParseXML<FishManager, FishInfo, ItemData>(fishFile);
     }
 
-    private void LoadXML<T, Info, Data>(string fileName)
+    public static void LoadParseXML<T, Info, Data>(string fileName)
         where T : DataManager<T, Info, Data>
     {
         T manager = DataManager<T, Info, Data>.Instance;

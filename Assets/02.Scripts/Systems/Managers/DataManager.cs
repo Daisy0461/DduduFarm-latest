@@ -16,6 +16,11 @@ public abstract class DataManager<T, Info, Data> : SingletonBase<T>
         return default(Info);
     }
 
+    public IEnumerable<Info> GetInfoEnumerable()
+    {
+        return infoDict.Values;
+    }
+
     public virtual bool IsDataExist(int id)
     {
         if (GetData(id) != null)
