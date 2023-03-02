@@ -677,7 +677,7 @@ Animator:
   m_GameObject: {fileID: 4405794343276581798}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5101b1a38e5ec45448bd8ea0868497a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -758,7 +758,6 @@ MonoBehaviour:
   satietyTime: 0
   IconGem: {fileID: 53238428}
   IconFeed: {fileID: 411786312}
-  interest: {fileID: 0}
   audioSource: {fileID: -1183617190183445102}
   normalSounds:
   - {fileID: 8300000, guid: ba0a6a80cc73f534ea1e5115f71c6f65, type: 3}
