@@ -62,5 +62,6 @@ public class DduduMovement : MonoBehaviour
         speed = 0;
         dir = Vector2.zero;
         CancelInvoke("ChoseDir");
+        this.enabled = false;
     }
 }

@@ -87,6 +87,7 @@ public class DduduTest : MonoBehaviour
     
     [HideInInspector] public IEnumerable<DduduInfo> infos;
     [HideInInspector] public Ddudu[] _ddudus = new Ddudu[10];
+    private GameObject curDdudu = null;
 
     private void Start() 
     {
@@ -103,9 +104,14 @@ public class DduduTest : MonoBehaviour
             _ddudus[info.code - 101] = null;
             Destroy(obj.gameObject);
         }
+        if (curDdudu != null)
+        {
+            curDdudu.SetActive(false);
+        }
         
         _ddudus[info.code - 101] = DduduSpawner.SpawnDdudu(info.code, Vector3.zero, true);
         _ddudus[info.code - 101].StopMove();
+        curDdudu = _ddudus[info.code - 101].gameObject;
     }
 
     public void StopAnimation(int dduduIndex)
@@ -116,12 +122,15 @@ public class DduduTest : MonoBehaviour
     public void StartAnimation(int dduduIndex, string animName)
     {
         _ddudus[dduduIndex].TryGetComponent<Animator>(out var animator);
-        // animator.Play(animName.Substring(0, animName.Length-4));
-        animator.PlayInFixedTime(animName.Substring(
-            0, animName.Length-4), 
-            animName.Substring(0, 4) == "walk"? 1 : 0, 
-            1.5f
-        );
+        if (animName.Substring(0, 4).Equals("Idle"))
+        {
+            animator.SetLayerWeight(1, 0);
+        }
+        else 
+        {
+            animator.SetLayerWeight(1, 1);
+        }
+        animator.Play(animName.Substring(0, animName.Length-4));
     }
 
     private void OnDisable() 
