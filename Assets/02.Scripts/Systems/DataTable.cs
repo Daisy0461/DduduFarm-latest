@@ -3,7 +3,7 @@ public enum DataTable : int
     Common = 0,
     Craft = 50,
     Ddudu = 100,
-    CombineDdudu = 110,
+    CombineDdudu = 120,
     Crop = 200,
     Seed = 250,
     Output = 300,
