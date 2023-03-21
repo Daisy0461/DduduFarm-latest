@@ -7,6 +7,16 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
 {
     private int _maxDduduCount = 10;
     public int MaxDduduCount => _maxDduduCount;
+    public List<Ddudu> DduduObjects { get; private set; } = new List<Ddudu>();
+
+    public Ddudu InstantiateDdudu(int code)
+    {
+        Instantiate(Resources.Load<GameObject>($"{PathAlias.ddudu_prefab_path}{code}"))
+        .TryGetComponent<Ddudu>(out var ddudu);
+        if (ddudu == null) Debug.Log("null 이랍니다");
+        DduduObjects.Add(ddudu);
+        return ddudu;
+    }
 
     public void SetMaxDduduCount(int value)
     {
@@ -70,12 +80,19 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
 
     public void RemoveData(int id, int amount=1)
     {
-        if (IsDataExist(id))
-        {   
-            DduduData data = GetData(id);
-            dataList.Remove(data);
-            Save();
+        if (!IsDataExist(id)) return;
+        DduduData data = GetData(id);
+        dataList.Remove(data);
+        for (int index = 0; index < DduduObjects.Count; index++)
+        {
+            if (DduduObjects[index].data.id == id)
+            {
+                Destroy(DduduObjects[index].gameObject);
+                DduduObjects.Remove(DduduObjects[index]);
+                break;
+            }
         }
+        Save();
     }
 
 	public override DduduInfo ConvertXmlToInfo(System.Xml.XmlNode node)

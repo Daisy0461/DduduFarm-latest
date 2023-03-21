@@ -1,7 +1,7 @@
-using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {    
@@ -23,6 +23,8 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     public AudioClip eatingSound;
 
     private bool isEnter = false;
+    private Action _onPointerUpAction = null;
+    private Action<Ddudu> _onPointerDownAction = null;
     
 #region Unity Method
 
@@ -90,6 +92,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         int ran = Random.Range(0,3);
         audioSource.clip = normalSounds[ran];
         audioSource.Play();
+        _onPointerDownAction?.Invoke(this);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -97,6 +100,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         circleCollider2D.enabled = true;
         dir = pos;
         InvokeRepeating("ChoseDir", 0f, 3f);
+        _onPointerUpAction?.Invoke();
     }
 
 #endregion
@@ -107,5 +111,25 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         {
             IconFeed.SetActive(true);
         }
-    }    
+    }
+
+    public void SetOnPointerDownAction(Action<Ddudu> action)
+    {
+        _onPointerDownAction = action;
+    }
+
+    public void RemoveOnPointerDownAction()
+    {
+        _onPointerDownAction = null;
+    }
+
+    public void SetOnPointerUpAction(Action action)
+    {
+        _onPointerUpAction = action;
+    }
+
+    public void RemoveOnPointerUpAction()
+    {
+        _onPointerUpAction = null;
+    }
 }

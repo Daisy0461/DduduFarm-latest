@@ -7,11 +7,5 @@ public class ForestCallDduduPanel : DefaultPanel
     [SerializeField] private Vector3 _spawnPos;
     [SerializeField] private Transform _spawnParent;
 
-	public override void OnButtonClick(int index)
-	{
-		base.OnButtonClick(index);
-        int id = DduduManager.Instance.AddData((int)DataTable.Ddudu + index + 1);
-        var newDdudu = DduduSpawner.SpawnDdudu(id, _spawnPos);
-        newDdudu.transform.SetParent(_spawnParent);
-	}
+	
 }

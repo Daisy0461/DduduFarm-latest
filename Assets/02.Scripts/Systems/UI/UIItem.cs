@@ -5,22 +5,21 @@ using System;
 
 public class UIItem : MonoBehaviour
 {
-    public Action<int> _onClickAction;
+    public Action _onClickAction;
     
-    private int id;
+    private int code;
 
     protected virtual void Awake() 
     {
-        id = transform.GetSiblingIndex();
     }
 
-    public virtual void SetOnClickAction(Action<int> action)
+    public virtual void SetOnClickAction(Action action)
     {
         _onClickAction = action;
     }
 
     public virtual void OnButtonClick()
     {
-        _onClickAction?.Invoke(id);
+        _onClickAction?.Invoke();
     }
 }

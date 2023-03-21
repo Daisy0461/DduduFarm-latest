@@ -22,6 +22,7 @@ public class TouchManager : MonoBehaviour
 #endregion
 
     public static bool canPanning;
+    private List<RaycastResult> results = new List<RaycastResult>();
     private readonly int _uiLayer = 5;
 
 #region Zoom
@@ -121,7 +122,7 @@ public class TouchManager : MonoBehaviour
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
         eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        List<RaycastResult> results = new List<RaycastResult>();
+        results.Clear();
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         if ((results.Count > 0 && results[0].gameObject.layer == _uiLayer)  || EventSystem.current.IsPointerOverGameObject())
         {

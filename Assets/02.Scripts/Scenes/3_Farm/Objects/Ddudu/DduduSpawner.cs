@@ -97,9 +97,8 @@ public class DduduSpawner : MonoBehaviour
         }
         var data = DduduManager.Instance.GetData(id);
         var index = data.info.code;
-        var newObj = Instantiate(Resources.Load<GameObject>($"{PathAlias.ddudu_prefab_path}{index}"));
-        newObj.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
-        var newDdudu = newObj.GetComponent<Ddudu>();
+        var newDdudu = DduduManager.Instance.InstantiateDdudu(index);
+        newDdudu.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
         
         newDdudu.data = data;
         if (data.interest == -1) 
@@ -108,7 +107,7 @@ public class DduduSpawner : MonoBehaviour
             newDdudu.data.interest = ran;
         }
 
-        /* TODO: dduduList -> 배열로 바꾸기 */
+        // TODO: dduduList -> 배열로 바꾸기
         Profile.dduduList.Add(index);
         return newDdudu;
     }

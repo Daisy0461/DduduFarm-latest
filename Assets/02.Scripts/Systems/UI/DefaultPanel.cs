@@ -1,21 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefaultPanel : MonoBehaviour
 {
-    [SerializeField] private UIItem[] _uiItem;
+    [Header("UI Components")][Space(5)]
+    [SerializeField] protected Text[] _titleText;
+    [SerializeField] protected Text[] _text;
+    [SerializeField] protected Image[] _images;
 
-    protected virtual void Awake() 
+    [HideInInspector] protected UIItem[] uiItems;
+
+    protected Action _onCloseAction = null;
+
+    public virtual void Activate(params object[] objs)
     {
-        foreach (var item in _uiItem)
-        {
-            item.SetOnClickAction(OnButtonClick);
-        }
+        this.gameObject.SetActive(true);
     }
 
-    public virtual void OnButtonClick(int index)
+    public virtual void OnCloseButtonClick()
     {
-        
+        _onCloseAction?.Invoke();
+        this.gameObject.SetActive(false);
     }
 }
