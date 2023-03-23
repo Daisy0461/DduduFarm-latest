@@ -105,6 +105,13 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
 
 #endregion
 
+    public void CombineMpdeDimmed(bool isDimmed)
+    {
+        if (data.info.code < (int)DataTable.CombineDdudu) return;
+        var dimmedColor = new Color(0.3f, 0.3f, 0.3f);
+        render.color = isDimmed ? dimmedColor : Color.white;
+    }
+
     public void ActiveIconFeed() // -> ActiveIconFeed
     {
         if (!IconFeed.activeSelf & !IconGem.activeSelf)

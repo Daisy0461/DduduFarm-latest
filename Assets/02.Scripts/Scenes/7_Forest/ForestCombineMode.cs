@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class ForestCombineMode : MonoBehaviour
 {
-    [SerializeField] private DefaultPanel _combinePanel;
-    [SerializeField] private DduduInfoPopup _dduduInfoPanel;
+    [SerializeField] private DduduCombinePopup _combinePopup;
+    [SerializeField] private DduduDataPopup _dduduInfoPopup;
 
     private bool isCombineMode = false;
     private Ddudu selectedDdudu = null;
@@ -19,6 +19,7 @@ public class ForestCombineMode : MonoBehaviour
         {
             foreach (var ddudu in dduduList)
             {
+                ddudu.CombineMpdeDimmed(true);
                 ddudu.SetOnPointerDownAction(OnPointerDownAction);
                 ddudu.SetOnPointerUpAction(OnPointerUpAction);
             }
@@ -27,6 +28,7 @@ public class ForestCombineMode : MonoBehaviour
         {
             foreach (var ddudu in dduduList)
             {
+                ddudu.CombineMpdeDimmed(false);
                 ddudu.RemoveOnPointerDownAction();
                 ddudu.RemoveOnPointerUpAction();
             }
@@ -63,10 +65,7 @@ public class ForestCombineMode : MonoBehaviour
             curDdudu.data.info.code,
             out var resultCode)) return;
 
-        var resultInfo = DduduManager.Instance.GetInfo(resultCode);
-        _combinePanel.Activate("뚜두 이름", "뚜두 설명", "두두 이미지", "두두 보석 이미지", "두두 관심 건물 이미지");
-        // DduduSpawner.SpawnDdudu(resultId, Vector3.zero, true);
-        // DduduManager.Instance.RemoveData(curDdudu.data.id);
-        // DduduManager.Instance.RemoveData(selectedDdudu.data.id);
+        _combinePopup.Activate(selectedDdudu.data.id, curDdudu.data.id, resultCode);
+        OnCombineButtonClick();
     }
 }

@@ -14,6 +14,7 @@ public class DduduRecipeManager : SingletonBase<DduduRecipeManager>
 
     public DduduRecipeInfo GetInfo(int resultId)
     {
+        if (!infos.ContainsKey(resultId)) return null; 
         return infos[resultId];
     }
 
