@@ -550,6 +550,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e01133bcffb523488c519cb521aee71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dduduImage: {fileID: 1067001757673748705}
+  _materialImages:
+  - {fileID: 1067001757624384392}
+  - {fileID: 1067001759706341979}
+  - {fileID: 1067001758336409688}
+  _materialTexts:
+  - {fileID: 1067001758192921423}
+  - {fileID: 1067001758752886580}
+  - {fileID: 1067001758240768793}
+  _effectObject: {fileID: 0}
 --- !u!1 &1067001758685075409
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +866,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8577171053963610619}
-        m_TargetAssemblyTypeName: UIItem, Assembly-CSharp
+        m_TargetAssemblyTypeName: ForestCallDduduItem, Assembly-CSharp
         m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:

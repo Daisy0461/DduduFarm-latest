@@ -5,11 +5,16 @@ using System;
 
 public class UIItem : MonoBehaviour
 {
-    public Action _onClickAction;
+    public Action _onClickAction = null;
+    public Action _onCloseAction = null;
     
-    private int code;
+    protected int _code;
 
     protected virtual void Awake() 
+    {
+    }
+
+    public virtual void SetData(params object[] objs)
     {
     }
 
@@ -21,5 +26,12 @@ public class UIItem : MonoBehaviour
     public virtual void OnButtonClick()
     {
         _onClickAction?.Invoke();
+    }
+
+    public virtual void OnCloseButtonClick()
+    {
+        _onCloseAction?.Invoke();
+        gameObject.SetActive(false);
+        
     }
 }
