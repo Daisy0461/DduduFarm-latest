@@ -37,7 +37,7 @@ public class DduduCombinePopup : DefaultPanel
 
     public void OnCombineButtonClick()
     {
-        DduduSpawner.SpawnDdudu(_resultCode, Vector3.zero, true);
+        DduduManager.SpawnDdudu(_resultCode, Vector3.zero, true);
         DduduManager.Instance.RemoveData(_curDduduId);
         DduduManager.Instance.RemoveData(_selectedDduduId);
         base.OnCloseButtonClick();

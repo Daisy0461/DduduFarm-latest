@@ -18,6 +18,28 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
         return ddudu;
     }
 
+    public static Ddudu SpawnDdudu(int id, Vector3 pos, bool isNew = false)
+    {
+        if (isNew)
+        {
+            id = DduduManager.Instance.AddData(id);
+        }
+        var data = DduduManager.Instance.GetData(id);
+        var index = data.info.code;
+        var newDdudu = DduduManager.Instance.InstantiateDdudu(index);
+        newDdudu.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
+
+        if (data.interest == -1)
+        {
+            int ran = Random.Range((int)DataTable.Craft+1, (int)DataTable.Craft + 10);
+            data.interest = ran;
+        }
+        newDdudu.data = data;
+        
+        Profile.dduduList.Add(index);
+        return newDdudu;
+    }
+
     public void SetMaxDduduCount(int value)
     {
         _maxDduduCount = value;
@@ -87,8 +109,8 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
         {
             if (DduduObjects[index].data.id == id)
             {
-                Destroy(DduduObjects[index].gameObject);
                 DduduObjects.Remove(DduduObjects[index]);
+                DduduObjects[index].gameObject.SetActive(false);
                 break;
             }
         }

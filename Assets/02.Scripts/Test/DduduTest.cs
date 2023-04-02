@@ -109,7 +109,7 @@ public class DduduTest : MonoBehaviour
             curDdudu.SetActive(false);
         }
         
-        _ddudus[info.code - 101] = DduduSpawner.SpawnDdudu(info.code, Vector3.zero, true);
+        _ddudus[info.code - 101] = DduduManager.SpawnDdudu(info.code, Vector3.zero, true);
         _ddudus[info.code - 101].StopMove();
         curDdudu = _ddudus[info.code - 101].gameObject;
     }

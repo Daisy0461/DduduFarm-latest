@@ -27,9 +27,7 @@ public class DduduSpawner : MonoBehaviour
     {
         DM = DduduManager.Instance;
         LoadDdudu();
-        // 연구소에서 뚜두 추가하기 위해 만든 메서드.
-        AddWaitingCreatedDduduList(); 
-
+        
         // { Test
         if (this.transform.childCount < 5)
         {
@@ -61,19 +59,11 @@ public class DduduSpawner : MonoBehaviour
     }
 #endif // UNITY_EDITOR
 
-    public void AddWaitingCreatedDduduList()
-    {
-        // foreach(DduduInfo waitingCreatedDdudu in DduduManager.Instance.WaitingCreatedDduduInfoList)
-        // {
-        //     SpawnDdudu(waitingCreatedDdudu.id - (int)DataTable.Ddudu);
-        // }
-    }
-
     public Ddudu SpawnDdudu(int id)
     {
         var tmpPos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2, 0));
         var pos = new Vector3(tmpPos.x, tmpPos.y, 0);
-        var newDdudu = SpawnDdudu(id, pos);
+        var newDdudu = DduduManager.SpawnDdudu(id, pos);
         newDdudu.transform.SetParent(this.transform);
 
         if (FishSelectList != null)
@@ -86,29 +76,6 @@ public class DduduSpawner : MonoBehaviour
         ddudus.Add(newDdudu);
 
         UpdateDduduText();
-        return newDdudu;
-    }
-
-    public static Ddudu SpawnDdudu(int id, Vector3 pos, bool isNew = false) 
-    {
-        if (isNew)
-        {
-            id = DduduManager.Instance.AddData(id);
-        }
-        var data = DduduManager.Instance.GetData(id);
-        var index = data.info.code;
-        var newDdudu = DduduManager.Instance.InstantiateDdudu(index);
-        newDdudu.transform.SetPositionAndRotation(pos, Quaternion.Euler(0f, 0f, 0f));
-        
-        newDdudu.data = data;
-        if (data.interest == -1) 
-        {
-            int ran = Random.Range((int)DataTable.Craft, (int)DataTable.Craft + 10);
-            newDdudu.data.interest = ran;
-        }
-
-        // TODO: dduduList -> 배열로 바꾸기
-        Profile.dduduList.Add(index);
         return newDdudu;
     }
 

@@ -2090,7 +2090,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8064657480728204385, guid: b2eab7d6a07795240b041b5aab3897db, type: 3}
       propertyPath: m_Name
-      value: BuyCheckUI
+      value: TwoButtonUI
       objectReference: {fileID: 0}
     - target: {fileID: 8064657480728204386, guid: b2eab7d6a07795240b041b5aab3897db, type: 3}
       propertyPath: m_Pivot.x

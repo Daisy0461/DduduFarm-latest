@@ -22,13 +22,13 @@ public class ForestCallDduduItem : UIItem
 
         var dduduImgPath = DduduManager.Instance.GetInfo(_code).imgPath;
         _dduduImage.sprite = Resources.Load<Sprite>(dduduImgPath);
-        // TODO: ¶ÑµÎ¸¦ ºÎ¸£´Âµ¥ ÇÊ¿äÇÑ Àç·á ¼ö ¸¸Å­ Àç·á ¿ÀºêÁ§Æ® SetActive
+        // TODO: ï¿½ÑµÎ¸ï¿½ ï¿½Î¸ï¿½ï¿½Âµï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® SetActive
     }
 
     public override void OnButtonClick()
     {
         base.OnButtonClick();
-        var ddudu = DduduSpawner.SpawnDdudu(_code, _spawnPos, true);
+        var ddudu = DduduManager.SpawnDdudu(_code, _spawnPos, true);
         ddudu.transform.SetParent(_spawnParent);
         if (_effectObject != null)
         {
