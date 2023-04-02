@@ -22,7 +22,7 @@ public class ForestCallDduduItem : UIItem
 
         var dduduImgPath = DduduManager.Instance.GetInfo(_code).imgPath;
         _dduduImage.sprite = Resources.Load<Sprite>(dduduImgPath);
-        
+        // TODO: 뚜두를 부르는데 필요한 재료 수 만큼 재료 오브젝트 SetActive
     }
 
     public override void OnButtonClick()

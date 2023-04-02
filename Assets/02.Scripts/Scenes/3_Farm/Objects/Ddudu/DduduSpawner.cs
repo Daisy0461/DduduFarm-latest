@@ -23,7 +23,7 @@ public class DduduSpawner : MonoBehaviour
         }
     }
 
-    private void Start() 
+    private void OnEnable() 
     {
         DM = DduduManager.Instance;
         LoadDdudu();

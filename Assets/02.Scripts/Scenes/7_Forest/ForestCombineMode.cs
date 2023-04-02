@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,11 +5,21 @@ using UnityEngine.EventSystems;
 public class ForestCombineMode : MonoBehaviour
 {
     [SerializeField] private DduduCombinePopup _combinePopup;
-    [SerializeField] private DduduDataPopup _dduduInfoPopup;
+    [SerializeField] private GameObject _dataButtonObject;
+    [SerializeField] private DduduDataPopup _dataPopup;
 
     private bool isCombineMode = false;
     private Ddudu selectedDdudu = null;
     private List<RaycastResult> results = new List<RaycastResult>();
+
+    private void Start()
+    {
+        var dduduList = DduduManager.Instance.DduduObjects;
+        foreach ( var ddudu in dduduList)
+        {
+            ddudu.SetOnPointerDownAction(OnInfoButtonActiveAction);
+        }
+    }
 
     public void OnCombineButtonClick()
     {
@@ -19,6 +28,8 @@ public class ForestCombineMode : MonoBehaviour
         {
             foreach (var ddudu in dduduList)
             {
+                ddudu.RemoveOnPointerDownAction();
+
                 ddudu.CombineMpdeDimmed(true);
                 ddudu.SetOnPointerDownAction(OnPointerDownAction);
                 ddudu.SetOnPointerUpAction(OnPointerUpAction);
@@ -31,9 +42,17 @@ public class ForestCombineMode : MonoBehaviour
                 ddudu.CombineMpdeDimmed(false);
                 ddudu.RemoveOnPointerDownAction();
                 ddudu.RemoveOnPointerUpAction();
+
+                ddudu.SetOnPointerDownAction(OnInfoButtonActiveAction);
             }
         }
         isCombineMode = !isCombineMode;
+    }
+
+    public void OnInfoButtonActiveAction(Ddudu ddudu)
+    {
+        _dataButtonObject.SetActive(true);
+        _dataPopup.SetDduduIdExtern(ddudu.data.id);
     }
 
     private void OnPointerDownAction(Ddudu curDdudu)

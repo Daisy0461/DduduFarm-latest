@@ -78,9 +78,9 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
         return data.id;
     }
 
-    public void RemoveData(int id, int amount=1)
+    public bool RemoveData(int id, int amount=1)
     {
-        if (!IsDataExist(id)) return;
+        if (!IsDataExist(id)) return false;
         DduduData data = GetData(id);
         dataList.Remove(data);
         for (int index = 0; index < DduduObjects.Count; index++)
@@ -93,6 +93,7 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
             }
         }
         Save();
+        return true;
     }
 
 	public override DduduInfo ConvertXmlToInfo(System.Xml.XmlNode node)

@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DduduDataPopup : DefaultPanel
 {
+    [Header("Ddudu Data Popup")][Space(8)]
+    [SerializeField] private TwoButtonPopup _twoButtonPopup;
+
+    private int _dduduId;
+
+    public void Activate() // TODO: 분홍만 Activate 할 수 없음
+    {
+        Activate(null);
+    }
+
     public override void Activate(params object[] objs)
     {
-        var dduduData = DduduManager.Instance.GetData((int)objs[0]);
+        _dduduId = objs == null ? _dduduId : (int)objs[0];
+
+        var dduduData = DduduManager.Instance.GetData(_dduduId);
         var dduduInfo = dduduData.info;
         var buildingImgPath = BuildingManager.Instance.GetInfo(dduduData.interest).imgPath;
         var gem1ImgPath = ItemManager.Instance.GetInfo(dduduInfo.gem1Id).imgPath;
@@ -26,5 +39,41 @@ public class DduduDataPopup : DefaultPanel
             _images[3].gameObject.SetActive(false);
         }
         base.Activate();
+    }
+
+    public void SetDduduIdExtern(int dduduId)
+    {
+        _dduduId = dduduId;
+    }
+
+    public void OnRemoveButtonClick()
+    {
+        _twoButtonPopup.SetAction(LeavePositiveAction, LeaveNegativeAction);
+        _twoButtonPopup.SetOnCloseAction(LeavePositiveCloseAction);
+        _twoButtonPopup.Activate("정말 떠나보내시겠습니까?");
+        
+        OnCloseButtonClick();
+    }
+
+    public override void OnCloseButtonClick()
+    {
+        _dduduId = 0;
+        base.OnCloseButtonClick();
+    }
+
+    private void LeavePositiveAction()
+    {
+        DduduManager.Instance.RemoveData(_dduduId);
+    }
+
+    private void LeaveNegativeAction()
+    {
+        return;
+    }
+
+    private void LeavePositiveCloseAction()
+    {
+        if (DduduManager.Instance.IsDataExist(_dduduId)) return;
+        Debug.Log("떠나보내기 이펙트 출력");
     }
 }
