@@ -20,6 +20,11 @@ public class DefaultPanel : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
+    public void SetOnCloseAction(Action action)
+    {
+        _onCloseAction = action;
+    }
+
     public virtual void OnCloseButtonClick()
     {
         _onCloseAction?.Invoke();

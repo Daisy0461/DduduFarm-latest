@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
 {
     private int _maxDduduCount = 10;
+    private static Action<Ddudu> _onSpawnPointerDownAction;
     public int MaxDduduCount => _maxDduduCount;
     public List<Ddudu> DduduObjects { get; private set; } = new List<Ddudu>();
 
@@ -31,13 +32,24 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
 
         if (data.interest == -1)
         {
-            int ran = Random.Range((int)DataTable.Craft+1, (int)DataTable.Craft + 10);
+            int ran = UnityEngine.Random.Range((int)DataTable.Craft+1, (int)DataTable.Craft + 10);
             data.interest = ran;
         }
         newDdudu.data = data;
+        newDdudu.SetOnPointerDownAction(_onSpawnPointerDownAction);
         
         Profile.dduduList.Add(index);
         return newDdudu;
+    }
+
+    public static void SetSpawnPointerDownAction(Action<Ddudu> action)
+    {
+        _onSpawnPointerDownAction = action;
+    }
+
+    public static void RemoveSpawnAction()
+    {
+        _onSpawnPointerDownAction = null;
     }
 
     public void SetMaxDduduCount(int value)

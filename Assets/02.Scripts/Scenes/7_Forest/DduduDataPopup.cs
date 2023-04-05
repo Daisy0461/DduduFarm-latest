@@ -21,7 +21,7 @@ public class DduduDataPopup : DefaultPanel
 
         var dduduData = DduduManager.Instance.GetData(_dduduId);
         var dduduInfo = dduduData.info;
-        var buildingImgPath = BuildingManager.Instance.GetInfo(dduduData.interest).imgPath;
+        var buildingImgPath = BuildingManager.Instance.GetInfo(dduduData.interest)?.imgPath; // TODO : 마지막에 생성한 뚜두의 건물 이미지를 불러오지 못한다. 왜?
         var gem1ImgPath = ItemManager.Instance.GetInfo(dduduInfo.gem1Id).imgPath;
         var gem2ImgPath = ItemManager.Instance.GetInfo(dduduInfo.gem2Id)?.imgPath;
 

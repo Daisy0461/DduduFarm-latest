@@ -23,20 +23,21 @@ public class DduduSpawner : MonoBehaviour
         }
     }
 
-    private void OnEnable() 
+    private void Start() 
     {
         DM = DduduManager.Instance;
         LoadDdudu();
         
         // { Test
-        if (this.transform.childCount < 5)
-        {
-            for(int i=1; i<=5; i++)
-            {
-                var id = DM.AddData((int)DataTable.Ddudu+i);
-                var newDdudu = SpawnDdudu(id);
-            }
-        } 
+        //if (this.transform.childCount < 5)
+        //{
+        //    for(int i=1; i<=6; i++)
+        //    {
+        //        var id = DM.AddData((int)DataTable.Ddudu+i);
+        //        Debug.Log(id);
+        //        SpawnDdudu(id);
+        //    }
+        //} 
         // } Test
     }
 

@@ -12,13 +12,9 @@ public class ForestCombineMode : MonoBehaviour
     private Ddudu selectedDdudu = null;
     private List<RaycastResult> results = new List<RaycastResult>();
 
-    private void Start()
+    public void OnEnable()
     {
-        var dduduList = DduduManager.Instance.DduduObjects;
-        foreach ( var ddudu in dduduList)
-        {
-            ddudu.SetOnPointerDownAction(OnInfoButtonActiveAction);
-        }
+        DduduManager.SetSpawnPointerDownAction(OnInfoButtonActiveAction);
     }
 
     public void OnCombineButtonClick()
@@ -52,6 +48,7 @@ public class ForestCombineMode : MonoBehaviour
     public void OnInfoButtonActiveAction(Ddudu ddudu)
     {
         _dataButtonObject.SetActive(true);
+        _dataPopup.SetOnCloseAction(() => _dataButtonObject.SetActive(false));
         _dataPopup.SetDduduIdExtern(ddudu.data.id);
     }
 
