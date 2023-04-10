@@ -10,8 +10,10 @@ public class FishInfo
     public int grow2Time;
     public int full;
     public int like;
+    public int gemCount;
+
     public FishInfo(int code, string name, string note, string imgPath1, string imgPath2, 
-                    int grow1Time, int grow2Time, int full, int like)
+                    int grow1Time, int grow2Time, int full, int like, int gemCount)
     {
         this.code = code;
         this.name = name;
@@ -22,5 +24,6 @@ public class FishInfo
         this.grow2Time = grow2Time;
         this.full = full;
         this.like = like;
+        this.gemCount = gemCount
     }
 }

@@ -22,9 +22,10 @@ public class FishManager : DataManager<FishManager, FishInfo, ItemData>
         int grow2Time = RtrnNodeToInt(attrib.GetNamedItem("grow2Time"));
         int full = RtrnNodeToInt(attrib.GetNamedItem("full"));
         int like = RtrnNodeToInt(attrib.GetNamedItem("like"));
+        int gemCount = RtrnNodeToInt(attrib.GetNamedItem("gemCount"));
 
         FishInfo info = new FishInfo(code, name, note, imgPath1, imgPath2, 
-                    grow1Time, grow2Time, full, like);
+                    grow1Time, grow2Time, full, like, gemCount);
         return info;
     }
 }
