@@ -24,6 +24,6 @@ public class FishInfo
         this.grow2Time = grow2Time;
         this.full = full;
         this.like = like;
-        this.gemCount = gemCount
+        this.gemCount = gemCount;
     }
 }
