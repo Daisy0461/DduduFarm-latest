@@ -30,7 +30,7 @@ public class DduduDataPopup : DefaultPanel
         _images[0].sprite = Resources.Load<Sprite>(dduduInfo.imgPath);
         _images[1].sprite = Resources.Load<Sprite>(buildingImgPath);
         _images[2].sprite = Resources.Load<Sprite>(gem1ImgPath);
-        if (gem2ImgPath != string.Empty)
+        if (gem2ImgPath != null && gem2ImgPath != string.Empty)
         {
             _images[3].sprite = Resources.Load<Sprite>(gem2ImgPath);
         }
@@ -57,7 +57,6 @@ public class DduduDataPopup : DefaultPanel
 
     public override void OnCloseButtonClick()
     {
-        _dduduId = 0;
         base.OnCloseButtonClick();
     }
 

@@ -8,6 +8,7 @@ public class ForestCallDduduItem : UIItem
     [SerializeField] private Image _dduduImage;
     [SerializeField] private Image[] _materialImages;
     [SerializeField] private Text[] _materialTexts;
+    [SerializeField] private GameObject[] _materialObjects;
     [SerializeField] private GameObject _effectObject;
 
     private Vector3 _spawnPos;
@@ -22,7 +23,17 @@ public class ForestCallDduduItem : UIItem
 
         var dduduImgPath = DduduManager.Instance.GetInfo(_code).imgPath;
         _dduduImage.sprite = Resources.Load<Sprite>(dduduImgPath);
-        // TODO: �ѵθ� �θ��µ� �ʿ��� ��� �� ��ŭ ��� ������Ʈ SetActive
+
+        var dduduInfo = ResearchManager.Instance.GetInfo(_code);
+        var index = 0;
+        foreach (var material in dduduInfo.requireMaterial) // TODO: empty? need debug
+        {
+            var matId = material.Key;
+            var matAmount = material.Value;
+            _materialImages[index].sprite = Resources.Load<Sprite>(ItemManager.Instance.GetInfo(matId).imgPath);
+            _materialTexts[index].text = matAmount.ToString();
+            _materialObjects[index].SetActive(true);
+        }
     }
 
     public override void OnButtonClick()

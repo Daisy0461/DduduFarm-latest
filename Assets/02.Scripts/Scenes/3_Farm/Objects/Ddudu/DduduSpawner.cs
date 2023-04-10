@@ -47,7 +47,14 @@ public class DduduSpawner : MonoBehaviour
         {
             Ddudu newDdudu = SpawnDdudu(data.id);
             newDdudu.IconGem.SetActive(data.isGemIconActive);
-            newDdudu.transform.position = new Vector3(data.x, data.y, data.z);
+            if (spot == SceneSpot.Farm)
+            {
+                newDdudu.transform.position = new Vector3(data.x, data.y, data.z);
+            }
+            else if (spot == SceneSpot.Forest)
+            {
+                newDdudu.transform.position = new Vector3(Random.Range(-1, 1), Random.Range(-0.5f, 0.5f), 0);
+            }
         }
     }
     

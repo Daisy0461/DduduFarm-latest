@@ -121,8 +121,8 @@ public class DduduManager : DataManager<DduduManager, DduduInfo, DduduData>
         {
             if (DduduObjects[index].data.id == id)
             {
-                DduduObjects.Remove(DduduObjects[index]);
                 DduduObjects[index].gameObject.SetActive(false);
+                DduduObjects.Remove(DduduObjects[index]);
                 break;
             }
         }
