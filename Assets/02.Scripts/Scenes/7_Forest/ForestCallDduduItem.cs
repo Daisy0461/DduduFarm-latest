@@ -26,13 +26,19 @@ public class ForestCallDduduItem : UIItem
 
         var dduduInfo = ResearchManager.Instance.GetInfo(_code);
         var index = 0;
-        foreach (var material in dduduInfo.requireMaterial) // TODO: empty? need debug
+        foreach (var material in dduduInfo.requireMaterial)
         {
             var matId = material.Key;
             var matAmount = material.Value;
             _materialImages[index].sprite = Resources.Load<Sprite>(ItemManager.Instance.GetInfo(matId).imgPath);
             _materialTexts[index].text = matAmount.ToString();
             _materialObjects[index].SetActive(true);
+            index++;
+        }
+        while (index <= dduduInfo.requireMaterial.Count)
+        {
+            _materialObjects[index].SetActive(false);
+            index++;
         }
     }
 
