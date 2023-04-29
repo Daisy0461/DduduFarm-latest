@@ -818,6 +818,7 @@ MonoBehaviour:
   - {fileID: 1076181132043145975}
   - {fileID: 8002937501299574162}
   _twoButtonPopup: {fileID: 0}
+  _destroyEffect: {fileID: 0}
 --- !u!1 &83145320254674023
 GameObject:
   m_ObjectHideFlags: 0

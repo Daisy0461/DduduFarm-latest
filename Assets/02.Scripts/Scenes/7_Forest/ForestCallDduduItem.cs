@@ -44,12 +44,8 @@ public class ForestCallDduduItem : UIItem
 
     public override void OnButtonClick()
     {
-        base.OnButtonClick();
         var ddudu = DduduManager.SpawnDdudu(_code, _spawnPos, true);
         ddudu.transform.SetParent(_spawnParent);
-        if (_effectObject != null)
-        {
-            _effectObject.SetActive(true);
-        }
+        base.OnButtonClick();
     }
 }

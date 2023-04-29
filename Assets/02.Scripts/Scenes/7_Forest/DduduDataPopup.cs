@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class DduduDataPopup : DefaultPanel
 {
     [Header("Ddudu Data Popup")][Space(8)]
     [SerializeField] private TwoButtonPopup _twoButtonPopup;
+    [SerializeField] private GameObject _destroyEffect;
 
     private int _dduduId;
+    private Transform _dduduTransform;
+    private Quaternion _quaternion = new Quaternion();
 
-    public void Activate() // TODO: 분홍만 Activate 할 수 없음
+    public void Activate()
     {
         Activate(null);
     }
@@ -41,9 +41,10 @@ public class DduduDataPopup : DefaultPanel
         base.Activate();
     }
 
-    public void SetDduduIdExtern(int dduduId)
+    public void SetDduduIdExtern(int dduduId, Transform dduduTrasform)
     {
         _dduduId = dduduId;
+        _dduduTransform = dduduTrasform;
     }
 
     public void OnRemoveButtonClick()
@@ -73,6 +74,8 @@ public class DduduDataPopup : DefaultPanel
     private void LeavePositiveCloseAction()
     {
         if (DduduManager.Instance.IsDataExist(_dduduId)) return;
-        Debug.Log("떠나보내기 이펙트 출력");
+        _destroyEffect.transform.SetPositionAndRotation(_dduduTransform.transform.position, _quaternion);
+        _destroyEffect.SetActive(false);
+        _destroyEffect.SetActive(true);
     }
 }

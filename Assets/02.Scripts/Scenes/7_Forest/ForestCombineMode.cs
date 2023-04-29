@@ -49,7 +49,7 @@ public class ForestCombineMode : MonoBehaviour
     {
         _dataButtonObject.SetActive(true);
         _dataPopup.SetOnCloseAction(() => _dataButtonObject.SetActive(false));
-        _dataPopup.SetDduduIdExtern(ddudu.data.id);
+        _dataPopup.SetDduduIdExtern(ddudu.data.id, ddudu.transform);
     }
 
     private void OnPointerDownAction(Ddudu curDdudu)
