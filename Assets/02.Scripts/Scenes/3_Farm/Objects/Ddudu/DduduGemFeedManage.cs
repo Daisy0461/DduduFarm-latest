@@ -6,8 +6,8 @@ public class DduduGemFeedManage : MonoBehaviour
     // 뚜두 하위의 Canvas 오브젝트에 붙어있으며, Gem과 Feed와 FeedUI에 기능을 준다.
     public FishSelectListGenerator FishSelectList;
     public Ddudu ddudu;
-    public GameObject IconGem;
-    public GameObject IconFeed;
+    
+    [SerializeField] private Gem _iconGem;
 
     public void OnClickFeed()
     {
@@ -15,21 +15,17 @@ public class DduduGemFeedManage : MonoBehaviour
         FishSelectList.selectedDdudu = ddudu;
     }
 
-    public void GemGaCha()  // 보석 확률 계산
+    public void GemGaCha(int fishCode)  // 보석 확률 계산
     {
-        if (!IconGem.activeSelf) 
+        if (!_iconGem.gameObject.activeSelf) 
         {
-            int ran = Random.Range(1, 100);
-            if (ran <= 60) 
-            {   // 확률 변수로 바꾸기
-                StartCoroutine(EarnGem());
-            }
+            StartCoroutine(EarnGem(fishCode));
         }
     }
 
-    IEnumerator EarnGem()
+    IEnumerator EarnGem(int fishCode)
     {
-        yield return new WaitForSeconds(0.5f);
-        IconGem.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        _iconGem.SetEarnGem(fishCode);
     }
 }

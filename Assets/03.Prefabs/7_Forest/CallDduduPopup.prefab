@@ -119,7 +119,6 @@ GameObject:
   - component: {fileID: 523689546885611680}
   - component: {fileID: 523689546885611682}
   - component: {fileID: 523689546885611683}
-  - component: {fileID: 523689546885611685}
   m_Layer: 5
   m_Name: CallPanel
   m_TagString: Untagged
@@ -187,24 +186,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &523689546885611685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523689546885611681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4c8a6104c77d2240bad612850e69141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _titleText: []
-  _text: []
-  _images: []
-  _spawnPos: {x: 0, y: 0, z: 0}
-  _spawnParent: {fileID: 0}
-  _items: []
 --- !u!1 &523689547054880790
 GameObject:
   m_ObjectHideFlags: 0
@@ -625,6 +606,7 @@ MonoBehaviour:
   - {fileID: 6234005363804104855}
   - {fileID: 5961256936974250108}
   - {fileID: 6854883388484078913}
+  _effectObject: {fileID: 0}
 --- !u!1 &523689547419690983
 GameObject:
   m_ObjectHideFlags: 0

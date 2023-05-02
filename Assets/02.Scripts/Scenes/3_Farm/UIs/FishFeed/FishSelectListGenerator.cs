@@ -43,21 +43,15 @@ public class FishSelectListGenerator : MonoBehaviour
     public void FeedDdudu(int id)
     {
         // 먹이주기
-        selectedDdudu.data.satiety += FM.GetInfo(id).full;
-        if (selectedDdudu.data.satiety > selectedDdudu.data.info.maxFull)
-            selectedDdudu.data.satiety = selectedDdudu.data.info.maxFull;
+        selectedDdudu.data.satiety = selectedDdudu.data.info.maxFull;
         
-        if (selectedDdudu.data.like >= 0)
+        selectedDdudu.data.like += FM.GetInfo(id).like;
+        if (selectedDdudu.data.like >= selectedDdudu.data.info.maxFull)
         {
-            selectedDdudu.data.like += FM.GetInfo(id).like;
-            if (selectedDdudu.data.like >= selectedDdudu.data.info.maxFull)
-            {
-                //  뚜두의 선물 - 한 종 당 하나씩
-            }
+            //  뚜두의 선물 - 한 종 당 하나씩
         }
-        selectedDdudu.audioSource.PlayOneShot(selectedDdudu.eatingSound);
-        selectedDdudu.GetComponentInChildren<DduduGemFeedManage>().GemGaCha();
-        selectedDdudu.IconFeed.SetActive(false);
+        selectedDdudu.EatProcess(id);
+        
         // 물고기 amount 차감
         IM.RemoveData(id);
     }

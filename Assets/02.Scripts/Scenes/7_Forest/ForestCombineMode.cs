@@ -26,7 +26,7 @@ public class ForestCombineMode : MonoBehaviour
             {
                 ddudu.RemoveOnPointerDownAction();
 
-                ddudu.CombineMpdeDimmed(true);
+                ddudu.CombineModeDimmed(true);
                 ddudu.SetOnPointerDownAction(OnPointerDownAction);
                 ddudu.SetOnPointerUpAction(OnPointerUpAction);
             }
@@ -35,7 +35,7 @@ public class ForestCombineMode : MonoBehaviour
         {
             foreach (var ddudu in dduduList)
             {
-                ddudu.CombineMpdeDimmed(false);
+                ddudu.CombineModeDimmed(false);
                 ddudu.RemoveOnPointerDownAction();
                 ddudu.RemoveOnPointerUpAction();
 

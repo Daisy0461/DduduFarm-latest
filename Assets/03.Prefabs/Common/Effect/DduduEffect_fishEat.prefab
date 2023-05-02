@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7639493368255357837}
   - component: {fileID: 234980335696615640}
   m_Layer: 0
-  m_Name: DduduEffect_fishlove
+  m_Name: DduduEffect_fishEat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

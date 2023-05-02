@@ -30,6 +30,7 @@ Transform:
   m_Children:
   - {fileID: 1407640236}
   - {fileID: 534101742}
+  - {fileID: 5514082605251366836}
   - {fileID: 666256827}
   m_Father: {fileID: 4405794343276581793}
   m_RootOrder: 0
@@ -48,8 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FishSelectList: {fileID: 0}
   ddudu: {fileID: 4405794343276581799}
-  IconGem: {fileID: 1407640231}
-  IconFeed: {fileID: 534101741}
+  _iconGem: {fileID: 1407640233}
 --- !u!1 &534101741
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +220,7 @@ Transform:
   m_Children:
   - {fileID: 872416673}
   m_Father: {fileID: 508339735}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &666256829
 SpriteRenderer:
@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 934c9a6a5b5254848aae4e5bf25c7d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _tmpText: {fileID: 872416674}
 --- !u!1 &872416672
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,8 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db820bba7cd2d6b46aabcbf560241fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 666256826}
   gemSound: {fileID: 8300000, guid: 71fb4c75a4325c746804d2819f3454a1, type: 3}
+  anim: {fileID: 666256828}
 --- !u!1 &4405794343276581798
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +759,7 @@ MonoBehaviour:
   satietyTime: 0
   IconGem: {fileID: 1407640231}
   IconFeed: {fileID: 534101741}
+  _fishEatEffect: {fileID: 4375153262349299898}
   audioSource: {fileID: -1183617190183445102}
   normalSounds:
   - {fileID: 8300000, guid: ba0a6a80cc73f534ea1e5115f71c6f65, type: 3}
@@ -860,3 +862,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1001 &2774527794506050617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 508339735}
+    m_Modifications:
+    - target: {fileID: 1888891578752408707, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_Name
+      value: DduduEffect_fishEat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1888891578752408707, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+--- !u!1 &4375153262349299898 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1888891578752408707, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+  m_PrefabInstance: {fileID: 2774527794506050617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5514082605251366836 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7639493368255357837, guid: c39f529306ebf3947a79ad89332ffd44, type: 3}
+  m_PrefabInstance: {fileID: 2774527794506050617}
+  m_PrefabAsset: {fileID: 0}

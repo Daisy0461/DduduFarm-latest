@@ -11,6 +11,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     [Header("Children")]
     public GameObject IconGem;      // 자식 오브젝트로 있는 보석 표시
     public GameObject IconFeed;     // 먹이 말풍선
+    [SerializeField] private GameObject _fishEatEffect;
 
     [Header("Pointing")]
     Vector2 pos;
@@ -25,8 +26,9 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     private bool isEnter = false;
     private Action _onPointerUpAction = null;
     private Action<Ddudu> _onPointerDownAction = null;
+    private DduduGemFeedManage _dduduGemFeedManage;
     
-#region Unity Method
+    #region Unity Method
 
 	protected override void Start() 
     {
@@ -34,6 +36,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         audioSource = GetComponent<AudioSource>();
         circleCollider2D = GetComponent<CircleCollider2D>();
         render = GetComponent<SpriteRenderer>();
+        _dduduGemFeedManage = GetComponentInChildren<DduduGemFeedManage>();
     }
 
     protected override void Update() 
@@ -70,9 +73,9 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         }
     }
 
-#endregion
+    #endregion // Unity Method
 
-#region  Touch Method
+    #region  Touch Method
 
     public void OnDrag(PointerEventData eventData)
     {  
@@ -103,22 +106,9 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         _onPointerUpAction?.Invoke();
     }
 
-#endregion
+    #endregion // Touch Method
 
-    public void CombineMpdeDimmed(bool isDimmed)
-    {
-        if (data.info.code < (int)DataTable.CombineDdudu) return;
-        var dimmedColor = new Color(0.3f, 0.3f, 0.3f);
-        render.color = isDimmed ? dimmedColor : Color.white;
-    }
-
-    public void ActiveIconFeed() // -> ActiveIconFeed
-    {
-        if (!IconFeed.activeSelf & !IconGem.activeSelf)
-        {
-            IconFeed.SetActive(true);
-        }
-    }
+    #region Action
 
     public void SetOnPointerDownAction(Action<Ddudu> action)
     {
@@ -138,5 +128,33 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
     public void RemoveOnPointerUpAction()
     {
         _onPointerUpAction = null;
+    }
+
+    #endregion // Action
+
+    public void CombineModeDimmed(bool isDimmed)
+    {
+        if (data.info.code < (int)DataTable.CombineDdudu) return;
+        var dimmedColor = new Color(0.3f, 0.3f, 0.3f);
+        render.color = isDimmed ? dimmedColor : Color.white;
+    }
+
+    public void ActiveIconFeed() // -> ActiveIconFeed
+    {
+        if (!IconFeed.activeSelf & !IconGem.activeSelf)
+        {
+            IconFeed.SetActive(true);
+        }
+    }
+
+    public void EatProcess(int fishCode)
+    {
+        audioSource.PlayOneShot(eatingSound);
+        _dduduGemFeedManage.GemGaCha(fishCode);
+        IconFeed.SetActive(false);
+
+        // eat 애니메이션 플레이
+        _fishEatEffect.SetActive(false);
+        _fishEatEffect.SetActive(true);
     }
 }

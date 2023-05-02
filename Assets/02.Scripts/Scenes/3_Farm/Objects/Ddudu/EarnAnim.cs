@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EarnAnim : MonoBehaviour
 {
+    [SerializeField] private TextMeshPro _tmpText;
+
     private void OnEnable() 
     {
         StartCoroutine(Anim());
+    }
+
+    public void SetText(string content)
+    {
+        _tmpText.text = content;
     }
 
     IEnumerator Anim()

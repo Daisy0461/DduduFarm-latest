@@ -4,21 +4,25 @@ using UnityEngine.EventSystems;
 
 public class Gem : MonoBehaviour, IPointerClickHandler
 {
-    public GameObject anim;
-    [SerializeField] AudioClip gemSound;
-
-    ItemManager IM;
-    Ddudu parent;
+    [SerializeField] private AudioClip gemSound;
+    [SerializeField] private EarnAnim anim;
     
-    int gemID;
-    int gemAmount;
+    private ItemManager IM;
+    private Ddudu parent; 
+    private int gemID;
+    private int gemAmount;
 
     private void Start() 
     {
         IM = ItemManager.Instance;
         parent = GetComponentInParent<Ddudu>();
         gemID = parent.data.info.code + (int)DataTable.Gem - (int)DataTable.Ddudu;
-        gemAmount = (parent.data.info.code > (int)DataTable.CombineDdudu) ? 2 : 1;
+    }
+
+    public void SetEarnGem(int fishCode)
+    {
+        gemAmount = FishManager.Instance.GetInfo(fishCode).gemCount;
+        this.gameObject.SetActive(true);
     }
 
     public void OnPointerClick(PointerEventData e)
@@ -35,9 +39,11 @@ public class Gem : MonoBehaviour, IPointerClickHandler
 
     IEnumerator GameObejctSetActiveFalse()
     {
-        yield return new WaitForFixedUpdate();
+        yield return null;
         
         this.gameObject.SetActive(false);
-        anim.SetActive(true);
+
+        anim.SetText($"+{gemAmount}");
+        anim.gameObject.SetActive(true);
     }
 }
