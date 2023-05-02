@@ -313,17 +313,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d9c3813aeeb4a439abd95d60e98c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  talkText: {fileID: 277060821}
-  ownerImg: {fileID: 0}
-  sprites:
-  - {fileID: -2670214926334984900, guid: 41e45f32a22e94848a607448eb970b74, type: 3}
-  - {fileID: -4594869986258682788, guid: 6019f044e5d0d054c8a26b4b6e8b2c5d, type: 3}
-  talkRepertories:
-  - "11111111111111111(30\uC790 \uC774\uB0B4)"
-  - "222222222222222(30\uC790 \uC774\uB0B4)"
-  - "3333333333333(30\uC790 \uC774\uB0B4)"
-  - "4444444444444(30\uC790 \uC774\uB0B4)"
-  - "555555555555555(30\uC790 \uC774\uB0B4)"
+  _talkText: {fileID: 277060821}
+  _greetStrings:
+  - "\uB69C\uB450\uB4E4\uC774 \uB108 \uC598\uAE30\uB97C \uB9CE\uC774 \uD558\uB354\uAD6C\uB098."
+  - "\uB69C\uB450\uB4E4\uC740 \uC798 \uC788\uC5B4.."
+  _callStrings:
+  - "\uC2E0\uAE30\uD558\uAD6C\uB098.. \uB69C\uB450\uAC00 \uC774\uB807\uAC8C \uC790\uC8FC
+    \uC0DD\uAE30\uB2E4\uB2C8.."
+  - "\uB2E4\uB4E4 \uC0C8\uB85C\uC6B4 \uB69C\uB450\uB97C \uD658\uC601\uD558\uACE0
+    \uC788\uC5B4."
+  _combineStrings:
+  - "\uCC45\uC5D0\uC11C.. \uC5EC\uB7EC \uB69C\uB450\uAC00 \uD558\uB098\uAC00 \uB420
+    \uC218 \uC788\uB2E4\uB294 \uAC78 \uBCF8 \uC801 \uC788\uC5B4."
+  - "\uC815\uB9D0 \uAE30\uBED0 \uBCF4\uC5EC."
+  _removeStrings:
+  - "\uC544\uC26C\uC6CC\uD558\uB294\uAD6C\uB098."
+  - "\uB69C\uB450\uB294 \uC0AC\uB77C\uC9C0\uC9C0 \uC54A\uC544. \uC778\uC5F0\uC774
+    \uC788\uB2E4\uBA74 \uC5B8\uC820\uAC00 \uB610 \uBCFC\uAC8C\uB2E4."
+  _forestCallPanel: {fileID: 1640537880}
+  _combinePopup: {fileID: 1857259068}
+  _removePopup: {fileID: 1517171097}
 --- !u!1 &204473636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10.01}
+  m_AnchoredPosition: {x: 0, y: -10.0099945}
   m_SizeDelta: {x: 386.5, y: 475.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1692127610
@@ -3959,7 +3968,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -55
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 523689546885611685, guid: 134fcecf74d633b4c9b554ae5f06e5d4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 134fcecf74d633b4c9b554ae5f06e5d4, type: 3}
 --- !u!1001 &1942990235173540659
 PrefabInstance:

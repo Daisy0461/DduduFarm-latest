@@ -9,6 +9,7 @@ public class TwoButtonPopup : MonoBehaviour
 
     protected Action _onFirstAction = null;
     protected Action _onSecondAction = null;
+    protected Action _onFirstCloseAction = null;
     protected Action _onCloseAction = null;
 
     public virtual void Activate(params object[] objs)
@@ -28,9 +29,15 @@ public class TwoButtonPopup : MonoBehaviour
         _onCloseAction = closeAction;
     }
 
+    public void SetOnFirstCloseAction(Action firstAction)
+    {
+        _onFirstCloseAction = firstAction;
+    }
+
     public void OnFirstButtonClick()
     {
         _onFirstAction?.Invoke();
+        _onFirstCloseAction?.Invoke();
         OnCloseButtonClick();
     }
 

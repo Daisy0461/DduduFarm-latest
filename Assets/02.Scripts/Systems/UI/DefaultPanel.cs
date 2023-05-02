@@ -25,6 +25,11 @@ public class DefaultPanel : MonoBehaviour
         _onCloseAction = action;
     }
 
+    public void AddOnCloseAction(Action action)
+    {
+        _onCloseAction += action;
+    }
+
     public virtual void OnCloseButtonClick()
     {
         _onCloseAction?.Invoke();
