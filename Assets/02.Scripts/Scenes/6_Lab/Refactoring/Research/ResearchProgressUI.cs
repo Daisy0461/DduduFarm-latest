@@ -43,7 +43,6 @@ public class ResearchProgressUI : MonoBehaviour
     [SerializeField]
     private bool canResearch;
 
-    // grayï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½
     private void Awake()
     {
         researchMaterialCoordinateList[0] = new List<Coordinate>() { new Coordinate(0, -240) };
@@ -155,7 +154,7 @@ public class ResearchProgressUI : MonoBehaviour
 
         foreach (GameObject researchItemUIObject in researchItemUIObjectList)
         {
-            researchItemUIObject.GetComponent<ResearchItemUI>().UpdateResearchItemUI();
+            // researchItemUIObject.GetComponent<ResearchItem>().UpdateResearchItemUI();
         }
     }
 }

@@ -39,7 +39,7 @@ public class LaboratoryTest : MonoBehaviour
 
         foreach (GameObject researchItemUIObject in researchItemUIObjectList)
         {
-            researchItemUIObject.GetComponent<ResearchItemUI>().UpdateResearchItemUI();
+            // researchItemUIObject.GetComponent<ResearchItem>().UpdateResearchItemUI();
         }
 
         Debug.Log("연구 초기화 완료");
@@ -51,8 +51,8 @@ public class LaboratoryTest : MonoBehaviour
         {
             foreach (var data in ResearchManager.Instance.GetDataList())
             {
-                if(data.isPrime)
-                    Debug.LogFormat("{0} 연구 레벨 : {1}", data.info.name, data.info.level.ToString());
+                // if(data.isPrime)
+                //     Debug.LogFormat("{0} 연구 레벨 : {1}", data.info.name, data.info.level.ToString());
             }
         }
 

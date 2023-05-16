@@ -14,36 +14,22 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
 
     public override void AddData(int id, int amount=1)
     {
-        try
+        var info = GetInfo(id);
+        if (info == null) 
         {
-            ResearchData data = new ResearchData(infoDict[id]);
-            int preId = data.info.preCode;
-
-            if (preId != NO_PRE_RESEARCH)
-            {
-                if (dataList[preId].info.name == data.info.name)
-                {
-                    dataList[preId].isPrime = false;
-                }
-            }
-
-            data.isPrime = true;
-
-            dataList.Add(data);
-            Save();
-        } 
-        catch(Exception e)
-        {
-            Debug.LogError(e.Message);
+            Debug.LogError($"research info is null {id}");
             return;
         }
+        
+        var data = new ResearchData(info);
+        dataList.Add(data);
     }
 
     public override ResearchData GetData(int id)
     {
         foreach(var data in dataList)
         {
-            if (data.id == id)
+            if (data.Id == id)
                 return data;
         }
         return null;
