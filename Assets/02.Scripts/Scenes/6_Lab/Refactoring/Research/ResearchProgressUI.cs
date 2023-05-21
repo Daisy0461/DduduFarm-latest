@@ -3,158 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResearchProgressUI : MonoBehaviour
+public class ResearchProgressUI : DefaultPanel
 {
-    public struct Coordinate
-    {
-        private float posX;
-        private float posY;
+    [SerializeField] private UIItem[] _requireItems;
+    [SerializeField] private GameObject _researchButton;
+    [SerializeField] private GameObject _researchLockButton;
 
-        public Coordinate(float posX, float posY)
+    private int _researchId;
+
+    public override void Activate(params object[] objs)
+    {
+        _researchId = (int)objs[0];
+
+        var researchInfo = ResearchManager.Instance.GetInfo(_researchId);
+        if (researchInfo == null)
         {
-            this.posX = posX;
-            this.posY = posY;
+            Debug.LogError("researchInfo is null");
+            return;
         }
 
-        public float getX()
+        _titleText[0].text = researchInfo.name;
+        _images[0].sprite = Resources.Load<Sprite>(researchInfo.imgPath);
+        _text[0].text = researchInfo.note;
+        _text[1].text = $"{researchInfo.level}";
+        _text[2].text = $"{researchInfo.researchValue}";
+
+        var isUnLock = true;
+        for (int index = 0; index <  _requireItems.Length; index++)
         {
-            return posX;
-        }
-
-        public float getY()
-        {
-            return posY;
-        }
-    }
-
-    private ResearchUnit researchUnit;
-    private ResearchInfo researchInfo;
-
-    public List<Coordinate>[] researchMaterialCoordinateList = new List<Coordinate>[3];
-
-    public GameObject researchImage;
-    public GameObject researchItemNameText;
-    public GameObject researchExplainText;
-    public GameObject levelValueText;
-    public GameObject effectValueText;
-
-    public GameObject[] requireMaterialSlotList = new GameObject[3];
-
-    [SerializeField]
-    private bool canResearch;
-
-    private void Awake()
-    {
-        researchMaterialCoordinateList[0] = new List<Coordinate>() { new Coordinate(0, -240) };
-        researchMaterialCoordinateList[1] = new List<Coordinate>() { new Coordinate(-100, -240), new Coordinate(100, -240) };
-        researchMaterialCoordinateList[2] = new List<Coordinate>() { new Coordinate(-175, -240), new Coordinate(0, -240), new Coordinate(175, -240) };
-    }
-
-    private void OnEnable()
-    {
-        canResearch = true;
-    }
-
-    public void ActiveResearchProgressUI(ResearchUnit researchUnit)
-    {
-        gameObject.SetActive(true);
-
-        SetResearchUnit(researchUnit);
-
-        SetResearchItemImage();
-        SetResearchProgressUIText();
-        SetResearchMaterialObject();
-    }
-
-    public void SetResearchUnit(ResearchUnit researchUnit)
-    {
-        this.researchUnit = researchUnit;
-        this.researchInfo = researchUnit.researchInfo;
-    }
-
-    public void SetResearchItemImage()
-    {
-        researchImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(researchUnit.researchInfo.imgPath);
-    }
-
-    public void SetResearchProgressUIText()
-    {
-        researchItemNameText.GetComponent<Text>().text = researchInfo.name + " " + researchInfo.level.ToString();
-        researchExplainText.GetComponent<Text>().text = researchInfo.note;
-        levelValueText.GetComponent<Text>().text = researchInfo.level.ToString();
-        effectValueText.GetComponent<Text>().text = researchInfo.researchValue.ToString();
-    }
-
-    public void SetResearchMaterialObject()
-    {
-        int requireMaterialListCount = researchUnit.requireMaterialList.Count;
-        int requireMaterialIndex = 0;
-
-        foreach (Coordinate researchMaterialCoordinate in researchMaterialCoordinateList[requireMaterialListCount - 1])
-        {
-            GameObject requireMaterial = requireMaterialSlotList[requireMaterialIndex];
-            string requireMaterialText = "";
-
-            requireMaterial.SetActive(true);
-
-            requireMaterial.transform.SetParent(gameObject.transform.Find("RequireMaterialSlots"));
-            requireMaterial.GetComponent<RectTransform>().anchoredPosition = new Vector3(researchMaterialCoordinate.getX(), researchMaterialCoordinate.getY(), 0);
-
-            requireMaterial.transform.Find("Image").GetComponent<Image>().sprite = Resources.Load<Sprite>(ItemManager.Instance.GetInfo(researchUnit.requireMaterialList[requireMaterialIndex].requireMaterialId).imgPath);
-            
-            int requireMaterialAmount = 0;
-            if (ItemManager.Instance.IsDataExist(researchUnit.requireMaterialList[requireMaterialIndex].requireMaterialId))
-                requireMaterialAmount = ItemManager.Instance.GetData(researchUnit.requireMaterialList[requireMaterialIndex].requireMaterialId).amount;
-            requireMaterialText = requireMaterialAmount.ToString() + "/" + researchUnit.requireMaterialList[requireMaterialIndex].requireMaterialCount.ToString();
-
-            requireMaterial.transform.Find("Text").GetComponent<Text>().text = requireMaterialText;
-
-            if (requireMaterialAmount >= researchUnit.requireMaterialList[requireMaterialIndex].requireMaterialCount)
+            if (researchInfo.requireMaterial.Count <= index)
             {
-                requireMaterial.transform.Find("Text").GetComponent<Text>().color = Color.green;
+                _requireItems[index].SetEmpty();
+                continue;
             }
+            var itemInfo = ItemManager.Instance.GetInfo(researchInfo.requireMaterial[index].code);
+            var itemData = ItemManager.Instance.GetData(researchInfo.requireMaterial[index].code);
+            var requireCount = researchInfo.requireMaterial[index].count;
+            var itemCount = itemData == null ? 0 : itemData.amount;
+            var countString = itemCount < requireCount ? $"<color=#FF231C>{itemCount}</color>" : $"{itemCount}";
+            _requireItems[index].SetSprite(itemInfo.imgPath);
+            _requireItems[index].SetText($"{countString} / {requireCount}");
+            _requireItems[index].gameObject.SetActive(true);
 
-            else
-            {
-                requireMaterial.transform.Find("Text").GetComponent<Text>().color = Color.red;
-                canResearch = false;
-            }
-
-            requireMaterialIndex++;
+            isUnLock = isUnLock && requireCount <= itemCount;
         }
+        _researchButton.SetActive(isUnLock);
+        _researchLockButton.SetActive(!isUnLock);
+
+        base.Activate(objs);
     }
 
-    public void UpdateResearchMaterialItem()
+    public void OnResearcchButtonClick()
     {
-        foreach (ResearchUnit.RequireMaterial requireMaterial in researchUnit.requireMaterialList)
+        var researchInfo = ResearchManager.Instance.GetInfo(_researchId);
+        foreach ((int id, int count) in researchInfo.requireMaterial)
         {
-            ItemManager.Instance.RemoveData(requireMaterial.requireMaterialId, requireMaterial.requireMaterialCount);
+            ItemManager.Instance.RemoveData(id, count);
         }
-    }
 
-    public void ResearchProgressUIEvent()
-    {
-        if (canResearch)
-        {
-            UpdateResearchMaterialItem();
-            UpdateResearchProgressList();
-
-            foreach (GameObject requireMaterialSlot in requireMaterialSlotList)
-            {
-                requireMaterialSlot.SetActive(false);
-            }
-        }
-    }
-
-    private void UpdateResearchProgressList()
-    {
-        ResearchManager.Instance.AddData(researchUnit.researchID);
-
-        GameObject[] researchItemUIObjectList = GameObject.FindGameObjectsWithTag("ResearchItem");
-
-        foreach (GameObject researchItemUIObject in researchItemUIObjectList)
-        {
-            // researchItemUIObject.GetComponent<ResearchItem>().UpdateResearchItemUI();
-        }
+        var data = ResearchManager.Instance.GetData(_researchId);
+        data.IsResearched = true;
+        ResearchManager.Instance.SetData(_researchId, data);
+        OnCloseButtonClick();
     }
 }

@@ -23,8 +23,7 @@ public abstract class DataManager<T, Info, Data> : SingletonBase<T>
 
     public virtual bool IsDataExist(int id)
     {
-        if (GetData(id) != null)
-            return true;
+        if (GetData(id) != null) return true;
         return false;
     }
 

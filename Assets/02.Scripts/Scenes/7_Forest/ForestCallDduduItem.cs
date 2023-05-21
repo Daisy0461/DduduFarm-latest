@@ -28,8 +28,8 @@ public class ForestCallDduduItem : UIItem
         var index = 0;
         foreach (var material in dduduInfo.requireMaterial)
         {
-            var matId = material.Key;
-            var matAmount = material.Value;
+            var matId = material.code;
+            var matAmount = material.count;
             _materialImages[index].sprite = Resources.Load<Sprite>(ItemManager.Instance.GetInfo(matId).imgPath);
             _materialTexts[index].text = matAmount.ToString();
             _materialObjects[index].SetActive(true);

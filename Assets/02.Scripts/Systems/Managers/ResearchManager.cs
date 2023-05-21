@@ -4,7 +4,13 @@ using System;
 
 public class ResearchManager : DataManager<ResearchManager, ResearchInfo, ResearchData>
 {
-    const int NO_PRE_RESEARCH = (int)DataTable.Common;
+    public enum ResearchType   
+    {
+        Farm,
+        Fish,
+        Structure,
+        Inventory
+    }    
 
 	public override void AddInfo(ResearchInfo info)
     {
@@ -20,9 +26,16 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
             Debug.LogError($"research info is null {id}");
             return;
         }
-        
+
         var data = new ResearchData(info);
         dataList.Add(data);
+    }
+
+    public bool TryGetInfo(int code, out ResearchInfo info)
+    {
+        info = GetInfo(code);
+        if (info != null) return true;
+        return false;
     }
 
     public override ResearchData GetData(int id)
@@ -33,6 +46,63 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
                 return data;
         }
         return null;
+    }
+
+    public ResearchData GetDataExactly(int id)
+    {
+        if (!IsDataExist(id))
+        {
+            AddData(id);
+        }
+        return GetData(id);
+    }
+
+    public List<ResearchInfo> GetResearchInfosByResearchType(ResearchType type)
+    {
+        var (startId, endId) = (0,0);
+        switch (type)
+        {
+            case ResearchType.Farm:
+            {
+                (startId, endId) = (1211, 1223);
+                break;
+            }
+            case ResearchType.Fish:
+            {
+                (startId, endId) = (1401, 1423);
+                break;
+            }
+            case ResearchType.Structure:
+            {
+                (startId, endId) = (1001, 1060);
+                break;
+            }
+            case ResearchType.Inventory:
+            {
+                (startId, endId) = (1502, 1505);
+                break;
+            }
+        }
+        var researchInfos = new List<ResearchInfo>();
+        for (int id = startId; id <= endId; id++)
+        {
+            if (!TryGetInfo(id, out var info)) continue;
+            researchInfos.Add(info);    
+        }
+        return researchInfos;
+    }
+
+    public override void SetData(int id, ResearchData data)
+    {
+        base.SetData(id, data);
+        for (int index = 0; index < dataList.Count; index++)
+        {
+            if (dataList[index].Id == data.Id)
+            {
+                dataList[index] = data;
+                break;
+            }
+        }
     }
 
     public void SetDataListClear()
@@ -48,9 +118,9 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
         string note = RtrnNodeToStr(attrib.GetNamedItem("note"));
         string imgPath = RtrnNodeToStr(attrib.GetNamedItem("imgPath"));
         string name = RtrnNodeToStr(attrib.GetNamedItem("researchName"));
-        int level = RtrnNodeToInt(attrib.GetNamedItem("researchLv"));
+        int level = RtrnNodeToInt(attrib.GetNamedItem("researchLV"));
         string researchValue = RtrnNodeToStr(attrib.GetNamedItem("researchVal"));
-        Dictionary<int, int> requireMaterial = new Dictionary<int, int>();
+        List<(int, int)> requireMaterial = new List<(int, int)>();
 
         for (int i=1; i<4; ++i)
         {
@@ -59,7 +129,7 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
 
             if (matId != 0)
             {
-                requireMaterial.Add(matId, matAmount);
+                requireMaterial.Add((matId, matAmount));
             }
         }
 

@@ -20,6 +20,14 @@ public class DefaultPanel : MonoBehaviour
         this.gameObject.SetActive(true);
     }
 
+    public virtual void SetText(string content)
+    {
+        foreach(var text in _text)
+        {
+            text.text = content;
+        }
+    }
+
     public void SetOnCloseAction(Action action)
     {
         _onCloseAction = action;

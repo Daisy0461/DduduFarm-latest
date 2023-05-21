@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
 public class UIItem : MonoBehaviour
 {
+    [SerializeField] private Image _image;
+    [SerializeField] private Text[] _texts;
+
     public Action _onClickAction = null;
     public Action _onCloseAction = null;
     
@@ -16,6 +20,24 @@ public class UIItem : MonoBehaviour
 
     public virtual void SetData(params object[] objs)
     {
+    }
+
+    public void SetSprite(string imgPath)
+    {
+        _image.sprite = Resources.Load<Sprite>(imgPath);
+    }
+
+    public void SetEmpty()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void SetText(string content)
+    {
+        foreach (var text in _texts)
+        {
+            text.text = content;
+        }
     }
 
     public virtual void SetOnClickAction(Action action)

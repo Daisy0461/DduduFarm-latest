@@ -11,9 +11,9 @@ public class ResearchInfo
     public string name;
     public int level;
     public string researchValue;
-    public Dictionary<int, int> requireMaterial;
+    public List<(int code, int count)> requireMaterial;
 
-    public ResearchInfo(int id, int preId, string note, string imgPath, string name, int level, string researchValue, Dictionary<int, int> requireMaterial)
+    public ResearchInfo(int id, int preId, string note, string imgPath, string name, int level, string researchValue, List<(int, int)> requireMaterial)
     {
         this.code = id;
         this.preCode = preId;

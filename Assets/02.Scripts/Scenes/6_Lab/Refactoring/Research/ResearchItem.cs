@@ -30,7 +30,7 @@ public class ResearchItem : MonoBehaviour
         _researchImage.sprite = Resources.Load<Sprite>(researchInfo.imgPath);
         _researchText.text = researchInfo.name;
 
-        var userData = ResearchManager.Instance.GetData(researchId);
+        var userData = ResearchManager.Instance.GetDataExactly(researchId);
         if (userData == null)
         {
             Debug.LogError($"user research data is null {researchId}");

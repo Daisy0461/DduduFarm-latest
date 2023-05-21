@@ -3,42 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResearchCompleteUI : MonoBehaviour
+public class ResearchCompleteUI : DefaultPanel
 {
-    private ResearchUnit researchUnit;
-    private ResearchInfo researchInfo;
+	public override void Activate(params object[] objs)
+	{
+		var researchId = (int)objs[0];
 
-    public GameObject researchImage;
-    public GameObject researchItemNameText;
-    public GameObject researchExplainText;
-    public GameObject levelValueText;
-    public GameObject effectValueText;
+		var researchInfo = ResearchManager.Instance.GetInfo(researchId);
+		if (researchInfo == null)
+		{
+			Debug.LogError("researchInfo is Null");
+			return;
+		}
 
-    public void ActiveResearchCompleteUI(ResearchUnit researchUnit)
-    {
-        gameObject.SetActive(true);
+		_titleText[0].text = researchInfo.name;
+		_text[0].text = researchInfo.note;
+		_text[1].text = $"{researchInfo.level}";
+		_text[2].text = $"{researchInfo.researchValue}";
+		_images[0].sprite = Resources.Load<Sprite>(researchInfo.imgPath);
 
-        SetResearchUnit(researchUnit);
-
-        SetResearchItemImage();
-        UpdateResearchCompleteUIText();
-    }
-
-    public void SetResearchUnit(ResearchUnit researchUnit)
-    {
-        this.researchUnit = researchUnit;
-    }
-
-    public void SetResearchItemImage()
-    {
-        researchImage.GetComponent<Image>().sprite = Resources.Load<Sprite>(researchInfo.imgPath);
-    }
-
-    public void UpdateResearchCompleteUIText()
-    {
-        researchItemNameText.GetComponent<Text>().text = researchInfo.name + " " + researchInfo.level.ToString();
-        researchExplainText.GetComponent<Text>().text = researchInfo.note;
-        levelValueText.GetComponent<Text>().text = researchInfo.level.ToString();
-        effectValueText.GetComponent<Text>().text = researchInfo.researchValue.ToString();
-    }
+		base.Activate(objs);
+	}
 }

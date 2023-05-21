@@ -73,8 +73,8 @@ public class CallDduduSlotUI : MonoBehaviour
         foreach (var item in RM.GetInfo(dduduUnit.requireResearchID).requireMaterial)
         {
             var tmp = new DduduUnit.RequireMaterial();
-            tmp.requireMaterialId = item.Key;
-            tmp.requireMaterialCount = item.Value;
+            tmp.requireMaterialId = item.code;
+            tmp.requireMaterialCount = item.count;
             dduduUnit.requireMaterialList.Add(tmp);       
         }
     }
