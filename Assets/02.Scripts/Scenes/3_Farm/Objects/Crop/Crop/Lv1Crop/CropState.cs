@@ -16,21 +16,23 @@ public class CropState : MonoBehaviour, IPointerDownHandler
 
     void Start(){
         cropPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        //min.transform.parent = gameObject.transform; sec.transform.parent = gameObject.transform; divide.transform.parent = gameObject.transform;
         cropGrowTime = gameObject.GetComponent<CropGrowTime>();
         TouchManager.ZoomAmountChange += this.IconSizeChange;
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-        if(canHarvest){     
+        if(canHarvest)
+        {     
             CropGrowSound cgs = nextCrop.GetComponent<CropGrowSound>();
             cgs.AudioAwakePlay();
-            if(cgs == null) Debug.Log("cgs = null");
-            InstantiateNextCrop();
-            //여기서 cropAudio에 접근해서 Play하면 될듯
-            //CropGrowSound cgs = nextCrop.GetComponent<CropGrowSound>(); 
-            cgs.AudioAwakePlayFalse();
+            if(cgs == null) 
+            {
+                Debug.LogError("cgs = null");
+                return;
+            }
 
+            InstantiateNextCrop();
+            cgs.AudioAwakePlayFalse();
             DestroyObject();
         }
     }

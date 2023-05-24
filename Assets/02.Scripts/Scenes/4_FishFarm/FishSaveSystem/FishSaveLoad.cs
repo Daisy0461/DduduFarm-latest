@@ -12,14 +12,13 @@ public class FishSaveLoad : MonoBehaviour
 {
     public FishDatas[] savedFishKind;                 //1번째 []사용은 fishKind, 두번쨰 .savedFishLevel은 fishLevel을 불러옴.
 
-    public void SaveFish(){
+    public void SaveFish()
+    {
         FishSaveManager.Save(GameObject.FindObjectsOfType<FishGrowTime>());        //Fish이거도 넣어줘
-        // Debug.Log("FishSaveLoad에서 Save실행 끝");
     }
 
     public void LoadFish(){
         AllFishsData save = FishSaveManager.Load();
-        //Debug.Log("하냐?");
         if (save == null) return;
         //태그 해줘야함! - 어려운거 아니니까 까먹지 말쟈~!
         GameObject[] fishs = GameObject.FindGameObjectsWithTag("Fish");

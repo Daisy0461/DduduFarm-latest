@@ -88,13 +88,14 @@ public class ConstructionUI : MonoBehaviour
 
     int CheckPurchasable(GameObject newObj)    // 패널 선택 시 구매 가능한지 체크 후 구매 불가 안내 대화(상점 주인) 출력 
     {
-        int res = 0;
-        BuildingInfo newItem = newObj.GetComponent<BuildingItem>().info;
+        var res = 0;
+        var newItem = newObj.GetComponent<BuildingItem>().info;
+        var researchData = ResearchManager.Instance.GetData(newItem.code + (int)DataTable.Research);
         
-        // if () 
-        // {
-        //     res= 3;
-        // }
+        if (researchData == null || !researchData.IsResearched) 
+        {
+            res= 3;
+        }
         if ((newItem.code < (int)DataTable.Craft && BM.GetBuildingAmount(newItem.code) >= 3) ||
 	            (newItem.code >= (int)DataTable.Craft && BM.GetBuildingAmount(newItem.code) >= 3))
         {
@@ -110,12 +111,13 @@ public class ConstructionUI : MonoBehaviour
     public void OnclickCheckPurchasable()
     {
         if (selectedBuilding == null) return;
-        BuildingInfo info = selectedBuilding.info;
+        var info = selectedBuilding.info;
+        var researchData = ResearchManager.Instance.GetData(info.code + (int)DataTable.Research);
         
-        // if () 
-        // {
-        //     talkTextScript.UnableToBuyText("그 건물에 대한 연구가 진행되지 않았다네");
-        // }
+        if (researchData == null || !researchData.IsResearched) 
+        {
+            talkTextScript.UnableToBuyText("그 건물에 대한 연구가 진행되지 않았다네");
+        }
         if ((info.code < (int)DataTable.Craft && BM.GetBuildingAmount(info.code) >= 3) ||
 	            (info.code >= (int)DataTable.Craft && BM.GetBuildingAmount(info.code) >= 3))
         {

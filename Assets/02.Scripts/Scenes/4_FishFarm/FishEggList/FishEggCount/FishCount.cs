@@ -13,52 +13,53 @@ public class FishCount : MonoBehaviour
     
     private GameObject fishFarm_Be_Spawn;
     private Vector3 FarmPosition;
-    ItemManager IM;
+    private int _curFishCountToSpawn = 0;
 
-    void OnEnable(){
-        IM = ItemManager.Instance;
-        // 이미지 
-        EggImage.sprite = Resources.Load<Sprite>(IM.GetInfo(fishEggId).imgPath);
-        totalPriceText.text = IM.GetInfo(fishEggId).name;
+    void OnEnable()
+    {
+        var fishInfo = ItemManager.Instance.GetInfo(fishEggId);
+        EggImage.sprite = Resources.Load<Sprite>(fishInfo.imgPath);
+        totalPriceText.text = fishInfo.name;
         countText.text = "1";
-        EncryptedPlayerPrefs.SetInt("FishCount", 1);
+        _curFishCountToSpawn = 1;
     }
 
     //Fish Spawn하는 개수 Increase
-    public void IncreaseCount(){
-        if(EncryptedPlayerPrefs.GetInt("FishCount") <= 2 && IM.GetData(fishEggId).amount > 0){
-            EncryptedPlayerPrefs.SetInt("FishCount", EncryptedPlayerPrefs.GetInt("FishCount") + 1);
-            // totalPriceText.text = (EncryptedPlayerPrefs.GetInt("FishCount") * fishPrice).ToString();
-            countText.text = (EncryptedPlayerPrefs.GetInt("FishCount")).ToString();
-        }
+    public void IncreaseCount()
+    {
+        var researchBound = PlayerPrefs.GetFloat("수질 관리 시스템", 3);
+        if (ItemManager.Instance.GetData(fishEggId).amount < _curFishCountToSpawn + 1 || researchBound <= _curFishCountToSpawn ) return;
         
+        _curFishCountToSpawn++;
+        countText.text = _curFishCountToSpawn.ToString();
     }
 
     //Fish Spawn하는 개수 Decrease
-    public void DecreaseCount(){
-        if(EncryptedPlayerPrefs.GetInt("FishCount") > 1){
-            EncryptedPlayerPrefs.SetInt("FishCount", EncryptedPlayerPrefs.GetInt("FishCount") - 1);
-            // totalPriceText.text = (EncryptedPlayerPrefs.GetInt("FishCount") * fishPrice).ToString();
-            countText.text = (EncryptedPlayerPrefs.GetInt("FishCount")).ToString();
-        }
+    public void DecreaseCount()
+    {
+        if(_curFishCountToSpawn <= 1) return;
+            
+        _curFishCountToSpawn--;
+        countText.text = _curFishCountToSpawn.ToString();
     }
 
     //위에서 Increase or Decrease한 만큼 fish Spawn
-    public void SpawnFish(){
-        int count = EncryptedPlayerPrefs.GetInt("FishCount");
-        for(int i=0; i<count; i++)
+    public void SpawnFish()
+    {
+        for(int i = 0; i < _curFishCountToSpawn; i++)
         {
-            //x=-0.7~0.7 y=-0.35~0.35 범위
+            // 범위: x=-0.7~0.7 y=-0.35~0.35
             GameObject fish = Instantiate(fishKinds[fishEggId-(int)DataTable.FishEgg-1], 
                                         FarmPosition + new Vector3(Random.Range(-0.7f,0.7f), 
                                         Random.Range(-0.35f, 0.35f), 0.0f), Quaternion.identity);
             fish.transform.parent = fishFarm_Be_Spawn.transform;
             
         }
-        IM.RemoveData(fishEggId, count);
+        ItemManager.Instance.RemoveData(fishEggId, _curFishCountToSpawn);
     }
 
-    public void SetFishFarm(GameObject parent){
+    public void SetFishFarm(GameObject parent)
+    {
         fishFarm_Be_Spawn = parent;
         FarmPosition = fishFarm_Be_Spawn.transform.position;
     }

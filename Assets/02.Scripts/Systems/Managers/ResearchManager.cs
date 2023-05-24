@@ -110,6 +110,29 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
         dataList = new List<ResearchData>();
     }
 
+    public void ResearchTypeStatus(int researchId)
+    {
+        var data = GetData(researchId);
+        data.IsResearched = true;
+        SetData(researchId, data);
+
+        var researchInfo = GetInfo(researchId);
+        switch (researchInfo.name)
+        {
+            case "토질 연구":
+            case "품질 개량":
+            case "양식장 증축":
+            case "수질 관리 시스템":
+            case "성장 가속":
+            case "인벤토리 확장":
+            {
+                PlayerPrefs.SetFloat(researchInfo.name, (float)Convert.ToDouble(researchInfo.researchValue));
+                break;
+            }
+            default: break;
+        }
+    }
+
     public override ResearchInfo ConvertXmlToInfo(System.Xml.XmlNode node)
     {
         var attrib = node.Attributes;

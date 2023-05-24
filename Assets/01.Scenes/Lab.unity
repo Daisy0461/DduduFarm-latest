@@ -1802,7 +1802,6 @@ GameObject:
   - component: {fileID: 238207241}
   - component: {fileID: 238207240}
   - component: {fileID: 238207239}
-  - component: {fileID: 238207242}
   m_Layer: 5
   m_Name: Print Inventory
   m_TagString: Untagged
@@ -1874,7 +1873,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 238207242}
+      - m_Target: {fileID: 1181711961}
         m_TargetAssemblyTypeName: LaboratoryTest, Assembly-CSharp
         m_MethodName: PrintInventoryStatus
         m_Mode: 1
@@ -1924,18 +1923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238207237}
   m_CullTransparentMesh: 1
---- !u!114 &238207242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238207237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &252893159 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6390590136091158144, guid: 90ef1202db2dea0439104cc624840865, type: 3}
@@ -3891,7 +3878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &720866183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3902,7 +3889,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1290795745}
   m_Father: {fileID: 1181711958}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6552,14 +6540,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1181711958}
   - component: {fileID: 1181711960}
-  - component: {fileID: 1181711959}
+  - component: {fileID: 1181711961}
   m_Layer: 5
   m_Name: TEST
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1181711958
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6572,7 +6560,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 720866183}
-  - {fileID: 1290795745}
   m_Father: {fileID: 1520589530}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6581,36 +6568,6 @@ RectTransform:
   m_AnchoredPosition: {x: 275.76, y: 451.9301}
   m_SizeDelta: {x: -551.524, y: -903.856}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1181711959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181711957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0.6392157}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1181711960
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6619,6 +6576,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181711957}
   m_CullTransparentMesh: 1
+--- !u!114 &1181711961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181711957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _testObject: {fileID: 720866182}
 --- !u!114 &1189612750 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6390590136091158144, guid: 90ef1202db2dea0439104cc624840865, type: 3}
@@ -6954,12 +6924,12 @@ RectTransform:
   - {fileID: 238207238}
   - {fileID: 1555314221}
   - {fileID: 1352028367}
-  m_Father: {fileID: 1181711958}
-  m_RootOrder: 1
+  m_Father: {fileID: 720866183}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 34.819885}
+  m_AnchoredPosition: {x: -0.001953125, y: -122.10101}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1301134797
@@ -7524,7 +7494,6 @@ GameObject:
   - component: {fileID: 1352028370}
   - component: {fileID: 1352028369}
   - component: {fileID: 1352028368}
-  - component: {fileID: 1352028371}
   m_Layer: 5
   m_Name: Print Research
   m_TagString: Untagged
@@ -7596,7 +7565,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1352028371}
+      - m_Target: {fileID: 1181711961}
         m_TargetAssemblyTypeName: LaboratoryTest, Assembly-CSharp
         m_MethodName: PrintResearchStatus
         m_Mode: 1
@@ -7646,18 +7615,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352028366}
   m_CullTransparentMesh: 1
---- !u!114 &1352028371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352028366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1356504087 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6390590136091158144, guid: 90ef1202db2dea0439104cc624840865, type: 3}
@@ -8721,7 +8678,6 @@ GameObject:
   - component: {fileID: 1555314224}
   - component: {fileID: 1555314223}
   - component: {fileID: 1555314222}
-  - component: {fileID: 1555314225}
   m_Layer: 5
   m_Name: Reset Research
   m_TagString: Untagged
@@ -8793,7 +8749,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1555314225}
+      - m_Target: {fileID: 1181711961}
         m_TargetAssemblyTypeName: LaboratoryTest, Assembly-CSharp
         m_MethodName: ResetResearch
         m_Mode: 1
@@ -8843,18 +8799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555314220}
   m_CullTransparentMesh: 1
---- !u!114 &1555314225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555314220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1579032445 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6390590136091158144, guid: 90ef1202db2dea0439104cc624840865, type: 3}
@@ -11435,7 +11379,6 @@ GameObject:
   - component: {fileID: 1904133371}
   - component: {fileID: 1904133370}
   - component: {fileID: 1904133369}
-  - component: {fileID: 1904133372}
   m_Layer: 5
   m_Name: Reset Inventory
   m_TagString: Untagged
@@ -11507,7 +11450,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1904133372}
+      - m_Target: {fileID: 1181711961}
         m_TargetAssemblyTypeName: LaboratoryTest, Assembly-CSharp
         m_MethodName: ResetInventory
         m_Mode: 1
@@ -11557,18 +11500,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904133367}
   m_CullTransparentMesh: 1
---- !u!114 &1904133372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904133367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1908826683
 GameObject:
   m_ObjectHideFlags: 0
@@ -11694,7 +11625,6 @@ GameObject:
   - component: {fileID: 1923280110}
   - component: {fileID: 1923280109}
   - component: {fileID: 1923280108}
-  - component: {fileID: 1923280111}
   m_Layer: 5
   m_Name: Add Gem
   m_TagString: Untagged
@@ -11766,7 +11696,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1923280111}
+      - m_Target: {fileID: 1181711961}
         m_TargetAssemblyTypeName: LaboratoryTest, Assembly-CSharp
         m_MethodName: AddAllGemToInventory10
         m_Mode: 1
@@ -11816,18 +11746,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923280106}
   m_CullTransparentMesh: 1
---- !u!114 &1923280111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923280106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c458d2d40ab852f408e5926359fc648b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1940448672
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,15 +24,14 @@ public class LastCropState : MonoBehaviour, IPointerDownHandler
         CM = CropManager.Instance;
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
-        if(canHarvest){
+    public void OnPointerDown(PointerEventData eventData) 
+    {
+        if (canHarvest) // 작물 수확
+        {
             CropInfo info = CM.GetInfo(cropKind);
             int ran = Random.Range(info.havestMin, info.havestMax+1);
-            if (IM.AddData(cropKind, ran) == false)
-                return;
+            if (IM.AddData(cropKind, ran) == false) return;
             DestroyObject();
-
-            // buttonSound.PlaySound(1);
             FindObjectOfType<ButtonSound>()?.PlaySound(1);
         }
     }

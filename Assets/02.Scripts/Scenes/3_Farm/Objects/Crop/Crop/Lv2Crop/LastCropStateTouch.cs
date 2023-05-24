@@ -19,13 +19,12 @@ public class LastCropStateTouch : MonoBehaviour, IPointerDownHandler
         IM = ItemManager.Instance;
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
+    public void OnPointerDown(PointerEventData eventData) 
+    {
         CropInfo info = CM.GetInfo(cropKind);
         int ran = Random.Range(info.havestMin, info.havestMax+1);
-        if (IM.AddData(cropKind, ran) == false)
-                return;
+        if (IM.AddData(cropKind, ran) == false) return;
         parentLastCropState.DestroyObject();
-
         FindObjectOfType<ButtonSound>()?.PlaySound(1);
     }
 }

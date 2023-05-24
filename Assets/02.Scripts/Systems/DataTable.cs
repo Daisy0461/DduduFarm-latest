@@ -10,6 +10,8 @@ public enum DataTable : int
     Fish = 400,
     FishEgg = 450,
     Gem = 700,
+    Research = 1000,
+    ResearchFish = 1400,
     Money = 10001,
     Love = 10002
 }

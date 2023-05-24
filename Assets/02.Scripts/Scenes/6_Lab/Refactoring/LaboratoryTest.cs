@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class LaboratoryTest : MonoBehaviour
 {
+    [SerializeField] private GameObject _testObject;
+
+    #if UNITY_EDITOR
+    
+    private void Start() 
+    {
+        _testObject.SetActive(true);
+    }
+
+    #endif 
     public void AddAllGemToInventory10()
     {
         for (int itemId = 701; itemId < 711; ++itemId)
@@ -37,26 +47,11 @@ public class LaboratoryTest : MonoBehaviour
 
         GameObject[] researchItemUIObjectList = GameObject.FindGameObjectsWithTag("ResearchItem");
 
-        foreach (GameObject researchItemUIObject in researchItemUIObjectList)
-        {
-            // researchItemUIObject.GetComponent<ResearchItem>().UpdateResearchItemUI();
-        }
-
         Debug.Log("연구 초기화 완료");
     }
 
     public void PrintResearchStatus()
     {
-        if(ResearchManager.Instance.GetDataListCount() != 0)
-        {
-            foreach (var data in ResearchManager.Instance.GetDataList())
-            {
-                // if(data.isPrime)
-                //     Debug.LogFormat("{0} 연구 레벨 : {1}", data.info.name, data.info.level.ToString());
-            }
-        }
-
-        else
-            Debug.Log("진행된 연구 없음");
+        Debug.Log("진행된 연구 없음");
     }
 }

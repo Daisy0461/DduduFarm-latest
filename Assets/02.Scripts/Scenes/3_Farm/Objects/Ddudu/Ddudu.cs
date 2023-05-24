@@ -139,7 +139,7 @@ public partial class Ddudu : DduduMovement, IPointerDownHandler, IPointerUpHandl
         render.color = isDimmed ? dimmedColor : Color.white;
     }
 
-    public void ActiveIconFeed() // -> ActiveIconFeed
+    public void ActiveIconFeed()
     {
         if (!IconFeed.activeSelf & !IconGem.activeSelf)
         {

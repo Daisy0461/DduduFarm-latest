@@ -12211,7 +12211,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686228d36ceeecb478c0a4451606c879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _userDataText: {fileID: 0}
   _dduduText: {fileID: 316671319}
   spot: 0
   FishSelectList: {fileID: 1533150256}
@@ -39367,10 +39366,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1101704424}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowMaskGraphic: 0
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!114 &1101704427
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,8 @@ using System;
 
 public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
 {
-    public int maxDataListValue = 15;
+    public int maxDataListValue => _maxDataListValue + (int)PlayerPrefs.GetFloat("인벤토리 확장", 0);
+    private int _maxDataListValue = 15;
 
 	public override void AddInfo(ItemInfo info)
     {
@@ -20,10 +21,8 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
     public override int GetDataListCount()
     {
         int ret = dataList.Count;
-        if (IsDataExist((int)DataTable.Love))
-            ret--;
-        if (IsDataExist((int)DataTable.Money))
-            ret--;
+        if (IsDataExist((int)DataTable.Love)) ret--;
+        if (IsDataExist((int)DataTable.Money)) ret--;
         return ret;
     }
 
@@ -45,7 +44,8 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
     {
         bool ret = true;
         string errMessage = "";
-        try {
+        try 
+        {
             ItemData data = GetData(id);
             if (data != null)
             {
@@ -63,16 +63,21 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
                 dataList.Add(data);
             }
             Save();
-        } catch(OverflowException) {
+        } catch(OverflowException) 
+        {
             errMessage = "해당 아이템을 더 이상 가질 수 없습니다.";
             ret = false;
-        } catch(ArgumentOutOfRangeException) {
+        } catch(ArgumentOutOfRangeException) 
+        {
             errMessage = "가질 수 있는 아이템 수를 초과했습니다.";
             ret = false;
-        } catch(Exception e) {
+        } catch(Exception e) 
+        {
             errMessage = e.Message;
             ret = false;
-        } finally {
+        } 
+        finally 
+        {
             if (ret == false)
             {
                 var Err = GameObject.FindGameObjectWithTag("Error")?.transform;
@@ -140,12 +145,12 @@ public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
     public override void Save()
     {
         base.Save();
-        EncryptedPlayerPrefs.SetInt("maxDataListValue", maxDataListValue);
+        EncryptedPlayerPrefs.SetInt("maxDataListValue", _maxDataListValue);
     }
 
 	public override void Load()
 	{
 		base.Load();
-        maxDataListValue = EncryptedPlayerPrefs.GetInt("maxDataListValue" , 15);    
+        _maxDataListValue = EncryptedPlayerPrefs.GetInt("maxDataListValue" , 15);    
 	}
 }

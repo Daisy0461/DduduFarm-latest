@@ -43,7 +43,9 @@ public partial class Inventory : MonoBehaviour
         FM = FishManager.Instance;
 
         for (int i = 0; i < IM.maxDataListValue; i++)
+        {
             SlotMaker();
+        }
     }
 
     private void OnEnable()
@@ -129,9 +131,8 @@ public partial class Inventory : MonoBehaviour
     }
 
 // 정렬 방식
-    public void SortLatestFirst()
+    public void SortLatestFirst() // 최신순 : 가장 최근에 획득한 것이 상위에 노출
     {
-        // 최신순 : 가장 최근에 획득한 것이 상위에 노출
         IM.GetDataList().Sort( 
             delegate(ItemData a, ItemData b) { 
                 return a.obtainDate.CompareTo(b.obtainDate); 
@@ -139,9 +140,8 @@ public partial class Inventory : MonoBehaviour
         );
     }
 
-    public void SortObtainFirst()
+    public void SortObtainFirst() // 획득순 : 가장 처음 획득한 것이 제일 위에 노출
     {
-        // 획득순 : 가장 처음 획득한 것이 제일 위에 노출
         IM.GetDataList().Sort( 
             delegate(ItemData a, ItemData b) { 
                 return b.obtainDate.CompareTo(a.obtainDate); 
@@ -196,9 +196,9 @@ public partial class Inventory : MonoBehaviour
         }
     }
 
-    public void OnClickTrashBtn(bool isYes)
+    public void OnClickTrashBtn(bool isTrash)
     {
-        if (isYes == true)  // 버린다!
+        if (isTrash == true)
         {
             int count = trashList.Count;
             for(int i=count-1; i>=0; i--)
@@ -212,7 +212,7 @@ public partial class Inventory : MonoBehaviour
             SlotText.text = "보유슬롯 " + count.ToString() + "/" + IM.maxDataListValue.ToString();
             OnClickTypeChange((int)curShowType);
         }
-        else                // 안 버려! 
+        else
         {
             int count = trashList.Count;
             for (int i=0; i<count; i++)

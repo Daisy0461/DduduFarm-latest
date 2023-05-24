@@ -65,16 +65,14 @@ public partial class Inventory : MonoBehaviour
         if (type == (int)DataTable.Seed)
         {
             int time = CM.GetInfo(selectCode-50).grow1Time + CM.GetInfo(selectCode-50).grow2Time;
-            cycle_cycletimeTxt.text = "성장시간 : "
-                    +time/60+"분 "+time%60+"초";
+            cycle_cycletimeTxt.text = "성장시간 : " + time.Sec2Time();
             cycle_outputTxt.text = IM.GetInfo(selectCode-50).name+
-                                    " "+CM.GetInfo(selectCode-50).havestMin+" ~ "+CM.GetInfo(selectCode-50).havestMax+"개";
+                " "+CM.GetInfo(selectCode-50).havestMin+" ~ "+CM.GetInfo(selectCode-50).havestMax+"개";
         }
         else if (type == (int)DataTable.FishEgg)
         {
             int time = FM.GetInfo(selectCode-50).grow1Time + FM.GetInfo(selectCode-50).grow2Time;
-            cycle_cycletimeTxt.text = "성장시간 : "
-                    + time/60+"분 "+time%60+"초";
+            cycle_cycletimeTxt.text = "성장시간 : " + time.Sec2Time();
             cycle_outputTxt.text = IM.GetInfo(selectCode-50).name+" 1개";
         }
         cycle_inputImg.sprite = Resources.Load<Sprite>(IM.GetInfo(selectCode).imgPath);

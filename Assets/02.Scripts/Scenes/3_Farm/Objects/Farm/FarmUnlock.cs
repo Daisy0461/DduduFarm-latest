@@ -1,11 +1,7 @@
 using UnityEngine;
-using System;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 public class FarmUnlock : MonoBehaviour
-{           
-    // 빌드씬 9분할 해금
+{
     public SpriteRenderer[] farmUnlock;
 
     private void Awake() {
