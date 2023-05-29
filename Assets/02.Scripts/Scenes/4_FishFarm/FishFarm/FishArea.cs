@@ -60,7 +60,7 @@ public class FishArea : MonoBehaviour, IPointerDownHandler
                 GameObject nextFishPrefab = nowFish[0].nextFish;
                 if (nextFishPrefab == null) //2단계, 수확
                 { 
-                    for (int i=0; i < fishCount - 2; i++)
+                    for (int i=0; i < fishCount; i++)
                     {
                         if (ItemManager.Instance.AddData(nowFish[i].fishKind + (int)DataTable.Fish + 1) == false) return;
                         nowFish[i].DeleteThisGameObject();
@@ -71,7 +71,7 @@ public class FishArea : MonoBehaviour, IPointerDownHandler
                 else //클릭 시 알에서 물고기로 진화
                 {
                     gatherFish.PlayOneShot(fish_grow);
-                    for (int i = 0; i < fishCount - 2; i++)
+                    for (int i = 0; i < fishCount; i++)
                     {
                         Instantiate(nextFishPrefab, nowFish[i].GetPosition(), Quaternion.identity);
                         nowFish[i].DeleteThisGameObject();

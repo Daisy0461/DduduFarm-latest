@@ -79,7 +79,7 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
             }
             case ResearchType.Inventory:
             {
-                (startId, endId) = (1502, 1505);
+                (startId, endId) = (1501, 1505);
                 break;
             }
         }

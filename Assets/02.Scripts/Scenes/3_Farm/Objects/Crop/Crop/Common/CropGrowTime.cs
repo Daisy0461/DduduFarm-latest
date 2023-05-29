@@ -7,7 +7,7 @@ using System;
 
 public class CropGrowTime : MonoBehaviour
 {
-    [SerializeField] private int timeMaxGrowInterval = 60; //다 자르는데 걸리는 시간. 
+    [SerializeField] private int timeMaxGrowInterval = 60; //다 자라는데 걸리는 시간. 
     [SerializeField] private DateTime m_AppQuitTime = new DateTime(1970, 1, 1).ToLocalTime();
     
     public int remainGrowTime = 60;

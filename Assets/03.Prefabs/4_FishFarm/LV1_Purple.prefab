@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1ec8f730ec70a47a99fe40bbb52ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
   rotateTime: 0.07
 --- !u!114 &6469535204453223633
 MonoBehaviour:
@@ -132,14 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddeea4fd22ab7d409a64f849f451e9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMaxGrowInterval: 60
-  remainGrowTime: 60
-  originPos: {x: 0, y: 0, z: 0}
   fishKind: 3
   fishLevel: 1
   nextFish: {fileID: 0}
   lastFish: {fileID: 8629874162329416053, guid: ebd6841f1fe9f2d4583b3224c4c20fc3, type: 3}
-  feedAmount: 0
+  timeMaxGrowInterval: 900
+  remainGrowTime: 900
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!61 &2428011206547029776
 BoxCollider2D:
   m_ObjectHideFlags: 0

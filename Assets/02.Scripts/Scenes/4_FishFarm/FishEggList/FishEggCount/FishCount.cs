@@ -24,7 +24,6 @@ public class FishCount : MonoBehaviour
         _curFishCountToSpawn = 1;
     }
 
-    //Fish Spawn하는 개수 Increase
     public void IncreaseCount()
     {
         var researchBound = PlayerPrefs.GetFloat("수질 관리 시스템", 3);
@@ -34,7 +33,6 @@ public class FishCount : MonoBehaviour
         countText.text = _curFishCountToSpawn.ToString();
     }
 
-    //Fish Spawn하는 개수 Decrease
     public void DecreaseCount()
     {
         if(_curFishCountToSpawn <= 1) return;

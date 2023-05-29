@@ -4,7 +4,7 @@ using System;
 
 public class ItemManager : DataManager<ItemManager, ItemInfo, ItemData>
 {
-    public int maxDataListValue => _maxDataListValue + (int)PlayerPrefs.GetFloat("인벤토리 확장", 0);
+    public int maxDataListValue => (int)PlayerPrefs.GetFloat("인벤토리 확장", _maxDataListValue);
     private int _maxDataListValue = 15;
 
 	public override void AddInfo(ItemInfo info)

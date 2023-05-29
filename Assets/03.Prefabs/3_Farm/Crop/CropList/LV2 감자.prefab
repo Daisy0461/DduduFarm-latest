@@ -100,11 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8499e19a5b03a346af708a149154ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMaxGrowInterval: 5
-  remainGrowTime: 5
-  originPos: {x: 0, y: 0, z: 0}
+  timeMaxGrowInterval: 30
+  remainGrowTime: 30
   cropKind: 201
   cropLevel: 1
+  originPos: {x: 0, y: 0, z: 0}
 --- !u!114 &5439583712154475521
 MonoBehaviour:
   m_ObjectHideFlags: 0

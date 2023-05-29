@@ -16,7 +16,6 @@ public class OpenCountUI : MonoBehaviour
     }
 
     public void OpenCount(GameObject ui){ // ui: 물고기 알 개수 선택 팝업. 물고기 종류 선택하기
-        EncryptedPlayerPrefs.SetInt("FishCount", 1);
         ui.SetActive(true);
         FishCount fishCount = ui.GetComponent<FishCount>();
         fishCount.SetFishFarm(fishFarm_Be_Spawn);

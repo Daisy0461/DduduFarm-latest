@@ -18,10 +18,10 @@ public class FishGrowTime : MonoBehaviour
     public GameObject nextFish;
     
     [SerializeField] private GameObject lastFish;
-    [SerializeField] private int timeMaxGrowInterval = 60; //다 자르는데 걸리는 시간. 
+    [SerializeField] private int timeMaxGrowInterval = 60; //다 자라는데 걸리는 시간. 
     
+    public int remainGrowTime = 60;  
     public Vector3 originPos;
-    public int remainGrowTime = 60;       
     
     private DateTime m_AppQuitTime = new DateTime(1970, 1, 1).ToLocalTime();
     private Coroutine m_RechargeTimerCoroutine = null;
@@ -75,6 +75,7 @@ public class FishGrowTime : MonoBehaviour
         if (m_RechargeTimerCoroutine != null)
         {       
             StopCoroutine(m_RechargeTimerCoroutine);
+            m_RechargeTimerCoroutine = null;
         }
 
         m_AppQuitTime = fishTime.GetComponent<FishTime>().get_m_AppQuitTime();
@@ -99,11 +100,6 @@ public class FishGrowTime : MonoBehaviour
 
     private IEnumerator DoRechargeTimer(int remainTime, Action onFinish = null)
     {
-        while (fishArea == null)
-        {        //fishArea가 인지가 안되면 시간이 안넘어감
-            yield return null;
-        }
-
         bool isInstantiated = false;
         if (remainTime <= 0)            //즉 남은시간이 없다. 다 자랐다.
         {
@@ -114,7 +110,7 @@ public class FishGrowTime : MonoBehaviour
                 Instantiate(lastFish, fishPos, Quaternion.identity);
                 Destroy(gameObject);
             }
-            fishArea.TimeTextUpdate(0, 0, fishKind);
+            fishArea?.TimeTextUpdate(0, 0, fishKind);
         }
         else //remainTime > 0
         {
@@ -127,7 +123,7 @@ public class FishGrowTime : MonoBehaviour
             int remainGrowTimeMinute = remainGrowTime/60;
             int remainGrowTimeSec = remainGrowTime - remainGrowTimeMinute*60;
 
-            fishArea.TimeTextUpdate(remainGrowTimeMinute, remainGrowTimeSec, fishKind);
+            fishArea?.TimeTextUpdate(remainGrowTimeMinute, remainGrowTimeSec, fishKind);
 
             yield return new WaitForSeconds(1f);        //결국 마지막에는 remainGrowTime = 0이 된다.
         }
