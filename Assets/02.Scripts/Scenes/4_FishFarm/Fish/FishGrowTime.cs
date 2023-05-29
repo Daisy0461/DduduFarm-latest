@@ -12,7 +12,7 @@ public class FishGrowTime : MonoBehaviour
     public int fishKind;
     
     [Tooltip("물고기 레벨 - 0부터 시작")]
-    [SerializeField] private int fishLevel;
+    public int fishLevel;
     
     [Space(10f)]
     public GameObject nextFish;
