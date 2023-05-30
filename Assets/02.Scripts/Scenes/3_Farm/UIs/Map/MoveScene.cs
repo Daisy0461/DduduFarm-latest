@@ -7,10 +7,6 @@ public class MoveScene : MonoBehaviour
 {
     [SerializeField] private CropTime cropTime;
     [SerializeField] private FishTime fishTime;
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private LabData labData;
-    [SerializeField] private LabLevel_level labLevel;
-
 
     public void BuildToOtherScene(string sceneName)
     {

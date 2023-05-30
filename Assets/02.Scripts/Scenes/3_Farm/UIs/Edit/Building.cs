@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System;
 
 public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -15,7 +13,6 @@ public class Building : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	#region for settings so have to address
 	
 	[HideInInspector] public Vector3 prePos;
-    // [HideInInspector]
 	 public bool isPointerDown = false;
 	
 	#endregion

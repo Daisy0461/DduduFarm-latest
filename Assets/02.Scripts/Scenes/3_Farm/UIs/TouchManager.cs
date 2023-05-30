@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public static class zoomVal {
     public readonly static float zoomSpeed = 1.8f;
     public readonly static float zoomInMax = 1f;
-    public readonly static float zoomOutMax = 16f;
+    public readonly static float zoomOutMax = 10.7f;
 }
 
 public class TouchManager : MonoBehaviour
