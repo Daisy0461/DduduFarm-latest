@@ -57,11 +57,6 @@ public class GridBuildingSystem : MonoBehaviour
         {
             return;
         }
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     clickPoint = new Vector2(Screen.width / 2, Screen.height / 2);
-        // }
-
         if (Input.GetMouseButton(0))
         {
             if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject?.name[0] == 'B')
