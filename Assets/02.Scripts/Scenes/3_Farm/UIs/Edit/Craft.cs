@@ -67,7 +67,10 @@ public class Craft : BuildingAttrib, IPointerClickHandler
             DduduOut();
         } 
         else
+        {
             m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime));
+            ExpansionAnimation();
+        }
     }
 
     private IEnumerator DoRechargeTimer(int remainTime)

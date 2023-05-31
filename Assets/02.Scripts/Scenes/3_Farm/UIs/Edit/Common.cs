@@ -7,12 +7,12 @@ public class Common : BuildingAttrib, IPointerClickHandler
 {
     public string remainTimeStr;
     public PopupBuilding popupBuilding;
-    [SerializeField] Building building;
-    [SerializeField] GameObject goldBtn;
-    [SerializeField] AudioSource audioSource;
+    [SerializeField] private Building building;
+    [SerializeField] private GameObject goldBtn;
+    [SerializeField] private AudioSource audioSource;
 
-    Coroutine m_CycleTimerCoroutine = null;
-    
+    private Coroutine m_CycleTimerCoroutine = null;
+
     private void Start()
     {
         buildingId = data.id;
@@ -38,7 +38,7 @@ public class Common : BuildingAttrib, IPointerClickHandler
         TouchManager.ZoomAmountChange -= this.IconSizeChange;
     }
 
-    override public void SetRechargeScheduler(bool newCycle=false)
+    override public void SetRechargeScheduler(bool newCycle = false)
     {
         if (m_CycleTimerCoroutine != null)
         {        
@@ -62,12 +62,16 @@ public class Common : BuildingAttrib, IPointerClickHandler
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         } 
         else
+        {
             m_CycleTimerCoroutine = StartCoroutine(DoRechargeTimer(remainTime));
+            ExpansionAnimation();
+        }
     }
 
     private IEnumerator DoRechargeTimer(int remainTime)
     {
         WaitForSeconds sec = new WaitForSeconds(1f);
+        var data = BuildingManager.Instance.GetData(buildingId);
 
         if (remainTime <= 0)
         {
@@ -84,17 +88,20 @@ public class Common : BuildingAttrib, IPointerClickHandler
         {
             data.cycleRemainTime -= 1;
             remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
+            
             yield return sec;
         }
 
         if(data.cycleRemainTime <= 0)
         {
-            // 골드 생산 버튼 UI 띄우기
             data.cycleRemainTime = 0;
+            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
+            
             data.isDone = true;
             goldBtn.gameObject.SetActive(true);
+            
+            StopCoroutine(m_CycleTimerCoroutine);
             m_CycleTimerCoroutine = null;
-            remainTimeStr = "남은 시간 : " + (data.cycleRemainTime).Sec2Time();
         }
     }
 

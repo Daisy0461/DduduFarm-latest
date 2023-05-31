@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
 
 public class BuildingAttrib : MonoBehaviour
 {
+    [SerializeField] private Ease buildingAnimationEase;
     public BuildingData data;
     protected int buildingId;
     protected DateTime m_AppQuitTime;
@@ -40,5 +40,23 @@ public class BuildingAttrib : MonoBehaviour
             Debug.LogError("LoadAppQuitTime Failed (" + e.Message + ")"); 
         } 
         return result; 
+    }
+
+    protected async void ExpansionAnimation()
+    {
+        var data = BuildingManager.Instance.GetData(buildingId);
+        
+        while (data.cycleRemainTime > 0)
+        {
+            try
+            {
+                await transform?.DOScaleY(1.1f, 0.5f).SetEase(buildingAnimationEase).AsyncWaitForCompletion();
+                await transform?.DOScaleY(1, 0.5f).SetEase(buildingAnimationEase).AsyncWaitForCompletion();
+            }
+            catch
+            {
+                return;
+            }
+        }
     }
 }
