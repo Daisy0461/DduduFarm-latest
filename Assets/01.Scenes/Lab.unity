@@ -927,8 +927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkText: {fileID: 112698806}
   ownerSprite:
-  - {fileID: -2515100035561089901, guid: bad6a45b8e8bac6478965a80760deaae, type: 3}
-  - {fileID: 7889365127000066503, guid: 9caaccf3ee52608438a5ec4a225b9757, type: 3}
+  - {fileID: 21300000, guid: bad6a45b8e8bac6478965a80760deaae, type: 3}
+  - {fileID: 21300000, guid: 9caaccf3ee52608438a5ec4a225b9757, type: 3}
   ownerImage: {fileID: 1579089792}
 --- !u!114 &112698806
 MonoBehaviour:
@@ -3374,9 +3374,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropTime: {fileID: 0}
   fishTime: {fileID: 0}
-  audioSource: {fileID: 0}
-  labData: {fileID: 0}
-  labLevel: {fileID: 0}
 --- !u!1001 &535095021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9065,7 +9062,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2515100035561089901, guid: bad6a45b8e8bac6478965a80760deaae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bad6a45b8e8bac6478965a80760deaae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
