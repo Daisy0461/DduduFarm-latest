@@ -1,4 +1,6 @@
 using UnityEngine;
+
+#if UNITY_EDITOR
 using UnityEditor;
 
 [CustomEditor(typeof(DduduPrefabMaker))]
@@ -12,6 +14,7 @@ public class DduduPrefabMakerEditor : Editor {
         }
     }
 }
+
 
 [ExecuteInEditMode]
 public class DduduPrefabMaker : MonoBehaviour
@@ -30,3 +33,5 @@ public class DduduPrefabMaker : MonoBehaviour
         
     }
 }
+
+#endif
