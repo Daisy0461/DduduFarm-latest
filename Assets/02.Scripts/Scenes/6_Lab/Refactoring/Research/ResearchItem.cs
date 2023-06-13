@@ -38,6 +38,12 @@ public class ResearchItem : MonoBehaviour
         }
 
         _researchImage.color = userData.IsResearched ? Color.white : _researchLockColor;
+
+        if (ResearchManager.Instance.IsLastResearchItem(researchId))
+        {
+            var isActive = ResearchManager.Instance.IsLastResearchItemActive();
+            this.gameObject.SetActive(isActive);
+        }
     }
 
     public void OnResearchItemClick()

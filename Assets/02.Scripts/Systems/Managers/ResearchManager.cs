@@ -4,6 +4,8 @@ using System;
 
 public class ResearchManager : DataManager<ResearchManager, ResearchInfo, ResearchData>
 {
+    private const int LastResearchItemId = 1601;
+
     public enum ResearchType   
     {
         Farm,
@@ -89,7 +91,36 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
             if (!TryGetInfo(id, out var info)) continue;
             researchInfos.Add(info);    
         }
+        if (type == ResearchType.Farm)
+        {
+            if (TryGetInfo(LastResearchItemId, out var info))
+            {
+                researchInfos.Add(info);
+            }
+        }
         return researchInfos;
+    }
+
+    public bool IsLastResearchItem(int id)
+    {
+        return (id == LastResearchItemId);
+    }
+
+    public bool IsLastResearchItemActive()
+    {
+        var allResearchCount = 0;
+        var curResearchCount = 0;
+        foreach (var info in infoDict)
+        {
+            if (!info.Value.researchable || IsLastResearchItem(info.Key)) continue;
+            allResearchCount++;
+
+            var data = GetDataExactly(info.Key);
+            if (!data.IsResearched) continue;
+            curResearchCount++;
+        }        
+        Debug.Log($"{allResearchCount} :: {curResearchCount}");
+        return allResearchCount <= curResearchCount; 
     }
 
     public override void SetData(int id, ResearchData data)
@@ -137,6 +168,7 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
     {
         var attrib = node.Attributes;
         int id = RtrnNodeToInt(attrib.GetNamedItem("id"));
+        string preResearchable = RtrnNodeToStr(attrib.GetNamedItem("researchable"));
         int preId = RtrnNodeToInt(attrib.GetNamedItem("preId"));
         string note = RtrnNodeToStr(attrib.GetNamedItem("note"));
         string imgPath = RtrnNodeToStr(attrib.GetNamedItem("imgPath"));
@@ -155,8 +187,9 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
                 requireMaterial.Add((matId, matAmount));
             }
         }
+        bool researchable = preResearchable == "TRUE" ? true : false;
 
-        ResearchInfo info = new ResearchInfo(id, preId, note, imgPath, name, level, researchValue, requireMaterial);
+        ResearchInfo info = new ResearchInfo(id, researchable, preId, note, imgPath, name, level, researchValue, requireMaterial);
         return info;
     }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ResearchInfo
 {
     public int code;
+    public bool researchable;
     public int preCode;
     public string note;
     public string imgPath;
@@ -13,9 +14,10 @@ public class ResearchInfo
     public string researchValue;
     public List<(int code, int count)> requireMaterial;
 
-    public ResearchInfo(int id, int preId, string note, string imgPath, string name, int level, string researchValue, List<(int, int)> requireMaterial)
+    public ResearchInfo(int id, bool researchable, int preId, string note, string imgPath, string name, int level, string researchValue, List<(int, int)> requireMaterial)
     {
         this.code = id;
+        this.researchable = researchable;
         this.preCode = preId;
         this.note = note;
         this.imgPath = imgPath;

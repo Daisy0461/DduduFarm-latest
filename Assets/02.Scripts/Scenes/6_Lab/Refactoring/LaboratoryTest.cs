@@ -18,7 +18,7 @@ public class LaboratoryTest : MonoBehaviour
     {
         for (int itemId = 701; itemId < 711; ++itemId)
         {
-            ItemManager.Instance.AddData(itemId, 10);
+            ItemManager.Instance.AddData(itemId, 1000);
         }
 
         Debug.Log("보석 10개씩 추가 완료");
