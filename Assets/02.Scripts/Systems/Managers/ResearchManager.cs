@@ -141,9 +141,9 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
         dataList = new List<ResearchData>();
     }
 
-    public void ResearchTypeStatus(int researchId)
+    public void Research(int researchId)
     {
-        var data = GetData(researchId);
+        var data = GetDataExactly(researchId);
         data.IsResearched = true;
         SetData(researchId, data);
 
@@ -158,6 +158,14 @@ public class ResearchManager : DataManager<ResearchManager, ResearchInfo, Resear
             case "인벤토리 확장":
             {
                 PlayerPrefs.SetFloat(researchInfo.name, (float)Convert.ToDouble(researchInfo.researchValue));
+                break;
+            }
+            case "마지막 연구!":
+            {
+                if (!ResourceManager.Instance.TryGetResource<EndingCutSceneTrigger>("EndingCutSceneTrigger", out var endingCutSceneTrigger))
+                {
+                    Debug.LogError("prefab is null");
+                }
                 break;
             }
             default: break;

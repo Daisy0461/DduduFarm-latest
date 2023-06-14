@@ -6,14 +6,23 @@ public class LaboratoryTest : MonoBehaviour
 {
     [SerializeField] private GameObject _testObject;
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     
     private void Start() 
     {
         _testObject.SetActive(true);
     }
 
-    #endif 
+    public void ResearchAllItem()
+    {
+        var researchItems = ResearchManager.Instance.GetInfoEnumerable();
+        foreach (var item in researchItems)
+        {
+            if (!item.researchable || ResearchManager.Instance.IsLastResearchItem(item.code)) continue;
+            ResearchManager.Instance.Research(item.code);
+        }
+    }
+
     public void AddAllGemToInventory10()
     {
         for (int itemId = 701; itemId < 711; ++itemId)
@@ -21,7 +30,7 @@ public class LaboratoryTest : MonoBehaviour
             ItemManager.Instance.AddData(itemId, 1000);
         }
 
-        Debug.Log("보석 10개씩 추가 완료");
+        Debug.Log("보석 1000개씩 추가 완료");
     }
 
     public void ResetInventory()
@@ -54,4 +63,6 @@ public class LaboratoryTest : MonoBehaviour
     {
         Debug.Log("진행된 연구 없음");
     }
+
+#endif 
 }

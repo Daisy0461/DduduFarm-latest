@@ -61,7 +61,7 @@ public class ResearchProgressUI : DefaultPanel
             ItemManager.Instance.RemoveData(id, count);
         }
 
-        ResearchManager.Instance.ResearchTypeStatus(_researchId);
+        ResearchManager.Instance.Research(_researchId);
         OnCloseButtonClick();
     }
 }
