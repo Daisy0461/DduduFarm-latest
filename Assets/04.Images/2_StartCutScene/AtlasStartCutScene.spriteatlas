@@ -38,7 +38,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 0f94cdfe92af3fc4599b67235055db30, type: 3}
     - {fileID: 2800000, guid: 530e4f45b39621149b61477132b5ea45, type: 3}
     - {fileID: 2800000, guid: a0ce11bc303c56746844fe37393a1383, type: 3}
-    - {fileID: 2800000, guid: b92bee36d7dad0c47bd0e634b9198324, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -46,20 +45,18 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 8dea2924eb46189419c6405435dbd7d5, type: 3}
   - {fileID: 21300000, guid: 530e4f45b39621149b61477132b5ea45, type: 3}
-  - {fileID: 21300000, guid: b92bee36d7dad0c47bd0e634b9198324, type: 3}
   - {fileID: 21300000, guid: 296abaabc7ee9724c89d48bc8a7a58c9, type: 3}
   - {fileID: 21300000, guid: a0ce11bc303c56746844fe37393a1383, type: 3}
   - {fileID: 21300000, guid: 976b1bbe91677df488c225d278bfceac, type: 3}
-  - {fileID: 4962606637245912312, guid: 0f94cdfe92af3fc4599b67235055db30, type: 3}
+  - {fileID: 21300000, guid: 0f94cdfe92af3fc4599b67235055db30, type: 3}
   - {fileID: 21300000, guid: 6f9a97efec8707d47ad24340fda9ba6c, type: 3}
   m_PackedSpriteNamesToIndex:
   - "\uC778\uD2B8\uB85C \uCEF7 3 \uC6B0\uC8FC\uC120"
   - "\uC778\uD2B8\uB85C \uCEF7 5"
-  - "\uCEF7 \uB4A4 \uBC30\uACBD"
   - "\uC778\uD2B8\uB85C \uCEF7 2"
   - "\uC778\uD2B8\uB85C \uCEF7 6"
   - "\uC778\uD2B8\uB85C \uCEF7 3"
-  - "\uC778\uD2B8\uB85C \uCEF7 4_0"
+  - "\uC778\uD2B8\uB85C \uCEF7 4"
   - "\uC778\uD2B8\uB85C \uCEF7 1"
   m_RenderDataMap: {}
   m_Tag: AtlasStartCutScene

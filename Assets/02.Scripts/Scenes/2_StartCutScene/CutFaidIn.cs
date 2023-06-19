@@ -1,30 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutFaidIn : MonoBehaviour
 {
-    [SerializeField]
-    private SpriteRenderer cutImage;
-    private Color cutImageColor;
-    // Start is called before the first frame update
+    [SerializeField] private Image cutImage;
+    [SerializeField] private SpriteRenderer renderer;
+    private Color cutImageColor = new Color(1, 1, 1, 0);
+
     void OnEnable()
     {
-        cutImageColor = cutImage.color;
-        cutImageColor.a = 0.0f;
-        cutImage.color = cutImageColor;
+        if (cutImage == null)
+        {
+            renderer.color = cutImageColor;
+        }
+        else
+        {
+            cutImage.color = cutImageColor;
+        }
+        StartCoroutine(FadeIn());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator FadeIn()
     {
-        if(cutImageColor.a < 1.0){        //alpha가 255보다 작을 때 - 더 진해질 수 있을 때 더 진하게 만듦.
+        while (cutImageColor.a < 1.0)
+        {
             cutImageColor.a = cutImageColor.a + 0.03f;
-            cutImage.color = cutImageColor;
-            //Debug.Log("alpha = " + cutImageColor.a);
-        }else{
-            cutImageColor.a = 1.0f;
-            cutImage.color = cutImageColor;
+            if (cutImage != null)
+            {
+                cutImage.color = cutImageColor;
+            }
+            else if (renderer != null)
+            {
+                renderer.color = cutImageColor;
+            }
+            yield return null;
         }
     }
 }
