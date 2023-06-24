@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Items>
-	<Field id="201" name="감자" note="지구의 감자와 비슷한 줄기 식물이다. 뚜두 행성의 주민들은 몸이 안 좋으면 감자를 끓여먹곤 한다." grow1Time="10" grow2Time="30" havestMin="3" havestMax="5"/>
-	<Field id="202" name="포도" note="지구의 포도와 비슷한 뿌리 식물이다. 뿌리 식물이지만 껍질을 까면 커다랗고 몰랑몰랑한 포도알을 볼 수 있다." grow1Time="120" grow2Time="180" havestMin="24" havestMax="36"/>
-	<Field id="203" name="망고" note="지구의 망고와 비슷한 뿌리 식물이다. 수확할 때가 되면 단 향이 퍼져서 매우 향기롭다고 한다." grow1Time="300" grow2Time="600" havestMin="2" havestMax="4"/>
-	<Field id="204" name="방울" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 한 입 크기로 입에 넣어 씹는 순간 톡톡하고 터진다." grow1Time="900" grow2Time="900" havestMin="8" havestMax="12"/>
-	<Field id="205" name="분홍" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 보통 똬리를 틀며 자라고, 속이 몰랑몰랑하여 줄기 부분을 뜯어 쪽 빨아먹는다." grow1Time="900" grow2Time="2700" havestMin="10" havestMax="30"/>
-	<Field id="206" name="토마토" note="지구의 토마토와 비슷한 줄기 식물이다. 토마토만 먹어도 맛있지만 다른 작물과 함께 먹으면 더 맛있다!" grow1Time="1800" grow2Time="5400" havestMin="20" havestMax="28"/>
-	<Field id="207" name="스타" note="뚜두 행성에서만 볼 수 있는 줄기 식물이다. 어두운 밤이 되면 은은한 빛을 뿜는 야광 식물이다." grow1Time="3600" grow2Time="10800" havestMin="3" havestMax="5"/>
-	<Field id="208" name="호박" note="지구의 호박과 비슷한 줄기 식물이다. 맛은 호박과 비슷하지만 아삭아삭한 식감을 보이며 자란 환경과 비슷한 색을 띤다." grow1Time="7200" grow2Time="14400" havestMin="15" havestMax="45"/>
-	<Field id="209" name="용과" note="지구의 용과와 비슷한 줄기 식물이다. 화려한 생김새에 비해 맛은 없지만 뚜두들이 좋아하기에 선물로 자주 사용된다." grow1Time="7200" grow2Time="21600" havestMin="4" havestMax="12"/>
-	<Field id="210" name="납복" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 왠지 먹으면 힘이 나는 식물로 삼삼하면서 쓴 맛은 절로 인상이 찌푸지게 한다." grow1Time="7200" grow2Time="28800" havestMin="35" havestMax="65"/>
+	<Field id="201" name="감자" note="지구의 감자와 비슷한 줄기 식물이다. 뚜두 행성의 주민들은 몸이 안 좋으면 감자를 끓여먹곤 한다." grow1Time="10" grow2Time="5" havestMin="3" havestMax="5"/>
+	<Field id="202" name="포도" note="지구의 포도와 비슷한 뿌리 식물이다. 뿌리 식물이지만 껍질을 까면 커다랗고 몰랑몰랑한 포도알을 볼 수 있다." grow1Time="10" grow2Time="5" havestMin="24" havestMax="36"/>
+	<Field id="203" name="망고" note="지구의 망고와 비슷한 뿌리 식물이다. 수확할 때가 되면 단 향이 퍼져서 매우 향기롭다고 한다." grow1Time="10" grow2Time="5" havestMin="2" havestMax="4"/>
+	<Field id="204" name="방울" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 한 입 크기로 입에 넣어 씹는 순간 톡톡하고 터진다." grow1Time="10" grow2Time="5" havestMin="8" havestMax="12"/>
+	<Field id="205" name="분홍" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 보통 똬리를 틀며 자라고, 속이 몰랑몰랑하여 줄기 부분을 뜯어 쪽 빨아먹는다." grow1Time="10" grow2Time="5" havestMin="10" havestMax="30"/>
+	<Field id="206" name="토마토" note="지구의 토마토와 비슷한 줄기 식물이다. 토마토만 먹어도 맛있지만 다른 작물과 함께 먹으면 더 맛있다!" grow1Time="10" grow2Time="5" havestMin="20" havestMax="28"/>
+	<Field id="207" name="스타" note="뚜두 행성에서만 볼 수 있는 줄기 식물이다. 어두운 밤이 되면 은은한 빛을 뿜는 야광 식물이다." grow1Time="10" grow2Time="5" havestMin="3" havestMax="5"/>
+	<Field id="208" name="호박" note="지구의 호박과 비슷한 줄기 식물이다. 맛은 호박과 비슷하지만 아삭아삭한 식감을 보이며 자란 환경과 비슷한 색을 띤다." grow1Time="10" grow2Time="5" havestMin="15" havestMax="45"/>
+	<Field id="209" name="용과" note="지구의 용과와 비슷한 줄기 식물이다. 화려한 생김새에 비해 맛은 없지만 뚜두들이 좋아하기에 선물로 자주 사용된다." grow1Time="10" grow2Time="5" havestMin="4" havestMax="12"/>
+	<Field id="210" name="납복" note="뚜두 행성에서만 볼 수 있는 뿌리 식물이다. 왠지 먹으면 힘이 나는 식물로 삼삼하면서 쓴 맛은 절로 인상이 찌푸지게 한다." grow1Time="10" grow2Time="5" havestMin="35" havestMax="65"/>
 </Items>

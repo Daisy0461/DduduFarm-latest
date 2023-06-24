@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Items>
-	<Field id="401" name="잉어" note="뚜두 행성의 붉은 호수에서 자라는 물고기이다. 성장하면서 지느러미의 붉은 무늬가 짙어진다." imgPath1="Fish/CARP_0" imgPath2="Fish/CARP_1" grow1Time="120" grow2Time="180" full="400" like="3" gemCount="1"/>
-	<Field id="402" name="블루" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 어두운 곳을 좋아해 사람들의 눈에 띄지 않는다." imgPath1="Fish/BLUE_0" imgPath2="Fish/BLUE_1" grow1Time="300" grow2Time="300" full="700" like="6" gemCount="2"/>
-	<Field id="403" name="살구" note="뚜두 행성의 붉은 호수 밑바닥에서 자라는 물고기이다. 열수분출공 주변에서 자라서 그런지 몸에서 열을 내뿜는다." imgPath1="Fish/APRICOT_0" imgPath2="Fish/APRICOT_1" grow1Time="300" grow2Time="600" full="1000" like="9" gemCount="3"/>
-	<Field id="404" name="보라" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 우아하고 긴 지느러미가 특징이다. 쉽게 보기는 힘들지만 그만큼 아름다워 발견하는 사람에게 행운을 가져다 준다고 한다." imgPath1="Fish/PURPLE_0" imgPath2="Fish/PURPLE_1" grow1Time="900" grow2Time="900" full="2000" like="18" gemCount="4"/>
-	<Field id="405" name="네온" note="뚜두 행성의 바다에서 자라는 물고기이다. 바다 밑바닥에서 자라는 발광 해초가 주식이어서 그런지 밤이 되면 몸에 있는 줄무늬에서 빛이 난다." imgPath1="Fish/NEON_0" imgPath2="Fish/NEON_1" grow1Time="900" grow2Time="2700" full="4000" like="36" gemCount="5"/>
+	<Field id="401" name="잉어" note="뚜두 행성의 붉은 호수에서 자라는 물고기이다. 성장하면서 지느러미의 붉은 무늬가 짙어진다." imgPath1="Fish/CARP_0" imgPath2="Fish/CARP_1" grow1Time="5" grow2Time="10" full="400" like="3" gemCount="1"/>
+	<Field id="402" name="블루" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 어두운 곳을 좋아해 사람들의 눈에 띄지 않는다." imgPath1="Fish/BLUE_0" imgPath2="Fish/BLUE_1" grow1Time="5" grow2Time="10" full="700" like="6" gemCount="2"/>
+	<Field id="403" name="살구" note="뚜두 행성의 붉은 호수 밑바닥에서 자라는 물고기이다. 열수분출공 주변에서 자라서 그런지 몸에서 열을 내뿜는다." imgPath1="Fish/APRICOT_0" imgPath2="Fish/APRICOT_1" grow1Time="5" grow2Time="10" full="1000" like="9" gemCount="3"/>
+	<Field id="404" name="보라" note="뚜두 행성의 동굴 호수에서 자라는 물고기이다. 우아하고 긴 지느러미가 특징이다. 쉽게 보기는 힘들지만 그만큼 아름다워 발견하는 사람에게 행운을 가져다 준다고 한다." imgPath1="Fish/PURPLE_0" imgPath2="Fish/PURPLE_1" grow1Time="5" grow2Time="10" full="2000" like="18" gemCount="4"/>
+	<Field id="405" name="네온" note="뚜두 행성의 바다에서 자라는 물고기이다. 바다 밑바닥에서 자라는 발광 해초가 주식이어서 그런지 밤이 되면 몸에 있는 줄무늬에서 빛이 난다." imgPath1="Fish/NEON_0" imgPath2="Fish/NEON_1" grow1Time="5" grow2Time="10" full="4000" like="36" gemCount="5"/>
 </Items>
