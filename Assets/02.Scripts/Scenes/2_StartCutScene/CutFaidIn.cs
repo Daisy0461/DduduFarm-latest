@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,15 +10,16 @@ public class CutFaidIn : MonoBehaviour
 
     void OnEnable()
     {
-        if (cutImage == null)
+        if (renderer != null)
         {
             renderer.color = cutImageColor;
+            StartCoroutine(FadeIn());
         }
-        else
+        else if (cutImage != null)
         {
             cutImage.color = cutImageColor;
+            StartCoroutine(FadeIn());
         }
-        StartCoroutine(FadeIn());
     }
 
     IEnumerator FadeIn()
