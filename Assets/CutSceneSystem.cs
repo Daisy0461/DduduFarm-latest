@@ -40,7 +40,7 @@ public class CutSceneSystem : MonoBehaviour
             cutSceneItem._image.SetActive(true);
             _cachedObject.Add(cutSceneItem._image);
             for (var index = 0; index < cutSceneItem._texts.Length; index++)
-            {Debug.Log("here");
+            {
                 if (cutSceneItem._effects.Length > index && cutSceneItem._effects[index] != null)
                 {
                     cutSceneItem._effects[index].SetActive(true);
