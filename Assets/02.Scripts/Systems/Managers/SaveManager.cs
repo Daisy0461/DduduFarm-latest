@@ -46,5 +46,25 @@ public class SaveManager : MonoBehaviour
             Debug.LogError(e.Message);
             return default;
         }
-     }
+    }
+
+    public static void DeleteSaveData()
+    {
+        var fileNames = new string[5]{"BuildingSaveData.bin", "Crop Save.bin", "DduduSaveData.bin", "ItemSaveData.bin", "ResearchSaveData.bin"};
+        try
+        {
+            foreach (var fileName in fileNames)
+            {
+                string path = Path.Combine(Application.persistentDataPath, fileName);
+                if (File.Exists(path))
+                {
+                    File.Delete(path);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+        }
+    }
 }
