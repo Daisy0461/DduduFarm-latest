@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class CutFaidIn : MonoBehaviour
 {
     [SerializeField] private Image cutImage;
-    [SerializeField] private SpriteRenderer renderer;
+    [SerializeField] private SpriteRenderer _renderer;
     private Color cutImageColor = new Color(1, 1, 1, 0);
 
     void OnEnable()
     {
-        if (renderer != null)
+        if (_renderer != null)
         {
-            renderer.color = cutImageColor;
+            _renderer.color = cutImageColor;
             StartCoroutine(FadeIn());
         }
         else if (cutImage != null)
@@ -31,9 +31,9 @@ public class CutFaidIn : MonoBehaviour
             {
                 cutImage.color = cutImageColor;
             }
-            else if (renderer != null)
+            else if (_renderer != null)
             {
-                renderer.color = cutImageColor;
+                _renderer.color = cutImageColor;
             }
             yield return null;
         }

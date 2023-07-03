@@ -5,21 +5,22 @@ using UnityEngine.EventSystems;
 
 public class CropState : MonoBehaviour, IPointerDownHandler
 { 
+    [SerializeField] private GameObject nextCrop;
+    
     public GameObject growDoneImage;
 
     private bool canHarvest = false;    //재배 가능
-    [SerializeField]
-    private GameObject nextCrop;
-
     private Vector3 cropPos;
 
-    void Start(){
+    void Start()
+    {
         cropPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         TouchManager.ZoomAmountChange += this.IconSizeChange;
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
-        if(canHarvest)
+    public void OnPointerDown(PointerEventData eventData) 
+    {
+        if (canHarvest)
         {     
             CropGrowSound cgs = nextCrop.GetComponent<CropGrowSound>();
             cgs.AudioAwakePlay();
@@ -35,20 +36,25 @@ public class CropState : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void DestroyObject(){
+    public void DestroyObject()
+    {
         Destroy(gameObject);
     }
 
-    public void InstantiateNextCrop(){
-        Instantiate(nextCrop, cropPos, Quaternion.identity);        //지금은 색을 바꾼 Crop이 나오는데 이걸 nextCrop을 바꿔주면 해당 nextCrop이 나옴.
+    public void InstantiateNextCrop()
+    {
+        var cropGrowTime = Instantiate(nextCrop, cropPos, Quaternion.identity).GetComponent<CropGrowTime>();        //지금은 색을 바꾼 Crop이 나오는데 이걸 nextCrop을 바꿔주면 해당 nextCrop이 나옴.
+        cropGrowTime.SetRechargeScheduler(true);
     }
 
-    public void GrowDone(){
+    public void GrowDone()
+    {
         growDoneImage.SetActive(true);
         canHarvest = true;
     }
 
-    public GameObject GetNextCrop(){
+    public GameObject GetNextCrop()
+    {
         return nextCrop;
     }
 

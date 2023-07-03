@@ -32,6 +32,7 @@ public class CropSaveLoad : MonoBehaviour
 
             CropGrowTime cropGrowTime = genCrop.GetComponent<CropGrowTime>();
             cropGrowTime.remainGrowTime = save.cropSaveDatas[save.cropSaveDatas.Length-1-i].remainGrowTimeSave;
+            cropGrowTime.SetRechargeScheduler(false);
         }
 
         for(int i = 0; i < crops.Length; i++)

@@ -124,18 +124,19 @@ public class FarmState : MonoBehaviour, IPointerDownHandler
             parentFarmSelect.OnPointerDown(eventData);
             afterPushFunc = true;       //이후 취소해줘야함.
         }
-        else if (afterPushFunc && isSelected && !isPlanted)
-        {        //꾹 누른 후 원래작물은 심어져있지 않아있는 상태
+        else if (afterPushFunc && isSelected && !isPlanted) //꾹 누른 후 원래작물은 심어져있지 않아있는 상태
+        {        
             if (CropKind == null) return;
-            int id = CropKind.GetComponent<CropGrowTime>().cropKind + 50;
-            plantSound.Play();
-            //Instanceate seedPrefab은 고쳐야함.
-            Instantiate(CropKind, farmPosition + new Vector3(0.1f, 0.25f, 0.0f), Quaternion.identity);
+            
             isPlanted = true;
-            //심고나면 삭제
-            IM.RemoveData(id, 1);
-            //숫자 새로고침 해줘야함.
+            int id = CropKind.GetComponent<CropGrowTime>().cropKind + 50;
+            ItemManager.Instance.RemoveData(id, 1);
+            
+            var cropGrowTime = Instantiate(CropKind, farmPosition + new Vector3(0.1f, 0.25f, 0.0f), Quaternion.identity).GetComponent<CropGrowTime>();
+            cropGrowTime.SetRechargeScheduler(true);
+            
             cropSelectButton.ActiveCropBtn();
+            plantSound.Play();
         }
     }
 }

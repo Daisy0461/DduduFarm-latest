@@ -11,7 +11,7 @@ public class MoveScene : MonoBehaviour
     public void BuildToOtherScene(string sceneName)
     {
         cropTime.SaveCrop();
-        cropTime.SaveAppQuitTime();
+        SaveManager.TrySaveAppQuitTime();
         DduduManager.Instance.Save();
         Loading.LoadSceneHandle(sceneName);
     }

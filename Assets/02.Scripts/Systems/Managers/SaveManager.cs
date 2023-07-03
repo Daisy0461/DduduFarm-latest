@@ -67,4 +67,43 @@ public class SaveManager : MonoBehaviour
             Debug.LogError(e.Message);
         }
     }
+
+    public static bool TrySaveAppQuitTime()           //나간 시간 저장
+    {
+        bool result = false;
+        try
+        {
+            var appQuitTimeString = DateTime.Now.ToLocalTime().ToBinary().ToString();     
+            PlayerPrefs.SetString("AppQuitTime", appQuitTimeString);
+            PlayerPrefs.Save();
+            result = true;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("SaveAppQuitTime Failed (" + e.Message + ")");
+        }
+        return result;
+    }
+
+    public static bool TryLoadAppQuitTime(out DateTime appQuitTime)       
+    {
+        bool result = false;
+        appQuitTime = DateTime.Now.ToLocalTime();
+        try
+        {
+            if (PlayerPrefs.HasKey("AppQuitTime"))
+            {
+                var appQuitTimeString = string.Empty;
+                appQuitTimeString = PlayerPrefs.GetString("AppQuitTime");                
+                appQuitTime = DateTime.FromBinary(Convert.ToInt64(appQuitTimeString));
+            }
+
+            result = true;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("LoadAppQuitTime Failed (" + e.Message + ")");
+        }
+        return result;
+    }
 }

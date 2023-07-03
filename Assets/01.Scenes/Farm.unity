@@ -23324,35 +23324,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &1739029767 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 493598487838688622, guid: aa170a491a3b15a44aa26b01a93c5d1f, type: 3}
-  m_PrefabInstance: {fileID: 2018555211}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1739029768 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 493598487838688620, guid: aa170a491a3b15a44aa26b01a93c5d1f, type: 3}
   m_PrefabInstance: {fileID: 2018555211}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739029767}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610844479ecaafe4185a5abb4d6ce555, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1739029769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739029767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22a44f7a8de483a4a8a7340b740af5c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cropTime: {fileID: 1739029768}
 --- !u!1001 &1744859555
 PrefabInstance:
   m_ObjectHideFlags: 0
