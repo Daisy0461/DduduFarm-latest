@@ -12,11 +12,9 @@ public class CropState : MonoBehaviour, IPointerDownHandler
     private GameObject nextCrop;
 
     private Vector3 cropPos;
-    private CropGrowTime cropGrowTime;
 
     void Start(){
         cropPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
-        cropGrowTime = gameObject.GetComponent<CropGrowTime>();
         TouchManager.ZoomAmountChange += this.IconSizeChange;
     }
 

@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class CropGrowSound : MonoBehaviour
 {
-    [SerializeField]
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
 
-    public void PlayGrowSound(){
+    public void PlayGrowSound()
+    {
         audioSource.Play();
     }
 
-    public void AudioAwakePlay(){
+    public void AudioAwakePlay()
+    {
         audioSource.playOnAwake = true;
     }
 
-    public void AudioAwakePlayFalse(){
+    public void AudioAwakePlayFalse()
+    {
         audioSource.playOnAwake = false;
     }
 }

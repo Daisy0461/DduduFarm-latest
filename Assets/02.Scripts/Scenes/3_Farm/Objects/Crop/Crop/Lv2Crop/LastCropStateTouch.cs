@@ -5,8 +5,7 @@ using UnityEngine.EventSystems;
 
 public class LastCropStateTouch : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField]
-    private LastCropState parentLastCropState;
+    [SerializeField] private LastCropState parentLastCropState;
     private int cropKind;
 
     private CropManager CM;

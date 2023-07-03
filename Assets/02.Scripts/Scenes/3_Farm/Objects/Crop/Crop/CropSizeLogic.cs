@@ -10,7 +10,6 @@ public class CropSizeLogic : MonoBehaviour
     public float maxGrowth = 100f;
     public float growthLevel = 0;
 
-    private CropState cropState;
     private CropGrowTime cropGrowTime;
     private Vector3 originPos;
 
@@ -20,7 +19,6 @@ public class CropSizeLogic : MonoBehaviour
     void Start()
     {
         originPos = gameObject.GetComponent<CropGrowTime>().originPos;          //0.1, 0.25 다 되어 있는 값.
-        cropState = gameObject.GetComponent<CropState>();
         cropGrowTime = gameObject.GetComponent<CropGrowTime>();
         growthLevel = 0;
     }

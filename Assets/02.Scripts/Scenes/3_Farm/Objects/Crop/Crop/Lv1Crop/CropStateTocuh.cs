@@ -5,8 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CropStateTocuh : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField]
-    private CropState parentCropState;        //작물 넣으면 됌.
+    [SerializeField] private CropState parentCropState;        //작물 넣으면 됌.
     private CropGrowSound cgs;
 
     void Start()

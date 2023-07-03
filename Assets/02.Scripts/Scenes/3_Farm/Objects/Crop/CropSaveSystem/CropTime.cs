@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -7,7 +5,7 @@ public class CropTime : CropSaveLoad
 {
     private DateTime m_AppQuitTime = new DateTime(1970, 1, 1).ToLocalTime();
 
-    void Awake()
+    void Start()
     {
         LoadAppQuitTime();  
     }
@@ -70,7 +68,9 @@ public class CropTime : CropSaveLoad
         return result;
     }
 
-    public DateTime get_m_AppQuitTime(){
+    public DateTime get_m_AppQuitTime()
+    {
+        LoadAppQuitTime();
         return m_AppQuitTime;
     }
 }

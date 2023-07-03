@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8499e19a5b03a346af708a149154ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeMaxGrowInterval: 30
   remainGrowTime: 30
   cropKind: 201
   cropLevel: 1
