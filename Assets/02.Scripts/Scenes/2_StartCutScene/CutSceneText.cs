@@ -9,6 +9,7 @@ public class CutSceneText : MonoBehaviour
     [TextArea]
     public string outputText;
     public float textTime; 
+    [SerializeField] private bool _startCutScene;
 
     private Text text;
     private float _textTime => textTime > 0 ? textTime : outputText.Length * 0.1f;
@@ -20,7 +21,12 @@ public class CutSceneText : MonoBehaviour
         var pattern = @"(?<=\[)(.*?)(?=\])";
         outputText = Regex.Replace(outputText, pattern, "");
         
-        outputText = outputText.Replace("[]", "");        
+        outputText = outputText.Replace("[]", "");     
+
+        if (_startCutScene)
+        {
+            text.DOText(outputText, _textTime);
+        }   
     }
 
     public async Task PlayCutSceneText()

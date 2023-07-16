@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 207036505}
+  _renderer: {fileID: 0}
 --- !u!1 &407591810
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 407591811}
+  _renderer: {fileID: 0}
 --- !u!1 &461873084
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,6 +834,7 @@ MonoBehaviour:
     \uB85C\uCF13\uC744 \uD0C0\uACE0 \uC0C8\uB85C\uC6B4 \uD589\uC131\uC744 \uCC3E\uC544
     \uB5A0\uB098\uAC8C \uB41C\uB2E4. "
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &661965068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,7 +1076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 665345730}
+  _renderer: {fileID: 0}
 --- !u!1 &748425346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 748425347}
+  _renderer: {fileID: 0}
 --- !u!1001 &958655452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1701,6 +1702,7 @@ MonoBehaviour:
     \uD589\uC131\uC758 \uC5B4\uB290 \uC678\uB534 \uC9D1\uC73C\uB85C \uBD88\uC2DC\uCC29\uD558\uAC8C
     \uB41C\uB2E4."
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &1169752657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,6 +1967,7 @@ MonoBehaviour:
     \uBA3C\uC9C0\uAC00 \uC313\uC778 \uC9D1\uC744 \uB458\uB7EC\uBCF4\uB358 \uC8FC\uC778\uACF5\uC740
     \uACE7 \uC774\uACF3\uC774 \uBC84\uB824\uC9C4 \uC9D1\uC784\uC744 \uAE68\uB2EB\uACE0,"
   textTime: 5
+  _startCutScene: 1
 --- !u!114 &1258889903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,6 +2135,7 @@ MonoBehaviour:
   outputText: "20XX\uB144, \uBB34\uBD84\uBCC4\uD55C \uC790\uC6D0 \uB0AD\uBE44\uB85C
     \uC778\uD574 \uBA78\uB9DD\uD55C \uC9C0\uAD6C..."
   textTime: 3
+  _startCutScene: 1
 --- !u!1001 &1649210565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2305,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 1666376140}
+  _renderer: {fileID: 0}
 --- !u!1 &1760685992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2364,7 @@ MonoBehaviour:
     \uC8FC\uC778\uACF5\uC758 \uB85C\uCF13\uC740 \uB69C\uB450 \uD589\uC131\uC774 \uC788\uB294
     \uACF3\uC73C\uB85C \uAC00\uAC8C \uB418\uACE0..."
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &1760685995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,6 +2460,7 @@ MonoBehaviour:
   outputText: "\uACFC\uC5F0 \uC8FC\uC778\uACF5\uC740 \uC774\uACF3\uC5D0\uC11C \uBB34\uC0AC\uD788
     \uC801\uC751\uD574 \uC0B4\uC544\uAC08 \uC218 \uC788\uC744\uAE4C?"
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &1922370266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2675,7 +2681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutImage: {fileID: 0}
-  renderer: {fileID: 1928284021}
+  _renderer: {fileID: 0}
 --- !u!1 &1931310566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,6 +2735,7 @@ MonoBehaviour:
   outputText: "\uC774\uACF3\uC5D0 \uC815\uCC29\uD574\uC57C\uACA0\uB2E4\uACE0 \uB9C8\uC74C\uC744
     \uBA39\uB294\uB370...!"
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &1931310569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,8 +2769,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC774\uACF3\uC5D0 \uC815\uCC29\uD574\uC57C\uACA0\uB2E4\uACE0 \uB9C8\uC74C\uC744
-    \uBA39\uB294\uB370...!"
+  m_Text: 
 --- !u!222 &1931310570
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2917,6 +2923,7 @@ MonoBehaviour:
   outputText: "\uD589\uC131\uC758 \uC544\uB984\uB2E4\uC6C0\uC5D0 \uB10B\uC744 \uC783\uC740
     \uAC83\uB3C4 \uC7A0\uC2DC,"
   textTime: 3
+  _startCutScene: 1
 --- !u!114 &2086589183
 MonoBehaviour:
   m_ObjectHideFlags: 0
