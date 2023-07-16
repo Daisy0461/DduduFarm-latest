@@ -148,5 +148,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a49a05b6afd5a1e4584835c077fcdb5b, type: 3}
   - {fileID: 8300000, guid: ce6dcb6ccdb18d34597431b8d3074752, type: 3}
   - {fileID: 8300000, guid: a49a05b6afd5a1e4584835c077fcdb5b, type: 3}
-  - {fileID: 8300000, guid: a49a05b6afd5a1e4584835c077fcdb5b, type: 3}
+  - {fileID: 8300000, guid: 78fa0d3f295d03e46939871fad04e73b, type: 3}
+  - {fileID: 8300000, guid: 805f6ce0da20ccb4db723fb8b7292d49, type: 3}
   singleton: 0

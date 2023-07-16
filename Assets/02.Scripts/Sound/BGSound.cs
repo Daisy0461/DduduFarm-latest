@@ -74,9 +74,9 @@ public class BGSound : MonoBehaviour
                 break;
             case "Shop" : bgm = BGM.shop;
                 break;
-            case "Lab" : bgm = BGM.farm;
+            case "Lab" : bgm = BGM.lab;
                 break;
-            case "Forest" : bgm = BGM.farm;
+            case "Forest" : bgm = BGM.forest;
                 break;
             default : bgm = oldBgm;
                 break;              
