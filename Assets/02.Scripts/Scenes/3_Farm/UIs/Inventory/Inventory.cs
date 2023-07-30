@@ -175,7 +175,7 @@ public partial class Inventory : MonoBehaviour
         if (img == null) return;
         if (buttonImage == null)
             buttonImage = img;
-        buttonImage.color = Color.yellow;
+        buttonImage.color = Color.white;
     }
 
     public void OnClickTrashToggle(Text text)

@@ -963,11 +963,11 @@ RectTransform:
   m_Father: {fileID: 3127950299144185775}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.05666667, y: 0}
-  m_AnchorMax: {x: 0.94000006, y: 0.924}
-  m_AnchoredPosition: {x: 6.7959, y: 22.496}
-  m_SizeDelta: {x: -18.796, y: 44.992}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3127950297601724141
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1519,7 +1519,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -20, y: -20}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3127950297930326708
 GameObject:
@@ -3190,7 +3190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3127950298551684348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3315,8 +3315,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -48, y: -38.924316}
-  m_SizeDelta: {x: 20, y: -38.9243}
+  m_AnchoredPosition: {x: 10, y: 0}
+  m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3127950298602817054
 CanvasRenderer:
@@ -4397,7 +4397,7 @@ MonoBehaviour:
   buttonImage: {fileID: 0}
   Pan_TrashBG: {fileID: 3127950297879357131}
   trashSelectedBG: {fileID: 21300000, guid: dedb2f45a3570aa4089372395f446545, type: 3}
-  trashOriginBG: {fileID: 21300000, guid: f91be06c3f6f1c749a3c2d0ac6a43551, type: 3}
+  trashOriginBG: {fileID: 21300000, guid: 8e1c1df851f6d9249a7a530a1bff6edc, type: 3}
   sortStatus: Obtain
   popupOutput: {fileID: 0}
   output_nameTxt: {fileID: 0}
@@ -4456,8 +4456,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 21}
-  m_SizeDelta: {x: 600, y: 592}
+  m_AnchoredPosition: {x: 0, y: -14.8}
+  m_SizeDelta: {x: 500, y: 530.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3127950299144185774
 MonoBehaviour:
@@ -4483,7 +4483,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 3127950298602817052}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 1
+  m_VerticalScrollbarVisibility: 0
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -4851,15 +4851,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
+    m_Left: 10
+    m_Right: 10
     m_Top: 7
     m_Bottom: 7
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 160, y: 160}
-  m_Spacing: {x: 20, y: 20}
+  m_CellSize: {x: 150, y: 150}
+  m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &3127950299252996735
